@@ -47,7 +47,7 @@ margin/right = 0.0
 margin/bottom = 0.0
 alignment = 0
 
-[node name="ShopMonster" type="Button" parent="VBox"]
+[node name="BattleGround" type="Button" parent="VBox"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -60,10 +60,10 @@ margin/bottom = 108.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Buy MuuMuus"
+text = "Battle Ground"
 flat = false
 
-[node name="ShopCatalist" type="Button" parent="VBox"]
+[node name="Race" type="Button" parent="VBox"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -76,7 +76,7 @@ margin/bottom = 309.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Buy Male Milk"
+text = "Race"
 flat = false
 
 
