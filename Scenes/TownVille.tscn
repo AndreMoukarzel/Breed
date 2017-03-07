@@ -1,0 +1,98 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://Resources/Sprites/bluebackground.jpg" type="Texture" id=1]
+
+[node name="TownVille" type="Control"]
+
+editor/display_folded = true
+visibility/visible = false
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+
+[node name="TownBackground" type="TextureFrame" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 0
+
+[node name="VBox" type="VBoxContainer" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+alignment = 0
+
+[node name="ShopMonster" type="Button" parent="VBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 460.0
+margin/top = 88.0
+margin/right = 563.0
+margin/bottom = 108.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Buy MuuMuus"
+flat = false
+
+[node name="ShopCatalist" type="Button" parent="VBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 461.0
+margin/top = 289.0
+margin/right = 563.0
+margin/bottom = 309.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Buy Male Milk"
+flat = false
+
+[node name="ShopConstruction" type="Button" parent="VBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 469.0
+margin/top = 491.0
+margin/right = 555.0
+margin/bottom = 511.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Buy Ciment"
+flat = false
+
+
