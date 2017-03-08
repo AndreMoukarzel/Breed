@@ -28,10 +28,11 @@ func get_id(species):
 	for id in range(pos_database.size()):
 		if( pos_database[id][SPECIES] == species ):
 			return id
+	return -1
 
 
-func prepare(species, color):
-	var id = get_id(species)
+func prepare(id, color):
+	var species = pos_database[id][SPECIES]
 
 	set_texture(load(str("res://Resources/Sprites/Creatures/", species, "/", species, ".png")))
 	set_modulate(color)

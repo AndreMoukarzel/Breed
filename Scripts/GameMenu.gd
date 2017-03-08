@@ -24,13 +24,9 @@ class Monster:
 
 
 func _ready():
-	var creature = creature_scn.instance()
-	
-	creature.prepare("Mafagafo", Color(0.5, 0.5, 1))
-	creature.set_pos(Vector2(220, 220))
+	generate_creature( "nhi", Color(-1, -1, -1))
 
-	add_child(creature)
-
+############  BUTTONS  ############
 
 func _on_ToBreed_pressed():
 	pass
@@ -46,3 +42,25 @@ func _on_ToArena_pressed():
 	get_node("VBox").hide()
 	get_node("FarmBackground").hide()
 	get_node("Arena").show()
+
+
+##########  FUNCTIONALITY  ##########
+
+# If species term does not correspond to any species, randomize species
+# If Color(-1, -1, -1), randomize color
+func generate_creature(species, color):
+	var creature = creature_scn.instance()
+	var id = creature.get_id(species)
+	var col = color
+
+	randomize()
+	if( id == -1 ):
+		id = randi() % creature.pos_database.size()
+
+	if( col == Color( -1, -1, -1) ):
+		col = Color( rand_range(0.1, 1), rand_range(0.1, 1), rand_range(0.1, 1))
+
+	creature.prepare(id, col)
+	creature.set_pos(Vector2(220, 220))
+
+	add_child(creature)
