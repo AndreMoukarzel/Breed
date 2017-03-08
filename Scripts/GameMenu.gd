@@ -9,10 +9,10 @@ class Monster:
 	var name
 	var species
 	var color #will be vector
-#	var ap_vec
+	var ap_vec #apendices
 	var level
-	var xp
-	var catal
+	var xp = 0
+	var catal = 0
 	var STR
 	var AGI
 	var VIT
@@ -20,7 +20,7 @@ class Monster:
 	var WIS
 	var FER
 
-	func _init(name, species, color):
+	func _init(name, species, color, ap_vec, level):
 		self.name = name
 		self.species = species
 		self.color = color
@@ -67,7 +67,8 @@ func monster_generate(name, species, color):
 			if( mon.species == info[0] ):
 				count += 1
 		nick = str(info[0], count)
-	monster = Monster.new(nick, info[0], info[1])
+
+	monster = Monster.new(nick, info[0], info[1], "", 1)
 
 	mon_depo.append(monster)
 
