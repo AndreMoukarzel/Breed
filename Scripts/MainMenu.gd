@@ -7,7 +7,7 @@ func _ready():
 
 
 func _on_New_Game_pressed():
-	get_node("/root/global").goto_scene("res://scenes/jaiminho.tscn")
+	get_node("/root/global").goto_scene("res://Scenes/GameMenu.tscn")
 
 
 func _on_Load_Game_pressed():
