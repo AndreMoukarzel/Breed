@@ -31,6 +31,10 @@ func get_id(species):
 	return -1
 
 
+func get_species(id):
+	return pos_database[id][SPECIES]
+
+
 func prepare(id, color):
 	var species = pos_database[id][SPECIES]
 
