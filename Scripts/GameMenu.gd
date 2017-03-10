@@ -67,25 +67,40 @@ func _on_ToArena_pressed():
 # GRADATIONS must be in order [STR, AGI, VIT, TEN, WIS, FER]; 0-7 = F-S; blanks will be randomized
 # VARIATION defines how much non-blank gradations can be randomized. 0 and 7 are not randomized
 func monster_generate(species, color, apendices, level, gradations, variation):
-	var info # [species, color]
+	var race
+	var id
+	var col = color
 	var name
 	var lvl
 	var monster
 	var grad = []
+	var mon_database = get_node("/root/Monster") #global script
 
 	randomize()
-	info = monster_sprite(species, color, Vector2(220, 220))
 
+	# Species
+	id = mon_database.get_id(race)
+	if( id == -1 ):
+		id = randi() % mon_database.pos_database.size()
+	race = mon_database.get_species(id)
+
+	# Color
+	if( col == Color( -1, -1, -1) ):
+		col = Color( rand_range(0.1, 1), rand_range(0.1, 1), rand_range(0.1, 1))
+
+	# Name
 	var count = 1
 	for mon in mon_depo:
-		if( mon.species == info[0] ):
+		if( mon.species == race ):
 			count += 1
-	name = str(info[0], count)
+	name = str(race, count)
 
+	# Level
 	lvl = level[0] + (randi() % (level[1] + 1)) - (randi() % (level[1] + 1))
 	if( lvl < 1 ):
 		lvl = 1
 
+	# Gradations
 	count = 0
 	for stat in gradations:
 		grad.append(stat)
@@ -97,26 +112,17 @@ func monster_generate(species, color, apendices, level, gradations, variation):
 				grad[count] = 7
 		count += 1
 
-	monster = Monster.new(name, info[0], info[1], [], lvl, grad)
-
+	monster = Monster.new(name, race, col, [], lvl, grad)
 	mon_depo.append(monster)
+
+	monster_sprite(id, col, Vector2(220, 220))
 
 
 # Generates monster's sprite. More information in monster_generate() documentation
-func monster_sprite(species, color, pos):
+func monster_sprite(id, color, pos):
 	var creature = creature_scn.instance()
-	var id = creature.get_id(species)
-	var col = color
 
-	if( id == -1 ):
-		id = randi() % creature.pos_database.size()
-
-	if( col == Color( -1, -1, -1) ):
-		col = Color( rand_range(0.1, 1), rand_range(0.1, 1), rand_range(0.1, 1))
-
-	creature.prepare(id, col)
+	creature.prepare(id, color)
 	creature.set_pos(pos)
 
 	add_child(creature)
-
-	return [creature.get_species(id), col]
