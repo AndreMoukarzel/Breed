@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Scripts/GameMenu.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/bluebackground.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/Town.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Arena.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Town.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Arena.tscn" type="PackedScene" id=5]
 
 [node name="GameMenu" type="Control"]
 
@@ -37,7 +38,6 @@ stretch_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="."]
 
-editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -65,6 +65,13 @@ enabled_focus_mode = 2
 shortcut = null
 text = "Coitus"
 flat = false
+
+[node name="SelectBox" parent="VBox/ToBreed" instance=ExtResource( 3 )]
+
+margin/left = 6.0
+margin/top = 34.0
+margin/right = 46.0
+margin/bottom = 74.0
 
 [node name="ToTown" type="Button" parent="VBox"]
 
@@ -98,12 +105,12 @@ shortcut = null
 text = "Arena"
 flat = false
 
-[node name="Town" parent="." instance=ExtResource( 3 )]
+[node name="Town" parent="." instance=ExtResource( 4 )]
 
 editor/display_folded = true
 visibility/visible = false
 
-[node name="Arena" parent="." instance=ExtResource( 4 )]
+[node name="Arena" parent="." instance=ExtResource( 5 )]
 
 editor/display_folded = true
 visibility/visible = false

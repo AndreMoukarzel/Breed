@@ -45,6 +45,8 @@ func _on_ToBreed_pressed():
 
 	for mon in mon_depo:
 		print(mon.name)
+	
+	get_node("VBox/ToBreed/SelectBox").generateMembers(mon_depo, 5, 1, 10)
 
 
 func _on_ToTown_pressed():
