@@ -1,19 +1,19 @@
 [gd_scene format=1]
 
-[node name="SelectBoxUnit" type="Button"]
+[node name="SelectBoxUnit" type="TextureButton"]
 
-rect/scale = Vector2( 0.5, 0.5 )
+anchor/right = 1
+anchor/bottom = 1
 focus/ignore_mouse = false
 focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
+size_flags/horizontal = 1
+size_flags/vertical = 1
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 50.0
-margin/bottom = 50.0
+margin/right = 924.0
+margin/bottom = 500.0
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-flat = false
 
 
