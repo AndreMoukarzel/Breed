@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://Scripts/GameMenu.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/bluebackground.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Town.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Arena.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Town.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Arena.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Breeding.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Resources/Sprites/Creatures/Biluga/Biluga.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/Creatures/Mafagafo/Mafagafo.png" type="Texture" id=8]
 
 [node name="GameMenu" type="Control"]
 
@@ -38,6 +41,7 @@ stretch_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -65,13 +69,6 @@ enabled_focus_mode = 2
 shortcut = null
 text = "Coitus"
 flat = false
-
-[node name="SelectBox" parent="VBox/ToBreed" instance=ExtResource( 3 )]
-
-margin/left = 6.0
-margin/top = 34.0
-margin/right = 46.0
-margin/bottom = 74.0
 
 [node name="ToTown" type="Button" parent="VBox"]
 
@@ -105,15 +102,50 @@ shortcut = null
 text = "Arena"
 flat = false
 
-[node name="Town" parent="." instance=ExtResource( 4 )]
+[node name="Town" parent="." instance=ExtResource( 3 )]
 
 editor/display_folded = true
 visibility/visible = false
 
-[node name="Arena" parent="." instance=ExtResource( 5 )]
+[node name="Arena" parent="." instance=ExtResource( 4 )]
 
 editor/display_folded = true
 visibility/visible = false
+
+[node name="Barn" type="Control" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+script/script = ExtResource( 5 )
+
+[node name="SelectBox1" parent="Barn" instance=ExtResource( 6 )]
+
+[node name="SelectBox2" parent="Barn" instance=ExtResource( 6 )]
+
+[node name="Back" type="TextureButton" parent="Barn"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 453.0
+margin/top = 449.0
+margin/right = 983.0
+margin/bottom = 1073.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 7 )
+textures/pressed = ExtResource( 8 )
+params/scale = Vector2( 0.2, 0.2 )
 
 [connection signal="pressed" from="VBox/ToBreed" to="." method="_on_ToBreed_pressed"]
 
@@ -124,6 +156,8 @@ visibility/visible = false
 [connection signal="pressed" from="Town/VBox/Back" to="Town" method="_on_Back_pressed"]
 
 [connection signal="pressed" from="Arena/VBox/Back" to="Arena" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Barn/Back" to="Barn" method="_on_Back_pressed"]
 
 
 [editable path="Town"]

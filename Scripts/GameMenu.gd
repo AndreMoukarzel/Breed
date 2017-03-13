@@ -34,18 +34,16 @@ class Monster:
 
 func _ready():
 	print("Game Menu")
-	monster_generate("nhi", Color(-1, -1, -1), [], [3, 1], [2, 2, 1, 0, 0, 0], 1)
+	for i in range(5):
+		monster_generate("nhi", Color(-1, -1, -1), [], [3, 1], [2, 2, 1, 0, 0, 0], 1)
 
 ############  BUTTONS  ############
 
 func _on_ToBreed_pressed():
 	monster_generate("nhi", Color(-1, -1, -1), [], [3, 1], [2, 2, 1, 0, 0, 0], 1)
-
-	for mon in mon_depo:
-		print(mon.name)
-	
-	#test
-	get_node("VBox/ToBreed/SelectBox").generate_members(mon_depo, 9, 2, 100)
+	get_node("VBox").hide()
+	get_node("FarmBackground").hide()
+	get_node("Barn").show()
 
 
 func _on_ToTown_pressed():
@@ -116,4 +114,4 @@ func monster_generate(species, color, apendices, level, gradations, variation):
 	monster = Monster.new(name, race, col, [], lvl, grad)
 	mon_depo.append(monster)
 
-	mon_database.monster_sprite(self, id, col, Vector2(220, 220), Vector2(0.5, 0.5))
+#	mon_database.monster_sprite(self, id, col, Vector2(220, 220), Vector2(0.5, 0.5))
