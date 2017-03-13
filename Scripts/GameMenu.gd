@@ -1,8 +1,6 @@
 
 extends Control
 
-var creature_scn = preload("res://Scenes/Monster.tscn")
-
 var mon_depo = []
 
 class Monster:
@@ -46,7 +44,8 @@ func _on_ToBreed_pressed():
 	for mon in mon_depo:
 		print(mon.name)
 	
-	get_node("VBox/ToBreed/SelectBox").generate_members(mon_depo, 5, 1, 10)
+	#test
+	get_node("VBox/ToBreed/SelectBox").generate_members(mon_depo, 9, 2, 100)
 
 
 func _on_ToTown_pressed():
@@ -117,14 +116,4 @@ func monster_generate(species, color, apendices, level, gradations, variation):
 	monster = Monster.new(name, race, col, [], lvl, grad)
 	mon_depo.append(monster)
 
-	monster_sprite(id, col, Vector2(220, 220))
-
-
-# Generates monster's sprite. More information in monster_generate() documentation
-func monster_sprite(id, color, pos):
-	var creature = creature_scn.instance()
-
-	creature.prepare(id, color)
-	creature.set_pos(pos)
-
-	add_child(creature)
+	mon_database.monster_sprite(self, id, col, Vector2(220, 220), Vector2(0.5, 0.5))

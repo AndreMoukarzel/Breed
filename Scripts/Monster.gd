@@ -1,6 +1,8 @@
 
 extends Sprite
 
+var creature_scn = preload("res://Scenes/Monster.tscn")
+
 const SPECIES = 0
 const FACE_POS = 1
 const AP_POS = 2
@@ -40,3 +42,14 @@ func prepare(id, color):
 
 	set_texture(load(str("res://Resources/Sprites/Creatures/", species, "/", species, ".png")))
 	set_modulate(color)
+
+
+# Generates monster's sprite. More information in monster_generate() documentation
+func monster_sprite(parent, id, color, pos, scale):
+	var creature = creature_scn.instance()
+
+	creature.prepare(id, color)
+	creature.set_pos(pos)
+	creature.set_scale(scale)
+
+	parent.add_child(creature)
