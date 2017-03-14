@@ -7,10 +7,14 @@ var page = 0 # displayed page
 var last_unit_pressed = "-1"
 
 
+# Local information, relevant to facilitate acess to information
+# on each case SelectBox is used
 var mon_vec
 var page_amount = 0
 var max_cols = 0
+var spac = 0
 var max_pages = 0
+
 #precisa ter uma flag que determina se existem elementos vazios na pagina,
 #para travar a seta de próximo caso existam. Ou isso, ou contar o numero de
 #bixos no vetor, para definir o numero de paginas possiveis
@@ -21,8 +25,9 @@ func generate_members (monster_vec, number_per_page, max_columns, spacing):
 	# Recebendo dados relevantes mais novos.
 	mon_vec = monster_vec
 	page_amount = number_per_page
-	max_pages = ceil(monster_vec.size() / page_amount)
 	max_cols = max_columns
+	spac = spacing
+	max_pages = ceil(monster_vec.size() / page_amount)
 	
 
 	for num in range (page * number_per_page, (page + 1) * number_per_page):
@@ -60,7 +65,10 @@ func _on_BackPage_pressed():
 	clear_box()
 	page = (page - 1) % max_pages
 
-	generate_members(mon_vec, 
+	generate_members(mon_vec, page_amount, max_cols, spac)
 
 func _on_FowardPage_pressed():
-	pass # replace with function body
+	clear_box()
+	page = (page + 1) % max_pages
+
+	generate_members(mon_vec, page_amount, max_cols, spac)
