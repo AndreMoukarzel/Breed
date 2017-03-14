@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Scripts/Breeding.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/barn.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Resources/Sprites/GUI/BreedClean.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/GUI/BreedStorage1.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources/Sprites/GUI/BreedStorage2.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/GUI/BreedClean.png" type="Texture" id=6]
 
 [node name="Barn" type="Control"]
 
@@ -38,55 +40,78 @@ stretch_mode = 0
 
 [node name="Storage1" type="Control" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
+margin/left = -360.0
+margin/top = 45.0
+margin/right = -320.0
+margin/bottom = 85.0
+__meta__ = { "_edit_group_":true }
 
-[node name="StorageBackground" type="TextureFrame" parent="Storage1"]
+[node name="StorageBackground1" type="TextureButton" parent="Storage1"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
-stretch_mode = 0
+margin/right = 380.0
+margin/bottom = 500.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
 
-[node name="SelectBox" parent="Storage1" instance=ExtResource( 3 )]
+[node name="SelectBox" parent="Storage1" instance=ExtResource( 4 )]
+
+[node name="Tween1" type="Tween" parent="Storage1"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [node name="Storage2" type="Control" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
+margin/left = 1004.0
+margin/top = 45.0
+margin/right = 1044.0
+margin/bottom = 85.0
+__meta__ = { "_edit_group_":true }
 
-[node name="StorageBackground" type="TextureFrame" parent="Storage2"]
+[node name="StorageBackground2" type="TextureButton" parent="Storage2"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
-stretch_mode = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 5 )
 
-[node name="SelectBox" parent="Storage2" instance=ExtResource( 3 )]
+[node name="SelectBox" parent="Storage2" instance=ExtResource( 4 )]
+
+margin/left = 50.0
+margin/right = 90.0
+
+[node name="Tween2" type="Tween" parent="Storage2"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [node name="Breed" type="TextureButton" parent="."]
 
@@ -101,9 +126,9 @@ margin/bottom = 361.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 4 )
-textures/pressed = ExtResource( 4 )
-textures/hover = ExtResource( 4 )
+textures/normal = ExtResource( 6 )
+textures/pressed = ExtResource( 6 )
+textures/hover = ExtResource( 6 )
 
 [node name="Back" type="Button" parent="."]
 
@@ -130,6 +155,10 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+
+[connection signal="pressed" from="Storage1/StorageBackground1" to="." method="_on_StorageBackground1_pressed"]
+
+[connection signal="pressed" from="Storage2/StorageBackground2" to="." method="_on_StorageBackground2_pressed"]
 
 [connection signal="pressed" from="Breed" to="." method="_on_Breed_pressed"]
 
