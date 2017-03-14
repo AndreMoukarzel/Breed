@@ -1,16 +1,15 @@
 
 extends Control
 
-# member variables here, example:
-# var a=2
-# var b="textvar"
 
 func _ready():
-	get_node("SelectBox1").generate_members(get_parent().mon_depo, 15, 3, 100)
-	get_node("SelectBox1").set_pos(Vector2(10, 10))
-	get_node("SelectBox2").generate_members(get_parent().mon_depo, 15, 3, 100)
-	get_node("SelectBox2").set_pos(Vector2(700, 10))
+	get_node("SelectBox1").set_pos(Vector2(10, 40))
+	get_node("SelectBox2").set_pos(Vector2(650, 40))
 
+
+func update_boxes():
+	get_node("SelectBox1").generate_members(get_parent().mon_depo, 8, 2)
+	get_node("SelectBox2").generate_members(get_parent().mon_depo, 8, 2)
 
 func _on_Back_pressed():
 	self.hide()

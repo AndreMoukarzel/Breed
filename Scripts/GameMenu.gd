@@ -40,10 +40,11 @@ func _ready():
 ############  BUTTONS  ############
 
 func _on_ToBreed_pressed():
-	monster_generate("nhi", Color(-1, -1, -1), [], [3, 1], [2, 2, 1, 0, 0, 0], 1)
 	get_node("VBox").hide()
 	get_node("FarmBackground").hide()
 	get_node("Barn").show()
+
+	get_node("Barn").update_boxes()
 
 
 func _on_ToTown_pressed():

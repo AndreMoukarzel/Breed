@@ -1,13 +1,10 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Scripts/GameMenu.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/bluebackground.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/Town.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Arena.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/Breeding.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Resources/Sprites/Creatures/Biluga/Biluga.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/Creatures/Mafagafo/Mafagafo.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Barn.tscn" type="PackedScene" id=5]
 
 [node name="GameMenu" type="Control"]
 
@@ -112,40 +109,7 @@ visibility/visible = false
 editor/display_folded = true
 visibility/visible = false
 
-[node name="Barn" type="Control" parent="."]
-
-editor/display_folded = true
-visibility/visible = false
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
-script/script = ExtResource( 5 )
-
-[node name="SelectBox1" parent="Barn" instance=ExtResource( 6 )]
-
-[node name="SelectBox2" parent="Barn" instance=ExtResource( 6 )]
-
-[node name="Back" type="TextureButton" parent="Barn"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 453.0
-margin/top = 449.0
-margin/right = 983.0
-margin/bottom = 1073.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-textures/normal = ExtResource( 7 )
-textures/pressed = ExtResource( 8 )
-params/scale = Vector2( 0.2, 0.2 )
+[node name="Barn" parent="." instance=ExtResource( 5 )]
 
 [connection signal="pressed" from="VBox/ToBreed" to="." method="_on_ToBreed_pressed"]
 
@@ -162,3 +126,4 @@ params/scale = Vector2( 0.2, 0.2 )
 
 [editable path="Town"]
 [editable path="Arena"]
+[editable path="Barn"]
