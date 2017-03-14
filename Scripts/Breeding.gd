@@ -30,8 +30,8 @@ func _on_Breed_pressed():
 
 func _on_Back_pressed():
 	self.hide()
-	get_node("SelectBox1").clean_box()
-	get_node("SelectBox2").clean_box()
+	Sbox1.clean_box()
+	Sbox2.clean_box()
 	get_parent().get_node("VBox").show()
 	get_parent().get_node("FarmBackground").show()
 

@@ -29,7 +29,6 @@ func update_config(monster_vec, number_per_page, max_columns):
 func generate_members():
 	var s_count = 0 # spacing counter
 	var size = box_size * box_scale
-	
 
 	for num in range (page * page_amount, (page + 1) * page_amount):
 		var newunit = boxunit_scn.instance()
@@ -44,6 +43,7 @@ func generate_members():
 			newunit.set_info(mon)
 
 		newunit.set_pos(Vector2(size.x * (s_count % max_cols), size.y * floor(s_count / max_cols)))
+		newunit.set_scale(Vector2(0.75, 0.75))
 		s_count += 1
 		add_child(newunit)
 
