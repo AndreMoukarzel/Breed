@@ -14,8 +14,8 @@ size_flags/horizontal = 1
 size_flags/vertical = 1
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 924.0
-margin/bottom = 500.0
+margin/right = 855.25
+margin/bottom = 487.5
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
@@ -25,6 +25,39 @@ textures/hover = ExtResource( 2 )
 textures/disabled = ExtResource( 1 )
 params/scale = Vector2( 0.75, 0.75 )
 script/script = ExtResource( 3 )
+
+[node name="Name" type="Label" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 20.0
+margin/top = 10.0
+margin/right = 60.0
+margin/bottom = 24.0
+text = "Name"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Catals" type="Label" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 110.0
+margin/top = 30.0
+margin/right = 150.0
+margin/bottom = 44.0
+text = "0/0"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="pressed" from="." to="." method="_on_SelectBoxUnit_pressed"]
 

@@ -1,14 +1,12 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Scripts/Breeding.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/barn.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/SelectBox.gd" type="Script" id=4]
-[ext_resource path="res://Resources/Sprites/GUI/BreedClean.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/GUI/BreedClean.png" type="Texture" id=4]
 
 [node name="Barn" type="Control"]
 
-editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -19,6 +17,8 @@ margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
 script/script = ExtResource( 1 )
+BoxColumns = 2
+PageAmount = 8
 
 [node name="BarnBackground" type="TextureFrame" parent="."]
 
@@ -36,8 +36,9 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 0
 
-[node name="SelectBox1" type="Control" parent="." instance=ExtResource( 3 )]
+[node name="Storage1" type="Control" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -46,10 +47,24 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
-script/script = ExtResource( 4 )
 
-[node name="SelectBox2" type="Control" parent="." instance=ExtResource( 3 )]
+[node name="StorageBackground" type="TextureFrame" parent="Storage1"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+stretch_mode = 0
+
+[node name="SelectBox" parent="Storage1" instance=ExtResource( 3 )]
+
+[node name="Storage2" type="Control" parent="."]
+
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -58,7 +73,20 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
-script/script = ExtResource( 4 )
+
+[node name="StorageBackground" type="TextureFrame" parent="Storage2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+stretch_mode = 0
+
+[node name="SelectBox" parent="Storage2" instance=ExtResource( 3 )]
 
 [node name="Breed" type="TextureButton" parent="."]
 
@@ -73,9 +101,9 @@ margin/bottom = 361.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 5 )
-textures/pressed = ExtResource( 5 )
-textures/hover = ExtResource( 5 )
+textures/normal = ExtResource( 4 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 4 )
 
 [node name="Back" type="Button" parent="."]
 
@@ -92,6 +120,18 @@ enabled_focus_mode = 2
 shortcut = null
 text = "Back"
 flat = false
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[connection signal="pressed" from="Breed" to="." method="_on_Breed_pressed"]
 
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
 

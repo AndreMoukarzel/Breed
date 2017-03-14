@@ -1,15 +1,30 @@
 
 extends Control
 
+export var BoxColumns = 2
+export var PageAmount = 8
+
+onready var Sbox1 = get_node("Storage1/SelectBox")
+onready var Sbox2 = get_node("Storage2/SelectBox")
+
 
 func _ready():
-	get_node("SelectBox1").set_pos(Vector2(10, 40))
-	get_node("SelectBox2").set_pos(Vector2(650, 40))
+	Sbox1.set_pos(Vector2(10, 40))
+	Sbox2.set_pos(Vector2(650, 40))
 
 
 func update_boxes():
-	get_node("SelectBox1").generate_members(get_parent().mon_depo, 8, 2)
-	get_node("SelectBox2").generate_members(get_parent().mon_depo, 8, 2)
+	Sbox1.update_config(get_parent().mon_depo, PageAmount, BoxColumns)
+	Sbox1.generate_members()
+	Sbox2.update_config(get_parent().mon_depo, PageAmount, BoxColumns)
+	Sbox2.generate_members()
+
+
+func _on_Breed_pressed():
+	Sbox1.clean_box()
+	Sbox2.clean_box()
+	update_boxes()
+
 
 func _on_Back_pressed():
 	self.hide()

@@ -121,6 +121,8 @@ visibility/visible = false
 
 [connection signal="pressed" from="Arena/VBox/Back" to="Arena" method="_on_Back_pressed"]
 
+[connection signal="pressed" from="Barn/Breed" to="Barn" method="_on_Breed_pressed"]
+
 [connection signal="pressed" from="Barn/Back" to="Barn" method="_on_Back_pressed"]
 
 
