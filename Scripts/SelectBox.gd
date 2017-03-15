@@ -11,8 +11,7 @@ var box_scale = Vector2(0.75, 0.75)
 var page = 0 # displayed page
 var last_unit_pressed = "-1"
 
-# Local information, relevant to facilitate acess to information
-# on each case SelectBox is used
+# Local information on box configuration
 var mon_vec
 var page_amount = 0
 var max_cols = 0
@@ -25,7 +24,14 @@ func update_config(monster_vec, number_per_page, max_columns):
 	max_cols = max_columns
 	max_pages = ceil(monster_vec.size() / page_amount)
 
+	# Position page managing arrows acording to new config
+	var Fp = get_node("FowardPage")
+	var Bp = get_node("BackPage")
+	Fp.set_pos(Vector2((size.x * max_cols) - Fp.get_size().x - 10, (size.y * page_amount / max_cols) + 10))
+	Bp.set_pos(Vector2(10, (size.y * page_amount / max_cols) + 10))
 
+
+# Create page_amount SelectBoxUnit, filling them acordingly 
 func generate_members():
 	var s_count = 0 # spacing counter
 	var size = box_size * box_scale
@@ -39,7 +45,7 @@ func generate_members():
 		else:
 			var mon = mon_vec[num]
 			var db = get_node("/root/Monster")
-			db.monster_sprite(newunit, db.get_id(mon.species), mon.color, Vector2(40,60), Vector2(0.1, 0.1))
+			db.monster_sprite(newunit, db.get_id(mon.species), mon.color, Vector2(50,90), Vector2(0.15, 0.15))
 			newunit.set_info(mon)
 
 		newunit.set_pos(Vector2(size.x * (s_count % max_cols), size.y * floor(s_count / max_cols)))
@@ -47,15 +53,11 @@ func generate_members():
 		s_count += 1
 		add_child(newunit)
 
-	var Fp = get_node("FowardPage")
-	var Bp = get_node("BackPage")
-	Fp.set_pos(Vector2((size.x * max_cols) - Fp.get_size().x - 10, (size.y * page_amount / max_cols) + 10))
-	Bp.set_pos(Vector2(10, (size.y * page_amount / max_cols) + 10))
-
 
 func clean_box():
 	for num in range(page * page_amount, page + 1 * page_amount):
 		get_node(str(num)).queue_free()
+
 
 ####### BUTTON FUNCIONALITY #######
 

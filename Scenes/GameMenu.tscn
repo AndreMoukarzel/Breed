@@ -111,6 +111,8 @@ visibility/visible = false
 
 [node name="Barn" parent="." instance=ExtResource( 5 )]
 
+editor/display_folded = true
+
 [connection signal="pressed" from="VBox/ToBreed" to="." method="_on_ToBreed_pressed"]
 
 [connection signal="pressed" from="VBox/ToTown" to="." method="_on_ToTown_pressed"]
@@ -120,6 +122,10 @@ visibility/visible = false
 [connection signal="pressed" from="Town/VBox/Back" to="Town" method="_on_Back_pressed"]
 
 [connection signal="pressed" from="Arena/VBox/Back" to="Arena" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Barn/Storage1/StorageBackground1" to="Barn" method="_on_StorageBackground1_pressed"]
+
+[connection signal="pressed" from="Barn/Storage2/StorageBackground2" to="Barn" method="_on_StorageBackground2_pressed"]
 
 [connection signal="pressed" from="Barn/Breed" to="Barn" method="_on_Breed_pressed"]
 

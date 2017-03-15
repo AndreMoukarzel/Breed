@@ -6,8 +6,11 @@ export var PageAmount = 8
 
 onready var Sbox1 = get_node("Storage1/SelectBox")
 onready var Sbox2 = get_node("Storage2/SelectBox")
-onready var tween1 = get_node("Storage1/Tween1")
-onready var tween2 = get_node("Storage2/Tween2")
+onready var tween1 = get_node("Storage1/Tween")
+onready var tween2 = get_node("Storage2/Tween")
+
+var blue = 0
+var red = 0
 
 
 func _ready():
@@ -41,12 +44,22 @@ func _on_StorageBackground1_pressed():
 	var stor = get_node("Storage1")
 	var bg = get_node("Storage1/StorageBackground1")
 
-	tween1.interpolate_property(stor, "rect/pos", stor.get_pos(), stor.get_pos() + Vector2(bg.get_size().x - 20, 0), 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	if blue == 0:
+		tween1.interpolate_property(stor, "rect/pos", stor.get_pos(), stor.get_pos() + Vector2(bg.get_size().x - 20, 0), 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	else:
+		tween1.interpolate_property(stor, "rect/pos", stor.get_pos(), stor.get_pos() - Vector2(bg.get_size().x - 20, 0), 0.5, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
 	tween1.start()
+
+	blue = (blue + 1) % 2
 
 func _on_StorageBackground2_pressed():
 	var stor = get_node("Storage2")
 	var bg = get_node("Storage2/StorageBackground2")
 
-	tween2.interpolate_property(stor, "rect/pos", stor.get_pos(), stor.get_pos() - Vector2(bg.get_size().x - 20, 0), 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	if red == 0:
+		tween2.interpolate_property(stor, "rect/pos", stor.get_pos(), stor.get_pos() - Vector2(bg.get_size().x - 20, 0), 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	else:
+		tween2.interpolate_property(stor, "rect/pos", stor.get_pos(), stor.get_pos() + Vector2(bg.get_size().x - 20, 0), 0.5, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
 	tween2.start()
+
+	red = (red + 1) % 2

@@ -28,6 +28,7 @@ script/script = ExtResource( 3 )
 [node name="Name" type="Label" parent="."]
 
 visibility/visible = false
+rect/scale = Vector2( 1.5, 1.5 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -37,6 +38,7 @@ margin/top = 10.0
 margin/right = 60.0
 margin/bottom = 24.0
 text = "Name"
+align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -44,16 +46,16 @@ max_lines_visible = -1
 [node name="Catals" type="Label" parent="."]
 
 visibility/visible = false
+rect/scale = Vector2( 1.5, 1.5 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 110.0
-margin/top = 30.0
-margin/right = 150.0
-margin/bottom = 44.0
+margin/left = 170.0
+margin/top = 40.0
+margin/right = 210.0
+margin/bottom = 54.0
 text = "0/0"
-align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
