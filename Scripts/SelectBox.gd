@@ -25,6 +25,7 @@ func update_config(monster_vec, number_per_page, max_columns):
 	max_pages = ceil(monster_vec.size() / page_amount)
 
 	# Position page managing arrows acording to new config
+	var size = box_size * box_scale
 	var Fp = get_node("FowardPage")
 	var Bp = get_node("BackPage")
 	Fp.set_pos(Vector2((size.x * max_cols) - Fp.get_size().x - 10, (size.y * page_amount / max_cols) + 10))
@@ -41,7 +42,7 @@ func generate_members():
 		newunit.set_name(str(num))
 
 		if (mon_vec.size() <= num):
-			newunit.set_disabled(true)
+			newunit.get_node("Button").set_disabled(true)
 		else:
 			var mon = mon_vec[num]
 			var db = get_node("/root/Monster")
@@ -63,8 +64,8 @@ func clean_box():
 
 func button_pressed(body):
 	if((last_unit_pressed != "-1") and (last_unit_pressed != body.get_name())):
-		get_node(last_unit_pressed).set_pressed(false)
-		get_node(last_unit_pressed).set_ignore_mouse(false)
+		get_node(last_unit_pressed).get_node("Button").set_pressed(false)
+		get_node(last_unit_pressed).get_node("Button").set_ignore_mouse(false)
 	last_unit_pressed = body.get_name()
 
 
