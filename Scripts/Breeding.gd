@@ -39,18 +39,21 @@ func _on_Back_pressed():
 	get_parent().get_node("FarmBackground").show()
 
 
-
 func _on_StorageBackground1_pressed():
 	var stor = get_node("Storage1")
 	var bg = get_node("Storage1/StorageBackground1")
 
 	if blue == 0:
 		tween1.interpolate_property(stor, "rect/pos", stor.get_pos(), stor.get_pos() + Vector2(bg.get_size().x - 20, 0), 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+		if red == 1:
+			_on_StorageBackground2_pressed()
 	else:
 		tween1.interpolate_property(stor, "rect/pos", stor.get_pos(), stor.get_pos() - Vector2(bg.get_size().x - 20, 0), 0.5, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
+	get_node("Storage1/StorageBackground1").set_ignore_mouse(true)
 	tween1.start()
 
 	blue = (blue + 1) % 2
+
 
 func _on_StorageBackground2_pressed():
 	var stor = get_node("Storage2")
@@ -58,8 +61,16 @@ func _on_StorageBackground2_pressed():
 
 	if red == 0:
 		tween2.interpolate_property(stor, "rect/pos", stor.get_pos(), stor.get_pos() - Vector2(bg.get_size().x - 20, 0), 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+		if blue == 1:
+			_on_StorageBackground1_pressed()
 	else:
 		tween2.interpolate_property(stor, "rect/pos", stor.get_pos(), stor.get_pos() + Vector2(bg.get_size().x - 20, 0), 0.5, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
+	get_node("Storage2/StorageBackground2").set_ignore_mouse(true)
 	tween2.start()
 
 	red = (red + 1) % 2
+
+
+func _on_Tween_tween_complete( object, key ):
+	get_node("Storage1/StorageBackground1").set_ignore_mouse(false)
+	get_node("Storage2/StorageBackground2").set_ignore_mouse(false)
