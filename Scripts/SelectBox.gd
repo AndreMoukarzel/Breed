@@ -24,12 +24,16 @@ func update_config(monster_vec, number_per_page, max_columns):
 	max_cols = max_columns
 	max_pages = ceil(monster_vec.size() / page_amount)
 
-	# Position page managing arrows acording to new config
+	# Position page managing arrows and text acording to new config
 	var size = box_size * box_scale
 	var Fp = get_node("FowardPage")
 	var Bp = get_node("BackPage")
+	var Pd = get_node("PageDisplay")
 	Fp.set_pos(Vector2((size.x * max_cols) - Fp.get_size().x - 10, (size.y * page_amount / max_cols) + 10))
 	Bp.set_pos(Vector2(10, (size.y * page_amount / max_cols) + 10))
+	Pd.set_pos(Vector2(size.x/2 + Pd.get_size().x + 25, (size.y * page_amount / max_cols) + 10))
+
+	Pd.set_text(str(page + 1, "/", max_pages))
 
 
 # Create page_amount SelectBoxUnit, filling them acordingly 
