@@ -76,13 +76,25 @@ func button_pressed(body):
 
 func _on_BackPage_pressed():
 	clear_box()
-	page = (page - 1) % max_pages
+	
+	page -= 1
+	if (page < 0):
+		page = max_pages - 1
+	
+	# Adjustments
+	get_node("PageDisplay").set_text(str(page + 1, "/", max_pages))
+	last_unit_pressed = "-1"
 
 	generate_members()
 
 
 func _on_FowardPage_pressed():
 	clear_box()
+	
 	page = (page + 1) % max_pages
+	
+	# Adjustments
+	get_node("PageDisplay").set_text(str(page + 1, "/", max_pages))
+	last_unit_pressed = "-1"
 
 	generate_members()

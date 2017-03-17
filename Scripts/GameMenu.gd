@@ -27,7 +27,7 @@ class Monster:
 
 func _ready():
 	print("Game Menu")
-	for i in range(5):
+	for i in range(10):
 		monster_generate("nhi", Color(-1, -1, -1), [], [3, 1], [2, 2, 1, 0, 0, 0], 1)
 
 ############  BUTTONS  ############
