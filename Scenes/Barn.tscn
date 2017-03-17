@@ -67,6 +67,11 @@ textures/normal = ExtResource( 3 )
 
 [node name="SelectBox" parent="Storage1" instance=ExtResource( 4 )]
 
+margin/left = 10.0
+margin/top = 10.0
+margin/right = 50.0
+margin/bottom = 50.0
+
 [node name="Tween" type="Tween" parent="Storage1"]
 
 playback/process_mode = 1
@@ -103,8 +108,10 @@ textures/normal = ExtResource( 5 )
 
 [node name="SelectBox" parent="Storage2" instance=ExtResource( 4 )]
 
-margin/left = 50.0
-margin/right = 90.0
+margin/left = 30.0
+margin/top = 10.0
+margin/right = 70.0
+margin/bottom = 50.0
 
 [node name="Tween" type="Tween" parent="Storage2"]
 
