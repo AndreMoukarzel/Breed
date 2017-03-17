@@ -6,22 +6,47 @@ var creature_scn = preload("res://Scenes/Monster.tscn")
 const SPECIES = 0
 const FACE_POS = 1
 const AP_POS = 2
+const STR_VEC = 3
+const AGI_VEC = 4
+const VIT_VEC = 5
+const TEN_VEC = 6
+const WIS_VEC = 7
+const FER_VEC = 8
 
 var pos_database = [
 	{ # ID = 0
 		SPECIES : "Mafagafo",
 		FACE_POS : Vector2(0, 0),
-		AP_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+		AP_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)],
+		STR_VEC = [0.4, 0.05],
+		AGI_VEC = [0.2, 0.02],
+		VIT_VEC = [0.15, 0.02],
+		TEN_VEC = [0.2, 0.03],
+		WIS_VEC = [0.1, 0.01],
+		FER_VEC = [0.3, 0.1]
+		
 	},
 	{ # ID = 1
 		SPECIES : "Vaking",
 		FACE_POS : Vector2(0, 0),
-		AP_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+		AP_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)],
+		STR_VEC = [0.3, 0.05],
+		AGI_VEC = [0.05, 0.02],
+		VIT_VEC = [0.4, 0.1],
+		TEN_VEC = [0.3, 0.02],
+		WIS_VEC = [0.05, 0.05],
+		FER_VEC = [0.3, 0.1]
 	},
 	{ # ID = 2
 		SPECIES : "Biluga",
 		FACE_POS : Vector2(0, 0),
-		AP_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+		AP_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)],
+		STR_VEC = [0.25, 0.05],
+		AGI_VEC = [0.4, 0.1],
+		VIT_VEC = [0.05, 0.02],
+		TEN_VEC = [0.1, 0.02],
+		WIS_VEC = [0.2, 0.1],
+		FER_VEC = [0.3, 0.1]
 	}
 ]
 
@@ -53,3 +78,6 @@ func monster_sprite(parent, id, color, pos, scale):
 	creature.set_scale(scale)
 
 	parent.add_child(creature)
+	
+func get_growth_rate(grade, g_base, g_multi):
+	return (g_base + (grade * g_multi))
