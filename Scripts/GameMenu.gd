@@ -11,25 +11,18 @@ class Monster:
 	var level
 	var xp = 0
 	var catal = [0, 0]
-	var STR
-	var AGI
-	var VIT
-	var TEN
-	var WIS
-	var FER
-
-	func _init(name, species, color, ap_vec, level, gradations):
+	# STR, AGI, VIT, TEN, WIS, FER
+	var stats
+	var gradations
+	
+	func _init(name, species, color, ap_vec, level, stats, gradations):
 		self.name = name
 		self.species = species
 		self.color = color
 		self.ap_vec = ap_vec
 		self.level = level
-		self.STR = gradations[0]
-		self.AGI = gradations[1]
-		self.VIT = gradations[2]
-		self.TEN = gradations[3]
-		self.WIS = gradations[4]
-		self.FER = gradations[5]
+		self.stats = stats
+		self.gradations = gradations
 
 
 func _ready():
@@ -74,6 +67,7 @@ func monster_generate(species, color, apendices, level, gradations, variation):
 	var lvl
 	var monster
 	var grad = []
+	var stats = []
 	var mon_database = get_node("/root/Monster") #global script
 
 	randomize()
@@ -100,19 +94,25 @@ func monster_generate(species, color, apendices, level, gradations, variation):
 	if( lvl < 1 ):
 		lvl = 1
 
-	# Gradations
+	# Gradations and Stats
 	count = 0
+	var newgrad = 0
 	for stat in gradations:
-		grad.append(stat)
-		if( stat != 0 and stat != 7 ):
-			grad[count] = stat + (randi() % (variation + 1)) - (randi() % (variation + 1))
-			if( grad[count] < 0 ):
-				grad[count] = 0
-			elif( grad[count] > 7 ):
-				grad[count] = 7
+		if (stat != 0 and stat != 7):
+			newgrad = stat + (randi() % (variation + 1)) - (randi() % (variation + 1))
+			if( newgrad < 0 ):
+				newgrad = 0
+			elif( newgrad > 7 ):
+				newgrad = 7
+		grad.append(newgrad)
+		stats.append(mon_database.get_base_vec(id)[count])
+		
+		# Falta aumentar os stats para monstros que são gerados acima
+		# do level 1.
 		count += 1
+	
 
-	monster = Monster.new(name, race, col, [], lvl, grad)
+	monster = Monster.new(name, race, col, [], lvl, stats, grad)
 	mon_depo.append(monster)
 
 #	mon_database.monster_sprite(self, id, col, Vector2(220, 220), Vector2(0.5, 0.5))

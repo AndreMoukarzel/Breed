@@ -22,7 +22,7 @@ func update_config(monster_vec, number_per_page, max_columns):
 	mon_vec = monster_vec
 	page_amount = number_per_page
 	max_cols = max_columns
-	max_pages = ceil(monster_vec.size() / page_amount)
+	max_pages = int(ceil(float(monster_vec.size()) / float(page_amount)))
 
 	# Position page managing arrows and text acording to new config
 	var size = box_size * box_scale
@@ -59,9 +59,10 @@ func generate_members():
 		add_child(newunit)
 
 
-func clean_box():
+func clear_box():
 	for num in range(page * page_amount, page + 1 * page_amount):
-		get_node(str(num)).queue_free()
+		get_node(str(num)).set_name(str("old", get_node(str(num)).get_name()))
+		get_node(str("old", num)).queue_free()
 
 
 ####### BUTTON FUNCIONALITY #######
