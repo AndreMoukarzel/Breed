@@ -26,6 +26,14 @@ func update_boxes():
 	Sbox2.generate_members()
 
 
+func select_monster( monster, select_box ):
+	var origin = select_box.get_parent().get_name()
+	if( origin == "Storage1" ):
+		get_node("Display1/StatusDisplayer").display(monster)
+
+
+####### BUTTON FUNCIONALITY #######
+
 func _on_Breed_pressed():
 	Sbox1.clean_box()
 	Sbox2.clean_box()

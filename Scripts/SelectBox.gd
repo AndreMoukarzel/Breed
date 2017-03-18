@@ -10,6 +10,7 @@ var box_scale = Vector2(0.75, 0.75)
 
 var page = 0 # displayed page
 var last_unit_pressed = "-1"
+var selected_monster = null
 
 # Local information on box configuration
 var mon_vec
@@ -85,6 +86,7 @@ func button_pressed(body):
 		get_node(last_unit_pressed).get_node("Button").set_pressed(false)
 		get_node(last_unit_pressed).get_node("Button").set_ignore_mouse(false)
 	last_unit_pressed = body.get_name()
+	get_parent().get_parent().select_monster(body.mon, self)
 
 
 func _on_BackPage_pressed():

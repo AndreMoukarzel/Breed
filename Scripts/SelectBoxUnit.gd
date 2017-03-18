@@ -1,8 +1,11 @@
 
 extends Control
 
+var mon = null
+
 func set_info(monster):
-	get_node("Name").set_text(monster.name)
+	mon = monster
+	get_node("Name").set_text(mon.name)
 	get_node("Name").show()
 
 func _on_Button_pressed():
