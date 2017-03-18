@@ -111,6 +111,8 @@ shortcut = null
 text = "Back"
 flat = false
 
+[connection signal="pressed" from="VBox/ShopMonster" to="." method="_on_ShopMonster_pressed"]
+
 [connection signal="pressed" from="VBox/Back" to="." method="_on_Back_pressed"]
 
 

@@ -22,7 +22,7 @@ func update_config(monster_vec, number_per_page, max_columns):
 	mon_vec = monster_vec
 	page_amount = number_per_page
 	max_cols = max_columns
-	max_pages = int(ceil(float(monster_vec.size()) / float(page_amount)))
+	max_pages = int(ceil(float(monster_vec.size()) / page_amount))
 
 	# Position page managing arrows and text acording to new config
 	var size = box_size * box_scale
@@ -32,8 +32,15 @@ func update_config(monster_vec, number_per_page, max_columns):
 	Fp.set_pos(Vector2((size.x * max_cols) - Fp.get_size().x - 10, (size.y * page_amount / max_cols) + 10))
 	Bp.set_pos(Vector2(10, (size.y * page_amount / max_cols) + 10))
 	Pd.set_pos(Vector2(size.x/2 + Pd.get_size().x + 25, (size.y * page_amount / max_cols) + 10))
-
 	Pd.set_text(str(page + 1, "/", max_pages))
+
+	# Special case
+	if (max_pages == 1):
+		Fp.set_disabled(true)
+		Bp.set_disabled(true)
+	else:
+		Fp.set_disabled(false)
+		Bp.set_disabled(false)
 
 
 # Create page_amount SelectBoxUnit, filling them acordingly 
@@ -63,6 +70,12 @@ func clear_box():
 	for num in range(page * page_amount, page + 1 * page_amount):
 		get_node(str(num)).set_name(str("old", get_node(str(num)).get_name()))
 		get_node(str("old", num)).queue_free()
+
+
+func kill():
+	clear_box()
+	last_unit_pressed = "-1"
+	page = 0
 
 
 ####### BUTTON FUNCIONALITY #######

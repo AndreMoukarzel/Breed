@@ -5,22 +5,23 @@ var mon_depo = []
 
 class Monster:
 	var name
+	var gender # 0 = male, 1 = female; 2 = hemafrodite?
 	var species
 	var color #will be vector
 	var ap_vec #apendices
-	var level
+	var level = 1
 	var xp = 0
 	var catal = [0, 0]
 	# STR, AGI, VIT, TEN, WIS, FER
 	var stats
 	var gradations
 	
-	func _init(name, species, color, ap_vec, level, stats, gradations):
+	func _init(name, gender, species, color, ap_vec, stats, gradations):
 		self.name = name
+		self.gender = gender
 		self.species = species
 		self.color = color
 		self.ap_vec = ap_vec
-		self.level = level
 		self.stats = stats
 		self.gradations = gradations
 
@@ -28,7 +29,7 @@ class Monster:
 func _ready():
 	print("Game Menu")
 	for i in range(10):
-		monster_generate("nhi", Color(-1, -1, -1), [], [3, 1], [2, 2, 1, 0, 0, 0], 1)
+		monster_generate("nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 1)
 
 ############  BUTTONS  ############
 
@@ -56,15 +57,13 @@ func _on_ToArena_pressed():
 
 # To randomize SPECIES; the string must be an invalid species' name
 # To randomize COLOR; color must be Color(-1, -1, -1)
-# LEVEL is vector such as [avarage level, accepted variation]
 # GRADATIONS must be in order [STR, AGI, VIT, TEN, WIS, FER]; 0-7 = F-S; blanks will be randomized
 # VARIATION defines how much non-blank gradations can be randomized. 0 and 7 are not randomized
-func monster_generate(species, color, apendices, level, gradations, variation):
+func monster_generate(species, color, apendices, gradations, variation):
 	var race
 	var id
 	var col = color
 	var name
-	var lvl
 	var monster
 	var grad = []
 	var stats = []
@@ -86,13 +85,10 @@ func monster_generate(species, color, apendices, level, gradations, variation):
 	var count = 1
 	for mon in mon_depo:
 		if( mon.species == race ):
+			if( mon.name != str(race, count) ):
+				break
 			count += 1
 	name = str(race, count)
-
-	# Level
-	lvl = level[0] + (randi() % (level[1] + 1)) - (randi() % (level[1] + 1))
-	if( lvl < 1 ):
-		lvl = 1
 
 	# Gradations and Stats
 	count = 0
@@ -106,13 +102,10 @@ func monster_generate(species, color, apendices, level, gradations, variation):
 				newgrad = 7
 		grad.append(newgrad)
 		stats.append(mon_database.get_base_vec(id)[count])
-		
-		# Falta aumentar os stats para monstros que são gerados acima
-		# do level 1.
-		count += 1
-	
 
-	monster = Monster.new(name, race, col, [], lvl, stats, grad)
+		count += 1
+
+	monster = Monster.new(name, randi() % 2, race, col, [], stats, grad)
 	mon_depo.append(monster)
 
 #	mon_database.monster_sprite(self, id, col, Vector2(220, 220), Vector2(0.5, 0.5))
