@@ -2,10 +2,10 @@
 
 [ext_resource path="res://Scripts/Breeding.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/barn.jpg" type="Texture" id=2]
-[ext_resource path="res://Resources/Sprites/GUI/BreedStorage1.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Resources/Sprites/GUI/BreedStorage2.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/StatusDisplayer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/StatusDisplayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Resources/Sprites/GUI/BreedStorage1.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/Sprites/GUI/BreedStorage2.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Sprites/GUI/BreedClean.png" type="Texture" id=7]
 
 [node name="Barn" type="Control"]
@@ -39,8 +39,22 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 0
 
+[node name="Display1" type="Control" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 700.0
+margin/top = 10.0
+margin/right = 740.0
+margin/bottom = 50.0
+
+[node name="StatusDisplayer" parent="Display1" instance=ExtResource( 3 )]
+
 [node name="Storage1" type="Control" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -64,9 +78,9 @@ margin/bottom = 500.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 3 )
+textures/normal = ExtResource( 4 )
 
-[node name="SelectBox" parent="Storage1" instance=ExtResource( 4 )]
+[node name="SelectBox" parent="Storage1" instance=ExtResource( 5 )]
 
 margin/left = 10.0
 margin/top = 10.0
@@ -106,9 +120,9 @@ margin/bottom = 40.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 5 )
+textures/normal = ExtResource( 6 )
 
-[node name="SelectBox" parent="Storage2" instance=ExtResource( 4 )]
+[node name="SelectBox" parent="Storage2" instance=ExtResource( 5 )]
 
 margin/left = 30.0
 margin/top = 10.0
@@ -121,20 +135,6 @@ playback/process_mode = 1
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
-
-[node name="Display1" type="Control" parent="."]
-
-editor/display_folded = true
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 700.0
-margin/top = 10.0
-margin/right = 740.0
-margin/bottom = 50.0
-
-[node name="StatusDisplayer" parent="Display1" instance=ExtResource( 6 )]
 
 [node name="Breed" type="TextureButton" parent="."]
 

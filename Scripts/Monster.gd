@@ -14,6 +14,7 @@ const WIS_VEC = 7
 const FER_VEC = 8
 const BASE_VEC = 9
 
+
 var pos_database = [
 	{ # ID = 0
 		SPECIES : "Mafagafo",
@@ -64,11 +65,14 @@ func get_id(species):
 func get_species(id):
 	return pos_database[id][SPECIES]
 
+
 func get_base_vec(id):
 	return pos_database[id][BASE_VEC]
-	
-func get_growth_rate(grade, g_base, g_multi):
-	return (g_base + (grade * g_multi))
+
+
+func get_growth_rate(gradation, g_base, g_multi):
+	return (g_base + (gradation * g_multi))
+
 
 # We add 3 to count to access the right sections on the database
 func level_up (monster):
@@ -81,6 +85,7 @@ func level_up (monster):
 		randomize()
 		if (randf() <= growth):
 			stat += 1
+
 
 func prepare(id, color):
 	var species = pos_database[id][SPECIES]
