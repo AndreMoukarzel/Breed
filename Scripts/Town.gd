@@ -1,20 +1,18 @@
 
 extends Control
 
+onready var mon_shop = get_node("MonsterShop")
+
 var count = 0
 
 func _ready():
 	print("Town")
 
+################ BUTTON FUNCTIONALITY ################
 
 func _on_ShopMonster_pressed():
-	if( count >= 10 ):
-		print("Ja deu de assedio seu doente")
-	else:
-		print("moomoo")
-
-	count += 1
-
+	get_node("MonsterShop/SelectBox").update_config(mon_shop.shop_depo, mon_shop.PageAmount, mon_shop.BoxColumns)
+	get_node("MonsterShop/SelectBox").generate_members()
 
 func _on_Back_pressed():
 	self.hide()
@@ -22,3 +20,8 @@ func _on_Back_pressed():
 	get_parent().get_node("FarmBackground").show()
 
 	count = 0
+
+################ OTHER FUNCTIONALITY ################
+
+func select_monster(monster, select_box):
+	pass

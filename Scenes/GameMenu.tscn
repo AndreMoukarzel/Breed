@@ -127,10 +127,6 @@ editor/display_folded = false
 
 [connection signal="pressed" from="VBox/ToArena" to="." method="_on_ToArena_pressed"]
 
-[connection signal="pressed" from="Town/VBox/ShopMonster" to="Town" method="_on_ShopMonster_pressed"]
-
-[connection signal="pressed" from="Town/VBox/Back" to="Town" method="_on_Back_pressed"]
-
 [connection signal="pressed" from="Arena/VBox/Back" to="Arena" method="_on_Back_pressed"]
 
 
