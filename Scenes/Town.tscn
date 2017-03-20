@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Scripts/Town.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/town.jpg" type="Texture" id=2]
 [ext_resource path="res://Scripts/MonsterShop.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources/Sprites/GUI/SelectUnitHover.png" type="Texture" id=5]
 
 [node name="Town" type="Control"]
 
@@ -37,7 +38,6 @@ stretch_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="."]
 
-editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -116,6 +116,7 @@ flat = false
 
 [node name="MonsterShop" type="Control" parent="."]
 
+visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -128,8 +129,25 @@ script/script = ExtResource( 3 )
 
 [node name="SelectBox" parent="MonsterShop" instance=ExtResource( 4 )]
 
+[node name="Back" type="TextureButton" parent="MonsterShop"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 744.0
+margin/top = 377.0
+margin/right = 969.0
+margin/bottom = 527.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 5 )
+
 [connection signal="pressed" from="VBox/ShopMonster" to="." method="_on_ShopMonster_pressed"]
 
 [connection signal="pressed" from="VBox/Back" to="." method="_on_Back_pressed"]
+
+[connection signal="pressed" from="MonsterShop/Back" to="MonsterShop" method="_on_Back_pressed"]
 
 

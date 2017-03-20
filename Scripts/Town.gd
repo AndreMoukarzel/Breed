@@ -13,6 +13,10 @@ func _ready():
 func _on_ShopMonster_pressed():
 	get_node("MonsterShop/SelectBox").update_config(mon_shop.shop_depo, mon_shop.PageAmount, mon_shop.BoxColumns)
 	get_node("MonsterShop/SelectBox").generate_members()
+	
+	get_node("VBox").hide()
+	mon_shop.show()
+	
 
 func _on_Back_pressed():
 	self.hide()

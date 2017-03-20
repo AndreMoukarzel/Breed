@@ -2,7 +2,7 @@
 extends Control
 
 var BoxColumns = 3
-var PageAmount = 12
+var PageAmount = 15
 
 var shop_depo =  []
 
@@ -20,3 +20,8 @@ func generate_shop():
 	for num in range (0, 12):
 		get_parent().get_parent().monster_generate(shop_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
 	
+
+
+func _on_Back_pressed():
+	hide()
+	get_parent().get_node("VBox").show()
