@@ -18,7 +18,6 @@ script/script = ExtResource( 1 )
 
 [node name="TextureFrame" type="TextureFrame" parent="."]
 
-rect/scale = Vector2( 0.7, 0.7 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -64,9 +63,9 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 24.0
+margin/left = 35.0
 margin/top = 0.0
-margin/right = 64.0
+margin/right = 75.0
 margin/bottom = 18.0
 custom_fonts/font = ExtResource( 3 )
 text = "10"
@@ -83,9 +82,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 10.0
-margin/top = 40.0
+margin/top = 60.0
 margin/right = 50.0
-margin/bottom = 80.0
+margin/bottom = 100.0
 
 [node name="Gradation" type="Label" parent="AGI"]
 
@@ -109,9 +108,9 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 24.0
+margin/left = 35.0
 margin/top = 0.0
-margin/right = 64.0
+margin/right = 75.0
 margin/bottom = 18.0
 custom_fonts/font = ExtResource( 3 )
 text = "10"
@@ -128,9 +127,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 10.0
-margin/top = 70.0
+margin/top = 110.0
 margin/right = 50.0
-margin/bottom = 110.0
+margin/bottom = 150.0
 
 [node name="Gradation" type="Label" parent="VIT"]
 
@@ -154,9 +153,9 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 24.0
+margin/left = 35.0
 margin/top = 0.0
-margin/right = 64.0
+margin/right = 75.0
 margin/bottom = 18.0
 custom_fonts/font = ExtResource( 3 )
 text = "10"
@@ -172,9 +171,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 100.0
+margin/left = 120.0
 margin/top = 10.0
-margin/right = 140.0
+margin/right = 160.0
 margin/bottom = 50.0
 
 [node name="Gradation" type="Label" parent="TEN"]
@@ -199,9 +198,9 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 24.0
+margin/left = 35.0
 margin/top = 0.0
-margin/right = 64.0
+margin/right = 75.0
 margin/bottom = 18.0
 custom_fonts/font = ExtResource( 3 )
 text = "10"
@@ -217,10 +216,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 100.0
-margin/top = 40.0
-margin/right = 140.0
-margin/bottom = 80.0
+margin/left = 120.0
+margin/top = 60.0
+margin/right = 160.0
+margin/bottom = 100.0
 
 [node name="Gradation" type="Label" parent="WIS"]
 
@@ -244,9 +243,9 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 24.0
+margin/left = 35.0
 margin/top = 0.0
-margin/right = 64.0
+margin/right = 75.0
 margin/bottom = 18.0
 custom_fonts/font = ExtResource( 3 )
 text = "10"
@@ -262,10 +261,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 100.0
-margin/top = 70.0
-margin/right = 140.0
-margin/bottom = 110.0
+margin/left = 120.0
+margin/top = 110.0
+margin/right = 160.0
+margin/bottom = 150.0
 
 [node name="Gradation" type="Label" parent="FER"]
 
@@ -289,9 +288,9 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 24.0
+margin/left = 35.0
 margin/top = 0.0
-margin/right = 64.0
+margin/right = 75.0
 margin/bottom = 18.0
 custom_fonts/font = ExtResource( 3 )
 text = "10"

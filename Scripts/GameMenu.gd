@@ -106,5 +106,3 @@ func monster_generate(species, color, apendices, gradations, level):
 		mon_database.level_up(monster)
 
 	mon_depo.append(monster)
-
-#	mon_database.monster_sprite(self, id, col, Vector2(220, 220), Vector2(0.5, 0.5))

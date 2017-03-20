@@ -113,6 +113,14 @@ visibility/visible = false
 
 editor/display_folded = true
 
+[node name="Storage1" parent="Barn"]
+
+editor/display_folded = false
+
+[node name="Storage2" parent="Barn"]
+
+editor/display_folded = false
+
 [connection signal="pressed" from="VBox/ToBreed" to="." method="_on_ToBreed_pressed"]
 
 [connection signal="pressed" from="VBox/ToTown" to="." method="_on_ToTown_pressed"]
@@ -124,18 +132,6 @@ editor/display_folded = true
 [connection signal="pressed" from="Town/VBox/Back" to="Town" method="_on_Back_pressed"]
 
 [connection signal="pressed" from="Arena/VBox/Back" to="Arena" method="_on_Back_pressed"]
-
-[connection signal="pressed" from="Barn/Storage1/StorageBackground1" to="Barn" method="_on_StorageBackground1_pressed"]
-
-[connection signal="tween_complete" from="Barn/Storage1/Tween" to="Barn" method="_on_Tween_tween_complete"]
-
-[connection signal="pressed" from="Barn/Storage2/StorageBackground2" to="Barn" method="_on_StorageBackground2_pressed"]
-
-[connection signal="tween_complete" from="Barn/Storage2/Tween" to="Barn" method="_on_Tween_tween_complete"]
-
-[connection signal="pressed" from="Barn/Breed" to="Barn" method="_on_Breed_pressed"]
-
-[connection signal="pressed" from="Barn/Back" to="Barn" method="_on_Back_pressed"]
 
 
 [editable path="Town"]

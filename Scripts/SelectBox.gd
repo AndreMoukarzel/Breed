@@ -32,7 +32,7 @@ func update_config(monster_vec, number_per_page, max_columns):
 	var Pd = get_node("PageDisplay")
 	Fp.set_pos(Vector2((size.x * max_cols) - Fp.get_size().x - 10, (size.y * page_amount / max_cols) + 10))
 	Bp.set_pos(Vector2(10, (size.y * page_amount / max_cols) + 10))
-	Pd.set_pos(Vector2(size.x/2 + Pd.get_size().x + 25, (size.y * page_amount / max_cols) + 10))
+	Pd.set_pos(Vector2((size.x * max_columns)/2 - Pd.get_size().x/2, (size.y * page_amount / max_cols) + 10))
 	Pd.set_text(str(page + 1, "/", max_pages))
 
 	# Special case
