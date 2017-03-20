@@ -35,8 +35,8 @@ func select_monster( monster, select_box ):
 ####### BUTTON FUNCIONALITY #######
 
 func _on_Breed_pressed():
-	Sbox1.clean_box()
-	Sbox2.clean_box()
+	Sbox1.clear_box()
+	Sbox2.clear_box()
 	update_boxes()
 
 

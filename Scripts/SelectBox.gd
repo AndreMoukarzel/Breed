@@ -5,6 +5,7 @@ extends Control
 var boxunit_scn = preload("res://Scenes/SelectBoxUnit.tscn")
 
 # Empiric information
+# Box = SelectBoxUnit
 var box_size = Vector2(225, 150)
 var box_scale = Vector2(0.75, 0.75)
 
