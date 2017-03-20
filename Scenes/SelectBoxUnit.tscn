@@ -54,6 +54,23 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="Level" type="Label" parent="."]
+
+visibility/visible = false
+rect/scale = Vector2( 1.5, 1.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 145.0
+margin/top = 10.0
+margin/right = 185.0
+margin/bottom = 24.0
+text = "lvl  xx"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="Catals" type="Label" parent="."]
 
 visibility/visible = false

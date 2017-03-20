@@ -113,6 +113,14 @@ visibility/visible = false
 
 editor/display_folded = true
 
+[node name="Storage1" parent="Barn"]
+
+editor/display_folded = false
+
+[node name="Storage2" parent="Barn"]
+
+editor/display_folded = false
+
 [connection signal="pressed" from="VBox/ToBreed" to="." method="_on_ToBreed_pressed"]
 
 [connection signal="pressed" from="VBox/ToTown" to="." method="_on_ToTown_pressed"]
