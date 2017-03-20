@@ -29,7 +29,7 @@ class Monster:
 func _ready():
 	print("Game Menu")
 	for i in range(10):
-		monster_generate("nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0])
+		monster_generate("nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
 
 ############  BUTTONS  ############
 
@@ -58,7 +58,7 @@ func _on_ToArena_pressed():
 # To randomize SPECIES; the string must be an invalid species' name
 # To randomize COLOR; color must be Color(-1, -1, -1)
 # GRADATIONS must be in order [STR, AGI, VIT, TEN, WIS, FER]; 0-7 = F-S; blanks will be randomized
-func monster_generate(species, color, apendices, gradations):
+func monster_generate(species, color, apendices, gradations, level):
 	var race
 	var id
 	var col = color
@@ -97,9 +97,14 @@ func monster_generate(species, color, apendices, gradations):
 		else:
 			newgrad = (randi() % 6) + 1
 		grad.append(newgrad)
-	stats = [10, 10, 10, 10, 10, 10]
+	
+	# Defining stats
+	stats = [5, 5, 5, 5, 5, 5]
 
 	monster = Monster.new(name, randi() % 2, race, col, [], stats, grad)
+	for lv in range (1, level):
+		mon_database.level_up(monster)
+
 	mon_depo.append(monster)
 
 #	mon_database.monster_sprite(self, id, col, Vector2(220, 220), Vector2(0.5, 0.5))
