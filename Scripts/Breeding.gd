@@ -28,6 +28,7 @@ func update_boxes():
 
 func select_monster( monster, select_box ):
 	var origin = select_box.get_parent().get_name()
+	print("ID = ", monster.idn)
 
 	if( origin == "Storage1" ):
 		get_node("Display1").display(monster)
