@@ -1,12 +1,12 @@
 extends Node
 
 var ID = 0
-var free_ids = []
 var kesha = 0
 
-var current_scene = null
-
+var free_ids = []
 var mon_depo = []
+
+var current_scene = null
 
 func _ready():
 	var root = get_tree().get_root()

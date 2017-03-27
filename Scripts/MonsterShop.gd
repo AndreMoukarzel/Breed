@@ -4,9 +4,13 @@ extends Control
 var BoxColumns = 3
 var PageAmount = 15
 
+var selected_id = -1
+
 var shop_depo =  []
 
 func _ready():
+	# LEMBRAR QUE QUANDO FOR GERAR UM SHOP NOVO,
+	# TEM QUE LIBERAR TODOS OS IDS NÃO UTILIZADOS
 	generate_shop()
 
 func generate_shop():
@@ -22,8 +26,25 @@ func generate_shop():
 	
 
 func _on_Buy_pressed():
-	pass
+	var count = 0
+	
+	for monster in shop_depo:
+		if monster.idn == selected_id:
+			#checagem de dinheiro aqui
+			global.mon_depo.append(monster)
+			shop_depo.remove(count)
+			
+			get_node("SelectBox").clear_box()
+			get_node("SelectBox").update_config(shop_depo, PageAmount, BoxColumns)
+			get_node("SelectBox").generate_members()
+			
+			get_node("Buy").set_disabled(true)
+			selected_id = -1
+			
+			break
+		count += 1
 
 func _on_Back_pressed():
 	hide()
+	get_node("Buy").set_disabled(true)
 	get_parent().get_node("VBox").show()
