@@ -29,3 +29,11 @@ func _on_Back_pressed():
 
 func select_monster(monster, select_box):
 	print("ID = ", monster.idn)
+	get_node("MonsterShop/Price").set_text(str("Price: " + str(calculate_price(monster))))
+	
+	
+func calculate_price(monster):
+	var price = 0
+	for stat in monster.stats:
+		price += stat * 3
+	return price

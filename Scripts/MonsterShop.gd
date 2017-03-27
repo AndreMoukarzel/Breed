@@ -21,6 +21,8 @@ func generate_shop():
 		get_parent().get_parent().monster_generate(shop_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
 	
 
+func _on_Buy_pressed():
+	pass
 
 func _on_Back_pressed():
 	hide()

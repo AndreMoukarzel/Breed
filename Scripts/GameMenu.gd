@@ -1,8 +1,6 @@
 
 extends Control
 
-var mon_depo = []
-
 class Monster:
 	var idn
 	var parent1_idn = null
@@ -33,7 +31,7 @@ class Monster:
 func _ready():
 	print("Game Menu")
 	for i in range(10):
-		monster_generate(mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
+		monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
 
 ############  BUTTONS  ############
 
