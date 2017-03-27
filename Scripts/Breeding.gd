@@ -19,10 +19,10 @@ func _ready():
 
 
 func update_boxes():
-	Sbox1.update_config(get_parent().mon_depo, PageAmount, BoxColumns)
+	Sbox1.update_config(global.mon_depo, PageAmount, BoxColumns)
 	Sbox1.generate_members()
 	
-	Sbox2.update_config(get_parent().mon_depo, PageAmount, BoxColumns)
+	Sbox2.update_config(global.mon_depo, PageAmount, BoxColumns)
 	Sbox2.generate_members()
 
 
