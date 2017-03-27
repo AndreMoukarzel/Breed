@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Scripts/Town.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/town.jpg" type="Texture" id=2]
 [ext_resource path="res://Scripts/MonsterShop.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Resources/Sprites/GUI/SelectUnitHover.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://Resources/Sprites/GUI/SelectUnitNormal.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=7]
 
 [node name="Town" type="Control"]
 
@@ -140,10 +141,12 @@ margin/left = 744.0
 margin/top = 250.0
 margin/right = 969.0
 margin/bottom = 400.0
+disabled = true
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 5 )
+textures/disabled = ExtResource( 6 )
 params/modulate = Color( 0.949219, 0.0259552, 0.0259552, 1 )
 
 [node name="PriceBackground" type="Sprite" parent="MonsterShop"]
@@ -165,7 +168,7 @@ margin/left = 620.0
 margin/top = 321.0
 margin/right = 782.0
 margin/bottom = 339.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 text = "Price: "
 percent_visible = 1.0
 lines_skipped = 0
