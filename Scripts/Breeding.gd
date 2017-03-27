@@ -12,6 +12,9 @@ onready var tween2 = get_node("Storage2/Tween")
 var blue = 0
 var red = 0
 
+var mon1 = null
+var mon2 = null
+
 
 func _ready():
 	get_node("Storage1").set_pos(Vector2(20 - get_node("Storage1/StorageBackground1").get_size().x, 45))
@@ -28,12 +31,14 @@ func update_boxes():
 
 func select_monster( monster, select_box ):
 	var origin = select_box.get_parent().get_name()
-	print("ID = ", monster.idn)
+	print("ID = ", monster.idn) #test
 
 	if( origin == "Storage1" ):
 		get_node("Display1").display(monster)
+		mon1 = monster
 	else:
 		get_node("Display2").display(monster)
+		mon2 = monster
 
 
 ####### BUTTON FUNCIONALITY #######
@@ -41,6 +46,9 @@ func select_monster( monster, select_box ):
 func _on_Breed_pressed():
 	Sbox1.clear_box()
 	Sbox2.clear_box()
+
+	breed(mon1, mon2)
+
 	update_boxes()
 
 
@@ -49,8 +57,12 @@ func _on_Back_pressed():
 	
 	Sbox1.kill()
 	Sbox2.kill()
-	get_node("Display1").kill()
-	get_node("Display2").kill()
+#	get_node("Display1").kill()
+#	get_node("Display2").kill()
+	if blue:
+		_on_StorageBackground1_pressed()
+	elif red:
+		_on_StorageBackground2_pressed()
 	
 	get_parent().get_node("VBox").show()
 	get_parent().get_node("FarmBackground").show()

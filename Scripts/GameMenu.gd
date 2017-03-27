@@ -16,7 +16,10 @@ class Monster:
 	# STR, AGI, VIT, TEN, WIS, FER
 	var stats
 	var gradations
-	
+
+	var last_breed = null
+	var cost_decrease = 0
+
 	func _init(name, gender, species, color, ap_vec, stats, gradations):
 		self.name = name
 		self.gender = gender
