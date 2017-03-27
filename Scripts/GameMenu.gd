@@ -4,6 +4,9 @@ extends Control
 var mon_depo = []
 
 class Monster:
+	var idn
+	var parent1_idn = null
+	var parent2_idn = null
 	var name
 	var gender # 0 = male, 1 = female; 2 = hemafrodite?
 	var species
@@ -24,10 +27,13 @@ class Monster:
 		self.ap_vec = ap_vec
 		self.stats = stats
 		self.gradations = gradations
+		self.idn = Globals.get("ID")
+		Globals.set("ID", self.idn + 1)
 
 
 func _ready():
 	print("Game Menu")
+	print(Globals.get("ID") + 1)
 	for i in range(10):
 		monster_generate(mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
 

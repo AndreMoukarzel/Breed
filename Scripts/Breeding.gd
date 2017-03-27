@@ -28,8 +28,12 @@ func update_boxes():
 
 func select_monster( monster, select_box ):
 	var origin = select_box.get_parent().get_name()
+	print("ID = ", monster.idn)
+
 	if( origin == "Storage1" ):
 		get_node("Display1").display(monster)
+	else:
+		get_node("Display2").display(monster)
 
 
 ####### BUTTON FUNCIONALITY #######
@@ -45,6 +49,8 @@ func _on_Back_pressed():
 	
 	Sbox1.kill()
 	Sbox2.kill()
+	get_node("Display1").kill()
+	get_node("Display2").kill()
 	
 	get_parent().get_node("VBox").show()
 	get_parent().get_node("FarmBackground").show()

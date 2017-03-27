@@ -37,3 +37,23 @@ func display( monster ):
 
 	get_node("FER").get_node("Gradation").set_text(str("FER ", gradate(monster.gradations[5])))
 	get_node("FER").get_node("Value").set_text(str(monster.stats[5]))
+
+
+func kill():
+	get_node("STR").get_node("Gradation").set_text("")
+	get_node("STR").get_node("Value").set_text("")
+
+	get_node("AGI").get_node("Gradation").set_text("")
+	get_node("AGI").get_node("Value").set_text("")
+
+	get_node("VIT").get_node("Gradation").set_text("")
+	get_node("VIT").get_node("Value").set_text("")
+
+	get_node("TEN").get_node("Gradation").set_text("")
+	get_node("TEN").get_node("Value").set_text("")
+
+	get_node("WIS").get_node("Gradation").set_text("")
+	get_node("WIS").get_node("Value").set_text("")
+
+	get_node("FER").get_node("Gradation").set_text("")
+	get_node("FER").get_node("Value").set_text("")

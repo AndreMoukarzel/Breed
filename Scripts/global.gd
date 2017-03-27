@@ -3,8 +3,12 @@ extends Node
 var current_scene = null
 
 func _ready():
-        var root = get_tree().get_root()
-        current_scene = root.get_child( root.get_child_count() -1 )
+	var root = get_tree().get_root()
+	current_scene = root.get_child( root.get_child_count() -1 )
+
+	Globals.set("ID", 0)
+	Globals.set("kesha", 0)
+
 
 func goto_scene(path):
 
@@ -17,23 +21,23 @@ func goto_scene(path):
     # The way around this is deferring the load to a later time, when
     # it is ensured that no code from the current scene is running:
 
-    call_deferred("_deferred_goto_scene",path)
+	call_deferred("_deferred_goto_scene",path)
 
 
 func _deferred_goto_scene(path):
 
     # Immediately free the current scene,
     # there is no risk here.
-    current_scene.free()
+	current_scene.free()
 
     # Load new scene
-    var s = ResourceLoader.load(path)
+	var s = ResourceLoader.load(path)
 
     # Instance the new scene
-    current_scene = s.instance()
+	current_scene = s.instance()
 
     # Add it to the active scene, as child of root
-    get_tree().get_root().add_child(current_scene)
+	get_tree().get_root().add_child(current_scene)
 
     # optional, to make it compatible with the SceneTree.change_scene() API
-    get_tree().set_current_scene( current_scene )
+	get_tree().set_current_scene( current_scene )
