@@ -29,7 +29,7 @@ func update_boxes():
 func select_monster( monster, select_box ):
 	var origin = select_box.get_parent().get_name()
 	if( origin == "Storage1" ):
-		get_node("Display1/StatusDisplayer").display(monster)
+		get_node("Display1").display(monster)
 
 
 ####### BUTTON FUNCIONALITY #######

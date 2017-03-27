@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Breeding.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/barn.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/StatusDisplayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Display.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Sprites/GUI/BreedStorage1.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Resources/Sprites/GUI/BreedStorage2.png" type="Texture" id=6]
@@ -39,19 +39,19 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 0
 
-[node name="Display1" type="Control" parent="."]
+[node name="Display1" parent="." instance=ExtResource( 3 )]
 
-editor/display_folded = true
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
 margin/left = 700.0
-margin/top = 10.0
+margin/top = 50.0
 margin/right = 740.0
-margin/bottom = 50.0
+margin/bottom = 90.0
 
-[node name="StatusDisplayer" parent="Display1" instance=ExtResource( 3 )]
+[node name="Display2" parent="." instance=ExtResource( 3 )]
+
+margin/left = 50.0
+margin/top = 50.0
+margin/right = 90.0
+margin/bottom = 90.0
 
 [node name="Storage1" type="Control" parent="."]
 
