@@ -12,8 +12,8 @@ onready var tween2 = get_node("Storage2/Tween")
 var blue = 0
 var red = 0
 
-var mon1 = null
-var mon2 = null
+var mon1 = -1
+var mon2 = -1
 
 
 func _ready():
@@ -35,10 +35,26 @@ func select_monster( monster, select_box ):
 
 	if( origin == "Storage1" ):
 		get_node("Display1").display(monster)
-		mon1 = monster
+		mon1 = monster.idn
+
+		if (mon1 == mon2):
+			var node = get_node(str("Storage2/SelectBox/", get_node("Storage2/SelectBox").last_unit_pressed))
+			node.get_node("Button").set_pressed(false)
+			node.get_node("Button").set_ignore_mouse(false)
+			get_node("Storage2/SelectBox").last_unit_pressed = "-1"
+			get_node("Display2").kill()
+			mon2 = -1
 	else:
 		get_node("Display2").display(monster)
-		mon2 = monster
+		mon2 = monster.idn
+
+		if (mon1 == mon2):
+			var node = get_node(str("Storage1/SelectBox/", get_node("Storage1/SelectBox").last_unit_pressed))
+			node.get_node("Button").set_pressed(false)
+			node.get_node("Button").set_ignore_mouse(false)
+			get_node("Storage1/SelectBox").last_unit_pressed = "-1"
+			get_node("Display1").kill()
+			mon1 = -1
 
 
 ####### BUTTON FUNCIONALITY #######
@@ -57,8 +73,11 @@ func _on_Back_pressed():
 	
 	Sbox1.kill()
 	Sbox2.kill()
-#	get_node("Display1").kill()
-#	get_node("Display2").kill()
+	get_node("Display1").kill()
+	get_node("Display2").kill()
+	mon1 = -1
+	mon2 = -1
+
 	if blue:
 		_on_StorageBackground1_pressed()
 	elif red:
@@ -103,3 +122,24 @@ func _on_StorageBackground2_pressed():
 func _on_Tween_tween_complete( object, key ):
 	get_node("Storage1/StorageBackground1").set_ignore_mouse(false)
 	get_node("Storage2/StorageBackground2").set_ignore_mouse(false)
+
+############ BREED ############
+
+func breed( monster_id1, monster_id2 ):
+	var m1 = null
+	var m2 = null
+
+	if (monster_id1 == -1 or monster_id2 == -1):
+		print("escolhe dois monstros seu tolo")
+		return 
+
+	for child in global.mon_depo:
+		if (child.idn == monster_id1):
+			m1 = child 
+		elif (child.idn == monster_id2):
+			m2 = child
+
+		if ((m1 != null) and (m2 != null)):
+			break
+
+	print("NAMES = ", m1.name, " and ", m2.name)
