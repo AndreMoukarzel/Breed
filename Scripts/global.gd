@@ -1,13 +1,14 @@
 extends Node
 
+var ID = 0
+var free_ids = []
+var kesha = 0
+
 var current_scene = null
 
 func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child( root.get_child_count() -1 )
-
-	Globals.set("ID", 0)
-	Globals.set("kesha", 0)
 
 
 func goto_scene(path):
@@ -41,3 +42,11 @@ func _deferred_goto_scene(path):
 
     # optional, to make it compatible with the SceneTree.change_scene() API
 	get_tree().set_current_scene( current_scene )
+
+
+func get_id():
+	if free_ids.empty():
+		ID += 1
+		return ID - 1
+
+	return free_ids.pop_front()

@@ -28,4 +28,4 @@ func _on_Back_pressed():
 ################ OTHER FUNCTIONALITY ################
 
 func select_monster(monster, select_box):
-	pass
+	print("ID = ", monster.idn)

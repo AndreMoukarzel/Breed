@@ -27,13 +27,11 @@ class Monster:
 		self.ap_vec = ap_vec
 		self.stats = stats
 		self.gradations = gradations
-		self.idn = Globals.get("ID")
-		Globals.set("ID", self.idn + 1)
+		self.idn = global.get_id()
 
 
 func _ready():
 	print("Game Menu")
-	print(Globals.get("ID") + 1)
 	for i in range(10):
 		monster_generate(mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
 
