@@ -28,4 +28,10 @@ func _on_Back_pressed():
 ################ OTHER FUNCTIONALITY ################
 
 func select_monster(monster, select_box):
-	pass
+	get_node("MonsterShop/Price").set_text(str("Price: " + str(calculate_price(monster))))
+	
+func calculate_price(monster):
+	var price = 0
+	for stat in monster.stats:
+		price += stat * 3
+	return price

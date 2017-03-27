@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Scripts/Town.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/town.jpg" type="Texture" id=2]
 [ext_resource path="res://Scripts/MonsterShop.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Resources/Sprites/GUI/SelectUnitHover.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=6]
 
 [node name="Town" type="Control"]
 
@@ -129,6 +130,47 @@ script/script = ExtResource( 3 )
 
 [node name="SelectBox" parent="MonsterShop" instance=ExtResource( 4 )]
 
+[node name="Buy" type="TextureButton" parent="MonsterShop"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 744.0
+margin/top = 250.0
+margin/right = 969.0
+margin/bottom = 400.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 5 )
+params/modulate = Color( 0.949219, 0.0259552, 0.0259552, 1 )
+
+[node name="PriceBackground" type="Sprite" parent="MonsterShop"]
+
+transform/pos = Vector2( 664.75, 344.607 )
+transform/scale = Vector2( 0.46458, 0.389757 )
+texture = ExtResource( 5 )
+modulate = Color( 0.6875, 1, 0, 1 )
+
+[node name="KeshaIcon" type="Sprite" parent="MonsterShop"]
+
+[node name="Price" type="Label" parent="MonsterShop"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 620.0
+margin/top = 321.0
+margin/right = 782.0
+margin/bottom = 339.0
+custom_fonts/font = ExtResource( 6 )
+text = "Price: "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="Back" type="TextureButton" parent="MonsterShop"]
 
 focus/ignore_mouse = false
@@ -136,9 +178,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 744.0
-margin/top = 377.0
+margin/top = 425.0
 margin/right = 969.0
-margin/bottom = 527.0
+margin/bottom = 575.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -147,6 +189,8 @@ textures/normal = ExtResource( 5 )
 [connection signal="pressed" from="VBox/ShopMonster" to="." method="_on_ShopMonster_pressed"]
 
 [connection signal="pressed" from="VBox/Back" to="." method="_on_Back_pressed"]
+
+[connection signal="pressed" from="MonsterShop/Buy" to="MonsterShop" method="_on_Buy_pressed"]
 
 [connection signal="pressed" from="MonsterShop/Back" to="MonsterShop" method="_on_Back_pressed"]
 
