@@ -69,7 +69,7 @@ func generate_members():
 
 
 func clear_box():
-	for num in range(page * page_amount, page + 1 * page_amount):
+	for num in range(page * page_amount, (page + 1) * page_amount):
 		get_node(str(num)).set_name(str("old", get_node(str(num)).get_name()))
 		get_node(str("old", num)).queue_free()
 
