@@ -89,6 +89,13 @@ func button_pressed(body):
 	get_parent().get_parent().select_monster(body.mon, self)
 
 
+# Depends on outside methods to keep the last_unit_pressed
+# (which is going to be pressed now).
+func press_button(selected_id):
+	get_node(str(selected_id, "/Button")).set_pressed(true)
+	get_node(selected_id)._on_Button_pressed()
+
+
 func _on_BackPage_pressed():
 	clear_box()
 	
