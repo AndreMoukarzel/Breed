@@ -1,7 +1,6 @@
 
 extends Control
 
-onready var db = get_node("/root/Monster")
 var mon = null
 
 
@@ -14,7 +13,7 @@ func display( monster ):
 
 	get_node("StatusDisplayer").display(mon)
 
-	db.monster_sprite(self, db.get_id(mon.species), mon.color, Vector2(100, 150), Vector2(0.5, 0.5))
+	g_monster.monster_sprite(self, g_monster.get_id(mon.species), mon.color, Vector2(100, 150), Vector2(0.5, 0.5))
 
 
 func kill():

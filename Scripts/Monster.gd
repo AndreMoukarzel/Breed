@@ -2,6 +2,7 @@
 extends Sprite
 
 var creature_scn = preload("res://Scenes/Monster.tscn")
+var incest = 0
 
 const SPECIES = 0
 const FACE_POS = 1

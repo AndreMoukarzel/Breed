@@ -62,7 +62,7 @@ func _on_ToArena_pressed():
 
 # To randomize SPECIES; the string must be an invalid species' name
 # To randomize COLOR; color must be Color(-1, -1, -1)
-# GRADATIONS must be in order [STR, AGI, VIT, TEN, WIS, FER]; 0-7 = F-S; blanks will be randomized
+# GRADATIONS must be in order [STR, AGI, VIT, TEN, WIS, FER]; 0-7 = F-S
 func monster_generate(deposit, species, color, apendices, gradations, level):
 	var race
 	var id
@@ -71,15 +71,14 @@ func monster_generate(deposit, species, color, apendices, gradations, level):
 	var monster
 	var grad = []
 	var stats = []
-	var mon_database = get_node("/root/Monster") #global script
 
 	randomize()
 
 	# Species
-	id = mon_database.get_id(race)
+	id = g_monster.get_id(race)
 	if( id == -1 ):
-		id = randi() % mon_database.pos_database.size()
-	race = mon_database.get_species(id)
+		id = randi() % g_monster.pos_database.size()
+	race = g_monster.get_species(id)
 
 	# Color
 	if( col == Color( -1, -1, -1) ):
@@ -108,6 +107,6 @@ func monster_generate(deposit, species, color, apendices, gradations, level):
 
 	monster = Monster.new(name, randi() % 2, race, col, [], stats, grad)
 	for lv in range (1, level):
-		mon_database.level_up(monster)
+		g_monster.level_up(monster)
 
 	deposit.append(monster)

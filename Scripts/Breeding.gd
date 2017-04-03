@@ -133,13 +133,85 @@ func breed( monster_id1, monster_id2 ):
 		print("escolhe dois monstros seu tolo")
 		return 
 
-	for child in global.mon_depo:
-		if (child.idn == monster_id1):
-			m1 = child 
-		elif (child.idn == monster_id2):
-			m2 = child
+	for mon in global.mon_depo:
+		if (mon.idn == monster_id1):
+			m1 = mon 
+		elif (mon.idn == monster_id2):
+			m2 = mon
 
 		if ((m1 != null) and (m2 != null)):
 			break
 
+	var species
+	var color
+	var rand
+	randomize()
+	if (randi() % 2 == 0):
+		species = m1.species
+	else:
+		species = m2.species
+
+	rand = randi()
+	if (rand % 3 == 0):
+		color = m1.color
+	elif (rand % 3 == 1):
+		color = m2.color
+	else:
+		var c1 = m1.color
+		var c2 = m2.color
+		color = Color((c1.r + c2.r)/2, (c1.g + c2.g)/2, (c1.b + c2.b)/2)
+
+	# Generate appendices
+	g_monster.incest += check_incest(m1, m2)
+
+	var grads = randomize_grads(m1, m2)
+
+	get_parent().monster_generate(global.mon_depo, species, color, [], grads, 1)
+
 	print("NAMES = ", m1.name, " and ", m2.name)
+
+
+# Does exactly what is says
+func check_incest(mon1, mon2):
+	# It is impossible for one parent to be null, and the other not be.
+	if (mon1.parent1_idn != null and mon2.parent1_idn != null):
+		if (mon1.parent1_idn == mon2.parent1_idn or mon1.parent1_idn == mon2.parent2_idn):
+			return 1
+		elif (mon1.parent2_idn == mon2.parent1_idn or mon1.parent2_idn == mon2.parent2_idn):
+			return 1
+	if (mon1.idn == mon2.parent1_idn or mon1.idn == mon2.parent2_idn):
+		return 2
+	elif (mon2.idn == mon1.parent1_idn or mon2.idn == mon1.parent2_idn):
+		return 2
+
+	return 0
+
+
+func randomize_grads(mon1, mon2):
+	var grad = []
+
+	for i in range(0, 6):
+		var g1 = mon1.gradations[i]
+		var g2 = mon2.gradations[i]
+
+		if (g1 == 0 and g2 == 0):
+			grad.append(0)
+		else:
+			randomize()
+			var rand = randf()
+			if (rand <= 0.1 and g1 < 6):
+				grad.append(g1 + 1)
+				continue
+			rand = randf()
+			if (rand <= 0.1 and g2 < 6):
+				grad.append(g2 + 1)
+				continue
+			# Geração normal
+			var rng = abs(g1 - g2) + 2
+			rand = (randi() % rng) - 1
+			var grd = min(g1, g2) + rand
+			if (grd < 0):
+				grd = 0
+
+			grad.append(grd)
+	return grad
