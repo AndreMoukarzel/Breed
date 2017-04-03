@@ -11,8 +11,8 @@ class Monster:
 	var color #will be vector
 	var ap_vec #apendices
 	var level = 1
-	var xp = 0
-	var catal = [0, 0]
+	var xp = [0, 0] # current and necessary to level up
+	var catal = [0, 0] # [current, max]
 	# STR, AGI, VIT, TEN, WIS, FER
 	var stats
 	var gradations
@@ -29,6 +29,8 @@ class Monster:
 		self.stats = stats
 		self.gradations = gradations
 		self.idn = global.get_id()
+		self.catal[1] = ceil(log(self.stats[3]) * 0.4)
+		self.xp[1] = floor((5 * pow(level * 5, 3))/3)
 
 
 func _ready():

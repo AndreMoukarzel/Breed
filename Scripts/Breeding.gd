@@ -60,12 +60,30 @@ func select_monster( monster, select_box ):
 ####### BUTTON FUNCIONALITY #######
 
 func _on_Breed_pressed():
+	var id1 = null
+	var id2 = null
+
+	for i in range(global.mon_depo.size()):
+		if (global.mon_depo[i].idn == mon1):
+			id1 = i
+		elif (global.mon_depo[i].idn == mon2):
+			id2 = i
+		if (id1 != null and id2 != null):
+			break
+
+	var pg1 = floor(id1/ Sbox1.page_amount)
+	var pg2 = floor(id2/ Sbox2.page_amount)
+
 	Sbox1.clear_box()
 	Sbox2.clear_box()
 
 	breed(mon1, mon2)
 
+	Sbox1.page = int(pg1)
+	Sbox2.page = int(pg2)
 	update_boxes()
+	Sbox1.press_button(str(id1))
+	Sbox2.press_button(str(id2))
 
 
 func _on_Back_pressed():
@@ -152,7 +170,9 @@ func breed( monster_id1, monster_id2 ):
 		species = m2.species
 
 	rand = randi()
-	if (rand % 3 == 0):
+	if (rand % 101 < 1):
+		color = Color( rand_range(0.1, 1), rand_range(0.1, 1), rand_range(0.1, 1))
+	elif (rand % 3 == 0):
 		color = m1.color
 	elif (rand % 3 == 1):
 		color = m2.color
@@ -167,6 +187,8 @@ func breed( monster_id1, monster_id2 ):
 	var grads = randomize_grads(m1, m2)
 
 	get_parent().monster_generate(global.mon_depo, species, color, [], grads, 1)
+
+	xp_gain(m1, m2)
 
 	print("NAMES = ", m1.name, " and ", m2.name)
 
@@ -199,11 +221,11 @@ func randomize_grads(mon1, mon2):
 		else:
 			randomize()
 			var rand = randf()
-			if (rand <= 0.1 and g1 < 6):
+			if (rand <= 0.05 and g1 < 6):
 				grad.append(g1 + 1)
 				continue
 			rand = randf()
-			if (rand <= 0.1 and g2 < 6):
+			if (rand <= 0.05 and g2 < 6):
 				grad.append(g2 + 1)
 				continue
 			# Geração normal
@@ -215,3 +237,18 @@ func randomize_grads(mon1, mon2):
 
 			grad.append(grd)
 	return grad
+
+
+func xp_gain(mon1, mon2):
+# STR, AGI, VIT, TEN, WIS, FER
+	var m1xp = mon1.stats[1] * mon1.level * 3
+	var m2xp = mon2.stats[1] * mon2.level * 3
+
+	mon1.xp[0] += mon1.stats[4] * mon2.level * 3 + m2xp
+	mon2.xp[0] += mon2.stats[4] * mon1.level * 3 + m1xp
+
+	while (mon1.xp[0] >= mon1.xp[1]):
+		g_monster.level_up(mon1)
+
+	while (mon2.xp[0] >= mon2.xp[1]):
+		g_monster.level_up(mon2)

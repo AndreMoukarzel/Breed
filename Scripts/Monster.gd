@@ -69,18 +69,23 @@ func get_growth_rate(gradation, g_base, g_multi):
 
 # We add 3 to count to access the right sections on the database
 func level_up (monster):
-	var growth = 0
-	var p_d = pos_database[get_id(monster.species)]
-
-	var count = 0
-	for stat in monster.stats:
-		growth = get_growth_rate(monster.gradations[count], p_d[count + 3][0], p_d[count + 3][1])
-		randomize()
-		if (randf() <= growth):
-			monster.stats[count] += 1
-		count += 1
-
-	monster.level += 1
+	if (monster.level < 50):
+		var growth = 0
+		var p_d = pos_database[get_id(monster.species)]
+	
+		var count = 0
+		for stat in monster.stats:
+			growth = get_growth_rate(monster.gradations[count], p_d[count + 3][0], p_d[count + 3][1])
+			randomize()
+			if (randf() <= growth):
+				monster.stats[count] += 1
+			count += 1
+	
+		monster.xp[0] -= monster.xp[1]
+		monster.catal[1] = ceil(log(monster.stats[3]) * 0.4)
+		monster.level += 1
+	else:
+		monster.xp[0] = 0
 
 
 func prepare(id, color):
