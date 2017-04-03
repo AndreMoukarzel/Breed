@@ -33,6 +33,7 @@ class Monster:
 
 func _ready():
 	print("Game Menu")
+	print("Initiating Game State")
 	for i in range(10):
 		monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
 

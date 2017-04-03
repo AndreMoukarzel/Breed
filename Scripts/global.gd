@@ -3,6 +3,12 @@ extends Node
 var ID = 0
 var kesha = 0
 
+var month = 0
+var days = 0
+# Given in minutes. A day has 1440 minutes
+var time = 0
+var energy = 100
+
 var free_ids = []
 var mon_depo = []
 
@@ -52,3 +58,31 @@ func get_id():
 		return ID - 1
 
 	return free_ids.pop_front()
+	
+# Adds the value passed to the function to the energy
+func handle_energy(val):
+	var path = get_tree().get_root().get_node("GameMenu").get_node("HUD").get_node("Energy")
+	if (val < 0):
+		energy += val
+		if (energy < 0):
+			energy = 0
+	path.set_value(energy)
+	path.get_node("EnergyLabel").set_text(str(energy))
+	
+func handle_time(val):
+	var path = get_tree().get_root().get_node("GameMenu").get_node("HUD").get_node("DateAndTime").get_node("Time")
+	var hours
+	var minutes
+	
+	time += val
+	hours = floor(time / 60)
+	minutes = time % 60
+	
+	if (hours >= 10 and minutes >= 10):
+		path.set_text(str(hours, ":", minutes))
+	elif (hours < 10 and minutes >= 10):
+		path.set_text(str("0", hours, ":", minutes))
+	elif (hours >= 10 and minutes < 10):
+		path.set_text(str(hours, ":0", minutes))
+	else:
+		path.set_text(str("0", hours, ":0", minutes))

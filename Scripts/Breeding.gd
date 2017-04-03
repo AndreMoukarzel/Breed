@@ -126,6 +126,26 @@ func _on_Tween_tween_complete( object, key ):
 ############ BREED ############
 
 func breed( monster_id1, monster_id2 ):
+	# Game State Handling
+	if (global.energy < 20):
+		# Give notice to player
+		#test
+		print("Can't let you do that, Star Fox")
+		return
+	else:
+		global.handle_energy(-20)
+		
+	# limit actions to 8PM
+	if (global.time > 1200):
+		# Give notice to player
+		#test
+		print("Go to bed boi")
+		return
+	else:
+		global.handle_time(120)
+	
+	
+	# Actual Breeding Function
 	var m1 = null
 	var m2 = null
 
