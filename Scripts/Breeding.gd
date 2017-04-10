@@ -145,13 +145,13 @@ func _on_Tween_tween_complete( object, key ):
 
 func breed( monster_id1, monster_id2 ):
 	# Game State Handling
-	if (global.energy < 20):
+	if (global.energy < 1):
 		# Give notice to player
 		#test
 		print("Can't let you do that, Star Fox")
 		return
 	else:
-		global.handle_energy(-20)
+		global.handle_energy(-1)
 		
 	# limit actions to 8PM
 	if (global.time > 1200):
