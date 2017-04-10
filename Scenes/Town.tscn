@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://Scripts/Town.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/town.jpg" type="Texture" id=2]
 [ext_resource path="res://Scripts/MonsterShop.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Resources/Sprites/GUI/SelectUnitHover.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/GUI/SelectUnitNormal.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=7]
+[ext_resource path="res://Scenes/Display.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/Sprites/GUI/SelectUnitHover.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/GUI/SelectUnitNormal.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=8]
 
 [node name="Town" type="Control"]
 
@@ -40,6 +41,7 @@ stretch_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -118,6 +120,7 @@ flat = false
 
 [node name="MonsterShop" type="Control" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -131,29 +134,32 @@ script/script = ExtResource( 3 )
 
 [node name="SelectBox" parent="MonsterShop" instance=ExtResource( 4 )]
 
+[node name="Display" parent="MonsterShop" instance=ExtResource( 5 )]
+
 [node name="Buy" type="TextureButton" parent="MonsterShop"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 744.0
-margin/top = 250.0
-margin/right = 969.0
-margin/bottom = 400.0
+margin/left = 745.0
+margin/top = 450.0
+margin/right = 970.0
+margin/bottom = 600.0
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 5 )
-textures/disabled = ExtResource( 6 )
+textures/normal = ExtResource( 6 )
+textures/disabled = ExtResource( 7 )
+params/scale = Vector2( 0.3, 0.3 )
 params/modulate = Color( 0.949219, 0.0259552, 0.0259552, 1 )
 
 [node name="PriceBackground" type="Sprite" parent="MonsterShop"]
 
-transform/pos = Vector2( 664.75, 344.607 )
+transform/pos = Vector2( 665, 480 )
 transform/scale = Vector2( 0.46458, 0.389757 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 modulate = Color( 0.6875, 1, 0, 1 )
 
 [node name="KeshaIcon" type="Sprite" parent="MonsterShop"]
@@ -165,10 +171,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 620.0
-margin/top = 321.0
+margin/top = 460.0
 margin/right = 782.0
-margin/bottom = 339.0
-custom_fonts/font = ExtResource( 7 )
+margin/bottom = 478.0
+custom_fonts/font = ExtResource( 8 )
 text = "Price: "
 percent_visible = 1.0
 lines_skipped = 0
@@ -181,13 +187,14 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 744.0
-margin/top = 425.0
+margin/top = 520.0
 margin/right = 969.0
-margin/bottom = 575.0
+margin/bottom = 670.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 5 )
+textures/normal = ExtResource( 6 )
+params/scale = Vector2( 0.3, 0.3 )
 
 [connection signal="pressed" from="VBox/ShopMonster" to="." method="_on_ShopMonster_pressed"]
 
