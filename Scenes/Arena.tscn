@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Scripts/Arena.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/arena.jpg" type="Texture" id=2]
+[ext_resource path="res://Scripts/BattleMode.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=4]
 
 [node name="Arena" type="Control"]
 
@@ -95,6 +97,122 @@ shortcut = null
 text = "Back"
 flat = false
 
+[node name="BattleMode" type="Control" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+script/script = ExtResource( 3 )
+
+[node name="MonsterSelect" type="Control" parent="BattleMode"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+
+[node name="SelectBox" parent="BattleMode/MonsterSelect" instance=ExtResource( 4 )]
+
+margin/top = 100.0
+margin/bottom = 140.0
+
+[node name="Proceed" type="Button" parent="BattleMode/MonsterSelect"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 491.0
+margin/top = 456.0
+margin/right = 533.0
+margin/bottom = 476.0
+disabled = true
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Proceed"
+flat = false
+
+[node name="Back2" type="Button" parent="BattleMode/MonsterSelect"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 491.0
+margin/top = 516.0
+margin/right = 533.0
+margin/bottom = 536.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Back"
+flat = false
+
+[node name="RankSelect" type="Control" parent="BattleMode"]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+
+[node name="Rank1" type="Button" parent="BattleMode/RankSelect"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 491.0
+margin/top = 416.0
+margin/right = 533.0
+margin/bottom = 436.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Rank1"
+flat = false
+
+[node name="Back3" type="Button" parent="BattleMode/RankSelect"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 491.0
+margin/top = 516.0
+margin/right = 533.0
+margin/bottom = 536.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Back"
+flat = false
+
+[connection signal="pressed" from="VBox/BattleGround" to="." method="_on_BattleGround_pressed"]
+
 [connection signal="pressed" from="VBox/Back" to="." method="_on_Back_pressed"]
+
+[connection signal="pressed" from="BattleMode/MonsterSelect/Proceed" to="." method="_on_Proceed_pressed"]
+
+[connection signal="pressed" from="BattleMode/MonsterSelect/Back2" to="." method="_on_Back2_pressed"]
+
+[connection signal="pressed" from="BattleMode/RankSelect/Rank1" to="BattleMode" method="_on_Rank1_pressed"]
+
+[connection signal="pressed" from="BattleMode/RankSelect/Back3" to="." method="_on_Back3_pressed"]
 
 
