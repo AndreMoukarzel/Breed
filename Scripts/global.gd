@@ -1,6 +1,8 @@
 extends Node
 
 var ID = 0
+var free_ids = []
+
 var kesha = 0
 
 var month = 0
@@ -11,7 +13,6 @@ var days = 0
 # Maximum energy value is fixed, for now
 var energy = 100
 
-var free_ids = []
 var mon_depo = []
 
 var current_scene = null
@@ -92,10 +93,22 @@ func handle_energy(val):
 
 
 func handle_days(val):
-	var path = get_tree().get_root().get_node("GameMenu").get_node("HUD").get_node("DateAndTime").get_node("Date")
+	var day_path = get_tree().get_root().get_node("GameMenu/HUD/DateAndTime/Date")
+	
+	# Updates day
 	days += val
 	if (days > 30):
 		month += 1
 		days = 1
 	handle_energy(100)
-	path.set_text(str(days, " X ", month))
+	day_path.set_text(str(days, " X ", month))
+
+	# Updates catals and actions in monsters
+	for mon in mon_depo:
+		mon.catal[0] += mon.acts
+		if (mon.catal[0] > mon.catal[1]):
+			mon.catal[0] = 0
+
+		var act = log(mon.stats[2])
+		randomize()
+		mon.acts = floor(rand_range(act - act/5, act + act/5))

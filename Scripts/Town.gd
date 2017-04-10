@@ -28,9 +28,7 @@ func _on_Back_pressed():
 ################ OTHER FUNCTIONALITY ################
 
 func select_monster(monster, select_box):
-	#test
-	print("ID = ", monster.idn)
-	
+	get_node("MonsterShop/Display").display(monster)
 	get_node("MonsterShop").selected_id = monster.idn
 	get_node("MonsterShop/Buy").set_disabled(false)
 	

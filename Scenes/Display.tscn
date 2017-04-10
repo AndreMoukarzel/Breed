@@ -18,6 +18,7 @@ __meta__ = { "_edit_group_":true }
 
 [node name="StatusDisplayer" parent="." instance=ExtResource( 2 )]
 
+visibility/visible = false
 margin/left = 20.0
 margin/top = 350.0
 margin/right = 60.0

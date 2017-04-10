@@ -15,6 +15,9 @@ func set_info(monster):
 	get_node("Catals").set_text(str(mon.catal[0], "/", mon.catal[1]))
 	get_node("Catals").show()
 
+	get_node("Acts").set_text(str(mon.acts))
+	get_node("Acts").show()
+
 
 func _on_Button_pressed():
 	get_node("Button").set_ignore_mouse(true)

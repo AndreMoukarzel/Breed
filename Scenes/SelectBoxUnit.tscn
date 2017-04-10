@@ -88,6 +88,24 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="Acts" type="Label" parent="."]
+
+visibility/visible = false
+rect/scale = Vector2( 1.5, 1.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 140.0
+margin/top = 70.0
+margin/right = 180.0
+margin/bottom = 84.0
+text = "0"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 
 

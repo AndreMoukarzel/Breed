@@ -74,6 +74,7 @@ func level_up (monster):
 		var p_d = pos_database[get_id(monster.species)]
 	
 		var count = 0
+		# Grows stats
 		for stat in monster.stats:
 			growth = get_growth_rate(monster.gradations[count], p_d[count + 3][0], p_d[count + 3][1])
 			randomize()
@@ -82,7 +83,9 @@ func level_up (monster):
 			count += 1
 	
 		monster.xp[0] -= monster.xp[1]
-		monster.catal[1] = ceil(log(monster.stats[3]) * 0.4)
+
+		# Updates caps
+		monster.catal[1] = 1 + ceil(log(monster.stats[3]) * 0.4)
 		monster.level += 1
 		monster.xp[1] = floor((5 * pow(monster.level, 2))/3)
 	else:
