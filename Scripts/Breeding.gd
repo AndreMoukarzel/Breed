@@ -59,16 +59,33 @@ func select_monster( monster, select_box ):
 ####### BUTTON FUNCIONALITY #######
 
 func _on_Breed_pressed():
+	# Positions in array mon_depo
 	var id1 = null
 	var id2 = null
+	# Actual monster class instances
+	var m1 = null
+	var m2 = null
+
+	if (mon1 == -1 or mon2 == -1):
+		print ("No 2 monsters selected")
+		return
 
 	for i in range(global.mon_depo.size()):
 		if (global.mon_depo[i].idn == mon1):
 			id1 = i
+			m1 = global.mon_depo[i]
 		elif (global.mon_depo[i].idn == mon2):
 			id2 = i
+			m2 = global.mon_depo[i]
 		if (id1 != null and id2 != null):
 			break
+
+	if (m1.acts == 0):
+		print (str(m1.name, " has no action points"))
+		return
+	if (m2.acts == 0):
+		print (str(m2.name, " has no action points"))
+		return
 
 	var pg1 = floor(id1/ Sbox1.page_amount)
 	var pg2 = floor(id2/ Sbox2.page_amount)
@@ -76,7 +93,7 @@ func _on_Breed_pressed():
 	Sbox1.clear_box()
 	Sbox2.clear_box()
 
-	breed(mon1, mon2)
+	breed(m1, m2)
 
 	Sbox1.page = int(pg1)
 	Sbox2.page = int(pg2)
@@ -142,7 +159,7 @@ func _on_Tween_tween_complete( object, key ):
 
 ############ BREED ############
 
-func breed( monster_id1, monster_id2 ):
+func breed( m1, m2 ):
 	# Game State Handling
 	if (global.energy < 1):
 		# Give notice to player
@@ -160,35 +177,21 @@ func breed( monster_id1, monster_id2 ):
 #		return
 #	else:
 #		global.handle_time(120)
-	
-	
+
 	# Actual Breeding Function
-	var m1 = null
-	var m2 = null
-
-	if (monster_id1 == -1 or monster_id2 == -1):
-		print("escolhe dois monstros seu tolo")
-		return 
-
-	for mon in global.mon_depo:
-		if (mon.idn == monster_id1):
-			m1 = mon 
-		elif (mon.idn == monster_id2):
-			m2 = mon
-
-		if ((m1 != null) and (m2 != null)):
-			break
-
 	var species
 	var color
 	var rand
+
 	randomize()
+	# Offspring's species
 	if (randi() % 2 == 0):
 		species = str(m1.species)
 	else:
 		species = str(m2.species)
 	print (species) # test
 
+	# Offspring's color
 	rand = randi()
 	if (rand % 101 < 1):
 		color = Color( rand_range(0.1, 1), rand_range(0.1, 1), rand_range(0.1, 1))
@@ -201,7 +204,7 @@ func breed( monster_id1, monster_id2 ):
 		var c2 = m2.color
 		color = Color((c1.r + c2.r)/2, (c1.g + c2.g)/2, (c1.b + c2.b)/2)
 
-	# Generate appendices
+	# Checks incest
 	g_monster.incest += check_incest(m1, m2)
 
 	var grads = randomize_grads(m1, m2)
@@ -209,6 +212,8 @@ func breed( monster_id1, monster_id2 ):
 	get_parent().monster_generate(global.mon_depo, species, color, [], grads, 1)
 
 	xp_gain(m1, m2)
+	m1.acts -= 1
+	m2.acts -= 1
 
 
 # Does exactly what is says

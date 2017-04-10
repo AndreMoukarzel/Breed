@@ -59,9 +59,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
 margin/left = 486.0
-margin/top = 88.0
+margin/top = 63.0
 margin/right = 538.0
-margin/bottom = 108.0
+margin/bottom = 83.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -75,9 +75,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
 margin/left = 489.0
-margin/top = 289.0
+margin/top = 214.0
 margin/right = 534.0
-margin/bottom = 309.0
+margin/bottom = 234.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -91,18 +91,33 @@ focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
 margin/left = 487.0
-margin/top = 491.0
+margin/top = 365.0
 margin/right = 536.0
-margin/bottom = 511.0
+margin/bottom = 385.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Arena"
 flat = false
 
+[node name="ToSleep" type="Button" parent="VBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 488.0
+margin/top = 516.0
+margin/right = 535.0
+margin/bottom = 536.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Sleep"
+flat = false
+
 [node name="Town" parent="." instance=ExtResource( 3 )]
 
-editor/display_folded = true
 visibility/visible = false
 
 [node name="Arena" parent="." instance=ExtResource( 4 )]
@@ -213,6 +228,8 @@ max_lines_visible = -1
 [connection signal="pressed" from="VBox/ToTown" to="." method="_on_ToTown_pressed"]
 
 [connection signal="pressed" from="VBox/ToArena" to="." method="_on_ToArena_pressed"]
+
+[connection signal="pressed" from="VBox/ToSleep" to="." method="_on_ToSleep_pressed"]
 
 [connection signal="pressed" from="Town/VBox/ShopMonster" to="Town" method="_on_ShopMonster_pressed"]
 
