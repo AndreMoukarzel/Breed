@@ -30,7 +30,7 @@ class Monster:
 		self.stats = stats
 		self.gradations = gradations
 		self.idn = global.get_id()
-		self.catal[1] = ceil(log(self.stats[3]) * 0.4)
+		self.catal[1] = 1 + ceil(log(self.stats[3]) * 0.4)
 		self.xp[1] = floor((5 * pow(self.level, 2))/3)
 
 
