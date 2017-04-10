@@ -7,6 +7,7 @@ var month = 0
 var days = 0
 # Given in minutes. A day has 1440 minutes
 var time = 0
+# Maximum energy value is fixed, for now
 var energy = 100
 
 var free_ids = []
@@ -62,10 +63,11 @@ func get_id():
 # Adds the value passed to the function to the energy
 func handle_energy(val):
 	var path = get_tree().get_root().get_node("GameMenu").get_node("HUD").get_node("Energy")
-	if (val < 0):
-		energy += val
-		if (energy < 0):
-			energy = 0
+	energy += val
+	if (energy < 0):
+		energy = 0
+	if (energy > 100):
+		energy = 100
 	path.set_value(energy)
 	path.get_node("EnergyLabel").set_text(str(energy))
 	
@@ -86,3 +88,12 @@ func handle_time(val):
 		path.set_text(str(hours, ":0", minutes))
 	else:
 		path.set_text(str("0", hours, ":0", minutes))
+		
+func handle_days(val):
+	var path = get_tree().get_root().get_node("GameMenu").get_node("HUD").get_node("DateAndTime").get_node("Date")
+	days += val
+	if (days > 30):
+		month += 1
+		days = 1
+	handle_energy(100)
+	path.set_text(str(days, " X ", month))

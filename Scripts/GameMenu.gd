@@ -113,3 +113,7 @@ func monster_generate(deposit, species, color, apendices, gradations, level):
 		g_monster.level_up(monster)
 
 	deposit.append(monster)
+
+
+func _on_ToSleep_pressed():
+	global.handle_days(1)
