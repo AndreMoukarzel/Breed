@@ -165,6 +165,7 @@ max_lines_visible = -1
 
 [node name="DateAndTime" type="Container" parent="HUD"]
 
+editor/display_folded = true
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -192,6 +193,7 @@ max_lines_visible = -1
 
 [node name="Time" type="Label" parent="HUD/DateAndTime"]
 
+visibility/visible = false
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2

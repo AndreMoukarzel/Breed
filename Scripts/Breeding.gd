@@ -153,13 +153,13 @@ func breed( monster_id1, monster_id2 ):
 		global.handle_energy(-1)
 		
 	# limit actions to 8PM
-	if (global.time > 1200):
-		# Give notice to player
-		#test
-		print("Go to bed boi")
-		return
-	else:
-		global.handle_time(120)
+#	if (global.time > 1200):
+#		# Give notice to player
+#		#test
+#		print("Go to bed boi")
+#		return
+#	else:
+#		global.handle_time(120)
 	
 	
 	# Actual Breeding Function
