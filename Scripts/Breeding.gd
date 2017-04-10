@@ -31,7 +31,6 @@ func update_boxes():
 
 func select_monster( monster, select_box ):
 	var origin = select_box.get_parent().get_name()
-	print("ID = ", monster.idn) #test
 
 	if( origin == "Storage1" ):
 		get_node("Display1").display(monster)
@@ -185,9 +184,10 @@ func breed( monster_id1, monster_id2 ):
 	var rand
 	randomize()
 	if (randi() % 2 == 0):
-		species = m1.species
+		species = str(m1.species)
 	else:
-		species = m2.species
+		species = str(m2.species)
+	print (species) # test
 
 	rand = randi()
 	if (rand % 101 < 1):
@@ -209,8 +209,6 @@ func breed( monster_id1, monster_id2 ):
 	get_parent().monster_generate(global.mon_depo, species, color, [], grads, 1)
 
 	xp_gain(m1, m2)
-
-	print("NAMES = ", m1.name, " and ", m2.name)
 
 
 # Does exactly what is says
@@ -241,11 +239,11 @@ func randomize_grads(mon1, mon2):
 		else:
 			randomize()
 			var rand = randf()
-			if (rand <= 0.05 and g1 < 6):
+			if (rand <= 0.05 and g1 < 6): # Growth chance 1
 				grad.append(g1 + 1)
 				continue
 			rand = randf()
-			if (rand <= 0.05 and g2 < 6):
+			if (rand <= 0.05 and g2 < 6): # Growth chance 1
 				grad.append(g2 + 1)
 				continue
 			# Geração normal
@@ -261,11 +259,11 @@ func randomize_grads(mon1, mon2):
 
 func xp_gain(mon1, mon2):
 # STR, AGI, VIT, TEN, WIS, FER
-	var m1xp = mon1.stats[1] * mon1.level * 3
-	var m2xp = mon2.stats[1] * mon2.level * 3
+	var m1xp = ceil(mon1.stats[1] * 0.8)
+	var m2xp = ceil(mon2.stats[1] * 0.8)
 
-	mon1.xp[0] += mon1.stats[4] * mon2.level * 3 + m2xp
-	mon2.xp[0] += mon2.stats[4] * mon1.level * 3 + m1xp
+	mon1.xp[0] += mon1.stats[4] * mon2.level + m2xp
+	mon2.xp[0] += mon2.stats[4] * mon1.level + m1xp
 
 	while (mon1.xp[0] >= mon1.xp[1]):
 		g_monster.level_up(mon1)

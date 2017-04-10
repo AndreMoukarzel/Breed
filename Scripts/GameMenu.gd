@@ -30,7 +30,7 @@ class Monster:
 		self.gradations = gradations
 		self.idn = global.get_id()
 		self.catal[1] = ceil(log(self.stats[3]) * 0.4)
-		self.xp[1] = floor((5 * pow(level * 5, 3))/3)
+		self.xp[1] = floor((5 * pow(self.level, 2))/3)
 
 
 func _ready():
@@ -67,7 +67,7 @@ func _on_ToArena_pressed():
 # To randomize COLOR; color must be Color(-1, -1, -1)
 # GRADATIONS must be in order [STR, AGI, VIT, TEN, WIS, FER]; 0-7 = F-S
 func monster_generate(deposit, species, color, apendices, gradations, level):
-	var race
+	var race = species
 	var id
 	var col = color
 	var name
@@ -108,7 +108,7 @@ func monster_generate(deposit, species, color, apendices, gradations, level):
 	# Defining stats
 	stats = [5, 5, 5, 5, 5, 5]
 
-	monster = Monster.new(name, randi() % 2, race, col, [], stats, grad)
+	monster = Monster.new(name, randi() % 2, str(race), col, [], stats, grad)
 	for lv in range (1, level):
 		g_monster.level_up(monster)
 

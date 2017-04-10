@@ -84,6 +84,7 @@ func level_up (monster):
 		monster.xp[0] -= monster.xp[1]
 		monster.catal[1] = ceil(log(monster.stats[3]) * 0.4)
 		monster.level += 1
+		monster.xp[1] = floor((5 * pow(monster.level, 2))/3)
 	else:
 		monster.xp[0] = 0
 
