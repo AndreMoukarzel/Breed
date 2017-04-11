@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://Scripts/Breeding.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/barn.jpg" type="Texture" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://Resources/Sprites/GUI/BreedStorage1.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Resources/Sprites/GUI/BreedStorage2.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/GUI/BreedClean.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/GUI/breed1.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/GUI/breed2.png" type="Texture" id=8]
 
 [node name="Barn" type="Control"]
 
@@ -139,20 +140,20 @@ playback/speed = 1.0
 
 [node name="Breed" type="TextureButton" parent="."]
 
+rect/scale = Vector2( 0.8, 0.8 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 425.0
-margin/top = 206.0
-margin/right = 600.0
-margin/bottom = 361.0
+margin/left = 430.0
+margin/top = 180.0
+margin/right = 605.0
+margin/bottom = 350.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 7 )
-textures/pressed = ExtResource( 7 )
-textures/hover = ExtResource( 7 )
+textures/hover = ExtResource( 8 )
 
 [node name="Back" type="Button" parent="."]
 
