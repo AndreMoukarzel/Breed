@@ -52,20 +52,27 @@ func process_battle(enemy_num):
 		if (mon1_turn >= 100 and mon2_turn >= 100):
 			if (randf() < 0.5):
 				# Turno do monster 1 primeiro
-				pass
+				mon2_hp -= process_action(mon1, mon2)
+				if (mon2_hp <= 0):
+					#test
+					print("Player Victory")
+					break
 			else:
 				# Turno do monster 2 primeiro
-				pass
+				mon1_hp -= process_action(mon2, mon1)
+				if (mon1_hp <= 0):
+					#test
+					print("Enemy Victory")
+					break
 		elif (mon1_turn >= 100):
 			pass
 		elif (mon2_turn >= 100):
 			pass
 			
-func decide_action(mon1, mon2):
+func process_action(mon1, mon2):
 	#fazer baseado no WIS do monstro, por ora apenas gera um ataque normal
 	return regular_attack(mon1, mon2)
 	
 func regular_attack(mon1, mon2):
-	# a tenacidade reduzirá o dano?
-	return abs(mon1.stats[0] - mon2.stats[3])
+	return abs(ceil(mon1.stats[0] * 0.85))
 	
