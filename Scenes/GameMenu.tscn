@@ -134,7 +134,6 @@ editor/display_folded = false
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -239,7 +238,17 @@ max_lines_visible = -1
 
 [connection signal="pressed" from="Town/MonsterShop/Back" to="Town/MonsterShop" method="_on_Back_pressed"]
 
+[connection signal="pressed" from="Arena/VBox/BattleGround" to="Arena" method="_on_BattleGround_pressed"]
+
 [connection signal="pressed" from="Arena/VBox/Back" to="Arena" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Proceed" to="Arena" method="_on_Proceed_pressed"]
+
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Back2" to="Arena" method="_on_Back2_pressed"]
+
+[connection signal="pressed" from="Arena/BattleMode/RankSelect/Rank1" to="Arena/BattleMode" method="_on_Rank1_pressed"]
+
+[connection signal="pressed" from="Arena/BattleMode/RankSelect/Back3" to="Arena" method="_on_Back3_pressed"]
 
 [connection signal="pressed" from="Barn/Storage1/StorageBackground1" to="Barn" method="_on_StorageBackground1_pressed"]
 

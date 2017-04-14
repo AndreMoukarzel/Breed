@@ -61,3 +61,11 @@ func process_battle(enemy_num):
 		elif (mon2_turn >= 100):
 			pass
 			
+func decide_action(mon1, mon2):
+	#fazer baseado no WIS do monstro, por ora apenas gera um ataque normal
+	return regular_attack(mon1, mon2)
+	
+func regular_attack(mon1, mon2):
+	# a tenacidade reduzirá o dano?
+	return abs(mon1.stats[0] - mon2.stats[3])
+	
