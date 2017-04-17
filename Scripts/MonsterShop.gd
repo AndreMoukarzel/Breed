@@ -24,7 +24,7 @@ func generate_shop():
 	# jogo.
 
 	for num in range (0, 12):
-		get_parent().get_parent().monster_generate(shop_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
+		g_monster.monster_generate(shop_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
 
 	for mon in shop_depo:
 		var act = log(mon.stats[2])

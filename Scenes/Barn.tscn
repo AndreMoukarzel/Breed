@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=1]
 
-[ext_resource path="res://Scripts/Breeding.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Barn.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/barn.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/Display.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Sprites/GUI/breed1.png" type="Texture" id=4]

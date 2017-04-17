@@ -20,11 +20,13 @@ func _on_Rank1_pressed():
 	else:
 		print ("Ya lost boi")
 	comp_depo.clear()
-	
+
+
 func generate_enemies(rank, number):
 	# Placeholder, deve depender do rank para gerar os monstros.
 	for num in range (0, number):
-		get_parent().get_parent().monster_generate(comp_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 1)
+		g_monster.monster_generate(comp_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 1)
+
 
 func process_battle(enemy_num):
 	# The battle will have a couple of commands that can be

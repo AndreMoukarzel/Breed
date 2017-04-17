@@ -23,7 +23,7 @@ func _on_Rank1_pressed():
 func generate_racers(rank, number):
 	# Placeholder, deve depender do rank para gerar os monstros.
 	for num in range (0, number):
-		get_parent().get_parent().monster_generate(comp_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 1)
+		g_monster.monster_generate(comp_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 1)
 
 func process_race(distance):
 	# O monstro será representado por [monstro, distancia, contador_boost]
