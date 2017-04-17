@@ -34,6 +34,8 @@ func select_monster( monster, select_box ):
 
 	if( origin == "Storage1" ):
 		get_node("Display1").display(monster)
+		get_node("Display1/Collect1").show()
+		get_node("Display1/Feed1").show()
 		mon1 = monster.idn
 
 		if (mon1 == mon2):
@@ -42,9 +44,13 @@ func select_monster( monster, select_box ):
 			node.get_node("Button").set_ignore_mouse(false)
 			get_node("Storage2/SelectBox").last_unit_pressed = "-1"
 			get_node("Display2").kill()
+			get_node("Display2/Collect2").hide()
+			get_node("Display2/Feed2").hide()
 			mon2 = -1
 	else:
 		get_node("Display2").display(monster)
+		get_node("Display2/Collect2").show()
+		get_node("Display2/Feed2").show()
 		mon2 = monster.idn
 
 		if (mon1 == mon2):
@@ -53,6 +59,8 @@ func select_monster( monster, select_box ):
 			node.get_node("Button").set_ignore_mouse(false)
 			get_node("Storage1/SelectBox").last_unit_pressed = "-1"
 			get_node("Display1").kill()
+			get_node("Display1/Collect1").hide()
+			get_node("Display1/Feed1").hide()
 			mon1 = -1
 
 	if (mon1 != -1 and mon2 != -1):
@@ -118,7 +126,11 @@ func _on_Back_pressed():
 	Sbox1.kill()
 	Sbox2.kill()
 	get_node("Display1").kill()
+	get_node("Display1/Collect1").hide()
+	get_node("Display1/Feed1").hide()
 	get_node("Display2").kill()
+	get_node("Display2/Collect2").hide()
+	get_node("Display2/Feed2").hide()
 	mon1 = -1
 	mon2 = -1
 
@@ -170,6 +182,56 @@ func _on_StorageBackground2_pressed():
 func _on_Tween_tween_complete( object, key ):
 	get_node("Storage1/StorageBackground1").set_ignore_mouse(false)
 	get_node("Storage2/StorageBackground2").set_ignore_mouse(false)
+
+
+func _on_Collect1_pressed():
+	var monster
+	for mon in global.mon_depo:
+		if (mon.idn == mon1):
+			monster = mon
+			break
+
+	if (monster.acts <= 0):
+		print(str(monster.name, " has no strength left in its pipi"))
+		return 
+
+	for i in range(monster.acts):
+		global.catal_depo.append(global.Catal.new(monster.species, monster.stats))
+
+	monster.acts = 0
+	Sbox1.clear_box()
+	Sbox2.clear_box()
+	update_boxes()
+
+
+func _on_Collect2_pressed():
+	var monster
+	for mon in global.mon_depo:
+		if (mon.idn == mon2):
+			monster = mon
+			break
+
+	if (monster.acts <= 0):
+		print(str(monster.name, " has no strength left in its pipi"))
+		return 
+
+	for i in range(monster.acts):
+		global.catal_depo.append(global.Catal.new(monster.species, monster.stats))
+
+	monster.acts = 0
+
+	Sbox1.clear_box()
+	Sbox2.clear_box()
+	update_boxes()
+
+
+func _on_Feed1_pressed():
+	pass # replace with function body
+
+
+func _on_Feed2_pressed():
+	pass # replace with function body
+
 
 ############ BREED ############
 

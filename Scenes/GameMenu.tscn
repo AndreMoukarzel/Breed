@@ -128,14 +128,13 @@ visibility/visible = false
 
 [node name="Barn" parent="." instance=ExtResource( 5 )]
 
-editor/display_folded = true
-
 [node name="Storage2" parent="Barn"]
 
 editor/display_folded = false
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -241,6 +240,8 @@ max_lines_visible = -1
 
 [connection signal="pressed" from="Arena/VBox/BattleGround" to="Arena" method="_on_BattleGround_pressed"]
 
+[connection signal="pressed" from="Arena/VBox/Race" to="Arena" method="_on_Race_pressed"]
+
 [connection signal="pressed" from="Arena/VBox/Back" to="Arena" method="_on_Back_pressed"]
 
 [connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Proceed" to="Arena" method="_on_Proceed_pressed"]
@@ -250,6 +251,26 @@ max_lines_visible = -1
 [connection signal="pressed" from="Arena/BattleMode/RankSelect/Rank1" to="Arena/BattleMode" method="_on_Rank1_pressed"]
 
 [connection signal="pressed" from="Arena/BattleMode/RankSelect/Back3" to="Arena" method="_on_Back3_pressed"]
+
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Proceed2" to="Arena" method="_on_Proceed2_pressed"]
+
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Back4" to="Arena" method="_on_Back4_pressed"]
+
+[connection signal="pressed" from="Arena/RaceMode/RankSelect/Rank1" to="Arena/RaceMode" method="_on_Rank1_pressed"]
+
+[connection signal="pressed" from="Arena/RaceMode/RankSelect/Back5" to="Arena" method="_on_Back5_pressed"]
+
+[connection signal="pressed" from="Barn/Storage1/StorageBackground1" to="Barn" method="_on_StorageBackground1_pressed"]
+
+[connection signal="tween_complete" from="Barn/Storage1/Tween" to="Barn" method="_on_Tween_tween_complete"]
+
+[connection signal="pressed" from="Barn/Storage2/StorageBackground2" to="Barn" method="_on_StorageBackground2_pressed"]
+
+[connection signal="tween_complete" from="Barn/Storage2/Tween" to="Barn" method="_on_Tween_tween_complete"]
+
+[connection signal="pressed" from="Barn/Breed" to="Barn" method="_on_Breed_pressed"]
+
+[connection signal="pressed" from="Barn/Back" to="Barn" method="_on_Back_pressed"]
 
 
 [editable path="Town"]

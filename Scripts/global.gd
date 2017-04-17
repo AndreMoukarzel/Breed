@@ -16,6 +16,25 @@ var days = 0
 var energy = MAX_ENERGY
 
 var mon_depo = []
+var catal_depo = []
+
+class Catal:
+	var species
+	var level # 1-3
+
+	func _init(species, stats):
+		self.species = species
+		var sum = 0
+		for stat in stats:
+			sum += stat
+		sum = sum/6
+		if (sum <= 35):
+			self.level = 1
+		elif (sum <= 70):
+			self.level = 2
+		else:
+			self.level = 3
+
 
 var current_scene = null
 
