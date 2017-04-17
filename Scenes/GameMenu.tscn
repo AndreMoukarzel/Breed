@@ -39,6 +39,7 @@ stretch_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -117,6 +118,7 @@ flat = false
 
 [node name="Town" parent="." instance=ExtResource( 3 )]
 
+editor/display_folded = true
 visibility/visible = false
 
 [node name="Arena" parent="." instance=ExtResource( 4 )]
@@ -141,7 +143,6 @@ scale = Vector2( 1, 1 )
 
 [node name="Energy" type="ProgressBar" parent="HUD"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -249,18 +250,6 @@ max_lines_visible = -1
 [connection signal="pressed" from="Arena/BattleMode/RankSelect/Rank1" to="Arena/BattleMode" method="_on_Rank1_pressed"]
 
 [connection signal="pressed" from="Arena/BattleMode/RankSelect/Back3" to="Arena" method="_on_Back3_pressed"]
-
-[connection signal="pressed" from="Barn/Storage1/StorageBackground1" to="Barn" method="_on_StorageBackground1_pressed"]
-
-[connection signal="tween_complete" from="Barn/Storage1/Tween" to="Barn" method="_on_Tween_tween_complete"]
-
-[connection signal="pressed" from="Barn/Storage2/StorageBackground2" to="Barn" method="_on_StorageBackground2_pressed"]
-
-[connection signal="tween_complete" from="Barn/Storage2/Tween" to="Barn" method="_on_Tween_tween_complete"]
-
-[connection signal="pressed" from="Barn/Breed" to="Barn" method="_on_Breed_pressed"]
-
-[connection signal="pressed" from="Barn/Back" to="Barn" method="_on_Back_pressed"]
 
 
 [editable path="Town"]
