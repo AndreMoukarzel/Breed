@@ -78,8 +78,18 @@ func level_up (monster):
 		for stat in monster.stats:
 			growth = get_growth_rate(monster.gradations[count], p_d[count + 3][0], p_d[count + 3][1])
 			randomize()
-			if (randf() <= growth):
+			# If growth rate surpasses 100%, one point is guaranteed,
+			# and the chance for levelling another point in that same
+			# stat is the % that exceeds 100%.
+			if (growth > 1):
 				monster.stats[count] += 1
+				growth -= 1
+				if (randf() <= growth):
+					monster.stats[count] += 1
+			else:
+				if (randf() <= growth):
+					monster.stats[count] += 1
+			
 			count += 1
 	
 		monster.xp[0] -= monster.xp[1]
