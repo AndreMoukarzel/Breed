@@ -55,6 +55,9 @@ func select_monster( monster, select_box ):
 			get_node("Display1").kill()
 			mon1 = -1
 
+	if (mon1 != -1 and mon2 != -1):
+		set_breed_info(mon1, mon2)
+
 
 ####### BUTTON FUNCIONALITY #######
 
@@ -95,6 +98,8 @@ func _on_Breed_pressed():
 
 	breed(m1, m2)
 
+	set_breed_info(mon1, mon2)
+
 	Sbox1.page = int(pg1)
 	Sbox2.page = int(pg2)
 	update_boxes()
@@ -116,7 +121,11 @@ func _on_Back_pressed():
 		_on_StorageBackground1_pressed()
 	elif red:
 		_on_StorageBackground2_pressed()
-	
+
+	var info = get_node("Breed/Info")
+	info.get_node("PregChance").set_text("0%")
+	info.get_node("Cost").set_text("Cost:\n-1")
+
 	get_parent().get_node("VBox").show()
 	get_parent().get_node("FarmBackground").show()
 
@@ -161,57 +170,65 @@ func _on_Tween_tween_complete( object, key ):
 
 func breed( m1, m2 ):
 	# Game State Handling
-	if (global.energy < 1):
+	var cost = 2000 - floor((m1.stats[2] + m2.stats[2])/2 * 130)
+
+	if (global.energy - cost < 0):
 		# Give notice to player
 		#test
 		print("Can't let you do that, Star Fox")
 		return
 	else:
-		global.handle_energy(-1)
-		
-	# limit actions to 8PM
-#	if (global.time > 1200):
-#		# Give notice to player
-#		#test
-#		print("Go to bed boi")
-#		return
-#	else:
-#		global.handle_time(120)
+		global.handle_energy(-cost)
 
 	# Actual Breeding Function
 	var species
 	var color
 	var rand
 
+	if (m1.last_breed != m2 or m2.last_breed != m1):
+			m1.bonus_preg = 0
+			m2.bonus_preg = 0
+
+	var chance = floor(log(m1.stats[5] + m2.stats[5]/2) * 6) + m1.bonus_preg
+	
 	randomize()
-	# Offspring's species
-	if (randi() % 2 == 0):
-		species = str(m1.species)
+	if (randi() % 100 <= chance): # Will have offspring
+		m1.bonus_preg = 0
+		m2.bonus_preg = 0
+		# Offspring's species
+		if (randi() % 2 == 0):
+			species = str(m1.species)
+		else:
+			species = str(m2.species)
+		print (species) # test
+	
+		# Offspring's color
+		rand = randi()
+		if (rand % 101 < 1):
+			color = Color( rand_range(0.1, 1), rand_range(0.1, 1), rand_range(0.1, 1))
+		elif (rand % 3 == 0):
+			color = m1.color
+		elif (rand % 3 == 1):
+			color = m2.color
+		else:
+			var c1 = m1.color
+			var c2 = m2.color
+			color = Color((c1.r + c2.r)/2, (c1.g + c2.g)/2, (c1.b + c2.b)/2)
+	
+		# Checks incest
+		g_monster.incest += check_incest(m1, m2)
+	
+		var grads = randomize_grads(m1, m2)
+	
+		get_parent().monster_generate(global.mon_depo, species, color, [], grads, 1)
 	else:
-		species = str(m2.species)
-	print (species) # test
-
-	# Offspring's color
-	rand = randi()
-	if (rand % 101 < 1):
-		color = Color( rand_range(0.1, 1), rand_range(0.1, 1), rand_range(0.1, 1))
-	elif (rand % 3 == 0):
-		color = m1.color
-	elif (rand % 3 == 1):
-		color = m2.color
-	else:
-		var c1 = m1.color
-		var c2 = m2.color
-		color = Color((c1.r + c2.r)/2, (c1.g + c2.g)/2, (c1.b + c2.b)/2)
-
-	# Checks incest
-	g_monster.incest += check_incest(m1, m2)
-
-	var grads = randomize_grads(m1, m2)
-
-	get_parent().monster_generate(global.mon_depo, species, color, [], grads, 1)
+		m1.bonus_preg += 5
+		m2.bonus_preg += 5
 
 	xp_gain(m1, m2)
+
+	m1.last_breed = m2
+	m2.last_breed = m1
 	m1.acts -= 1
 	m2.acts -= 1
 
@@ -275,3 +292,23 @@ func xp_gain(mon1, mon2):
 
 	while (mon2.xp[0] >= mon2.xp[1]):
 		g_monster.level_up(mon2)
+
+
+func set_breed_info(mon1, mon2):
+	var m1 = null
+	var m2 = null
+	var info = get_node("Breed/Info")
+
+	for i in range(global.mon_depo.size()):
+		if (global.mon_depo[i].idn == mon1):
+			m1 = global.mon_depo[i]
+		elif (global.mon_depo[i].idn == mon2):
+			m2 = global.mon_depo[i]
+		if (m1 != null and m2 != null):
+			break
+
+	var chance = floor(log(m1.stats[5] + m2.stats[5]/2) * 6) + m1.bonus_preg
+	var cost = 2000 - floor((m1.stats[2] + m2.stats[2])/2 * 130)
+
+	info.get_node("PregChance").set_text(str(chance, "%"))
+	info.get_node("Cost").set_text(str("Cost:\n", cost))

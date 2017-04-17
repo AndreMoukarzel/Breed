@@ -19,6 +19,7 @@ class Monster:
 	var gradations
 
 	var last_breed = null
+	var bonus_preg = 0
 	var cost_decrease = 0
 
 	func _init(name, gender, species, color, ap_vec, stats, gradations):
@@ -36,6 +37,12 @@ class Monster:
 
 func _ready():
 	print("Game Menu")
+	get_node("HUD/Energy").set_max(global.energy)
+	get_node("HUD/Energy").set_value(global.energy)
+	get_node("HUD/Energy/EnergyLabel").set_text(str(global.energy))
+
+	monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
+	monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
 
 
 ############  BUTTONS  ############

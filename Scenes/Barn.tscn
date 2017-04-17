@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://Scripts/Breeding.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/barn.jpg" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Resources/Sprites/GUI/BreedStorage2.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Sprites/GUI/breed1.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Sprites/GUI/breed2.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/GUI/breed_info.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=10]
 
 [node name="Barn" type="Control"]
 
@@ -140,6 +142,7 @@ playback/speed = 1.0
 
 [node name="Breed" type="TextureButton" parent="."]
 
+editor/display_folded = true
 rect/scale = Vector2( 0.8, 0.8 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -154,6 +157,57 @@ enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 7 )
 textures/hover = ExtResource( 8 )
+
+[node name="Info" type="TextureFrame" parent="Breed"]
+
+visibility/behind_parent = true
+rect/scale = Vector2( 1.4, 1 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 35.0
+margin/top = 130.0
+margin/right = 105.0
+margin/bottom = 280.0
+texture = ExtResource( 9 )
+stretch_mode = 0
+
+[node name="PregChance" type="Label" parent="Breed/Info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 15.0
+margin/top = 50.0
+margin/right = 55.0
+margin/bottom = 64.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0%"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Cost" type="Label" parent="Breed/Info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 15.0
+margin/top = 90.0
+margin/right = 55.0
+margin/bottom = 104.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Cost:\n-1"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="Back" type="Button" parent="."]
 
