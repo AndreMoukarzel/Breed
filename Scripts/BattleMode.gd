@@ -19,6 +19,7 @@ func _on_Rank1_pressed():
 		#colocar aqui para desbloquear os outros ranks
 	else:
 		print ("Ya lost boi")
+	comp_depo.clear()
 	
 func generate_enemies(rank, number):
 	# Placeholder, deve depender do rank para gerar os monstros.
