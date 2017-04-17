@@ -34,7 +34,10 @@ func update_config(monster_vec, number_per_page, max_columns):
 	Fp.set_pos(Vector2((size.x * max_cols) - Fp.get_size().x - 10, (size.y * page_amount / max_cols) + 10))
 	Bp.set_pos(Vector2(10, (size.y * page_amount / max_cols) + 10))
 	Pd.set_pos(Vector2((size.x * max_columns)/2 - Pd.get_size().x/2, (size.y * page_amount / max_cols) + 10))
-	Pd.set_text(str(page + 1, "/", max_pages))
+	if (global.mon_depo.size() == 0):
+		Pd.set_text("1/1")
+	else:
+		Pd.set_text(str(page + 1, "/", max_pages))
 
 	# Special case
 	if (max_pages == 1):
@@ -97,26 +100,28 @@ func press_button(selected_id):
 
 
 func _on_BackPage_pressed():
-	clear_box()
+	if (global.mon_depo.size() != 0):
+		clear_box()
+		
+		page -= 1
+		if (page < 0):
+			page = max_pages - 1
+		
+		# Adjustments
+		get_node("PageDisplay").set_text(str(page + 1, "/", max_pages))
+		last_unit_pressed = "-1"
 	
-	page -= 1
-	if (page < 0):
-		page = max_pages - 1
-	
-	# Adjustments
-	get_node("PageDisplay").set_text(str(page + 1, "/", max_pages))
-	last_unit_pressed = "-1"
-
-	generate_members()
+		generate_members()
 
 
 func _on_FowardPage_pressed():
-	clear_box()
-	
-	page = (page + 1) % max_pages
-	
-	# Adjustments
-	get_node("PageDisplay").set_text(str(page + 1, "/", max_pages))
-	last_unit_pressed = "-1"
+	if (global.mon_depo.size() != 0):
+		clear_box()
+		
+		page = (page + 1) % max_pages
+		
+		# Adjustments
+		get_node("PageDisplay").set_text(str(page + 1, "/", max_pages))
+		last_unit_pressed = "-1"
 
-	generate_members()
+		generate_members()

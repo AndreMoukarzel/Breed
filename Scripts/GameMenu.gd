@@ -41,7 +41,8 @@ func _ready():
 	get_node("HUD/Energy").set_value(global.energy)
 	get_node("HUD/Energy/EnergyLabel").set_text(str(global.energy))
 
-	monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
+	#test
+	monster_generate(global.mon_depo, "Mafagafo", Color(-1, -1, -1), [], [6, 6, 6, 6, 6, 6], 3)
 	monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
 
 
@@ -71,7 +72,7 @@ func _on_ToArena_pressed():
 
 # To randomize SPECIES; the string must be an invalid species' name
 # To randomize COLOR; color must be Color(-1, -1, -1)
-# GRADATIONS must be in order [STR, AGI, VIT, TEN, WIS, FER]; 0-7 = F-S
+# GRADATIONS must be in order [STR, AGI, VIT, TEN, WIS, FER]; 0-6 = F-S
 func monster_generate(deposit, species, color, apendices, gradations, level):
 	var race = species
 	var id
