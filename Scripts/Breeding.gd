@@ -58,6 +58,11 @@ func select_monster( monster, select_box ):
 	if (mon1 != -1 and mon2 != -1):
 		set_breed_info(mon1, mon2)
 
+	if (mon1 == -1 or mon2 == -1):
+		var info = get_node("Breed/Info")
+		info.get_node("PregChance").set_text("0%")
+		info.get_node("Cost").set_text("Cost:\n-1")
+
 
 ####### BUTTON FUNCIONALITY #######
 
@@ -307,8 +312,11 @@ func set_breed_info(mon1, mon2):
 		if (m1 != null and m2 != null):
 			break
 
-	var chance = floor(log(m1.stats[5] + m2.stats[5]/2) * 6) + m1.bonus_preg
+	var chance = floor(log(m1.stats[5] + m2.stats[5]/2) * 6)
 	var cost = 2000 - floor((m1.stats[2] + m2.stats[2])/2 * 130)
+
+	if (m1.last_breed == m2 or m2.last_breed == m1):
+			chance += m1.bonus_preg
 
 	info.get_node("PregChance").set_text(str(chance, "%"))
 	info.get_node("Cost").set_text(str("Cost:\n", cost))
