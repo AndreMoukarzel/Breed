@@ -50,7 +50,9 @@ func breed( m1, m2 ):
 			color = Color((c1.r + c2.r)/2, (c1.g + c2.g)/2, (c1.b + c2.b)/2)
 	
 		# Checks incest
-		g_monster.incest += check_incest(m1, m2)
+		var inc = check_incest(m1, m2)
+		m1.incest_count += inc
+		m2.incest_count += inc
 	
 		var grads = randomize_grads(m1, m2)
 	
