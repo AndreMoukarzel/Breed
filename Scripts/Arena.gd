@@ -37,20 +37,10 @@ func _on_Back2_pressed():
 	get_node("BattleMode/MonsterSelect/Proceed").set_disabled(true)
 
 
-func _on_Back3_pressed():
-	get_node("BattleMode/MonsterSelect").show()
-	get_node("BattleMode/RankSelect").hide()
-
-
 func _on_Back4_pressed():
 	get_node("VBox").show()
 	get_node("RaceMode").hide()
 	get_node("RaceMode/MonsterSelect/Proceed2").set_disabled(true)
-
-
-func _on_Back5_pressed():
-	get_node("RaceMode/MonsterSelect").show()
-	get_node("RaceMode/RankSelect").hide()
 
 
 func _on_Proceed_pressed():

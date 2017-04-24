@@ -13,10 +13,8 @@ func display( monster ):
 
 	g_monster.monster_sprite(self, g_monster.get_id(mon.species), mon.color, Vector2(140, 150), Vector2(0.5, 0.5))
 
-	set_info(0, "Hp")
-	set_info(0, "Atk")
-	set_info(0, "Spd")
-	set_info(0, "Shrp")
+	set_info(0, "Vel")
+	set_info(0, "Res")
 
 
 func set_info(val, atri):
@@ -24,17 +22,11 @@ func set_info(val, atri):
 	var color
 
 	# actually use val instead of this shit
-	if (atri == "Hp"):
+	if (atri == "Vel"):
 		stat = mon.stats[2]
 		color = Color(1, 1, 1)
-	elif (atri == "Atk"):
+	elif (atri == "Res"):
 		stat = mon.stats[0]
-		color = Color(1, 1, 1)
-	elif (atri == "Spd"):
-		stat = mon.stats[1]
-		color = Color(1, 1, 1)
-	elif (atri == "Shrp"):
-		stat = mon.stats[4]
 		color = Color(1, 1, 1)
 	else:
 		print ("Incorrect atri in set_info")

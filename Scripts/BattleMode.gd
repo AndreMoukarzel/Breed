@@ -5,30 +5,6 @@ var mon = null
 var comp_depo = []
 
 
-func select_monster(monster, select_box):
-		mon = monster
-		get_node("MonsterSelect/BattleDisplay").show()
-		get_node("MonsterSelect/BattleDisplay").display(mon)
-		get_node("MonsterSelect/Proceed").set_disabled(false)
-
-
-func _on_Rank1_pressed():
-	if (mon.acts == 0):
-		print("Monster has no action points")
-		return
-	mon.acts = 0
-
-	# Vai ter que gerar os monstros para uma batalha de Rank 1,
-	# e começar a representação visual.
-	generate_enemies(1, 5)
-	if (process_battle(2)):
-		print ("Total victory!")
-		#colocar aqui para desbloquear os outros ranks
-	else:
-		print ("Ya lost boi")
-	comp_depo.clear()
-
-
 func generate_enemies(rank, number):
 	# Placeholder, deve depender do rank para gerar os monstros.
 	for num in range (0, number):
@@ -92,3 +68,34 @@ func process_action(mon1, mon2):
 
 func regular_attack(mon1, mon2):
 	return abs(ceil(mon1.stats[0] * 0.85))
+
+
+####### BUTTON FUNCIONALITY #######
+
+func _on_Rank1_pressed():
+	if (mon.acts == 0):
+		print("Monster has no action points")
+		return
+	mon.acts = 0
+
+	# Vai ter que gerar os monstros para uma batalha de Rank 1,
+	# e começar a representação visual.
+	generate_enemies(1, 5)
+	if (process_battle(2)):
+		print ("Total victory!")
+		#colocar aqui para desbloquear os outros ranks
+	else:
+		print ("Ya lost boi")
+	comp_depo.clear()
+
+
+func _on_BackRank_pressed():
+	get_node("MonsterSelect").show()
+	get_node("RankSelect").hide()
+
+
+func select_monster(monster, select_box):
+		mon = monster
+		get_node("MonsterSelect/BattleDisplay").show()
+		get_node("MonsterSelect/BattleDisplay").display(mon)
+		get_node("MonsterSelect/Proceed").set_disabled(false)
