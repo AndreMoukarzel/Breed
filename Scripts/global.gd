@@ -5,12 +5,18 @@ const MAX_ENERGY = 3000
 var ID = 0
 var free_ids = []
 
-var kesha = 0
+var quesha = 100
 
+var year = 0
 var month = 0
 var days = 0
 # Given in minutes. A day has 1440 minutes
 #var time = 0
+
+
+# Value of the debts you have to pay. To access the value
+# for month/year, use debt_values[month][year]
+var debt_values = [[100, 1000], [200, 2000], [300, 3000], [400, 4000], [500, 5000], [600, 6000], [700, 7000], [800, 8000], [900, 9000], [1000, 10000], [1100, 11000], [1200, 12000]]
 
 # Maximum energy value is fixed, for now
 var energy = MAX_ENERGY
@@ -118,9 +124,14 @@ func handle_days(val):
 	
 	# Updates day
 	days += val
+	
+	# Checks for month passage, and lose condition
 	if (days > 30):
 		month += 1
 		days = 1
+		if (quesha < debt_values[month][year]):
+			#test
+			print("You lose the game my dude")
 	handle_energy(MAX_ENERGY)
 	day_path.set_text(str(days, " X ", month))
 
@@ -133,3 +144,6 @@ func handle_days(val):
 		var act = log(mon.stats[2])
 		randomize()
 		mon.acts = floor(rand_range(act - act/5, act + act/5))
+		
+func save_game():
+	pass
