@@ -3,8 +3,6 @@ extends Sprite
 
 var creature_scn = preload("res://Scenes/Monster.tscn")
 
-var incest = 0
-
 class Monster:
 	var idn
 	var parent1_idn = null
@@ -27,6 +25,7 @@ class Monster:
 	var last_breed = null
 	var bonus_preg = 0
 	var cost_decrease = 0
+	var incest_count = 0
 
 	func _init(name, gender, species, color, ap_vec, stats, gradations, personas):
 		self.name = name
