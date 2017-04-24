@@ -140,44 +140,9 @@ visibility/visible = false
 
 editor/display_folded = true
 
-[node name="Collect1" parent="Barn/Display1"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Feed1" parent="Barn/Display1"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Collect2" parent="Barn/Display2"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Feed2" parent="Barn/Display2"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="StorageBackground1" parent="Barn/Storage1"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
 [node name="Storage2" parent="Barn"]
 
 editor/display_folded = false
-
-[node name="StorageBackground2" parent="Barn/Storage2"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Breed" parent="Barn"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

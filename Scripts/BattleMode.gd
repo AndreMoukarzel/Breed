@@ -123,15 +123,25 @@ func _on_Rank1_pressed():
 		return
 	mon.acts = 0
 
+	get_node("MonsterSelect/SelectBox").kill()
+	get_node("MonsterSelect/SelectBox").generate_members()
 	# Vai ter que gerar os monstros para uma batalha de Rank 1,
 	# e começar a representação visual.
 	generate_enemies(1, 3)
 	if (process_battle(2)):
 		print ("Total victory!")
-		#colocar aqui para desbloquear os outros ranks
+		get_node("RankSelect/Rank2").show()
 	else:
 		print ("Ya lost boi")
 	comp_depo.clear()
+
+
+func _on_Rank2_pressed():
+	print("Im fucking useless")
+
+
+func _on_Rank3_pressed():
+	print("I can literally do nothing")
 
 
 func _on_BackRank_pressed():

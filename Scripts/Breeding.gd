@@ -49,14 +49,17 @@ func breed( m1, m2 ):
 			var c2 = m2.color
 			color = Color((c1.r + c2.r)/2, (c1.g + c2.g)/2, (c1.b + c2.b)/2)
 	
-		# Checks incest
-		var inc = check_incest(m1, m2)
-		m1.incest_count += inc
-		m2.incest_count += inc
-	
 		var grads = randomize_grads(m1, m2)
 	
 		g_monster.monster_generate(global.mon_depo, species, color, [], grads, 1)
+
+		# Sets incest count
+		var inc = floor(max(m1.incest_count, m2.incest_count)) + check_incest(m1, m2)
+		var new_mon = global.mon_depo[global.mon_depo.size() - 1]
+
+		new_mon.incest_count = inc
+		if (inc >= 4): # 2much incest PUNISHMENT
+			new_mon.personas.append(4)
 	else:
 		m1.bonus_preg += 5
 		m2.bonus_preg += 5
