@@ -87,10 +87,6 @@ func process_battle(enemy_num):
 func check_win_lose(wl, enemy_num):
 	if (wl == "win"):
 		if (mon2_battle_state[1] <= 0):
-			print(mon2_battle_state)
-			print(comp_depo)
-			print(battle_num)
-			print(str("Mon2 = ", mon2_battle_state[0].idn, " hp = ", mon2_battle_state[1]))
 			#test
 			print("Player Victory")
 			if (battle_num < enemy_num):
@@ -110,10 +106,45 @@ func check_win_lose(wl, enemy_num):
 			
 func process_action(attacker_bs, reciever_bs):
 	#fazer baseado no WIS do monstro, por ora apenas gera um ataque normal
-	regular_attack(attacker_bs, reciever_bs)
+	randomize()
+	if (attacker_bs[0].stats[4] / 300 < randi()):
+		use_skill(attacker_bs, reciever_bs)
+	else:
+		regular_attack(attacker_bs, reciever_bs)
 	
 func regular_attack(attacker_bs, reciever_bs):
 	reciever_bs[1] -= abs(ceil(attacker_bs[0].stats[0] * 0.85))
+
+func use_skill(attacker_bs, reciever_bs):
+	# Primeiro sorteamos aleatóriamente entre as skills das
+	# personalidades. Depois, a buscamos pela database (podemos
+	# mostrar o nome na representação visual), e checamos seus tipos,
+	# e aplicamos seus efeitos.
+	var persona_id
+	
+	persona_id = floor(rand_range(0, attacker_bs[0].personas.size() + 1))
+	
+	var persona_types = personality_db.get_types(persona_id)
+	var persona_formulas = personality_db.get_formulas(persona_id)
+	
+	# Check for type of damage
+	for type in persona_types:
+		
+		# Damage types
+		if (type == "Damage"):
+			pass
+		elif (type == "Heal"):
+			pass
+		elif (type ==  "Self-Damage"):
+			pass
+		
+		# Effects
+		elif (type == "HealPerTurn"):
+			pass
+		elif (type == "Critial"):
+			pass
+		elif (type == "Paralysis"):
+			pass
 
 ####### BUTTON FUNCIONALITY #######
 
@@ -125,7 +156,7 @@ func _on_Rank1_pressed():
 
 	# Vai ter que gerar os monstros para uma batalha de Rank 1,
 	# e começar a representação visual.
-	generate_enemies(1, 3)
+	generate_enemies(1, 2)
 	if (process_battle(2)):
 		print ("Total victory!")
 		#colocar aqui para desbloquear os outros ranks

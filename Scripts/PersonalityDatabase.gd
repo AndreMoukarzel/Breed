@@ -19,32 +19,32 @@ var personality_database = [
 	{ # ID = 0
 		NAME : "Calm",
 		SKILL : "Regen",
-		TYPES : ["Damage", "Effect/HealPerTurn"],
-		FORMULAS: ["0.05 * VIT", "0.05 * WIS"]
+		TYPES : ["Damage", "HealPerTurn"],
+		FORMULAS: ["0.1 * VIT", "0.05 * VIT"]
 	},
 	{ # ID = 1
 		NAME : "Hot-Headed",
 		SKILL : "Bash",
 		TYPES : ["Damage", "None"],
-		FORMULAS: ["0.05 * STR"]
+		FORMULAS: ["1.15 * STR"]
 	},
 	{ # ID = 2
 		NAME : "Stategist",
 		SKILL : "Fatal Blow",
-		TYPES : ["Damage", "Effect/Critical"],
-		FORMULAS: ["0.05 * STR", "0.1 * WIS"]
+		TYPES : ["Damage", "Critical"],
+		FORMULAS: ["0.65 * STR", "0.1 * WIS"]
 	},
 	{ # ID = 3
 		NAME : "Awkward",
 		SKILL : "Shocking Attack",
-		TYPES : ["Damage", "Effect/Paralysis"],
-		FORMULAS: ["0.05 * STR", "0.1 * WIS"]
+		TYPES : ["Damage", "Paralysis"],
+		FORMULAS: ["0.75 * STR", "0.1 * WIS"]
 	},
 	{ # ID = 4
 		NAME : "Gorked",
 		SKILL : "Gork",
 		TYPES : ["Self-Damage", "None"],
-		FORMULAS: ["0.05 * STR", "0.1 * WIS"]
+		FORMULAS: ["1.5 * STR", "0.1 * WIS"]
 	}
 ]
 
