@@ -12,7 +12,7 @@ func _ready():
 	g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 3)
 
 
-############  BUTTONS  ############
+####### BUTTON FUNCIONALITY #######
 
 func _on_ToBreed_pressed():
 	get_node("VBox").hide()

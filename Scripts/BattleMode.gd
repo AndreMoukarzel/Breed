@@ -4,25 +4,12 @@ extends Control
 const PDB = preload("PersonalityDatabase.gd")
 onready var personality_db = PDB.new()
 
-var selected_id = -1
+var mon = null
 var comp_depo = []
 
-func _ready():
-	pass
-
-func select_monster(monster, select_box):
-	get_parent().select_monster(monster, select_box)
-
-func _on_Rank1_pressed():
-	# Vai ter que gerar os monstros para uma batalha de Rank 1,
-	# e começar a representação visual.
-	generate_enemies(1, 5)
-	if (process_battle(2)):
-		print ("Total victory!")
-		#colocar aqui para desbloquear os outros ranks
-	else:
-		print ("Ya lost boi")
-	comp_depo.clear()
+var battle_num
+var mon1_battle_state
+var mon2_battle_state
 
 
 func generate_enemies(rank, number):
@@ -38,20 +25,16 @@ func process_battle(enemy_num):
 	# commands are separated on their on functions.
 
 	# Getting player monster
-	var mon1
-	
-	for monster in global.mon_depo:
-		if monster.idn == selected_id:
-			mon1 = monster
+	var mon1 = mon
 	
 	# The monster's battle state: monster, HP, status conditions
-	var mon1_battle_state = [mon1, mon1.stats[2] * 3, []]
-	var mon2_battle_state = [comp_depo[0], comp_depo[0].stats[2] * 3, []]
-	
+	mon1_battle_state = [mon1, mon1.stats[2] * 3, []]
+	mon2_battle_state = [comp_depo[0], comp_depo[0].stats[2] * 3, []]
+
 	comp_depo.pop_front()
 	
 	# The battle number
-	var battle_num = 1
+	battle_num = 1
 	
 	# A monster's turn happens when the counter reaches 100
 	var mon1_turn = 0
@@ -67,46 +50,51 @@ func process_battle(enemy_num):
 			if (randf() < 0.5):
 				# Turno do monster 1 primeiro
 				process_action(mon1_battle_state, mon2_battle_state)
-				if(check_win_lose("win", battle_num, enemy_num, mon1_battle_state, mon2_battle_state)):
+				if(check_win_lose("win", enemy_num)):
 					return true
 				# Reset monster 1 turn counter
 				mon1_turn = 0
 				# Turno do monstro 2 em seguida
 				process_action(mon2_battle_state, mon1_battle_state)
-				if(check_win_lose("lose", battle_num, enemy_num, mon1_battle_state, mon2_battle_state)):
+				if(check_win_lose("lose", enemy_num)):
 					return false
 				mon2_turn = 0
 				
 			else:
 				# Turno do monster 2 primeiro
 				process_action(mon2_battle_state, mon1_battle_state)
-				if(check_win_lose("lose", battle_num, enemy_num, mon1_battle_state, mon2_battle_state)):
+				if(check_win_lose("lose", enemy_num)):
 					return false
 				mon2_turn = 0
 				# Turno do monstro 1 em seguida
 				process_action(mon1_battle_state, mon2_battle_state)
-				if(check_win_lose("win", battle_num, enemy_num, mon1_battle_state, mon2_battle_state)):
+				if(check_win_lose("win", enemy_num)):
 					return true
 				mon1_turn = 0
 		elif (mon1_turn >= 100):
 			# Turno do monstro 1
 			process_action(mon1_battle_state, mon2_battle_state)
-			if(check_win_lose("win", battle_num, enemy_num, mon1_battle_state, mon2_battle_state)):
+			if(check_win_lose("win", enemy_num)):
 				return true
 			mon1_turn = 0
 		elif (mon2_turn >= 100):
 			# Turno do monster 2
 			process_action(mon2_battle_state, mon1_battle_state)
-			if(check_win_lose("lose", battle_num, enemy_num, mon1_battle_state, mon2_battle_state)):
+			if(check_win_lose("lose", enemy_num)):
 				return false
 			mon2_turn = 0
 
-func check_win_lose(wl, battle_num, enemy_num, mon1_battle_state, mon2_battle_state):
+func check_win_lose(wl, enemy_num):
 	if (wl == "win"):
 		if (mon2_battle_state[1] <= 0):
+			print(mon2_battle_state)
+			print(comp_depo)
+			print(battle_num)
+			print(str("Mon2 = ", mon2_battle_state[0].idn, " hp = ", mon2_battle_state[1]))
 			#test
 			print("Player Victory")
 			if (battle_num < enemy_num):
+#				print("Entrei")
 				battle_num += 1
 				mon2_battle_state = [comp_depo[0], comp_depo[0].stats[2] * 3, []]
 				comp_depo.pop_front()
@@ -126,3 +114,33 @@ func process_action(attacker_bs, reciever_bs):
 	
 func regular_attack(attacker_bs, reciever_bs):
 	reciever_bs[1] -= abs(ceil(attacker_bs[0].stats[0] * 0.85))
+
+####### BUTTON FUNCIONALITY #######
+
+func _on_Rank1_pressed():
+	if (mon.acts == 0):
+		print("Monster has no action points")
+		return
+	mon.acts = 0
+
+	# Vai ter que gerar os monstros para uma batalha de Rank 1,
+	# e começar a representação visual.
+	generate_enemies(1, 3)
+	if (process_battle(2)):
+		print ("Total victory!")
+		#colocar aqui para desbloquear os outros ranks
+	else:
+		print ("Ya lost boi")
+	comp_depo.clear()
+
+
+func _on_BackRank_pressed():
+	get_node("MonsterSelect").show()
+	get_node("RankSelect").hide()
+
+
+func select_monster(monster, select_box):
+		mon = monster
+		get_node("MonsterSelect/BattleDisplay").show()
+		get_node("MonsterSelect/BattleDisplay").display(mon)
+		get_node("MonsterSelect/Proceed").set_disabled(false)
