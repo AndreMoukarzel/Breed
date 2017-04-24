@@ -19,13 +19,15 @@ class Monster:
 	# STR, AGI, VIT, TEN, WIS, FER
 	var stats
 	var gradations
+	# List of personality IDs
+	var personas
 
 	var last_breed = null
 	var bonus_preg = 0
 	var cost_decrease = 0
 	var incest_count = 0
 
-	func _init(name, gender, species, color, ap_vec, stats, gradations):
+	func _init(name, gender, species, color, ap_vec, stats, gradations, personas):
 		self.name = name
 		self.gender = gender
 		self.species = species
@@ -33,6 +35,7 @@ class Monster:
 		self.ap_vec = ap_vec
 		self.stats = stats
 		self.gradations = gradations
+		self.personas = personas
 		self.idn = global.get_id()
 		self.catal[1] = 1 + ceil(log(self.stats[3]) * 0.4)
 		self.xp[1] = floor((5 * pow(self.level, 2))/3)
@@ -164,6 +167,7 @@ func monster_generate(deposit, species, color, apendices, gradations, level):
 	var monster
 	var grad = []
 	var stats = []
+	var personas = []
 
 	randomize()
 
@@ -197,8 +201,12 @@ func monster_generate(deposit, species, color, apendices, gradations, level):
 	
 	# Defining stats
 	stats = [5, 5, 5, 5, 5, 5]
+	
+	# Defining personality
+	# Temporary, there will be inheritance
+	personas.append(floor(rand_range(0, 4)))
 
-	monster = Monster.new(name, randi() % 2, str(race), col, [], stats, grad)
+	monster = Monster.new(name, randi() % 2, str(race), col, [], stats, grad, personas)
 	for lv in range (1, level):
 		g_monster.level_up(monster)
 

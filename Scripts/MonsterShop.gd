@@ -37,16 +37,20 @@ func _on_Buy_pressed():
 	
 	for monster in shop_depo:
 		if monster.idn == selected_id:
-			#checagem de dinheiro aqui
-			global.mon_depo.append(monster)
-			shop_depo.remove(count)
-			
-			get_node("SelectBox").clear_box()
-			get_node("SelectBox").update_config(shop_depo, PageAmount, BoxColumns)
-			get_node("SelectBox").generate_members()
-			
-			get_node("Buy").set_disabled(true)
-			selected_id = -1
+			if (global.quesha < get_parent().calculate_price(monster)):
+				#test
+				#give visual representation
+				print("Not enough cash, stranger")
+			else:
+				global.mon_depo.append(monster)
+				shop_depo.remove(count)
+				
+				get_node("SelectBox").clear_box()
+				get_node("SelectBox").update_config(shop_depo, PageAmount, BoxColumns)
+				get_node("SelectBox").generate_members()
+				
+				get_node("Buy").set_disabled(true)
+				selected_id = -1
 			
 			break
 		count += 1
