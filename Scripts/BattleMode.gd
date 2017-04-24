@@ -1,16 +1,23 @@
 
 extends Control
 
-var selected_id = -1
+var mon = null
 var comp_depo = []
 
-func _ready():
-	pass
 
 func select_monster(monster, select_box):
-	get_parent().select_monster(monster, select_box)
+		mon = monster
+		get_node("MonsterSelect/BattleDisplay").show()
+		get_node("MonsterSelect/BattleDisplay").display(mon)
+		get_node("MonsterSelect/Proceed").set_disabled(false)
+
 
 func _on_Rank1_pressed():
+	if (mon.acts == 0):
+		print("Monster has no action points")
+		return
+	mon.acts = 0
+
 	# Vai ter que gerar os monstros para uma batalha de Rank 1,
 	# e começar a representação visual.
 	generate_enemies(1, 5)
@@ -34,14 +41,10 @@ func process_battle(enemy_num):
 	# respective animation should be played, hence why all
 	# commands are separated on their on functions.
 	
-	var mon1
+	var mon1 = mon
 	var mon2
 	
 	var battle_num = 1
-	
-	for monster in global.mon_depo:
-		if monster.idn == selected_id:
-			mon1 = monster
 	
 	mon2 = comp_depo[0]
 	comp_depo.pop_front()
@@ -80,11 +83,12 @@ func process_battle(enemy_num):
 			pass
 		elif (mon2_turn >= 100):
 			pass
-			
+
+
 func process_action(mon1, mon2):
 	#fazer baseado no WIS do monstro, por ora apenas gera um ataque normal
 	return regular_attack(mon1, mon2)
-	
+
+
 func regular_attack(mon1, mon2):
 	return abs(ceil(mon1.stats[0] * 0.85))
-	

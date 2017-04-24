@@ -1,15 +1,22 @@
 extends Control
 
-var selected_id = -1
+var mon = null
 var comp_depo = []
 
-func _ready():
-	pass
 
 func select_monster(monster, select_box):
-	get_parent().select_monster(monster, select_box)
+	mon = monster
+#	get_node("MonsterSelect/BattleDisplay").show()
+#	get_node("MonsterSelect/BattleDisplay").display(mon)
+	get_node("MonsterSelect/Proceed2").set_disabled(false)
+
 
 func _on_Rank1_pressed():
+	if (mon.acts == 0):
+		print("Monster has no action points")
+		return
+	mon.acts = 0
+
 	# Vai ter que gerar os monstros para uma batalha de Rank 1,
 	# e começar a representação visual.
 	generate_racers(1, 5)
@@ -19,25 +26,23 @@ func _on_Rank1_pressed():
 	else:
 		print ("Ya lost boi")
 	comp_depo.clear()
-	
+
+
 func generate_racers(rank, number):
 	# Placeholder, deve depender do rank para gerar os monstros.
 	for num in range (0, number):
 		g_monster.monster_generate(comp_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 1)
 
+
 func process_race(distance):
 	# O monstro será representado por [monstro, distancia, contador_boost]
 	
-	var player_mon
+	var player_mon = [mon, 0, 0]
 	var comp_mons = []
-	
-	for monster in global.mon_depo:
-		if monster.idn == selected_id:
-			player_mon = [monster, 0, 0]
-			
+
 	for monster in comp_depo:
 		comp_mons.append([monster, 0, 0])
-	
+
 	while (true):
 		# Checa condição de vitória
 		if (player_mon[1] >= distance):
