@@ -27,7 +27,7 @@ func process_battle(enemy_num):
 	# Getting player monster
 	var mon1 = mon
 	
-	# The monster's battle state: monster, HP, status conditions
+	# The monster's battle state: monster, HP, status conditions ([[effect, quantity, turns_left], [status, quantity, turns_left]...]
 	mon1_battle_state = [mon1, mon1.stats[2] * 3, []]
 	mon2_battle_state = [comp_depo[0], comp_depo[0].stats[2] * 3, []]
 
@@ -105,9 +105,11 @@ func check_win_lose(wl, enemy_num):
 	return false
 			
 func process_action(attacker_bs, reciever_bs):
-	#fazer baseado no WIS do monstro, por ora apenas gera um ataque normal
+	#decide o uso de skills ou não baseado em sua WIS
 	randomize()
 	if (attacker_bs[0].stats[4] / 300 < randi()):
+		#test
+		print("Usei skill")
 		use_skill(attacker_bs, reciever_bs)
 	else:
 		regular_attack(attacker_bs, reciever_bs)
@@ -126,25 +128,112 @@ func use_skill(attacker_bs, reciever_bs):
 	
 	var persona_types = personality_db.get_types(persona_id)
 	var persona_formulas = personality_db.get_formulas(persona_id)
+	var persona_counter = 0
 	
 	# Check for type of damage
 	for type in persona_types:
+		var formula_result
+		if (type != "None"):
+			formula_result = interpret_formula(persona_formulas[persona_counter], attacker_bs)
 		
 		# Damage types
 		if (type == "Damage"):
-			pass
+			reciever_bs[1] -= formula_result
 		elif (type == "Heal"):
-			pass
+			attacker_bs[1] += formula_result
 		elif (type ==  "Self-Damage"):
-			pass
+			attacker_bs[1] -= formula_result
 		
 		# Effects
 		elif (type == "HealPerTurn"):
-			pass
+			attacker_bs[2].append(["HealPerTurn", formula_result, 5])
 		elif (type == "Critial"):
-			pass
+			# Tirar o efeito "Damage" dos que são critical, e fazer
+			# com que a formula seja a chance de ativar o crit, se
+			# não ativar o crit da dano normal, se ativar da 1.3x Atk
+			regular_attack(attacker_bs, reciever_bs)
 		elif (type == "Paralysis"):
-			pass
+			# Tem que colocar a chance de paralisar aqui
+			reciever_bs[2].append(["Paralysis", 0.25, 5])
+		
+		persona_counter += 1
+
+func interpret_formula(formula, attacker_bs):
+	# Formulas serão compostos apenas de operadores,
+	# stats e numeros, sem parenteses, para facilitar
+	# as operações.
+	var expr_list = []
+	var beg = 0
+	var end = 0
+	
+	# Transform string expression into numbers and operators
+	for char in formula:
+		# Tem que transformar a expressão atual em algo real
+		if (char == ' '):
+			if (formula[beg].is_valid_float()):
+				# Is an integer, transform it into one
+				expr_list.append(formula.substr(beg, end-beg).to_float())
+			else:
+				# Is a String, check if operator stat,
+				# then transform it into the correct one
+				if (formula[beg].is_valid_identifier()):
+					# Is a stat name, transform into stat number
+					expr_list.append(attacker_bs[0].stats[string_to_stat_number(formula.substr(beg, end-beg))])
+				else:
+					# is an operator
+					expr_list.append(formula.substr(beg, end-beg))
+			
+			end += 1
+			beg = end
+		# Continua adicionando a expressão atual até
+		# encontrar o próximo espaço
+		else:
+			end += 1
+	
+	#test
+	print (formula)
+	print (expr_list)
+	
+	# Operate on formula
+	var result
+	while expr_list.size() > 1:
+	# Possivelmente implementar outras operações
+		if (expr_list[1] == "+"):
+			result = expr_list[0] + expr_list[2]
+			expr_list.pop_front()
+			expr_list.pop_front()
+			expr_list.pop_front()
+			expr_list.push_front(result)
+		elif (expr_list[1] == "*"):
+			result = expr_list[0] * expr_list[2]
+			expr_list.pop_front()
+			expr_list.pop_front()
+			expr_list.pop_front()
+			expr_list.push_front(result)
+		else:
+			print("Erro de formato!")
+	
+	return expr_list[0]
+	
+func string_to_stat_number(stat):
+	if (stat == "STR"):
+		return 0
+	if (stat == "AGI"):
+		return 1
+	if (stat == "VIT"):
+		return 2
+	if (stat == "TEN"):
+		return 3
+	if (stat == "WIS"):
+		return 4
+	if (stat == "FER"):
+		return 5
+
+func deal_effect():
+	# Utilizando-se do parametro "quantity" de como o effect é
+	# guardado no battle_state, podemos evitar de calcular
+	# repetidas vezes o valor do efeito no monstro.
+	pass
 
 ####### BUTTON FUNCIONALITY #######
 

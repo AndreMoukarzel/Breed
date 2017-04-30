@@ -13,6 +13,8 @@ const TYPES = 2
 # function. To identify the effect (as in, to identify if it is
 # an effect to begin with), then, we will need to use the regular
 # expression "^Effect".
+# NOTA IMPORTANTE: cada formula deve acabar com um whitespace, para
+# que o interpretador consiga interpreta-la corretamente.
 const FORMULAS = 3
 
 var personality_database = [
@@ -20,25 +22,25 @@ var personality_database = [
 		NAME : "Calm",
 		SKILL : "Regen",
 		TYPES : ["Damage", "HealPerTurn"],
-		FORMULAS: ["0.1 * VIT", "0.05 * VIT"]
+		FORMULAS: ["0.1 * VIT ", "0.05 * VIT "]
 	},
 	{ # ID = 1
 		NAME : "Hot-Headed",
 		SKILL : "Bash",
 		TYPES : ["Damage", "None"],
-		FORMULAS: ["1.15 * STR"]
+		FORMULAS: ["1.15 * STR "]
 	},
 	{ # ID = 2
 		NAME : "Stategist",
 		SKILL : "Fatal Blow",
 		TYPES : ["Damage", "Critical"],
-		FORMULAS: ["0.65 * STR", "0.1 * WIS"]
+		FORMULAS: ["0.65 * STR ", "0.1 * WIS "]
 	},
 	{ # ID = 3
 		NAME : "Awkward",
 		SKILL : "Shocking Attack",
 		TYPES : ["Damage", "Paralysis"],
-		FORMULAS: ["0.75 * STR", "0.1 * WIS"]
+		FORMULAS: ["0.75 * STR ", "0.1 * WIS "]
 	},
 	{ # ID = 4
 		NAME : "Gorked",
