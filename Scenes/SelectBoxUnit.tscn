@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Scripts/SelectBoxUnit.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GUI/SelectUnitNormal.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/GUI/SelectUnitHover.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/Creatures/male.tex" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/Creatures/female.tex" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/Creatures/hema.tex" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ { "frames":[ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ], "loop":true, "name":"default", "speed":5.0 } ]
 
 [node name="SelectBoxUnit" type="Control"]
 
@@ -105,6 +112,14 @@ align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Gender" type="AnimatedSprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 100, 100 )
+transform/scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+animation = "default"
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 
