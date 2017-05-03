@@ -55,13 +55,13 @@ func process_battle(enemy_num):
 					if(check_win_lose("win", enemy_num)):
 						return true
 					# Reset monster 1 turn counter
-					mon1_turn = 0
+				mon1_turn = 0
 				# Turno do monstro 2 em seguida
 				if (deal_effect(mon2_battle_state) == 0):
 					process_action(mon2_battle_state, mon1_battle_state)
 					if(check_win_lose("lose", enemy_num)):
 						return false
-					mon2_turn = 0
+				mon2_turn = 0
 				
 			else:
 				# Turno do monster 2 primeiro
@@ -69,13 +69,13 @@ func process_battle(enemy_num):
 					process_action(mon2_battle_state, mon1_battle_state)
 					if(check_win_lose("lose", enemy_num)):
 						return false
-					mon2_turn = 0
+				mon2_turn = 0
 				# Turno do monstro 1 em seguida
 				if (deal_effect(mon1_battle_state) == 0):
 					process_action(mon1_battle_state, mon2_battle_state)
 					if(check_win_lose("win", enemy_num)):
 						return true
-					mon1_turn = 0
+				mon1_turn = 0
 		
 		elif (mon1_turn >= 100):
 			# Turno do monstro 1
@@ -83,14 +83,14 @@ func process_battle(enemy_num):
 				process_action(mon1_battle_state, mon2_battle_state)
 				if(check_win_lose("win", enemy_num)):
 					return true
-				mon1_turn = 0
+			mon1_turn = 0
 		elif (mon2_turn >= 100):
 			# Turno do monster 2
 			if (deal_effect(mon2_battle_state) == 0):
 				process_action(mon2_battle_state, mon1_battle_state)
 				if(check_win_lose("lose", enemy_num)):
 					return false
-				mon2_turn = 0
+			mon2_turn = 0
 
 func check_win_lose(wl, enemy_num):
 	if (wl == "win"):
@@ -115,7 +115,7 @@ func check_win_lose(wl, enemy_num):
 func process_action(attacker_bs, reciever_bs):
 	#decide o uso de skills ou não baseado em sua WIS
 	randomize()
-	if (attacker_bs[0].stats[4] / 300 < randi()):
+	if (attacker_bs[0].stats[4] / 300 >= randf()):
 		use_skill(attacker_bs, reciever_bs)
 	else:
 		regular_attack(attacker_bs, reciever_bs)
@@ -130,7 +130,7 @@ func use_skill(attacker_bs, reciever_bs):
 	# e aplicamos seus efeitos.
 	var persona_id
 	
-	persona_id = floor(rand_range(0, attacker_bs[0].personas.size() + 1))
+	persona_id = attacker_bs[0].personas[floor(rand_range(0, attacker_bs[0].personas.size()))]
 	
 	var persona_types = personality_db.get_types(persona_id)
 	var persona_formulas = personality_db.get_formulas(persona_id)
@@ -141,6 +141,7 @@ func use_skill(attacker_bs, reciever_bs):
 	
 	# Check for type of damage
 	for type in persona_types:
+		
 		var formula_result
 		if (type != "None"):
 			formula_result = interpret_formula(persona_formulas[persona_counter], attacker_bs)
@@ -155,13 +156,14 @@ func use_skill(attacker_bs, reciever_bs):
 		
 		# Effects
 		elif (type == "HealPerTurn"):
+			check_repeat_skill(attacker_bs, type)
 			attacker_bs[2].append(["HealPerTurn", formula_result, 5])
 		elif (type == "Critial"):
 			# Tirar o efeito "Damage" dos que são critical, e fazer
 			# com que a formula seja a chance de ativar o crit, se
 			# não ativar o crit da dano normal, se ativar da 1.3x Atk
 			randomize()
-			if (formula_result/100 <= randi()):
+			if (formula_result/100 >= randf()):
 				#test
 				print (str("Critical hit! Chance to get was ", formula_result/100))
 				#sucess
@@ -169,12 +171,31 @@ func use_skill(attacker_bs, reciever_bs):
 			else:
 				regular_attack(attacker_bs, reciever_bs)
 		elif (type == "Paralysis"):
-			# Tem que colocar a chance de paralisar aqui
-			#test
-			print ("O alvo foi paralisado!")
-			reciever_bs[2].append(["Paralysis", 0.25, 5])
+			if (check_repeat_skill(reciever_bs, type)):
+				#test
+				print("Skill repetida, esquece ela!")
+				continue
+			randomize()
+			if (formula_result/100 >= randf()):
+				#test
+				print ("O alvo foi paralisado!")
+				reciever_bs[2].append(["Paralysis", 0.25, 5])
 		
 		persona_counter += 1
+
+func check_repeat_skill(target_bs, type):
+	if (type == "HealPerTurn"):
+		for effect in target_bs[2]:
+			if (effect[0] == type):
+				target_bs[2].remove(target_bs[2].find(effect))
+		return false
+		
+	# Procedimento padrão: se tiver um repetido, confirma a repetição
+	# e não utiliza uma skill do mesmo tipo.
+	
+	for effect in target_bs[2]:
+		if (effect[0] == type):
+			return true
 
 func interpret_formula(formula, attacker_bs):
 	# Formulas serão compostos apenas de operadores,
@@ -272,7 +293,7 @@ func deal_effect(reciever_bs):
 			#test
 			print ("Check paralysis!")
 			randomize()
-			if (effect[1] <= randi()):
+			if (effect[1] >= randf()):
 				#test
 				print ("It's fully paralysed!")
 				return_value = 1
@@ -301,6 +322,7 @@ func _on_Rank1_pressed():
 	if (process_battle(2)):
 		print ("Total victory!")
 		get_node("RankSelect/Rank2").show()
+		global.quesha += 500
 	else:
 		print ("Ya lost boi")
 	comp_depo.clear()

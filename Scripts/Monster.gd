@@ -204,7 +204,8 @@ func monster_generate(deposit, species, color, apendices, gradations, level):
 	
 	# Defining personality
 	# Temporary, there will be inheritance
-	personas.append(floor(rand_range(0, 4)))
+	#personas.append(floor(rand_range(0, 4)))
+	personas.append(3)
 
 	monster = Monster.new(name, randi() % 2, str(race), col, [], stats, grad, personas)
 	for lv in range (1, level):
