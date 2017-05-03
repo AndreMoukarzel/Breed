@@ -21,7 +21,7 @@ var personality_database = [
 	{ # ID = 0
 		NAME : "Calm",
 		SKILL : "Regen",
-		TYPES : ["Damage", "HealPerTurn"],
+		TYPES : ["Heal", "HealPerTurn"],
 		FORMULAS: ["0.1 * VIT ", "0.05 * VIT "]
 	},
 	{ # ID = 1
@@ -33,8 +33,8 @@ var personality_database = [
 	{ # ID = 2
 		NAME : "Stategist",
 		SKILL : "Fatal Blow",
-		TYPES : ["Damage", "Critical"],
-		FORMULAS: ["0.65 * STR ", "0.1 * WIS "]
+		TYPES : ["Critical"],
+		FORMULAS: ["0.1 * WIS "]
 	},
 	{ # ID = 3
 		NAME : "Awkward",
