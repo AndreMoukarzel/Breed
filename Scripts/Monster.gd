@@ -146,12 +146,13 @@ func prepare(id, color):
 	set_modulate(color)
 
 # Generates monster's sprite. More information in monster_generate() documentation
-func monster_sprite(parent, id, color, pos, scale):
+func monster_sprite(parent, id, color, pos, scale, behind):
 	var creature = creature_scn.instance()
 
 	creature.prepare(id, color)
 	creature.set_pos(pos)
 	creature.set_scale(scale)
+	creature.set_draw_behind_parent(behind)
 
 	parent.add_child(creature)
 
