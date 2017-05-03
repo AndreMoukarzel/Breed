@@ -17,6 +17,14 @@ func set_info(monster):
 
 	get_node("Acts").set_text(str(mon.acts))
 	get_node("Acts").show()
+	
+	if (mon.gender == 0):
+		get_node("Gender").set_frame(0)
+	elif (mon.gender == 1):
+		get_node("Gender").set_frame(1)
+	else:
+		get_node("Gender").set_frame(2)
+	get_node("Gender").show()
 
 
 func _on_Button_pressed():
