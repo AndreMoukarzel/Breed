@@ -110,7 +110,7 @@ func _on_Breed_pressed():
 	Sbox2.clear_box()
 
 	var script = load("res://Scripts/Breeding.gd").new()
-	script.breed(m1, m2)
+	script.breed(m1, m2, self)
 
 	set_breed_info(mon1, mon2)
 
