@@ -160,7 +160,7 @@ func monster_sprite(parent, id, color, pos, scale, behind):
 # To randomize SPECIES; the string must be an invalid species' name
 # To randomize COLOR; color must be Color(-1, -1, -1)
 # GRADATIONS must be in order [STR, AGI, VIT, TEN, WIS, FER]; 0-6 = F-S
-func monster_generate(deposit, species, color, apendices, gradations, level):
+func monster_generate(deposit, species, color, apendices, gradations, personas, level):
 	var race = species
 	var id
 	var col = color
@@ -168,7 +168,6 @@ func monster_generate(deposit, species, color, apendices, gradations, level):
 	var monster
 	var grad = []
 	var stats = []
-	var personas = []
 
 	randomize()
 
@@ -202,11 +201,6 @@ func monster_generate(deposit, species, color, apendices, gradations, level):
 	
 	# Defining stats
 	stats = [5, 5, 5, 5, 5, 5]
-	
-	# Defining personality
-	# Temporary, there will be inheritance
-	#personas.append(floor(rand_range(0, 4)))
-	personas.append(3)
 
 	monster = Monster.new(name, randi() % 2, str(race), col, [], stats, grad, personas)
 	for lv in range (1, level):

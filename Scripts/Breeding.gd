@@ -54,8 +54,9 @@ func breed( m1, m2 ):
 			color = Color((c1.r + c2.r)/2, (c1.g + c2.g)/2, (c1.b + c2.b)/2)
 	
 		var grads = randomize_grads(m1, m2)
-	
-		g_monster.monster_generate(global.mon_depo, species, color, [], grads, 1)
+		var personas = randomize_personas(m1, m2)
+
+		g_monster.monster_generate(global.mon_depo, species, color, [], grads, personas, 1)
 
 		# Sets incest count
 		var inc = floor(max(m1.incest_count, m2.incest_count)) + check_incest(m1, m2)
@@ -63,6 +64,7 @@ func breed( m1, m2 ):
 
 		new_mon.incest_count = inc
 		if (inc >= 4): # 2much incest PUNISHMENT
+			new_mon.personas.clear()
 			new_mon.personas.append(4)
 	else:
 		m1.bonus_preg += 5
@@ -120,6 +122,34 @@ func randomize_grads(mon1, mon2):
 
 			grad.append(grd)
 	return grad
+
+
+func randomize_personas(mon1, mon2):
+	var chance = 10
+	var all_personas = []
+
+	randomize()
+	for i in range(3):
+		var persona
+
+		if (all_personas.size() >= 3):
+			break
+
+		if (mon1.personas.size() > i):
+			if (randi() % 100 < chance):
+				persona = mon1.personas[i]
+				if (!all_personas.has(persona)):
+					all_personas.append(persona)
+		if (mon2.personas.size() > i):
+			if (randi() % 100 < chance):
+				persona = mon2.personas[i]
+				if (!all_personas.has(persona)):
+					all_personas.append(persona)
+
+	if (all_personas.empty()):
+		all_personas.append(randi() % 4)
+
+	return all_personas
 
 
 func xp_gain(mon1, mon2):
