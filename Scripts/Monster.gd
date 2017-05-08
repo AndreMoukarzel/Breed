@@ -163,7 +163,7 @@ func monster_sprite(parent, id, color, pos, scale, behind):
 # To randomize SPECIES; the string must be an invalid species' name
 # To randomize COLOR; color must be Color(-1, -1, -1)
 # GRADATIONS must be in order [STR, AGI, VIT, TEN, WIS, FER]; 0-6 = F-S
-func monster_generate(deposit, species, color, apendices, gradations, level):
+func monster_generate(deposit, species, color, apendices, gradations, personas, level):
 	var race = species
 	var id
 	var col = color
@@ -171,7 +171,6 @@ func monster_generate(deposit, species, color, apendices, gradations, level):
 	var monster
 	var grad = []
 	var stats = []
-	var personas = []
 
 	randomize()
 
@@ -207,23 +206,22 @@ func monster_generate(deposit, species, color, apendices, gradations, level):
 	stats = [5, 5, 5, 5, 5, 5]
 	
 	# Defining personality
-	# We will recieve names, a number, or nothing.
+	# We will recieve a list of numbers, a number, or nothing.
 	# If we recieve a number, we get a random persona in the interval (0, n) exclusive.
 	# We have to put a list of IDs in the personas vector.
-	var persona_ids
+	var persona_ids = []
 	
 	if (typeof(personas) != TYPE_NIL):
 		if (typeof(personas) == TYPE_ARRAY):
 			for persona in personas:
-				persona_ids.append(personality_db.get_id(persona))
+				persona_ids.append(persona)
 		elif (typeof(personas) == TYPE_INT):
 			persona_ids.append(randi() % personas)
 	else:
 		# Gera alguma personalidade aleatória
 		persona_ids.append(personality_db.get_random_persona())
-		
-	
-	monster = Monster.new(name, randi() % 2, str(race), col, [], stats, grad, personas)
+
+	monster = Monster.new(name, randi() % 2, str(race), col, [], stats, grad, persona_ids)
 	for lv in range (1, level):
 		g_monster.level_up(monster)
 

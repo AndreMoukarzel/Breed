@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Scripts/StatusDisplayer.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/GUI/SelectUnitNormal.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/GUI/display.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=3]
 
 [node name="StatusDisplayer" type="Control"]
@@ -29,19 +29,32 @@ margin/bottom = 40.0
 texture = ExtResource( 2 )
 stretch_mode = 0
 
-[node name="STR" type="Control" parent="."]
+[node name="Stats" type="VBoxContainer" parent="."]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 1
+margin/left = 250.0
+margin/top = 0.0
+margin/right = 380.0
+margin/bottom = 233.0
+alignment = 0
+
+[node name="STR" type="Control" parent="Stats"]
 
 editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 10.0
-margin/top = 10.0
-margin/right = 50.0
-margin/bottom = 50.0
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 17.0
+margin/right = 130.0
+margin/bottom = 17.0
 
-[node name="Gradation" type="Label" parent="STR"]
+[node name="Gradation" type="Label" parent="Stats/STR"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -57,7 +70,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Value" type="Label" parent="STR"]
+[node name="Value" type="Label" parent="Stats/STR"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -73,19 +86,19 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="AGI" type="Control" parent="."]
+[node name="AGI" type="Control" parent="Stats"]
 
 editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 10.0
-margin/top = 60.0
-margin/right = 50.0
-margin/bottom = 100.0
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 56.0
+margin/right = 130.0
+margin/bottom = 56.0
 
-[node name="Gradation" type="Label" parent="AGI"]
+[node name="Gradation" type="Label" parent="Stats/AGI"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -101,7 +114,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Value" type="Label" parent="AGI"]
+[node name="Value" type="Label" parent="Stats/AGI"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -117,19 +130,19 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="VIT" type="Control" parent="."]
+[node name="VIT" type="Control" parent="Stats"]
 
 editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 10.0
-margin/top = 110.0
-margin/right = 50.0
-margin/bottom = 150.0
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 95.0
+margin/right = 130.0
+margin/bottom = 95.0
 
-[node name="Gradation" type="Label" parent="VIT"]
+[node name="Gradation" type="Label" parent="Stats/VIT"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -145,7 +158,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Value" type="Label" parent="VIT"]
+[node name="Value" type="Label" parent="Stats/VIT"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -161,19 +174,19 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="TEN" type="Control" parent="."]
+[node name="TEN" type="Control" parent="Stats"]
 
 editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 120.0
-margin/top = 10.0
-margin/right = 160.0
-margin/bottom = 50.0
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 134.0
+margin/right = 130.0
+margin/bottom = 134.0
 
-[node name="Gradation" type="Label" parent="TEN"]
+[node name="Gradation" type="Label" parent="Stats/TEN"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -189,7 +202,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Value" type="Label" parent="TEN"]
+[node name="Value" type="Label" parent="Stats/TEN"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -205,19 +218,19 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="WIS" type="Control" parent="."]
+[node name="WIS" type="Control" parent="Stats"]
 
 editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 120.0
-margin/top = 60.0
-margin/right = 160.0
-margin/bottom = 100.0
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 173.0
+margin/right = 130.0
+margin/bottom = 173.0
 
-[node name="Gradation" type="Label" parent="WIS"]
+[node name="Gradation" type="Label" parent="Stats/WIS"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -233,7 +246,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Value" type="Label" parent="WIS"]
+[node name="Value" type="Label" parent="Stats/WIS"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -249,19 +262,19 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="FER" type="Control" parent="."]
+[node name="FER" type="Control" parent="Stats"]
 
 editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 120.0
-margin/top = 110.0
-margin/right = 160.0
-margin/bottom = 150.0
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 214.0
+margin/right = 130.0
+margin/bottom = 214.0
 
-[node name="Gradation" type="Label" parent="FER"]
+[node name="Gradation" type="Label" parent="Stats/FER"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -277,7 +290,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Value" type="Label" parent="FER"]
+[node name="Value" type="Label" parent="Stats/FER"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
