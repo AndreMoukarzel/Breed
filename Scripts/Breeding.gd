@@ -1,6 +1,8 @@
 
 extends Node
 
+const PDB = preload("PersonalityDatabase.gd")
+onready var personality_db = PDB.new()
 
 func breed( m1, m2 ):
 	# Game State Handling
@@ -28,6 +30,14 @@ func breed( m1, m2 ):
 		chance = 0
 	else:
 		chance = floor(log(m1.stats[5] + m2.stats[5]/2) * 6) + m1.bonus_preg
+		
+	# Apply bonus chance from fertility personality
+	for persona in m1.personas:
+		if personality_db.get_types(persona) == "BF":
+			chance = floor(chance * 1.1)
+	for persona in m2.personas:
+		if personality_db.get_types(persona) == "BF":
+			chance = floor(chance * 1.1)
 
 	randomize()
 	if (randi() % 100 <= chance): # Will have offspring

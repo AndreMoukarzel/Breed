@@ -3,6 +3,9 @@ extends Sprite
 
 var creature_scn = preload("res://Scenes/Monster.tscn")
 
+const PDB = preload("PersonalityDatabase.gd")
+onready var personality_db = PDB.new()
+
 class Monster:
 	var idn
 	var parent1_idn = null
@@ -204,10 +207,22 @@ func monster_generate(deposit, species, color, apendices, gradations, level):
 	stats = [5, 5, 5, 5, 5, 5]
 	
 	# Defining personality
-	# Temporary, there will be inheritance
-	#personas.append(floor(rand_range(0, 4)))
-	personas.append(3)
-
+	# We will recieve names, a number, or nothing.
+	# If we recieve a number, we get a random persona in the interval (0, n) exclusive.
+	# We have to put a list of IDs in the personas vector.
+	var persona_ids
+	
+	if (typeof(personas) != TYPE_NIL):
+		if (typeof(personas) == TYPE_ARRAY):
+			for persona in personas:
+				persona_ids.append(personality_db.get_id(persona))
+		elif (typeof(personas) == TYPE_INT):
+			persona_ids.append(randi() % personas)
+	else:
+		# Gera alguma personalidade aleatória
+		persona_ids.append(personality_db.get_random_persona())
+		
+	
 	monster = Monster.new(name, randi() % 2, str(race), col, [], stats, grad, personas)
 	for lv in range (1, level):
 		g_monster.level_up(monster)
