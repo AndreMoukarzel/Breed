@@ -8,8 +8,8 @@ func _ready():
 	get_node("HUD/Energy/EnergyLabel").set_text(str(global.energy))
 
 	#test
-	g_monster.monster_generate(global.mon_depo, "Mafagafo", Color(-1, -1, -1), [], [6, 6, 6, 6, 6, 6], [0], 10)
-	g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], [0], 10)
+	g_monster.monster_generate(global.mon_depo, "Mafagafo", Color(-1, -1, -1), [], [6, 6, 6, 6, 6, 6], [0, 1], 10)
+	g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], [0, 13], 10)
 
 
 ####### BUTTON FUNCIONALITY #######
