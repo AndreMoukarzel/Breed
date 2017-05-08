@@ -1,7 +1,7 @@
 
 extends Node
 
-func breed( m1, m2 ):
+func breed( m1, m2, barn ):
 	# Game State Handling
 	var arbonus = 1
 	for persona in m1.personas:
@@ -81,6 +81,11 @@ func breed( m1, m2 ):
 		if (inc >= 4): # 2much incest PUNISHMENT
 			new_mon.personas.clear()
 			new_mon.personas.append(4)
+
+		var offspring_display_scn = load("res://Scenes/DisplayOffspring.tscn")
+		var display = offspring_display_scn.instance()
+		barn.add_child(display)
+		display.display(new_mon)
 	else:
 		m1.bonus_preg += 5
 		m2.bonus_preg += 5
