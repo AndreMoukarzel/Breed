@@ -1,12 +1,17 @@
 
 extends Node
 
-const PDB = preload("PersonalityDatabase.gd")
-onready var personality_db = PDB.new()
-
 func breed( m1, m2 ):
 	# Game State Handling
-	var cost = 2000 - floor((m1.stats[2] + m2.stats[2])/2 * 130)
+	var arbonus = 1
+	for persona in m1.personas:
+		if (personality_db.get_types(persona)[0] == "RAC"):
+			arbonus -= 0.1
+	for persona in m2.personas:
+		if (personality_db.get_types(persona)[0] == "RAC"):
+			arbonus -= 0.1
+			
+	var cost = 2000 - floor((m1.stats[2] + m2.stats[2])/2 * 130 * arbonus)
 
 	if (global.energy - cost < 0):
 		# Give notice to player
@@ -33,10 +38,10 @@ func breed( m1, m2 ):
 		
 	# Apply bonus chance from fertility personality
 	for persona in m1.personas:
-		if personality_db.get_types(persona) == "BF":
+		if personality_db.get_types(persona)[0] == "BF":
 			chance = floor(chance * 1.1)
 	for persona in m2.personas:
-		if personality_db.get_types(persona) == "BF":
+		if personality_db.get_types(persona)[0] == "BF":
 			chance = floor(chance * 1.1)
 
 	randomize()
@@ -164,11 +169,27 @@ func randomize_personas(mon1, mon2):
 
 func xp_gain(mon1, mon2):
 # STR, AGI, VIT, TEN, WIS, FER
-	var m1xp = ceil(mon1.stats[1] * 0.8)
-	var m2xp = ceil(mon2.stats[1] * 0.8)
+	var m1bee = 1
+	var m2bee = 1
+	var m1bge = 1
+	var m2bge = 1
+	
+	for persona in mon1.personas:
+		if (personality_db.get_types(persona)[0] == "BEE"):
+			m1bee += 0.1
+		if (personality_db.get_types(persona)[0] == "BGE"):
+			m1bge += 0.1
+	for persona in mon2.personas:
+		if (personality_db.get_types(persona)[0] == "BEE"):
+			m2bee += 0.1
+		if (personality_db.get_types(persona)[0] == "BGE"):
+			m2bge += 0.1
 
-	mon1.xp[0] += mon1.stats[4] * mon2.level + m2xp
-	mon2.xp[0] += mon2.stats[4] * mon1.level + m1xp
+	var m1xp = ceil(mon1.stats[1] * 0.8 * m1bge)
+	var m2xp = ceil(mon2.stats[1] * 0.8 * m2bge)
+
+	mon1.xp[0] += ceil((mon1.stats[4] * mon2.level + m2xp) * m1bee)
+	mon2.xp[0] += ceil((mon2.stats[4] * mon1.level + m1xp) * m2bee)
 
 	while (mon1.xp[0] >= mon1.xp[1]):
 		g_monster.level_up(mon1)

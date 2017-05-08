@@ -9,7 +9,7 @@ func _ready():
 
 	#test
 	g_monster.monster_generate(global.mon_depo, "Mafagafo", Color(-1, -1, -1), [], [6, 6, 6, 6, 6, 6], [0], 10)
-	g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], [0], 10)
+	g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], [8], 10)
 
 
 ####### BUTTON FUNCIONALITY #######

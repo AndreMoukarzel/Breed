@@ -1,9 +1,6 @@
 
 extends Control
 
-const PDB = preload("PersonalityDatabase.gd")
-onready var personality_db = PDB.new()
-
 var mon = null
 var comp_depo = []
 
@@ -15,7 +12,7 @@ var mon2_battle_state
 func generate_enemies(rank, number):
 	# Placeholder, deve depender do rank para gerar os monstros.
 	for num in range (0, number):
-		g_monster.monster_generate(comp_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 8)
+		g_monster.monster_generate(comp_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], 9, 8)
 
 
 func process_battle(enemy_num):

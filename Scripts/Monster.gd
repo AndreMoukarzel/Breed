@@ -40,7 +40,13 @@ class Monster:
 		self.gradations = gradations
 		self.personas = personas
 		self.idn = global.get_id()
-		self.catal[1] = 1 + ceil(log(self.stats[3]) * 0.4)
+		
+		var bccbonus = 1
+		for persona in self.personas:
+			if (personality_db.get_types(persona)[0] == "BCC"):
+				bccbonus += 0.1
+				
+		self.catal[1] = 1 + ceil(log(self.stats[3]) * 0.4 * bccbonus)
 		self.xp[1] = floor((5 * pow(self.level, 2))/3)
 
 
@@ -135,7 +141,14 @@ func level_up (monster):
 		monster.xp[0] -= monster.xp[1]
 
 		# Updates caps
-		monster.catal[1] = 1 + ceil(log(monster.stats[3]) * 0.4)
+		
+		# Identify catalyst capacity bonus from personality
+		var bccbonus = 1
+		for persona in monster.personas:
+			if (personality_db.get_types(persona)[0] == "BCC"):
+				bccbonus += 0.1
+				
+		monster.catal[1] = 1 + ceil(log(monster.stats[3]) * 0.4 * bccbonus)
 		monster.level += 1
 		monster.xp[1] = floor((5 * pow(monster.level, 2))/3)
 	else:

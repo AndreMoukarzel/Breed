@@ -143,7 +143,13 @@ func handle_days(val):
 
 		var act = log(mon.stats[2])
 		randomize()
-		mon.acts = floor(rand_range(act - act/5, act + act/5))
+		
+		var apbonus = 1
+		for persona in mon.personas:
+			if (personality_db.get_types(persona)[0] == "BA"):
+				apbonus += 0.3
+				
+		mon.acts = floor(rand_range(act - act/5, act + act/5) * apbonus)
 		
 func save_game():
 	pass

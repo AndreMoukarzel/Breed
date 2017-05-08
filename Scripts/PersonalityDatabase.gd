@@ -80,8 +80,8 @@ var personality_database = [
 	},
 	{ # ID = 9
 		NAME : "Glutton",
-		SKILL : "Bonus Catalyst Deposit",
-		TYPES : ["BCD"],
+		SKILL : "Bonus Catalyst Capacity",
+		TYPES : ["BCC"],
 		FORMULAS: ["0 * WIS "]
 	},
 	{ # ID = 10
@@ -99,7 +99,7 @@ var personality_database = [
 	{ # ID = 12
 		NAME : "Perceptive",
 		SKILL : "Bonus Earned Experience",
-		TYPES : ["BAE"],
+		TYPES : ["BEE"],
 		FORMULAS: ["0 * WIS "]
 	},
 	{ # ID = 13

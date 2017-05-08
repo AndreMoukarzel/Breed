@@ -252,9 +252,17 @@ func set_breed_info(mon1, mon2):
 	if ((m1.gender == 0 and m2.gender == 0) or (m1.gender == 1 and m2.gender == 1)):
 		chance = 0
 	else:
-		chance = floor(log(m1.stats[5] + m2.stats[5]/2) * 6)
+		chance = floor(log((m1.stats[5] + m2.stats[5])/2) * 6)
 		if (m1.last_breed == m2 or m2.last_breed == m1):
 			chance += m1.bonus_preg
+	
+	# Apply bonus chance from fertility personality
+	for persona in m1.personas:
+		if personality_db.get_types(persona)[0] == "BF":
+			chance = floor(chance * 1.1)
+	for persona in m2.personas:
+		if personality_db.get_types(persona)[0] == "BF":
+			chance = floor(chance * 1.1)
 
 	# Action cost
 	var cost = 2000 - floor((m1.stats[2] + m2.stats[2])/2 * 130)
