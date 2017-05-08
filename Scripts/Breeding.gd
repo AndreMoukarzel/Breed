@@ -45,7 +45,7 @@ func breed( m1, m2 ):
 			chance = floor(chance * 1.1)
 
 	randomize()
-	if (randi() % 100 <= chance): # Will have offspring
+	if (randi() % 100 < chance): # Will have offspring
 		m1.bonus_preg = 0
 		m2.bonus_preg = 0
 		# Offspring's species
