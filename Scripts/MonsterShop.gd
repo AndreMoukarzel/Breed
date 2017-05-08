@@ -42,6 +42,8 @@ func _on_Buy_pressed():
 				#give visual representation
 				print("Not enough cash, stranger")
 			else:
+				global.quesha -= get_parent().calculate_price(monster)
+				
 				global.mon_depo.append(monster)
 				shop_depo.remove(count)
 				

@@ -5,7 +5,7 @@ const MAX_ENERGY = 3000
 var ID = 0
 var free_ids = []
 
-var quesha = 100
+var quesha = 10000
 
 var year = 0
 var month = 0
