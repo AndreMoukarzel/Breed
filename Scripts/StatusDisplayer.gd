@@ -19,7 +19,9 @@ func gradate( grad ):
 		return "S"
 
 
-func display( monster ):
+func display(monster):
+	display_personas(monster)
+
 	get_node("Stats/STR").get_node("Gradation").set_text(str("STR ", gradate(monster.gradations[0])))
 	get_node("Stats/STR").get_node("Value").set_text(str(monster.stats[0]))
 
@@ -37,6 +39,18 @@ func display( monster ):
 
 	get_node("Stats/FER").get_node("Gradation").set_text(str("FER ", gradate(monster.gradations[5])))
 	get_node("Stats/FER").get_node("Value").set_text(str(monster.stats[5]))
+
+
+func display_personas(mon):
+	var text = ""
+	
+	for per in mon.personas:
+		var name = personality_db.get_name(per)
+		var skill = personality_db.get_skill(per)
+		text = str(text, name, " (", skill, ")\n")
+	
+	get_node("Personalities").clear()
+	get_node("Personalities").add_text(text)
 
 
 func kill():
@@ -57,3 +71,5 @@ func kill():
 
 	get_node("Stats/FER").get_node("Gradation").set_text("")
 	get_node("Stats/FER").get_node("Value").set_text("")
+
+	get_node("Personalities").clear()

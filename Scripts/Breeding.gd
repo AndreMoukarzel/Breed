@@ -34,7 +34,7 @@ func breed( m1, m2 ):
 	if ((m1.gender == 0 and m2.gender == 0) or (m1.gender == 1 and m2.gender == 1)):
 		chance = 0
 	else:
-		chance = floor(log(m1.stats[5] + m2.stats[5]/2) * 6) + m1.bonus_preg
+		chance = floor(log((m1.stats[5] + m2.stats[5])/2) * 6) + m1.bonus_preg
 		
 	# Apply bonus chance from fertility personality
 	for persona in m1.personas:
