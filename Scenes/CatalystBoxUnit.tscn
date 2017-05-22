@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Scripts/CatalystBoxUnit.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GUI/SelectUnitNormal.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/GUI/SelectUnitHover.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=4]
 
 [node name="CatalystBoxUnit" type="Control"]
 
@@ -36,28 +37,35 @@ textures/disabled = ExtResource( 2 )
 
 [node name="Name" type="Label" parent="."]
 
+visibility/visible = false
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 14.0
+margin/left = 20.0
+margin/top = 10.0
+margin/right = 60.0
+margin/bottom = 24.0
+custom_fonts/font = ExtResource( 4 )
+text = "Nome"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="Quantity" type="Label" parent="."]
 
+visibility/visible = false
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 14.0
+margin/left = 120.0
+margin/top = 10.0
+margin/right = 213.0
+margin/bottom = 28.0
+custom_fonts/font = ExtResource( 4 )
+text = "Quantidade"
+align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1

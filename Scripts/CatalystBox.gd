@@ -15,18 +15,11 @@ var box_scale = Vector2(0.75, 0.75)
 
 var mon_index = -1 #The index of the monster 
 var page = 0 # displayed page
-var page_amount = 18
-var max_cols = 6
+var page_amount = 20
+var max_cols = 5
 var max_pages = 0
 
 # Os catalisadores ficam guardados em global.catal_depo
-
-func _ready():
-	var w_size = OS.get_window_size()
-	var bg = get_node("Background")
-
-	bg.set_scale(Vector2(w_size.x/1920, w_size.y/1080))
-
 
 func create(m_id):
 	update_config(m_id)
@@ -36,6 +29,15 @@ func create(m_id):
 func update_config(m_id):
 	# Sizes will be fixed, but we call a script so we can manage
 	# positioning by code.
+	var w_size = OS.get_window_size()
+	var size = box_size * box_scale
+	var bg = get_node("Background")
+	var spacing = w_size.x - (max_cols * size.x)
+	
+	set_pos(Vector2(spacing/2, 40))
+	bg.set_scale(Vector2(w_size.x/1920, w_size.y/1080))
+	bg.set_pos(Vector2(-spacing/2, -40))
+
 	mon_index = m_id
 	max_pages = int(ceil(float(global.catal_depo.size()) / page_amount))
 	
@@ -44,9 +46,13 @@ func update_config(m_id):
 	var Fp = get_node("FowardPage")
 	var Bp = get_node("BackPage")
 	var Pd = get_node("PageDisplay")
+	var R = get_node("Return")
+	
 	Fp.set_pos(Vector2((size.x * max_cols) - Fp.get_size().x - 10, (size.y * page_amount / max_cols) + 10))
 	Bp.set_pos(Vector2(10, (size.y * page_amount / max_cols) + 10))
 	Pd.set_pos(Vector2((size.x * max_cols)/2 - Pd.get_size().x/2, (size.y * page_amount / max_cols) + 10))
+	R.set_pos(Vector2((size.x * max_cols)/2 - R.get_size().x/2, (size.y * page_amount / max_cols) + 50))
+	
 	if (global.catal_depo.size() == 0):
 		Pd.set_text("1/1")
 	else:
@@ -142,3 +148,7 @@ func _on_FowardPage_pressed():
 		get_node("PageDisplay").set_text(str(page + 1, "/", max_pages))
 
 		generate_members(mon_index)
+
+
+func _on_Return_pressed():
+	queue_free()

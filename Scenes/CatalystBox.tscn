@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://Scripts/CatalystBox.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/GUI/arrow.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/GUI/ArrowPressed.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/GUI/ArrowHover.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/GUI/feed0.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/GUI/feed2.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/GUI/feed1.png" type="Texture" id=8]
 
 [node name="CatalystBox" type="Control"]
 
@@ -29,8 +35,6 @@ margin/bottom = 40.0
 texture = ExtResource( 2 )
 stretch_mode = 0
 
-[node name="BoxBackground" type="Sprite" parent="."]
-
 [node name="BackPage" type="TextureButton" parent="."]
 
 focus/ignore_mouse = false
@@ -44,6 +48,11 @@ margin/bottom = 40.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+textures/disabled = ExtResource( 4 )
+params/scale = Vector2( -1, 1 )
 
 [node name="FowardPage" type="TextureButton" parent="."]
 
@@ -58,6 +67,10 @@ margin/bottom = 40.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+textures/disabled = ExtResource( 4 )
 
 [node name="PageDisplay" type="Label" parent="."]
 
@@ -86,6 +99,9 @@ margin/bottom = 40.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+textures/normal = ExtResource( 6 )
+textures/pressed = ExtResource( 7 )
+textures/hover = ExtResource( 8 )
 
 [node name="Yes" type="TextureButton" parent="."]
 
@@ -116,5 +132,7 @@ margin/bottom = 40.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+
+[connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
 
 
