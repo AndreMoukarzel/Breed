@@ -7,6 +7,7 @@ var count = 0
 
 func _ready():
 	print("Town")
+	get_node("Label").set_text(str(global.quesha))
 
 ################ BUTTON FUNCTIONALITY ################
 

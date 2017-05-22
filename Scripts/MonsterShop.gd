@@ -57,6 +57,8 @@ func _on_Buy_pressed():
 			break
 		count += 1
 
+	get_parent().get_node("Label").set_text(str(global.quesha))
+
 func _on_Back_pressed():
 	hide()
 	get_node("Buy").set_disabled(true)
