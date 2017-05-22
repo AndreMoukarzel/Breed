@@ -15,6 +15,8 @@ var red = 0
 var mon1 = -1
 var mon2 = -1
 
+var id1 = null
+var id2 = null
 
 func _ready():
 	get_node("Storage1").set_pos(Vector2(20 - get_node("Storage1/StorageBackground1").get_size().x, 45))
@@ -27,6 +29,21 @@ func update_boxes():
 	
 	Sbox2.update_config(global.mon_depo, PageAmount, BoxColumns)
 	Sbox2.generate_members()
+
+
+func mon_select_update():
+	if (id1 == null or id2 == null):
+		print("wtf man")
+		return
+
+	var pg1 = floor(id1/ Sbox1.page_amount)
+	var pg2 = floor(id2/ Sbox2.page_amount)
+
+	Sbox1.page = int(pg1)
+	Sbox2.page = int(pg2)
+	update_boxes()
+	Sbox1.press_button(str(id1))
+	Sbox2.press_button(str(id2))
 
 
 func select_monster( monster, select_box ):
@@ -76,8 +93,8 @@ func select_monster( monster, select_box ):
 
 func _on_Breed_pressed():
 	# Positions in array mon_depo
-	var id1 = null
-	var id2 = null
+	id1 = null
+	id2 = null
 	# Actual monster class instances
 	var m1 = null
 	var m2 = null
@@ -103,9 +120,6 @@ func _on_Breed_pressed():
 		print (str(m2.name, " has no action points"))
 		return
 
-	var pg1 = floor(id1/ Sbox1.page_amount)
-	var pg2 = floor(id2/ Sbox2.page_amount)
-
 	Sbox1.clear_box()
 	Sbox2.clear_box()
 
@@ -113,12 +127,7 @@ func _on_Breed_pressed():
 	script.breed(m1, m2, self)
 
 	set_breed_info(mon1, mon2)
-
-	Sbox1.page = int(pg1)
-	Sbox2.page = int(pg2)
-	update_boxes()
-	Sbox1.press_button(str(id1))
-	Sbox2.press_button(str(id2))
+	mon_select_update()
 
 
 func _on_Back_pressed():
