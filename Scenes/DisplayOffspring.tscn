@@ -39,7 +39,6 @@ stretch_mode = 0
 
 [node name="Display" parent="." instance=ExtResource( 3 )]
 
-editor/display_folded = true
 margin/left = 300.0
 margin/top = 20.0
 margin/right = 340.0
@@ -58,7 +57,7 @@ margin/bottom = 230.0
 custom_fonts/font = ExtResource( 4 )
 placeholder/text = "Name"
 placeholder/alpha = 0.6
-max_length = 2147483647
+max_length = 16
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
