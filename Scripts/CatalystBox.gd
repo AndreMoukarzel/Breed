@@ -19,8 +19,14 @@ var page_amount = 18
 var max_cols = 6
 var max_pages = 0
 
-
 # Os catalisadores ficam guardados em global.catal_depo
+
+func _ready():
+	var w_size = OS.get_window_size()
+	var bg = get_node("Background")
+
+	bg.set_scale(Vector2(w_size.x/1920, w_size.y/1080))
+
 
 func update_config(m_id):
 	# Sizes will be fixed, but we call a script so we can manage

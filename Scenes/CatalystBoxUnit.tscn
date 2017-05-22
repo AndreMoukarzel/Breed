@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Scripts/CatalystBoxUnit.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Sprites/GUI/SelectUnitNormal.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/GUI/SelectUnitHover.png" type="Texture" id=3]
 
 [node name="CatalystBoxUnit" type="Control"]
 
@@ -27,8 +29,10 @@ margin/bottom = 40.0
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-params/resize_mode = 0
-params/stretch_mode = 0
+textures/normal = ExtResource( 2 )
+textures/pressed = ExtResource( 3 )
+textures/hover = ExtResource( 3 )
+textures/disabled = ExtResource( 2 )
 
 [node name="Name" type="Label" parent="."]
 
