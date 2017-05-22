@@ -13,7 +13,9 @@ var boxunit_scn = preload("res://Scenes/CatalystBoxUnit.tscn")
 var box_size = Vector2(225, 150)
 var box_scale = Vector2(0.75, 0.75)
 
-var mon_index = -1 #The index of the monster 
+var mon_index = -1 #The index of the monster in the mon_depo
+var catal_index = -1 #The index of selected catalyst in the catal_depo
+
 var page = 0 # displayed page
 var page_amount = 20
 var max_cols = 5
@@ -47,11 +49,15 @@ func update_config(m_id):
 	var Bp = get_node("BackPage")
 	var Pd = get_node("PageDisplay")
 	var R = get_node("Return")
+	var Y = get_node("Yes")
+	var N = get_node("No")
 	
 	Fp.set_pos(Vector2((size.x * max_cols) - Fp.get_size().x - 10, (size.y * page_amount / max_cols) + 10))
 	Bp.set_pos(Vector2(10, (size.y * page_amount / max_cols) + 10))
 	Pd.set_pos(Vector2((size.x * max_cols)/2 - Pd.get_size().x/2, (size.y * page_amount / max_cols) + 10))
 	R.set_pos(Vector2((size.x * max_cols)/2 - R.get_size().x/2, (size.y * page_amount / max_cols) + 50))
+	Y.set_pos(Vector2((size.x * max_cols)/2 - Y.get_size().x/2 - 100, (size.y * page_amount / max_cols) + 50))
+	N.set_pos(Vector2((size.x * max_cols)/2 - N.get_size().x/2 + 100, (size.y * page_amount / max_cols) + 50))
 	
 	if (global.catal_depo.size() == 0):
 		Pd.set_text("1/1")
@@ -59,7 +65,7 @@ func update_config(m_id):
 		Pd.set_text(str(page + 1, "/", max_pages))
 
 	# Special case
-	if (max_pages == 1):
+	if (max_pages <= 1):
 		Fp.set_disabled(true)
 		Bp.set_disabled(true)
 	else:
@@ -101,6 +107,7 @@ func clear_box():
 
 
 func kill():
+	# Precisa esquecer o ultimo catalisador selecionado, talvez
 	clear_box()
 	page = 0
 	
@@ -115,11 +122,17 @@ func button_pressed(body):
 	# os efeitos para estes botões.
 	
 	# Lembrando que tem que checar se o monstro ja tomou o catalisador na hora de apertar "SIM"
-	pass
+	
+	catal_index = body.get_name().to_int()
+	
+	toggle_mouse_interaction(true)
+	get_node("Yes").show()
+	get_node("No").show()
 	
 func toggle_mouse_interaction(tog):
 	get_node("FowardPage").set_ignore_mouse(tog)
 	get_node("BackPage").set_ignore_mouse(tog)
+	get_node("Return").set_ignore_mouse(tog)
 	for num in range(page * page_amount, (page + 1) * page_amount):
 		get_node(str(num)).get_node("Button").set_ignore_mouse(tog)
 		# get_node(str(num)).set_block_signals(true) (para o OffspringWindow)
@@ -152,3 +165,18 @@ func _on_FowardPage_pressed():
 
 func _on_Return_pressed():
 	queue_free()
+
+func _on_Yes_pressed():
+	# Precisa checar se o monstro ja consumiu um catalisador antes
+	# de permitir o consumo do selecionado.
+	# Tem que resetar a caixa em caso de consumo, e checar se a quantidade
+	# do catalisador selecionado chegou a zero, para remove-lo do vetor.
+	
+	toggle_mouse_interaction(false)
+	get_node("Yes").hide()
+	get_node("No").hide()
+
+func _on_No_pressed():
+	toggle_mouse_interaction(false)
+	get_node("Yes").hide()
+	get_node("No").hide()

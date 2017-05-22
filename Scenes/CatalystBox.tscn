@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://Scripts/CatalystBox.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Resources/Sprites/GUI/feed0.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Sprites/GUI/feed2.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Sprites/GUI/feed1.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/GUI/harvest1.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Sprites/GUI/harvest2.png" type="Texture" id=10]
 
 [node name="CatalystBox" type="Control"]
 
@@ -52,7 +54,9 @@ textures/normal = ExtResource( 3 )
 textures/pressed = ExtResource( 4 )
 textures/hover = ExtResource( 5 )
 textures/disabled = ExtResource( 4 )
+params/resize_mode = 0
 params/scale = Vector2( -1, 1 )
+params/stretch_mode = 0
 
 [node name="FowardPage" type="TextureButton" parent="."]
 
@@ -71,6 +75,8 @@ textures/normal = ExtResource( 3 )
 textures/pressed = ExtResource( 4 )
 textures/hover = ExtResource( 5 )
 textures/disabled = ExtResource( 4 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
 [node name="PageDisplay" type="Label" parent="."]
 
@@ -102,6 +108,8 @@ shortcut = null
 textures/normal = ExtResource( 6 )
 textures/pressed = ExtResource( 7 )
 textures/hover = ExtResource( 8 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
 [node name="Yes" type="TextureButton" parent="."]
 
@@ -117,6 +125,9 @@ margin/bottom = 40.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+textures/normal = ExtResource( 9 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
 [node name="No" type="TextureButton" parent="."]
 
@@ -132,7 +143,14 @@ margin/bottom = 40.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+textures/normal = ExtResource( 10 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
 [connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]
+
+[connection signal="pressed" from="Yes" to="." method="_on_Yes_pressed"]
+
+[connection signal="pressed" from="No" to="." method="_on_No_pressed"]
 
 

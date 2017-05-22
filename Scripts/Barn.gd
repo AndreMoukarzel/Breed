@@ -205,10 +205,12 @@ func _on_Collect1_pressed():
 		print(str(monster.name, " has no strength left in its pipi"))
 		return 
 
-	global.append_catal(global.Catal.new(monster.species, monster.stats), monster.catal[0])
+	if monster.catal[0] > 0:
+		global.append_catal(global.Catal.new(monster.species, monster.stats), monster.catal[0])
 
-	monster.catal[0] = 0
-	monster.acts = 0
+		monster.catal[0] = 0
+		monster.acts = 0
+		
 	Sbox1.clear_box()
 	Sbox2.clear_box()
 	update_boxes()
@@ -225,10 +227,11 @@ func _on_Collect2_pressed():
 		print(str(monster.name, " has no strength left in its pipi"))
 		return 
 
-	global.append_catal(global.Catal.new(monster.species, monster.stats), monster.catal[0])
+	if monster.catal[0] > 0:
+		global.append_catal(global.Catal.new(monster.species, monster.stats), monster.catal[0])
 
-	monster.catal[0] = 0
-	monster.acts = 0
+		monster.catal[0] = 0
+		monster.acts = 0
 
 	Sbox1.clear_box()
 	Sbox2.clear_box()
