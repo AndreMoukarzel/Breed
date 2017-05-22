@@ -3,6 +3,8 @@ extends Control
 
 var mon
 var name
+var id1
+var id2
 
 func _ready():
 	var w_size = OS.get_window_size()
@@ -28,9 +30,11 @@ func _on_LineEdit_text_changed( text ):
 
 func _on_Accept_pressed():
 	mon.name = name
+	get_parent().mon_select_update()
 	queue_free()
 
 
 func _on_Refuse_pressed():
 	global.mon_depo.pop_back()
+	get_parent().mon_select_update()
 	queue_free()
