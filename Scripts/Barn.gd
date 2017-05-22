@@ -205,9 +205,9 @@ func _on_Collect1_pressed():
 		print(str(monster.name, " has no strength left in its pipi"))
 		return 
 
-	for i in range(monster.acts):
-		global.catal_depo.append(global.Catal.new(monster.species, monster.stats))
+	global.append_catal(global.Catal.new(monster.species, monster.stats), monster.catal[0])
 
+	monster.catal[0] = 0
 	monster.acts = 0
 	Sbox1.clear_box()
 	Sbox2.clear_box()
@@ -225,9 +225,9 @@ func _on_Collect2_pressed():
 		print(str(monster.name, " has no strength left in its pipi"))
 		return 
 
-	for i in range(monster.acts):
-		global.catal_depo.append(global.Catal.new(monster.species, monster.stats))
+	global.append_catal(global.Catal.new(monster.species, monster.stats), monster.catal[0])
 
+	monster.catal[0] = 0
 	monster.acts = 0
 
 	Sbox1.clear_box()
@@ -236,11 +236,32 @@ func _on_Collect2_pressed():
 
 
 func _on_Feed1_pressed():
-	pass # replace with function body
+	# Search for monster position on mon_depo
+	var v_id = -1
+	for i in range(global.mon_depo.size()):
+		if (global.mon_depo[i].idn == mon1):
+			v_id = i
+			break
+	
+	if (v_id != -1):
+		var feeding_display_scn = load("res://Scenes/CatalystBox.tscn")
+		var display = feeding_display_scn.instance()
+		add_child(display)
+		display.create(v_id)
 
 
 func _on_Feed2_pressed():
-	pass # replace with function body
+	# Search for monster position on mon_depo
+	var v_id = -1
+	for i in range(global.mon_depo.size()):
+		if (global.mon_depo[i].idn == mon2):
+			v_id = i
+			break
+	
+	if (v_id != -1):
+		var feeding_display_scn = load("res://Scenes/CatalystBox.tscn")
+		var display = feeding_display_scn.instance(v_id)
+		add_child(display)
 
 
 func set_breed_info(mon1, mon2):

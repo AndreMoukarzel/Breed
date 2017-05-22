@@ -22,6 +22,7 @@ var debt_values = [[100, 1000], [200, 2000], [300, 3000], [400, 4000], [500, 500
 var energy = MAX_ENERGY
 
 var mon_depo = []
+# Tratado como [[catal, quant], [catal, quant], ...]
 var catal_depo = []
 
 class Catal:
@@ -150,6 +151,13 @@ func handle_days(val):
 				apbonus += 0.3
 				
 		mon.acts = floor(rand_range(act - act/5, act + act/5) * apbonus)
+		
+func append_catal(catal, quant):
+	for cq in catal_depo:
+		if catal.species == cq[0].species and catal.level == cq[0].level:
+			cq[1] += quant
+			return
+	catal_depo.append([catal, quant])
 
 #func save():
 #	var total_units = []
