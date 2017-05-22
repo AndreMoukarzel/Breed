@@ -22,6 +22,10 @@ var max_pages = 0
 
 # Os catalisadores ficam guardados em global.catal_depo
 
+func create(m_id):
+	update_config(m_id)
+	generate_members()
+
 func update_config(m_id):
 	# Sizes will be fixed, but we call a script so we can manage
 	# positioning by code.
@@ -35,8 +39,8 @@ func update_config(m_id):
 	var Pd = get_node("PageDisplay")
 	Fp.set_pos(Vector2((size.x * max_cols) - Fp.get_size().x - 10, (size.y * page_amount / max_cols) + 10))
 	Bp.set_pos(Vector2(10, (size.y * page_amount / max_cols) + 10))
-	Pd.set_pos(Vector2((size.x * max_columns)/2 - Pd.get_size().x/2, (size.y * page_amount / max_cols) + 10))
-	if (global.mon_depo.size() == 0):
+	Pd.set_pos(Vector2((size.x * max_cols)/2 - Pd.get_size().x/2, (size.y * page_amount / max_cols) + 10))
+	if (global.catal_depo.size() == 0):
 		Pd.set_text("1/1")
 	else:
 		Pd.set_text(str(page + 1, "/", max_pages))
@@ -64,6 +68,7 @@ func generate_members():
 			newunit.get_node("Button").set_ignore_mouse(true)
 		else:
 			var catal = global.catal_depo[num]
+			newunit.set_info(catal)
 			# Aqui geramos a parte visual de cada unidade do catalisador.
 			# Essencialmente, colocar a sprite para cada um, e escrever nas
 			# labels.
@@ -84,7 +89,6 @@ func clear_box():
 
 func kill():
 	clear_box()
-	last_unit_pressed = "-1"
 	page = 0
 	
 ####### BUTTON FUNCIONALITY #######
@@ -105,7 +109,7 @@ func toggle_mouse_interaction(tog):
 	get_node("BackPage").set_ignore_mouse(tog)
 	for num in range(page * page_amount, (page + 1) * page_amount):
 		get_node(str(num)).get_node("Button").set_ignore_mouse(tog)
-		# get_node(str(num)).set_block_signals(true) (para o OffsprintWindow)
+		# get_node(str(num)).set_block_signals(true) (para o OffspringWindow)
 
 func _on_BackPage_pressed():
 	if (global.catal_depo.size() != 0):
