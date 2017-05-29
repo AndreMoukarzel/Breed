@@ -125,9 +125,12 @@ func button_pressed(body):
 	
 	catal_index = body.get_name().to_int()
 	
-	toggle_mouse_interaction(true)
-	get_node("Yes").show()
-	get_node("No").show()
+	if (get_parent().get_name() != "Boxes"):
+		toggle_mouse_interaction(true)
+		get_node("Yes").show()
+		get_node("No").show()
+	else:
+		get_parent().get_parent().select_catalyst(catal_index)
 	
 func toggle_mouse_interaction(tog):
 	get_node("FowardPage").set_ignore_mouse(tog)

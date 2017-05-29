@@ -175,3 +175,4 @@ flat = false
 [connection signal="pressed" from="Boxes/Sell" to="." method="_on_Sell_pressed"]
 
 
+[editable path="Boxes/Catals"]

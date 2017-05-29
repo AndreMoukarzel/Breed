@@ -26,7 +26,6 @@ func _on_ToSell_pressed():
 	get_node("VBox").hide()
 	get_node("FarmBackground").hide()
 
-	get_node("Dumpster").generate_boxes()
 	get_node("Dumpster").show()
 
 
