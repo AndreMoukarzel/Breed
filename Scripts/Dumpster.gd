@@ -4,7 +4,7 @@ extends Control
 var screen = null
 
 var mon = null #selected monster
-var cat = -1 #selected catalyst
+var cat = [] #selected catalysts
 
 func _ready():
 	get_node("Boxes/Mons").update_config(global.mon_depo, 20, 5)
@@ -20,8 +20,19 @@ func select_monster( monster, select_box ):
 
 
 func select_catalyst( catalyst ):
-	cat = catalyst
-	get_node("Boxes/Sell").show()
+	var index = cat.find(catalyst)
+	if (index != -1):
+		cat.remove(index)
+	else:
+		cat.append(catalyst)
+
+	if (screen == "catalyst" and cat.empty()):
+		get_node("Boxes/Sell").hide()
+		get_node("Boxes/Catals/AmountChooser").hide()
+	else:
+		get_node("Boxes/Sell").show()
+		get_node("Boxes/Catals/AmountChooser").show()
+		get_node("Boxes/Catals/AmountChooser").update_display()
 
 
 ####### BUTTON FUNCIONALITY #######
@@ -46,7 +57,7 @@ func _on_Back_pressed():
 	get_parent().get_node("FarmBackground").show()
 	screen = null
 	mon = null
-	cat = -1
+	cat.clear()
 
 
 func _on_BackMon_pressed():
@@ -60,8 +71,9 @@ func _on_BackMon_pressed():
 func _on_BackCatal_pressed():
 	get_node("Boxes/Catals").hide()
 	get_node("Boxes/Sell").hide()
+	get_node("Boxes/Catals/AmountChooser").hide()
 	get_node("VBox").show()
-	cat = -1
+	cat.clear()
 	get_node("Boxes/Catals").clear_box()
 
 
@@ -70,6 +82,11 @@ func _on_Sell_pressed():
 		sell_monster()
 	elif (screen == "catalyst"):
 		sell_catalyst()
+	mon = null
+	cat.clear()
+
+
+######## SELL FUNCIONALITY ########
 
 
 func sell_monster():
@@ -78,7 +95,7 @@ func sell_monster():
 		price += stat * 3
 	price /= 2
 
-	gib_money(price)
+	global.quesha += price
 
 	var i = 0
 	for monster in global.mon_depo:
@@ -86,20 +103,20 @@ func sell_monster():
 			global.mon_depo.remove(i)
 			break
 		i += 1
+
 	get_node("Boxes/Mons").clear_box()
 	get_node("Boxes/Mons").generate_members()
 
 
 func sell_catalyst():
-	gib_money(1)
+	var amount = get_node("Boxes/Catals/AmountChooser").amount
 
-	var amount = 1
-	global.catal_depo[cat][1] -= amount
-	if (global.catal_depo[cat][1] == 0):
-		global.catal_depo.remove(cat)
+	for c in cat:
+		global.catal_depo[cat][1] -= amount
+		if (global.catal_depo[cat][1] <= 0):
+			global.catal_depo.remove(cat)
+
+	# gib moni
+
 	get_node("Boxes/Catals").clear_box()
 	get_node("Boxes/Catals").generate_members()
-
-
-func gib_money(mony):
-	global.quesha += mony

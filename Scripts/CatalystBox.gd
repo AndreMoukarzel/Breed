@@ -131,7 +131,8 @@ func button_pressed(body):
 		get_node("No").show()
 	else:
 		get_parent().get_parent().select_catalyst(catal_index)
-	
+
+
 func toggle_mouse_interaction(tog):
 	get_node("FowardPage").set_ignore_mouse(tog)
 	get_node("BackPage").set_ignore_mouse(tog)
@@ -139,6 +140,7 @@ func toggle_mouse_interaction(tog):
 	for num in range(page * page_amount, (page + 1) * page_amount):
 		get_node(str(num)).get_node("Button").set_ignore_mouse(tog)
 		# get_node(str(num)).set_block_signals(true) (para o OffspringWindow)
+
 
 func _on_BackPage_pressed():
 	if (global.catal_depo.size() != 0):
