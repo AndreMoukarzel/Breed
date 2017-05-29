@@ -148,7 +148,7 @@ func _on_BackPage_pressed():
 		# Adjustments
 		get_node("PageDisplay").set_text(str(page + 1, "/", max_pages))
 	
-		generate_members(mon_index)
+		generate_members()
 
 
 func _on_FowardPage_pressed():
@@ -160,7 +160,7 @@ func _on_FowardPage_pressed():
 		# Adjustments
 		get_node("PageDisplay").set_text(str(page + 1, "/", max_pages))
 
-		generate_members(mon_index)
+		generate_members()
 
 
 func _on_Return_pressed():
@@ -171,6 +171,45 @@ func _on_Yes_pressed():
 	# de permitir o consumo do selecionado.
 	# Tem que resetar a caixa em caso de consumo, e checar se a quantidade
 	# do catalisador selecionado chegou a zero, para remove-lo do vetor.
+	
+	if (global.mon_depo[mon_index].catal_boosts.size() == 0):
+		# [[max1, max2], [min1, min2]]
+		# A ESPECIE É DO CATAL, NAO DO MONSTRO
+		var prom_vec = g_monster.determine_prominent_stats(global.catal_depo[catal_index][0].species)
+		var boost_quantity
+		# Soma os boosts dos dois status maiores da especie do catalisador, vezes o level
+		for stat_id in prom_vec[0]:
+			boost_quantity = floor(global.mon_depo[mon_index].stats[stat_id] * 0.1 * global.catal_depo[catal_index][0].level)
+			
+			global.mon_depo[mon_index].catal_boosts.append([boost_quantity, stat_id])
+			global.mon_depo[mon_index].stats[stat_id] += boost_quantity
+			
+		# Subtrai os boosts dos dois status maiores da especie do catalisador, vezes o level
+		for stat_id in prom_vec[1]:
+			boost_quantity = -floor(global.mon_depo[mon_index].stats[stat_id] * 0.1 * global.catal_depo[catal_index][0].level)
+			
+			global.mon_depo[mon_index].catal_boosts.append([boost_quantity, stat_id])
+			global.mon_depo[mon_index].stats[stat_id] += boost_quantity
+		
+		#test
+		print(global.mon_depo[mon_index].catal_boosts)
+		
+		# Decrementa catalisador utilizado, reloada a caixa
+		global.catal_depo[catal_index][1] -= 1
+		if (global.catal_depo[catal_index][1] == 0):
+			global.catal_depo.remove(catal_index)
+		clear_box()
+		generate_members()
+		
+		# Atualiza o display
+		if (get_parent().blue != 0):
+			get_parent().get_node("Display1").display(global.mon_depo[mon_index])
+		else:
+			get_parent().get_node("Display2").display(global.mon_depo[mon_index])
+		
+	else:
+		# Already used catal message
+		print ("BOQUINHA GULOSA")
 	
 	toggle_mouse_interaction(false)
 	get_node("Yes").hide()

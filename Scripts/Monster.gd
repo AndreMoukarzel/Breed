@@ -24,6 +24,9 @@ class Monster:
 	var gradations
 	# List of personality IDs
 	var personas
+	# No formato [[quantity, lugar_no_vetor_de_stats], ...]
+	# [Bonus 1, Bonus 2, Decrement 1, Decrement 2]
+	var catal_boosts = []
 
 	var last_breed = null
 	var bonus_preg = 0
@@ -171,6 +174,44 @@ func monster_sprite(parent, id, color, pos, scale, behind):
 	creature.set_draw_behind_parent(behind)
 
 	parent.add_child(creature)
+
+func determine_prominent_stats(mon_species):
+	var db_id = get_id(mon_species)
+	var det_vec = []
+	for stat in range (3, 9):
+		det_vec.append(pos_database[db_id][stat][0] + pos_database[db_id][stat][1])
+	var max_vec = [0, 0]
+	var min_vec = [1000, 1000]
+	var max_index = [-1, -1]
+	var min_index = [-1, -1]
+	
+	var counter = 0
+	for num in det_vec:
+		if (num > max_vec[0]):
+			max_vec[1] = max_vec[0]
+			max_vec[0] = num
+			max_index[1] = max_index[0]
+			max_index[0] = counter
+		elif (num > max_vec[1]):
+			max_vec[1] = num
+			max_index[1] = counter
+			
+		counter += 1
+		
+	counter = 0
+	for num in det_vec:
+		if (num < min_vec[0]):
+			min_vec[1] = min_vec[0]
+			min_vec[0] = num
+			min_index[1] = min_index[0]
+			min_index[0] = counter
+		elif (num < min_vec[1]):
+			min_vec[1] = num
+			min_index[1] = counter
+		
+		counter += 1
+	
+	return [max_index, min_index]
 
 
 # To randomize SPECIES; the string must be an invalid species' name
