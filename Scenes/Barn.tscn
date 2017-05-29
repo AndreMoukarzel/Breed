@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://Scripts/Barn.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/barn.jpg" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Resources/Sprites/GUI/breed2.png" type="Texture" id=14]
 [ext_resource path="res://Resources/Sprites/GUI/breed_info.png" type="Texture" id=15]
 [ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=16]
+[ext_resource path="res://Scripts/MonsterSort.gd" type="Script" id=17]
 
 [node name="Barn" type="Control"]
 
@@ -324,6 +325,40 @@ shortcut = null
 text = "Back"
 flat = false
 
+[node name="SortSpecies" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 454.0
+margin/top = 447.0
+margin/right = 564.0
+margin/bottom = 467.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Sort By Species"
+flat = false
+script/script = ExtResource( 17 )
+
+[node name="SortLevel" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 464.0
+margin/top = 472.0
+margin/right = 559.0
+margin/bottom = 492.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Sort By Level"
+flat = false
+script/script = ExtResource( 17 )
+
 [connection signal="pressed" from="Display1/Collect1" to="." method="_on_Collect1_pressed"]
 
 [connection signal="pressed" from="Display1/Feed1" to="." method="_on_Feed1_pressed"]
@@ -343,5 +378,9 @@ flat = false
 [connection signal="pressed" from="Breed" to="." method="_on_Breed_pressed"]
 
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+
+[connection signal="pressed" from="SortSpecies" to="SortSpecies" method="_on_SortSpecies_pressed"]
+
+[connection signal="pressed" from="SortLevel" to="SortLevel" method="_on_SortLevel_pressed"]
 
 
