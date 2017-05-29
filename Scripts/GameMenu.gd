@@ -22,6 +22,14 @@ func _on_ToBreed_pressed():
 	get_node("Barn").update_boxes()
 
 
+func _on_ToSell_pressed():
+	get_node("VBox").hide()
+	get_node("FarmBackground").hide()
+
+	get_node("Dumpster").generate_boxes()
+	get_node("Dumpster").show()
+
+
 func _on_ToTown_pressed():
 	get_node("VBox").hide()
 	get_node("FarmBackground").hide()

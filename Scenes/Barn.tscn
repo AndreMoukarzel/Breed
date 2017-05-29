@@ -51,10 +51,10 @@ stretch_mode = 0
 [node name="Display1" parent="." instance=ExtResource( 3 )]
 
 editor/display_folded = true
-margin/left = 600.0
-margin/top = 50.0
-margin/right = 640.0
-margin/bottom = 90.0
+margin/left = 599.12
+margin/top = 49.6
+margin/right = 639.12
+margin/bottom = 89.6
 
 [node name="Collect1" type="TextureButton" parent="Display1"]
 
