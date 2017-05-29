@@ -94,7 +94,6 @@ flat = false
 
 [node name="Boxes" type="Control" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -172,5 +171,7 @@ flat = false
 [connection signal="pressed" from="Boxes/Mons/BackMon" to="." method="_on_BackMon_pressed"]
 
 [connection signal="pressed" from="Boxes/Catals/BackCatal" to="." method="_on_BackCatal_pressed"]
+
+[connection signal="pressed" from="Boxes/Sell" to="." method="_on_Sell_pressed"]
 
 
