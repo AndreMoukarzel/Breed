@@ -224,3 +224,5 @@ func _on_No_pressed():
 	toggle_mouse_interaction(false)
 	get_node("Yes").hide()
 	get_node("No").hide()
+	for num in range(page * page_amount, (page + 1) * page_amount):
+		get_node(str(num)).get_node("Button").set_pressed(false)
