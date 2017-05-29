@@ -8,8 +8,8 @@ func _ready():
 	get_node("HUD/Energy/EnergyLabel").set_text(str(global.energy))
 
 	#test
-	g_monster.monster_generate(global.mon_depo, "Mafagafo", Color(-1, -1, -1), [], [6, 6, 6, 6, 6, 6], [0, 1], 10)
-	g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], [0, 13], 10)
+	g_monster.monster_generate(global.mon_depo, "Mafagafo", Color(-1, -1, -1), [], [6, 6, 6, 6, 6, 6], [0, 1], 30)
+	g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [], [2, 2, 1, 0, 0, 0], [0, 13], 30)
 
 
 ####### BUTTON FUNCIONALITY #######
@@ -44,3 +44,11 @@ func _on_ToArena_pressed():
 
 func _on_ToSleep_pressed():
 	global.handle_days(1)
+	
+	# Check on monster bonuses
+	for monster in global.mon_depo:
+		if (monster.catal_boosts.size() != 0):
+			for num in range (0, monster.catal_boosts.size()):
+				var stat_id = monster.catal_boosts[num][1]
+				monster.stats[stat_id] -= monster.catal_boosts[num][0]
+			monster.catal_boosts.clear()
