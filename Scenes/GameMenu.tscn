@@ -256,6 +256,26 @@ max_lines_visible = -1
 
 [connection signal="pressed" from="VBox/ToSleep" to="." method="_on_ToSleep_pressed"]
 
+[connection signal="pressed" from="Town/VBox/ShopMonster" to="Town" method="_on_ShopMonster_pressed"]
+
+[connection signal="pressed" from="Town/VBox/Back" to="Town" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Town/MonsterShop/Buy" to="Town/MonsterShop" method="_on_Buy_pressed"]
+
+[connection signal="pressed" from="Town/MonsterShop/Back" to="Town/MonsterShop" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Dumpster/VBox/SellMonster" to="Dumpster" method="_on_SellMonster_pressed"]
+
+[connection signal="pressed" from="Dumpster/VBox/SellCatal" to="Dumpster" method="_on_SellCatal_pressed"]
+
+[connection signal="pressed" from="Dumpster/VBox/Back" to="Dumpster" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Mons/BackMon" to="Dumpster" method="_on_BackMon_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/BackCatal" to="Dumpster" method="_on_BackCatal_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Sell" to="Dumpster" method="_on_Sell_pressed"]
+
 [connection signal="pressed" from="Arena/VBox/BattleGround" to="Arena" method="_on_BattleGround_pressed"]
 
 [connection signal="pressed" from="Arena/VBox/Race" to="Arena" method="_on_Race_pressed"]
@@ -285,6 +305,26 @@ max_lines_visible = -1
 [connection signal="pressed" from="Arena/RaceMode/RankSelect/Rank1" to="Arena/RaceMode" method="_on_Rank1_pressed"]
 
 [connection signal="pressed" from="Arena/RaceMode/RankSelect/BackRank" to="Arena/RaceMode" method="_on_BackRank_pressed"]
+
+[connection signal="pressed" from="Barn/Display1/Collect1" to="Barn" method="_on_Collect1_pressed"]
+
+[connection signal="pressed" from="Barn/Display1/Feed1" to="Barn" method="_on_Feed1_pressed"]
+
+[connection signal="pressed" from="Barn/Display2/Collect2" to="Barn" method="_on_Collect2_pressed"]
+
+[connection signal="pressed" from="Barn/Display2/Feed2" to="Barn" method="_on_Feed2_pressed"]
+
+[connection signal="pressed" from="Barn/Storage1/StorageBackground1" to="Barn" method="_on_StorageBackground1_pressed"]
+
+[connection signal="tween_complete" from="Barn/Storage1/Tween" to="Barn" method="_on_Tween_tween_complete"]
+
+[connection signal="pressed" from="Barn/Storage2/StorageBackground2" to="Barn" method="_on_StorageBackground2_pressed"]
+
+[connection signal="tween_complete" from="Barn/Storage2/Tween" to="Barn" method="_on_Tween_tween_complete"]
+
+[connection signal="pressed" from="Barn/Breed" to="Barn" method="_on_Breed_pressed"]
+
+[connection signal="pressed" from="Barn/Back" to="Barn" method="_on_Back_pressed"]
 
 
 [editable path="Town"]
