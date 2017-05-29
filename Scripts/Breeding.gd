@@ -71,7 +71,7 @@ func breed( m1, m2, barn ):
 		var grads = randomize_grads(m1, m2)
 		var personas = randomize_personas(m1, m2)
 
-		g_monster.monster_generate(global.mon_depo, species, color, [], grads, personas, 1)
+		g_monster.monster_generate(global.mon_depo, species, color, grads, personas, 1)
 
 		# Sets incest count
 		var inc = floor(max(m1.incest_count, m2.incest_count)) + check_incest(m1, m2)
