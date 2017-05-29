@@ -110,11 +110,14 @@ func sell_monster():
 
 func sell_catalyst():
 	var amount = get_node("Boxes/Catals/AmountChooser").amount
-
+	
+	cat.sort()
+	cat.invert()
+	
 	for c in cat:
-		global.catal_depo[cat][1] -= amount
-		if (global.catal_depo[cat][1] <= 0):
-			global.catal_depo.remove(cat)
+		global.catal_depo[c][1] -= amount
+		if (global.catal_depo[c][1] <= 0):
+			global.catal_depo.remove(c)
 
 	# gib moni
 
