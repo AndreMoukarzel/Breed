@@ -13,6 +13,9 @@ func _ready():
 	get_node("Boxes/Catals/BackCatal").set_pos(Vector2(390, 500))
 	get_node("Boxes/Catals/Background").hide()
 
+	# was making catals disapear in some conditions
+	get_node("Boxes/Catals/Return").set_pos(Vector2(-300, -300))
+
 
 func select_monster( monster, select_box ):
 	mon = monster
@@ -81,8 +84,13 @@ func _on_BackCatal_pressed():
 func _on_Sell_pressed():
 	if (screen == "monster"):
 		sell_monster()
+		if (global.mon_depo.empty()):
+			get_node("Boxes/Sell").hide()
 	elif (screen == "catalyst"):
 		sell_catalyst()
+		if (global.catal_depo.empty()):
+			get_node("Boxes/Sell").hide()
+			get_node("Boxes/Catals/AmountChooser").hide()
 	mon = null
 	cat.clear()
 	get_node("Boxes/Catals/AmountChooser").update_display()

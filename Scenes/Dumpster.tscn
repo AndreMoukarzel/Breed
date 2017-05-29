@@ -110,7 +110,6 @@ margin/bottom = 60.0
 
 [node name="Mons" parent="Boxes" instance=ExtResource( 3 )]
 
-editor/display_folded = true
 visibility/visible = false
 
 [node name="BackMon" type="Button" parent="Boxes/Mons"]
@@ -269,6 +268,12 @@ flat = false
 
 [connection signal="pressed" from="Boxes/Mons/BackMon" to="." method="_on_BackMon_pressed"]
 
+[connection signal="pressed" from="Boxes/Catals/Return" to="Boxes/Catals" method="_on_Return_pressed"]
+
+[connection signal="pressed" from="Boxes/Catals/Yes" to="Boxes/Catals" method="_on_Yes_pressed"]
+
+[connection signal="pressed" from="Boxes/Catals/No" to="Boxes/Catals" method="_on_No_pressed"]
+
 [connection signal="pressed" from="Boxes/Catals/BackCatal" to="." method="_on_BackCatal_pressed"]
 
 [connection signal="pressed" from="Boxes/Catals/AmountChooser/Less" to="Boxes/Catals/AmountChooser" method="_on_Less_pressed"]
@@ -282,3 +287,4 @@ flat = false
 [connection signal="pressed" from="Boxes/Sell" to="." method="_on_Sell_pressed"]
 
 
+[editable path="Boxes/Catals"]
