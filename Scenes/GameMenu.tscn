@@ -274,6 +274,14 @@ max_lines_visible = -1
 
 [connection signal="pressed" from="Dumpster/Boxes/Catals/BackCatal" to="Dumpster" method="_on_BackCatal_pressed"]
 
+[connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/Less" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_Less_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/Less10" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_Less10_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/More" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_More_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/More10" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_More10_pressed"]
+
 [connection signal="pressed" from="Dumpster/Boxes/Sell" to="Dumpster" method="_on_Sell_pressed"]
 
 [connection signal="pressed" from="Arena/VBox/BattleGround" to="Arena" method="_on_BattleGround_pressed"]
@@ -325,6 +333,10 @@ max_lines_visible = -1
 [connection signal="pressed" from="Barn/Breed" to="Barn" method="_on_Breed_pressed"]
 
 [connection signal="pressed" from="Barn/Back" to="Barn" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Barn/SortSpecies" to="Barn/SortSpecies" method="_on_SortSpecies_pressed"]
+
+[connection signal="pressed" from="Barn/SortLevel" to="Barn/SortLevel" method="_on_SortLevel_pressed"]
 
 
 [editable path="Town"]

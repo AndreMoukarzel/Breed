@@ -14,7 +14,6 @@ class Monster:
 	var gender # 0 = male, 1 = female; 2 = hemafrodite?
 	var species
 	var color #will be vector
-	var ap_vec #apendices
 	var level = 1
 	var xp = [0, 0] # current and necessary to level up
 	var acts = 0 # number of monster actions
@@ -33,12 +32,11 @@ class Monster:
 	var cost_decrease = 0
 	var incest_count = 0
 
-	func _init(name, gender, species, color, ap_vec, stats, gradations, personas):
+	func _init(name, gender, species, color, stats, gradations, personas):
 		self.name = name
 		self.gender = gender
 		self.species = species
 		self.color = color
-		self.ap_vec = ap_vec
 		self.stats = stats
 		self.gradations = gradations
 		self.personas = personas
@@ -55,20 +53,18 @@ class Monster:
 
 const SPECIES = 0
 const FACE_POS = 1
-const AP_POS = 2
-const STR_VEC = 3
-const AGI_VEC = 4
-const VIT_VEC = 5
-const TEN_VEC = 6
-const WIS_VEC = 7
-const FER_VEC = 8
+const STR_VEC = 2
+const AGI_VEC = 3
+const VIT_VEC = 4
+const TEN_VEC = 5
+const WIS_VEC = 6
+const FER_VEC = 7
 
 
 var pos_database = [
 	{ # ID = 0
 		SPECIES : "Mafagafo",
-		FACE_POS : Vector2(0, 0),
-		AP_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)],
+		FACE_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)],
 		STR_VEC : [0.4, 0.05],
 		AGI_VEC : [0.2, 0.02],
 		VIT_VEC : [0.15, 0.02],
@@ -78,8 +74,7 @@ var pos_database = [
 	},
 	{ # ID = 1
 		SPECIES : "Vaking",
-		FACE_POS : Vector2(0, 0),
-		AP_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)],
+		FACE_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)],
 		STR_VEC : [0.3, 0.05],
 		AGI_VEC : [0.05, 0.02],
 		VIT_VEC : [0.4, 0.1],
@@ -89,8 +84,7 @@ var pos_database = [
 	},
 	{ # ID = 2
 		SPECIES : "Biluga",
-		FACE_POS : Vector2(0, 0),
-		AP_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)],
+		FACE_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)],
 		STR_VEC : [0.25, 0.05],
 		AGI_VEC : [0.4, 0.1],
 		VIT_VEC : [0.05, 0.02],
@@ -125,7 +119,7 @@ func level_up (monster):
 		var count = 0
 		# Grows stats
 		for stat in monster.stats:
-			growth = get_growth_rate(monster.gradations[count], p_d[count + 3][0], p_d[count + 3][1])
+			growth = get_growth_rate(monster.gradations[count], p_d[count + 2][0], p_d[count + 2][1]) # gets all stats in database
 			randomize()
 			# If growth rate surpasses 100%, one point is guaranteed,
 			# and the chance for levelling another point in that same
@@ -178,7 +172,7 @@ func monster_sprite(parent, id, color, pos, scale, behind):
 func determine_prominent_stats(mon_species):
 	var db_id = get_id(mon_species)
 	var det_vec = []
-	for stat in range (3, 9):
+	for stat in range (2, 8): # gets all stats
 		det_vec.append(pos_database[db_id][stat][0] + pos_database[db_id][stat][1])
 	var max_vec = [0, 0]
 	var min_vec = [1000, 1000]
@@ -217,7 +211,7 @@ func determine_prominent_stats(mon_species):
 # To randomize SPECIES; the string must be an invalid species' name
 # To randomize COLOR; color must be Color(-1, -1, -1)
 # GRADATIONS must be in order [STR, AGI, VIT, TEN, WIS, FER]; 0-6 = F-S
-func monster_generate(deposit, species, color, apendices, gradations, personas, level):
+func monster_generate(deposit, species, color, gradations, personas, level):
 	var race = species
 	var id
 	var col = color
@@ -275,7 +269,7 @@ func monster_generate(deposit, species, color, apendices, gradations, personas, 
 		# Gera alguma personalidade aleatória
 		persona_ids.append(personality_db.get_random_persona())
 
-	monster = Monster.new(name, randi() % 2, str(race), col, [], stats, grad, persona_ids)
+	monster = Monster.new(name, randi() % 2, str(race), col, stats, grad, persona_ids)
 	for lv in range (1, level):
 		g_monster.level_up(monster)
 

@@ -49,6 +49,7 @@ func _on_SellCatal_pressed():
 	get_node("Boxes/Catals").generate_members()
 	get_node("Boxes/Catals").show()
 	screen = "catalyst"
+	get_node("Boxes/Catals/AmountChooser").update_display()
 
 
 func _on_Back_pressed():
@@ -84,6 +85,7 @@ func _on_Sell_pressed():
 		sell_catalyst()
 	mon = null
 	cat.clear()
+	get_node("Boxes/Catals/AmountChooser").update_display()
 
 
 ######## SELL FUNCIONALITY ########
