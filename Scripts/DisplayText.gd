@@ -13,7 +13,6 @@ func _ready():
 	var w_s = OS.get_window_size()
 	#test
 	customize(0.05, Vector2(w_s.x/4.25, w_s.y/1.35), Vector2(w_s.x/2, w_s.y/4))
-	print_text_sequence(test_vector)
 	
 func customize(time, position, size):
 	# Customize time
@@ -43,4 +42,6 @@ func print_text_sequence(text_vector):
 		print_text(text)
 		yield(self, "text_end")
 		yield(button, "pressed")
+	#add fade out visual effect
+	queue_free()
 	

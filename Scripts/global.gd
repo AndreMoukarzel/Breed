@@ -1,5 +1,7 @@
 extends Node
 
+var dialog_scn = preload("res://Scenes/DisplayText.tscn")
+
 const MAX_ENERGY = 3000
 
 var ID = 0
@@ -133,6 +135,9 @@ func handle_days(val):
 		if (quesha < debt_values[month][year]):
 			#test
 			print("You lose the game my dude")
+		else:
+			instace_dialog(get_tree().get_root().get_node("GameMenu"), "Mayor", month - 1)
+			handle_quesha(-100)
 	handle_energy(MAX_ENERGY)
 	day_path.set_text(str(days, " X ", month))
 
@@ -151,6 +156,17 @@ func handle_days(val):
 				apbonus += 0.3
 				
 		mon.acts = floor(rand_range(act - act/5, act + act/5) * apbonus)
+		
+		
+# Implementar costumização da caixa de texto aqui depois
+func instace_dialog(scene, character, dialog_number):
+	var character_id = dialog_db.get_id(character)
+	
+	var d_s = dialog_scn.instance()
+	scene.add_child(d_s)
+	
+	d_s.print_text_sequence(dialog_db.get_dialog_sequence(character_id, dialog_number))
+	
 
 func handle_quesha(amount):
 	quesha += amount
