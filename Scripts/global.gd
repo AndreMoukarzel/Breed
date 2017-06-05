@@ -151,6 +151,10 @@ func handle_days(val):
 				apbonus += 0.3
 				
 		mon.acts = floor(rand_range(act - act/5, act + act/5) * apbonus)
+
+func handle_quesha(amount):
+	quesha += amount
+	get_tree().get_root().get_node("GameMenu/Town/Quesha").set_text(str(quesha))
 		
 func append_catal(catal, quant):
 	for cq in catal_depo:
