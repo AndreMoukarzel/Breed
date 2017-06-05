@@ -102,24 +102,7 @@ func handle_energy(val):
 		energy = MAX_ENERGY
 	path.set_value(energy)
 	path.get_node("EnergyLabel").set_text(str(energy))
-	
-#func handle_time(val):
-#	var path = get_tree().get_root().get_node("GameMenu/HUD/DateAndTime/Time")
-#	var hours
-#	var minutes
-#	
-#	time += val
-#	hours = floor(time / 60)
-#	minutes = time % 60
-#	
-#	if (hours >= 10 and minutes >= 10):
-#		path.set_text(str(hours, ":", minutes))
-#	elif (hours < 10 and minutes >= 10):
-#		path.set_text(str("0", hours, ":", minutes))
-#	elif (hours >= 10 and minutes < 10):
-#		path.set_text(str(hours, ":0", minutes))
-#	else:
-#		path.set_text(str("0", hours, ":0", minutes))
+
 
 # Código de baixa qualidade. É possível melhorar facilmente.
 func handle_days(val):
@@ -185,7 +168,8 @@ func instace_dialog(scene, character, dialog_number):
 func handle_quesha(amount):
 	quesha += amount
 	get_tree().get_root().get_node("GameMenu/Town/Quesha").set_text(str(quesha))
-		
+
+
 func append_catal(catal, quant):
 	for cq in catal_depo:
 		if catal.species == cq[0].species and catal.level == cq[0].level:
@@ -193,17 +177,59 @@ func append_catal(catal, quant):
 			return
 	catal_depo.append([catal, quant])
 
+
 #func save():
-#	var total_units = []
-#	# O vetor abaixo indica o tamanho do vetor de armas,
-#	# sequencialmente, para cada unidade do vetor de   
-#	# unidades total, e o vetor de armas total tem todas
-#	# as armas sequencialmente, na ordem do total_units
-#	var weapons_vector_size_per_unit = []
-#	var total_weapons = []
-#	var items_vector_size_per_unit = []
-#	var total_items = []
+#	var mons_idn = []
+#	var mons_par1 = []
+#	var mons_par2 = []
+#	var mons_names = []
+#	var mons_gender = []
+#	var mons_species = []
+#	var mons_color = []
+#	var mons_level = []
+#	var mons_xp = [] # double size
+#	var mons_acts = []
+#	var mons_catal = [] # double size
+#	var mons_stats = [] # 6 times size
+#	var mons_grads = [] # 6 times size
+#	var mons_pers = [] # 3 times size
+	# No formato [[quantity, lugar_no_vetor_de_stats], ...]
+	# [Bonus 1, Bonus 2, Decrement 1, Decrement 2]
+#	var catal_boosts = [] #?????
 #
+#	var last_breed = null
+#	var bonus_preg = 0
+#	var cost_decrease = 0
+#	var incest_count = 0
+#
+#	var eye_tex = "dot"
+#	var mouth_tex = "simple"
+#
+#	for mon in mon_depo:
+#		mons_idn.append(mon.idn)
+#		mons_par1.append(mon.parent1_idn)
+#		mons_par2.append(mon.parent2_idn)
+#		mons_names.append(mon.name)
+#		mons_gender.append(mon.gender)
+#		mons_species.append(mon.species)
+#		mons_color.append(mon.color)
+#		mons_level.append(mon.level)
+#		for num in mon.xp:
+#			mons_xp.append(num)
+#		mons_acts.append(mon.acts)
+#		for num in mon.catal:
+#			mons_catal.append(num)
+#		for num in mon.stats:
+#			mons_stats.append(num)
+#		for num in mon.gradations:
+#			mons_grads.append(num)
+#		for i in range(3):
+#			if (mon.personas.size() - 1 < i):
+#				mons_pers.append(-1)
+#			else:
+#				mons_pers.append(mon.personas[i])
+#		catal_boost????
+
 #	var i = 0
 #	for unit in units_vector:
 #		if unit == null:
