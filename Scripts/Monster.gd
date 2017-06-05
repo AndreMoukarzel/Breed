@@ -173,10 +173,10 @@ func monster_sprite(parent, monster, pos, scale, behind):
 	creature.set_scale(scale)
 	creature.set_draw_behind_parent(behind)
 
+	parent.add_child(creature)
+
 	add_eyes(creature, face_pos, monster.eye_tex)
 	add_mouth(creature, face_pos, monster.mouth_tex)
-
-	parent.add_child(creature)
 
 
 func add_eyes(parent, face_pos, texture):
@@ -185,8 +185,6 @@ func add_eyes(parent, face_pos, texture):
 	var face_offset = parent.get_texture().get_size() * Vector2(0.5, 0.5) #i dunno why its 0.5
 	eyel.set_texture(load(str("res://Resources/Sprites/Creatures/Eyes/", texture, ".png")))
 	eyer.set_texture(load(str("res://Resources/Sprites/Creatures/Eyes/", texture, ".png")))
-	eyel.set_z(2)
-	eyer.set_z(2)
 	eyel.set_pos(face_pos[0] - face_offset)
 	eyer.set_pos(face_pos[1] - face_offset)
 	parent.add_child(eyel)
@@ -197,8 +195,6 @@ func add_mouth(parent, face_pos, texture):
 	var mouth = Sprite.new()
 	var face_offset = parent.get_texture().get_size() * Vector2(0.5, 0.5) #i dunno why its 0.5
 	mouth.set_texture(load(str("res://Resources/Sprites/Creatures/Mouths/", texture, ".png")))
-	mouth.set_z(2)
-#	mouth.set_scale(scale)
 	mouth.set_pos(face_pos[2] - face_offset)
 	parent.add_child(mouth)
 
