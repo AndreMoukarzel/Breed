@@ -49,6 +49,7 @@ func _on_SellMonster_pressed():
 
 func _on_SellCatal_pressed():
 	get_node("VBox").hide()
+	get_node("Boxes/Catals").catal_vec = global.catal_depo
 	get_node("Boxes/Catals").generate_members()
 	get_node("Boxes/Catals").show()
 	screen = "catalyst"

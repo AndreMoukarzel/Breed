@@ -250,7 +250,7 @@ func _on_Feed1_pressed():
 		var feeding_display_scn = load("res://Scenes/CatalystBox.tscn")
 		var display = feeding_display_scn.instance()
 		add_child(display)
-		display.create(v_id)
+		display.create(global.catal_depo, v_id)
 
 
 func _on_Feed2_pressed():
@@ -265,7 +265,8 @@ func _on_Feed2_pressed():
 		var feeding_display_scn = load("res://Scenes/CatalystBox.tscn")
 		var display = feeding_display_scn.instance(v_id)
 		add_child(display)
-		display.create(v_id)
+		display.create(global.catal_depo, v_id)
+
 
 
 func set_breed_info(mon1, mon2):

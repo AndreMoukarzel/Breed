@@ -21,9 +21,10 @@ var page_amount = 20
 var max_cols = 5
 var max_pages = 0
 
-# Os catalisadores ficam guardados em global.catal_depo
+var catal_vec
 
-func create(m_id):
+func create(catalyst_vec, m_id):
+	catal_vec = catalyst_vec
 	update_config(m_id)
 	generate_members()
 
@@ -41,7 +42,7 @@ func update_config(m_id):
 	bg.set_pos(Vector2(-spacing/2, -40))
 
 	mon_index = m_id
-	max_pages = int(ceil(float(global.catal_depo.size()) / page_amount))
+	max_pages = int(ceil(float(catal_vec.size()) / page_amount))
 	
 	# Position page managing arrows and text acording to new config
 	var size = box_size * box_scale
@@ -59,7 +60,7 @@ func update_config(m_id):
 	Y.set_pos(Vector2((size.x * max_cols)/2 - Y.get_size().x/2 - 100, (size.y * page_amount / max_cols) + 50))
 	N.set_pos(Vector2((size.x * max_cols)/2 - N.get_size().x/2 + 100, (size.y * page_amount / max_cols) + 50))
 	
-	if (global.catal_depo.size() == 0):
+	if (catal_vec.size() == 0):
 		Pd.set_text("1/1")
 	else:
 		Pd.set_text(str(page + 1, "/", max_pages))
@@ -81,12 +82,12 @@ func generate_members():
 		var newunit = boxunit_scn.instance()
 		newunit.set_name(str(num))
 
-		if (global.catal_depo.size() <= num):
+		if (catal_vec.size() <= num):
 			newunit.get_node("Button").set_disabled(true)
 			#this is new
 			newunit.get_node("Button").set_ignore_mouse(true)
 		else:
-			var catal = global.catal_depo[num]
+			var catal = catal_vec[num]
 			newunit.set_info(catal)
 			# Aqui geramos a parte visual de cada unidade do catalisador.
 			# Essencialmente, colocar a sprite para cada um, e escrever nas
@@ -99,7 +100,8 @@ func generate_members():
 		newunit.set_scale(Vector2(0.75, 0.75))
 		s_count += 1
 		add_child(newunit)
-		
+
+
 func clear_box():
 	for num in range(page * page_amount, (page + 1) * page_amount):
 		get_node(str(num)).set_name(str("old", get_node(str(num)).get_name()))
@@ -143,7 +145,7 @@ func toggle_mouse_interaction(tog):
 
 
 func _on_BackPage_pressed():
-	if (global.catal_depo.size() != 0):
+	if (catal_vec.size() != 0):
 		clear_box()
 		
 		page -= 1
@@ -157,7 +159,7 @@ func _on_BackPage_pressed():
 
 
 func _on_FowardPage_pressed():
-	if (global.catal_depo.size() != 0):
+	if (catal_vec.size() != 0):
 		clear_box()
 		
 		page = (page + 1) % max_pages
@@ -180,18 +182,18 @@ func _on_Yes_pressed():
 	if (global.mon_depo[mon_index].catal_boosts.size() == 0):
 		# [[max1, max2], [min1, min2]]
 		# A ESPECIE É DO CATAL, NAO DO MONSTRO
-		var prom_vec = g_monster.determine_prominent_stats(global.catal_depo[catal_index][0].species)
+		var prom_vec = g_monster.determine_prominent_stats(catal_vec[catal_index][0].species)
 		var boost_quantity
 		# Soma os boosts dos dois status maiores da especie do catalisador, vezes o level
 		for stat_id in prom_vec[0]:
-			boost_quantity = floor(global.mon_depo[mon_index].stats[stat_id] * 0.1 * global.catal_depo[catal_index][0].level)
+			boost_quantity = floor(global.mon_depo[mon_index].stats[stat_id] * 0.1 * catal_vec[catal_index][0].level)
 			
 			global.mon_depo[mon_index].catal_boosts.append([boost_quantity, stat_id])
 			global.mon_depo[mon_index].stats[stat_id] += boost_quantity
 			
 		# Subtrai os boosts dos dois status maiores da especie do catalisador, vezes o level
 		for stat_id in prom_vec[1]:
-			boost_quantity = -floor(global.mon_depo[mon_index].stats[stat_id] * 0.1 * global.catal_depo[catal_index][0].level)
+			boost_quantity = -floor(global.mon_depo[mon_index].stats[stat_id] * 0.1 * catal_vec[catal_index][0].level)
 			
 			global.mon_depo[mon_index].catal_boosts.append([boost_quantity, stat_id])
 			global.mon_depo[mon_index].stats[stat_id] += boost_quantity
@@ -200,9 +202,9 @@ func _on_Yes_pressed():
 		print(global.mon_depo[mon_index].catal_boosts)
 		
 		# Decrementa catalisador utilizado, reloada a caixa
-		global.catal_depo[catal_index][1] -= 1
-		if (global.catal_depo[catal_index][1] == 0):
-			global.catal_depo.remove(catal_index)
+		catal_vec[catal_index][1] -= 1
+		if (catal_vec[catal_index][1] == 0):
+			catal_vec.remove(catal_index)
 		clear_box()
 		generate_members()
 		
