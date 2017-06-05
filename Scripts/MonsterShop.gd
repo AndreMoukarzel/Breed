@@ -42,7 +42,7 @@ func _on_Buy_pressed():
 				#give visual representation
 				print("Not enough cash, stranger")
 			else:
-				global.quesha -= get_parent().calculate_price(monster)
+				global.handle_quesha(-get_parent().calculate_price(monster))
 				
 				global.mon_depo.append(monster)
 				shop_depo.remove(count)
@@ -56,8 +56,6 @@ func _on_Buy_pressed():
 			
 			break
 		count += 1
-
-	get_parent().get_node("Label").set_text(str(global.quesha))
 
 func _on_Back_pressed():
 	hide()

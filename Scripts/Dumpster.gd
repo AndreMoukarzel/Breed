@@ -105,7 +105,7 @@ func sell_monster():
 		price += stat * 3
 	price /= 2
 
-	global.quesha += price
+	global.handle_quesha(price)
 
 	var i = 0
 	for monster in global.mon_depo:

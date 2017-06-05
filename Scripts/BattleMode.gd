@@ -319,7 +319,7 @@ func _on_Rank1_pressed():
 	if (process_battle(2)):
 		print ("Total victory!")
 		get_node("RankSelect/Rank2").show()
-		global.quesha += 500
+		global.handle_quesha(500)
 	else:
 		print ("Ya lost boi")
 	comp_depo.clear()

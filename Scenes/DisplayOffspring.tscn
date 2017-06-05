@@ -79,6 +79,8 @@ textures/normal = ExtResource( 5 )
 textures/pressed = ExtResource( 6 )
 textures/hover = ExtResource( 7 )
 textures/disabled = ExtResource( 6 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
 [node name="Refuse" type="TextureButton" parent="Display"]
 
@@ -97,6 +99,8 @@ textures/normal = ExtResource( 8 )
 textures/pressed = ExtResource( 9 )
 textures/hover = ExtResource( 10 )
 textures/disabled = ExtResource( 9 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
 [connection signal="text_changed" from="Display/LineEdit" to="." method="_on_LineEdit_text_changed"]
 

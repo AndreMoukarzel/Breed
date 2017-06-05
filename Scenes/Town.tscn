@@ -152,6 +152,8 @@ enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 6 )
 textures/disabled = ExtResource( 7 )
+params/resize_mode = 0
+params/stretch_mode = 0
 params/modulate = Color( 0.949219, 0.0259552, 0.0259552, 1 )
 
 [node name="PriceBackground" type="Sprite" parent="MonsterShop"]
@@ -193,8 +195,10 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 6 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
-[node name="Label" type="Label" parent="."]
+[node name="Quesha" type="Label" parent="."]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
