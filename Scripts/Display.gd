@@ -14,7 +14,7 @@ func display( monster ):
 	get_node("StatusDisplayer").display(mon)
 	get_node("StatusDisplayer").show()
 
-	g_monster.monster_sprite(self, g_monster.get_id(mon.species), mon.color, Vector2(140, 150), Vector2(0.5, 0.5), true)
+	g_monster.monster_sprite(self, mon, Vector2(140, 150), Vector2(0.5, 0.5), true)
 
 
 func kill():

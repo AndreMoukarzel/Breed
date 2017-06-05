@@ -32,6 +32,8 @@ class Monster:
 	var cost_decrease = 0
 	var incest_count = 0
 
+	var eye_tex = "dot"
+
 	func _init(name, gender, species, color, stats, gradations, personas):
 		self.name = name
 		self.gender = gender
@@ -64,7 +66,7 @@ const FER_VEC = 7
 var pos_database = [
 	{ # ID = 0
 		SPECIES : "Mafagafo",
-		FACE_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)],
+		FACE_POS : [Vector2(261, 181), Vector2(338, 181), Vector2(300, 233)], # [left_eye, right_eye, mouth] 
 		STR_VEC : [0.4, 0.05],
 		AGI_VEC : [0.2, 0.02],
 		VIT_VEC : [0.15, 0.02],
@@ -74,7 +76,7 @@ var pos_database = [
 	},
 	{ # ID = 1
 		SPECIES : "Vaking",
-		FACE_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)],
+		FACE_POS : [Vector2(397, 150), Vector2(439, 144), Vector2(433, 214)],
 		STR_VEC : [0.3, 0.05],
 		AGI_VEC : [0.05, 0.02],
 		VIT_VEC : [0.4, 0.1],
@@ -84,7 +86,7 @@ var pos_database = [
 	},
 	{ # ID = 2
 		SPECIES : "Biluga",
-		FACE_POS : [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)],
+		FACE_POS : [Vector2(435, 157), Vector2(470, 167), Vector2(460, 236)],
 		STR_VEC : [0.25, 0.05],
 		AGI_VEC : [0.4, 0.1],
 		VIT_VEC : [0.05, 0.02],
@@ -105,6 +107,9 @@ func get_id(species):
 func get_species(id):
 	return pos_database[id][SPECIES]
 
+
+func get_face_pos(id):
+	return pos_database[id][FACE_POS]
 
 func get_growth_rate(gradation, g_base, g_multi):
 	return (g_base + (gradation * g_multi))
@@ -152,22 +157,36 @@ func level_up (monster):
 		monster.xp[0] = 0
 
 
-func prepare(id, color):
-	var species = pos_database[id][SPECIES]
+# Generates monster's sprite.
+func monster_sprite(parent, monster, pos, scale, behind):
+	var creature = creature_scn.instance() # possibly should be a Sprite.new() ???
+	var id = get_id(monster.species)
+	var species = monster.species
+	var color = monster.color
+	var face_pos = get_face_pos(id)
+	
+	creature.set_texture(load(str("res://Resources/Sprites/Creatures/", species, "/", species, ".png")))
+	creature.set_modulate(color)
 
-	set_texture(load(str("res://Resources/Sprites/Creatures/", species, "/", species, ".png")))
-	set_modulate(color)
-
-# Generates monster's sprite. More information in monster_generate() documentation
-func monster_sprite(parent, id, color, pos, scale, behind):
-	var creature = creature_scn.instance()
-
-	creature.prepare(id, color)
 	creature.set_pos(pos)
 	creature.set_scale(scale)
 	creature.set_draw_behind_parent(behind)
 
+	add_eye(creature, face_pos, monster.eye_tex, scale, 0)
+	add_eye(creature, face_pos, monster.eye_tex, scale, 1)
+
 	parent.add_child(creature)
+
+
+func add_eye(parent, face_pos, texture, scale, right):
+	var eye = Sprite.new()
+	var face_offset = parent.get_texture().get_size() * scale
+	eye.set_texture(load(str("res://Resources/Sprites/Creatures/Eyes/", texture, ".png")))
+	eye.set_z(2)
+	eye.set_scale(scale)
+	eye.set_pos(face_pos[right] - face_offset)
+	parent.add_child(eye)
+
 
 func determine_prominent_stats(mon_species):
 	var db_id = get_id(mon_species)

@@ -61,7 +61,7 @@ func generate_members():
 			newunit.get_node("Button").set_disabled(true)
 		else:
 			var mon = mon_vec[num]
-			g_monster.monster_sprite(newunit, g_monster.get_id(mon.species), mon.color, Vector2(50,90), Vector2(0.15, 0.15), false)
+			g_monster.monster_sprite(newunit, mon, Vector2(50,90), Vector2(0.15, 0.15), false)
 			newunit.set_info(mon)
 
 		newunit.set_pos(Vector2(size.x * (s_count % max_cols), size.y * floor(s_count / max_cols)))
