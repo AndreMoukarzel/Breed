@@ -33,6 +33,7 @@ class Monster:
 	var incest_count = 0
 
 	var eye_tex = "dot"
+	var mouth_tex = "simple"
 
 	func _init(name, gender, species, color, stats, gradations, personas):
 		self.name = name
@@ -86,7 +87,7 @@ var pos_database = [
 	},
 	{ # ID = 2
 		SPECIES : "Biluga",
-		FACE_POS : [Vector2(435, 157), Vector2(470, 167), Vector2(460, 236)],
+		FACE_POS : [Vector2(435, 157), Vector2(470, 164), Vector2(460, 236)],
 		STR_VEC : [0.25, 0.05],
 		AGI_VEC : [0.4, 0.1],
 		VIT_VEC : [0.05, 0.02],
@@ -172,20 +173,34 @@ func monster_sprite(parent, monster, pos, scale, behind):
 	creature.set_scale(scale)
 	creature.set_draw_behind_parent(behind)
 
-	add_eye(creature, face_pos, monster.eye_tex, scale, 0)
-	add_eye(creature, face_pos, monster.eye_tex, scale, 1)
+	add_eyes(creature, face_pos, monster.eye_tex)
+	add_mouth(creature, face_pos, monster.mouth_tex)
 
 	parent.add_child(creature)
 
 
-func add_eye(parent, face_pos, texture, scale, right):
-	var eye = Sprite.new()
-	var face_offset = parent.get_texture().get_size() * scale
-	eye.set_texture(load(str("res://Resources/Sprites/Creatures/Eyes/", texture, ".png")))
-	eye.set_z(2)
-	eye.set_scale(scale)
-	eye.set_pos(face_pos[right] - face_offset)
-	parent.add_child(eye)
+func add_eyes(parent, face_pos, texture):
+	var eyel = Sprite.new()
+	var eyer = Sprite.new()
+	var face_offset = parent.get_texture().get_size() * Vector2(0.5, 0.5) #i dunno why its 0.5
+	eyel.set_texture(load(str("res://Resources/Sprites/Creatures/Eyes/", texture, ".png")))
+	eyer.set_texture(load(str("res://Resources/Sprites/Creatures/Eyes/", texture, ".png")))
+	eyel.set_z(2)
+	eyer.set_z(2)
+	eyel.set_pos(face_pos[0] - face_offset)
+	eyer.set_pos(face_pos[1] - face_offset)
+	parent.add_child(eyel)
+	parent.add_child(eyer)
+
+
+func add_mouth(parent, face_pos, texture):
+	var mouth = Sprite.new()
+	var face_offset = parent.get_texture().get_size() * Vector2(0.5, 0.5) #i dunno why its 0.5
+	mouth.set_texture(load(str("res://Resources/Sprites/Creatures/Mouths/", texture, ".png")))
+	mouth.set_z(2)
+#	mouth.set_scale(scale)
+	mouth.set_pos(face_pos[2] - face_offset)
+	parent.add_child(mouth)
 
 
 func determine_prominent_stats(mon_species):
