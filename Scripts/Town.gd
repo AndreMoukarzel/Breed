@@ -2,6 +2,7 @@
 extends Control
 
 onready var mon_shop = get_node("MonsterShop")
+onready var catal_shop = get_node("CatalShop")
 
 var count = 0
 
@@ -17,7 +18,15 @@ func _on_ShopMonster_pressed():
 	
 	get_node("VBox").hide()
 	mon_shop.show()
+
+
+func _on_ShopCatalist_pressed():
+#	get_node("Catal/SelectBox").catal_vec = ???
+#	get_node("CatalShop/SelectBox").generate_members()
 	
+	get_node("VBox").hide()
+	catal_shop.show()
+
 
 func _on_Back_pressed():
 	self.hide()
