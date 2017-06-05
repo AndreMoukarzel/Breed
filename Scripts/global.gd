@@ -121,7 +121,7 @@ func handle_energy(val):
 #	else:
 #		path.set_text(str("0", hours, ":0", minutes))
 
-
+# Código de baixa qualidade. É possível melhorar facilmente.
 func handle_days(val):
 	var day_path = get_tree().get_root().get_node("GameMenu/HUD/DateAndTime/Date")
 	
@@ -132,14 +132,28 @@ func handle_days(val):
 	if (days > 30):
 		month += 1
 		days = 1
-		if (quesha < debt_values[month][year]):
-			#test
-			print("You lose the game my dude")
+		
+		if (month > 12):
+			year += 1
+			month = 0
+			
+			if (quesha < debt_values[11][year - 1]):
+				#test
+				print("You lose the game my dude")
+			else:
+				instace_dialog(get_tree().get_root().get_node("GameMenu"), "Mayor", month - 1)
+				handle_quesha(-debt_values[11][year - 1])
 		else:
-			instace_dialog(get_tree().get_root().get_node("GameMenu"), "Mayor", month - 1)
-			handle_quesha(-100)
+			
+			if (quesha < debt_values[month - 1][year]):
+				#test
+				print("You lose the game my dude")
+			else:
+				instace_dialog(get_tree().get_root().get_node("GameMenu"), "Mayor", month - 1)
+				handle_quesha(-debt_values[month - 1][year])
+	
 	handle_energy(MAX_ENERGY)
-	day_path.set_text(str(days, " X ", month))
+	day_path.set_text(str(days, " X ", month + 1, " X ", year + 1))
 
 	# Updates catals and actions in monsters
 	for mon in mon_depo:
