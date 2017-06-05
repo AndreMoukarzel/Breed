@@ -21,8 +21,10 @@ func _on_ShopMonster_pressed():
 
 
 func _on_ShopCatalist_pressed():
-#	get_node("Catal/SelectBox").catal_vec = ???
-#	get_node("CatalShop/SelectBox").generate_members()
+	get_node("CatalShop/CatalystBox").catal_vec = catal_shop.shop_depo
+	get_node("CatalShop/CatalystBox").generate_members()
+	get_node("CatalShop/CatalystBox/Background").hide()
+	get_node("CatalShop/CatalystBox/Return").set_pos(Vector2(-300, -300))
 	
 	get_node("VBox").hide()
 	catal_shop.show()
@@ -43,6 +45,13 @@ func select_monster(monster, select_box):
 	get_node("MonsterShop/Buy").set_disabled(false)
 	
 	get_node("MonsterShop/Price").set_text(str("Price: " + str(calculate_price(monster))))
+
+
+func select_catalyst(catal_index):
+	get_node("CatalShop").selected_id = catal_index
+	get_node("CatalShop/Buy").set_disabled(false)
+	
+#	get_node("MonsterShop/Price").set_text(str("Price: " + str(calculate_price(monster))))
 	
 	
 func calculate_price(monster):

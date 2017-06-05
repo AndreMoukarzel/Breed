@@ -127,7 +127,7 @@ func button_pressed(body):
 	
 	catal_index = body.get_name().to_int()
 	
-	if (get_parent().get_name() != "Boxes"):
+	if (get_parent().get_name() == "Barn"):
 		toggle_mouse_interaction(true)
 		get_node("Yes").show()
 		get_node("No").show()

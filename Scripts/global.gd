@@ -186,12 +186,12 @@ func handle_quesha(amount):
 	quesha += amount
 	get_tree().get_root().get_node("GameMenu/Town/Quesha").set_text(str(quesha))
 		
-func append_catal(catal, quant):
-	for cq in catal_depo:
+func append_catal(deposit, catal, quant):
+	for cq in deposit:
 		if catal.species == cq[0].species and catal.level == cq[0].level:
 			cq[1] += quant
 			return
-	catal_depo.append([catal, quant])
+	deposit.append([catal, quant])
 
 #func save():
 #	var total_units = []

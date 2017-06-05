@@ -206,7 +206,7 @@ func _on_Collect1_pressed():
 		return 
 
 	if monster.catal[0] > 0:
-		global.append_catal(global.Catal.new(monster.species, monster.stats), monster.catal[0])
+		global.append_catal(global.catal_depo, global.Catal.new(monster.species, monster.stats), monster.catal[0])
 
 		monster.catal[0] = 0
 		monster.acts = 0
@@ -228,7 +228,7 @@ func _on_Collect2_pressed():
 		return 
 
 	if monster.catal[0] > 0:
-		global.append_catal(global.Catal.new(monster.species, monster.stats), monster.catal[0])
+		global.append_catal(global.catal_depo, global.Catal.new(monster.species, monster.stats), monster.catal[0])
 
 		monster.catal[0] = 0
 		monster.acts = 0

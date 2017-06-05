@@ -110,6 +110,7 @@ margin/bottom = 60.0
 
 [node name="Mons" parent="Boxes" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 visibility/visible = false
 
 [node name="BackMon" type="Button" parent="Boxes/Mons"]
