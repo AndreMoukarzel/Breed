@@ -135,3 +135,7 @@ func sell_catalyst():
 
 	get_node("Boxes/Catals").clear_box()
 	get_node("Boxes/Catals").generate_members()
+	
+	cat.clear()
+	get_node("Boxes/Catals/AmountChooser").amount = 1
+	get_node("Boxes/Catals/AmountChooser").hide()

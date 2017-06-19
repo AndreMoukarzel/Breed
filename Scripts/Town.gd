@@ -51,7 +51,6 @@ func select_monster(monster, select_box):
 
 
 func select_catalyst( catalyst ):
-	get_node("CatalShop").selected_id = catalyst
 	get_node("CatalShop/Buy").set_disabled(false)
 	
 	var index = cat.find(catalyst)

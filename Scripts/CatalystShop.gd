@@ -1,8 +1,6 @@
 
 extends Control
 
-var selected_id = -1
-
 var shop_depo =  []
 
 func _ready():
@@ -27,26 +25,44 @@ func generate_shop():
 
 
 func _on_Buy_pressed():
-	if (global.quesha < shop_depo[selected_id][0].level * 100):
+	var amount = get_node("CatalystBox/AmountChooser").amount
+	
+	get_parent().cat.sort()
+	get_parent().cat.invert()
+	
+	
+	var price = 0
+	for c in get_parent().cat:
+		price += shop_depo[c][0].level * 100 * min(amount, shop_depo[c][1])
+	
+	if (global.quesha < price):
 		#test
 		#give visual representation
 		print("Not enough cash, stranger")
 	else:
-		global.handle_quesha(-shop_depo[selected_id][0].level * 100)
+		global.handle_quesha(-price)
 		
-		global.append_catal(global.catal_depo, shop_depo[selected_id][0], 1)
-		shop_depo[selected_id][1] -= 1
-		if (shop_depo[selected_id][1] <= 0):
-			shop_depo.remove(selected_id)
+		for c in get_parent().cat:
+			global.append_catal(global.catal_depo, shop_depo[c][0], min(amount, shop_depo[c][1]))
+			
+			shop_depo[c][1] -= amount
+			if (shop_depo[c][1] <= 0):
+				shop_depo.remove(c)
 		
 		get_node("CatalystBox").clear_box()
 		get_node("CatalystBox").generate_members()
 		
 		get_node("Buy").set_disabled(true)
-		selected_id = -1
+		
+		get_parent().cat.clear()
+		get_node("CatalystBox/AmountChooser").amount = 1
+		get_node("CatalystBox/AmountChooser").hide()
 
 func _on_Back_pressed():
 	hide()
+	get_parent().cat.clear()
+	get_node("CatalystBox/AmountChooser").amount = 1
+	get_node("CatalystBox/AmountChooser").hide()
 	get_parent().get_node("VBox").show()
 	
 	get_node("CatalystBox").clear_box()
