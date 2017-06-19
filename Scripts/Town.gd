@@ -9,7 +9,6 @@ var cat = []
 
 func _ready():
 	print("Town")
-	get_node("Quesha").set_text(str(global.quesha))
 
 ################ BUTTON FUNCTIONALITY ################
 

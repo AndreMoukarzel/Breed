@@ -47,10 +47,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
+margin/left = 2.0
+margin/top = 2.0
+margin/right = -2.0
+margin/bottom = -2.0
 alignment = 0
 
 [node name="ToBreed" type="Button" parent="VBox"]
@@ -158,7 +158,6 @@ editor/display_folded = false
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -166,6 +165,7 @@ scale = Vector2( 1, 1 )
 
 [node name="Energy" type="ProgressBar" parent="HUD"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -203,14 +203,15 @@ max_lines_visible = -1
 
 [node name="DateAndTime" type="Container" parent="HUD"]
 
+editor/display_folded = true
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 14.0
+margin/left = 10.0
+margin/top = 570.0
+margin/right = 50.0
+margin/bottom = 584.0
 
 [node name="Date" type="Label" parent="HUD/DateAndTime"]
 
@@ -245,6 +246,22 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="Quesha" type="Label" parent="HUD"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 10.0
+margin/top = 10.0
+margin/right = 59.0
+margin/bottom = 24.0
+custom_fonts/font = ExtResource( 7 )
+text = "Quesha"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [connection signal="pressed" from="VBox/ToBreed" to="." method="_on_ToBreed_pressed"]
 
 [connection signal="pressed" from="VBox/ToSell" to="." method="_on_ToSell_pressed"]
@@ -264,6 +281,8 @@ max_lines_visible = -1
 [connection signal="pressed" from="Town/MonsterShop/Buy" to="Town/MonsterShop" method="_on_Buy_pressed"]
 
 [connection signal="pressed" from="Town/MonsterShop/Back" to="Town/MonsterShop" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Town/CatalShop/Buy" to="Town/CatalShop" method="_on_Buy_pressed"]
 
 [connection signal="pressed" from="Town/CatalShop/Back" to="Town/CatalShop" method="_on_Back_pressed"]
 

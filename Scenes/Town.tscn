@@ -254,23 +254,6 @@ shortcut = null
 text = "Back"
 flat = false
 
-[node name="Quesha" type="Label" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 43.0
-margin/top = 558.0
-margin/right = 105.0
-margin/bottom = 576.0
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Quesha"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
 [connection signal="pressed" from="VBox/ShopMonster" to="." method="_on_ShopMonster_pressed"]
 
 [connection signal="pressed" from="VBox/ShopCatalist" to="." method="_on_ShopCatalist_pressed"]

@@ -52,6 +52,8 @@ func _ready():
 	current_scene = root.get_child( root.get_child_count() -1 )
 
 
+############ SCENE CHANGING ############
+
 func goto_scene(path):
 
     # This function will usually be called from a signal callback,
@@ -84,6 +86,7 @@ func _deferred_goto_scene(path):
     # optional, to make it compatible with the SceneTree.change_scene() API
 	get_tree().set_current_scene( current_scene )
 
+########################################
 
 func get_id():
 	if free_ids.empty():
@@ -91,7 +94,19 @@ func get_id():
 		return ID - 1
 
 	return free_ids.pop_front()
-	
+
+
+############ GLOBAL DISPLAYS ############
+
+func handle_quesha(val):
+	var path = get_tree().get_root().get_node("GameMenu/HUD/Quesha")
+	quesha += val
+	if (quesha < 0):
+		print("ERROR: NEGATIVE QUESHA")
+		quesha = 0
+	path.set_text(str(quesha))
+
+
 # Adds the value passed to the function to the energy
 func handle_energy(val):
 	var path = get_tree().get_root().get_node("GameMenu/HUD/Energy")
@@ -153,8 +168,10 @@ func handle_days(val):
 				apbonus += 0.3
 				
 		mon.acts = floor(rand_range(act - act/5, act + act/5) * apbonus)
-		
-		
+
+########################################
+
+
 # Implementar costumização da caixa de texto aqui depois
 func instace_dialog(scene, character, dialog_number):
 	var character_id = dialog_db.get_id(character)
@@ -163,11 +180,6 @@ func instace_dialog(scene, character, dialog_number):
 	scene.add_child(d_s)
 	
 	d_s.print_text_sequence(dialog_db.get_dialog_sequence(character_id, dialog_number))
-	
-
-func handle_quesha(amount):
-	quesha += amount
-	get_tree().get_root().get_node("GameMenu/Town/Quesha").set_text(str(quesha))
 
 
 func append_catal(deposit, catal, quant):

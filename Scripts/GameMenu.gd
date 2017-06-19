@@ -6,6 +6,7 @@ func _ready():
 	get_node("HUD/Energy").set_max(global.energy)
 	get_node("HUD/Energy").set_value(global.energy)
 	get_node("HUD/Energy/EnergyLabel").set_text(str(global.energy))
+	get_node("HUD/Quesha").set_text(str(global.quesha))
 
 	#test
 	g_monster.monster_generate(global.mon_depo, "Mafagafo", Color(-1, -1, -1), [6, 6, 6, 6, 6, 6], [0, 1], 30)
