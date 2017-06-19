@@ -127,7 +127,7 @@ func sell_catalyst():
 	
 	for c in cat:
 		global.catal_depo[c][1] -= amount
-		global.handle_quesha(global.catal_depo[c][0].level * 10)
+		global.handle_quesha(global.catal_depo[c][0].level * 10 * amount)
 		if (global.catal_depo[c][1] <= 0):
 			global.catal_depo.remove(c)
 

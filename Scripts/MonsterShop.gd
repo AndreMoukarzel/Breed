@@ -47,6 +47,7 @@ func _on_Buy_pressed():
 				global.mon_depo.append(monster)
 				shop_depo.remove(count)
 				
+				get_node("Display").kill()
 				get_node("SelectBox").clear_box()
 				get_node("SelectBox").update_config(shop_depo, PageAmount, BoxColumns)
 				get_node("SelectBox").generate_members()
@@ -59,5 +60,7 @@ func _on_Buy_pressed():
 
 func _on_Back_pressed():
 	hide()
+	get_node("Display").kill()
+	get_node("SelectBox").kill()
 	get_node("Buy").set_disabled(true)
 	get_parent().get_node("VBox").show()

@@ -29,6 +29,18 @@ func update_boxes():
 	
 	Sbox2.update_config(global.mon_depo, PageAmount, BoxColumns)
 	Sbox2.generate_members()
+	
+func update_boxes_and_hide_display():
+	
+	get_node("Display1").kill()
+	get_node("Display1/Collect1").hide()
+	get_node("Display1/Feed1").hide()
+	get_node("Display2").kill()
+	get_node("Display2/Collect2").hide()
+	get_node("Display2/Feed2").hide()
+	
+	update_boxes()
+
 
 
 func mon_select_update():

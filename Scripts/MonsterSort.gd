@@ -4,7 +4,6 @@ var type
 var pressed_once = false
 	
 func multi_sort(arg1, arg2):
-	pass
 	if (self.type == "Species"):
 		if (arg1.species < arg2.species):
 			return true
@@ -25,7 +24,7 @@ func multi_sort(arg1, arg2):
 			return true
 		else:
 			return false
-
+	
 func _on_SortSpecies_pressed():
 	if (pressed_once):
 		pressed_once = false
@@ -34,7 +33,8 @@ func _on_SortSpecies_pressed():
 		pressed_once = true
 		type = "Species"
 	global.mon_depo.sort_custom(self, "multi_sort")
-	get_parent().update_boxes()
+	
+	get_parent().update_boxes_and_hide_display()
 
 
 func _on_SortLevel_pressed():
@@ -45,6 +45,7 @@ func _on_SortLevel_pressed():
 		pressed_once = true
 		type = "Level"
 	global.mon_depo.sort_custom(self, "multi_sort")
-	get_parent().update_boxes()
+
+	get_parent().update_boxes_and_hide_display()
 	
 # Fazer por gender tambem

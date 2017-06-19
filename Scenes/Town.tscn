@@ -122,7 +122,6 @@ flat = false
 
 [node name="MonsterShop" type="Control" parent="."]
 
-editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -198,6 +197,7 @@ textures/normal = ExtResource( 6 )
 
 [node name="CatalShop" type="Control" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
