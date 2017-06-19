@@ -80,7 +80,7 @@ var personality_database = [
 	},
 	{ # ID = 9
 		NAME : "Glutton",
-		SKILL : "Bonus Catalyst Capacity",
+		SKILL : "Bonus Capacity",
 		TYPES : ["BCC"],
 		FORMULAS: ["0 * WIS "]
 	},
@@ -92,19 +92,19 @@ var personality_database = [
 	},
 	{ # ID = 11
 		NAME : "Tame",
-		SKILL : "Reduced Action Cost",
+		SKILL : "- Cost",
 		TYPES : ["RAC"],
 		FORMULAS: ["0 * WIS "]
 	},
 	{ # ID = 12
 		NAME : "Perceptive",
-		SKILL : "Bonus Earned Experience",
+		SKILL : "Bonus Exp",
 		TYPES : ["BEE"],
 		FORMULAS: ["0 * WIS "]
 	},
 	{ # ID = 13
 		NAME : "Instructed",
-		SKILL : "Bonus Given Experience",
+		SKILL : "Bonus Training",
 		TYPES : ["BGE"],
 		FORMULAS: ["0 * WIS "]
 	},
