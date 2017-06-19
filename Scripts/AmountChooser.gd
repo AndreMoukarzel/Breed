@@ -2,14 +2,15 @@
 extends Label
 
 var amount = 0
+var deposit
+var cat_vec
 
 func _ready():
 	amount = 1
-	update_display()
 
-
-func update_display():
-	var catal = get_parent().get_parent().get_parent().cat #copies dumpster's catalyst vector
+func update_display(depo, catal):
+	deposit = depo
+	cat_vec = catal
 	if (catal.empty()):
 		amount = 1
 		get_node("More").set_disabled(true)
@@ -21,8 +22,8 @@ func update_display():
 	var max_num = 0
 
 	for c in catal:
-		if (global.catal_depo[c][1] > max_num):
-			max_num = global.catal_depo[c][1]
+		if (depo[c][1] > max_num):
+			max_num = depo[c][1]
 
 	get_node("More").set_disabled(false)
 	get_node("More10").set_disabled(false)
@@ -46,19 +47,19 @@ func update_display():
 
 func _on_Less_pressed():
 	amount -= 1
-	update_display()
+	update_display(deposit, cat_vec)
 
 
 func _on_Less10_pressed():
 	amount -= 10
-	update_display()
+	update_display(deposit, cat_vec)
 
 
 func _on_More_pressed():
 	amount += 1
-	update_display()
+	update_display(deposit, cat_vec)
 
 
 func _on_More10_pressed():
 	amount += 10
-	update_display()
+	update_display(deposit, cat_vec)

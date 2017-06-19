@@ -11,7 +11,7 @@ func display( monster ):
 
 	mon = monster
 
-	g_monster.monster_sprite(self, g_monster.get_id(mon.species), mon.color, Vector2(140, 150), Vector2(0.5, 0.5), true)
+	g_monster.monster_sprite(self, mon, Vector2(140, 150), Vector2(0.5, 0.5), true)
 
 	set_info(0, "Vel")
 	set_info(0, "Res")

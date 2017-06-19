@@ -44,7 +44,7 @@ func _on_Buy_pressed():
 		
 		get_node("Buy").set_disabled(true)
 		selected_id = -1
-	
+
 func _on_Back_pressed():
 	hide()
 	get_parent().get_node("VBox").show()
