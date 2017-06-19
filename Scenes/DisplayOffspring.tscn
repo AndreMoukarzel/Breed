@@ -1,15 +1,12 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://Scripts/DisplayOffspring.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/Display.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=4]
-[ext_resource path="res://Resources/Sprites/GUI/feed0.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/GUI/feed2.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/GUI/feed1.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/GUI/harvest0.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Sprites/GUI/harvest2.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Sprites/GUI/harvest1.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Sprites/GUI/blank0.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/GUI/blank2.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/GUI/blank1.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 
@@ -90,7 +87,6 @@ shortcut = null
 textures/normal = ExtResource( 5 )
 textures/pressed = ExtResource( 6 )
 textures/hover = ExtResource( 7 )
-textures/disabled = ExtResource( 6 )
 
 [node name="Refuse" type="TextureButton" parent="Display"]
 
@@ -105,10 +101,9 @@ margin/bottom = 590.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 8 )
-textures/pressed = ExtResource( 9 )
-textures/hover = ExtResource( 10 )
-textures/disabled = ExtResource( 9 )
+textures/normal = ExtResource( 5 )
+textures/pressed = ExtResource( 6 )
+textures/hover = ExtResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

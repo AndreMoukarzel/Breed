@@ -42,15 +42,19 @@ func display(monster):
 
 
 func display_personas(mon):
-	var text = ""
+	var personas = ""
+	var effects = ""
 	
 	for per in mon.personas:
 		var name = personality_db.get_name(per)
 		var skill = personality_db.get_skill(per)
-		text = str(text, name, " (", skill, ")\n")
+		personas = str(personas, name, "\n")
+		effects = str(effects, skill, "\n")
 	
 	get_node("Personalities").clear()
-	get_node("Personalities").add_text(text)
+	get_node("Personalities").add_text(personas)
+	get_node("Effects").clear()
+	get_node("Effects").add_text(effects)
 
 
 func kill():

@@ -51,7 +51,6 @@ stretch_mode = 0
 
 [node name="Display1" parent="." instance=ExtResource( 3 )]
 
-editor/display_folded = true
 margin/left = 599.12
 margin/top = 49.6
 margin/right = 639.12
