@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://Scripts/AmountChooser.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Sprites/GUI/arrow.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/GUI/ArrowPressed.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/GUI/ArrowHover.png" type="Texture" id=5]
+
+[node name="AmountChooser" type="Label"]
+
+editor/display_folded = true
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 600.0
+margin/top = 500.0
+margin/right = 640.0
+margin/bottom = 518.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.964844, 0.0791473, 0.951005, 1 )
+text = "0"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script/script = ExtResource( 2 )
+
+[node name="Less" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -50.0
+margin/top = -15.0
+margin/right = 10.0
+margin/bottom = 25.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+textures/disabled = ExtResource( 4 )
+params/scale = Vector2( -1, 1 )
+
+[node name="Less10" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -50.0
+margin/top = 15.0
+margin/right = 10.0
+margin/bottom = 55.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+textures/disabled = ExtResource( 4 )
+params/scale = Vector2( -1, 1 )
+
+[node name="More" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 50.0
+margin/top = -15.0
+margin/right = 110.0
+margin/bottom = 25.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+textures/disabled = ExtResource( 4 )
+
+[node name="More10" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 50.0
+margin/top = 15.0
+margin/right = 110.0
+margin/bottom = 55.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+textures/disabled = ExtResource( 4 )
+
+[connection signal="pressed" from="Less" to="." method="_on_Less_pressed"]
+
+[connection signal="pressed" from="Less10" to="." method="_on_Less10_pressed"]
+
+[connection signal="pressed" from="More" to="." method="_on_More_pressed"]
+
+[connection signal="pressed" from="More10" to="." method="_on_More10_pressed"]
+
+

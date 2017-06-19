@@ -5,6 +5,7 @@ onready var mon_shop = get_node("MonsterShop")
 onready var catal_shop = get_node("CatalShop")
 
 var count = 0
+var cat = []
 
 func _ready():
 	print("Town")
@@ -21,10 +22,12 @@ func _on_ShopMonster_pressed():
 
 
 func _on_ShopCatalist_pressed():
-	get_node("CatalShop/CatalystBox").catal_vec = catal_shop.shop_depo
-	get_node("CatalShop/CatalystBox").generate_members()
+	var cat_box = get_node("CatalShop/CatalystBox")
+	cat_box.catal_vec = catal_shop.shop_depo
+	cat_box.generate_members()
 	get_node("CatalShop/CatalystBox/Background").hide()
 	get_node("CatalShop/CatalystBox/Return").set_pos(Vector2(-300, -300))
+	get_node("CatalShop/CatalystBox/AmountChooser").update_display(catal_shop.shop_depo, cat)
 	
 	get_node("VBox").hide()
 	catal_shop.show()
@@ -47,10 +50,23 @@ func select_monster(monster, select_box):
 	get_node("MonsterShop/Price").set_text(str("Price: " + str(calculate_price(monster))))
 
 
-func select_catalyst(catal_index):
-	get_node("CatalShop").selected_id = catal_index
+func select_catalyst( catalyst ):
+	get_node("CatalShop").selected_id = catalyst
 	get_node("CatalShop/Buy").set_disabled(false)
 	
+	var index = cat.find(catalyst)
+	if (index != -1): # same catalyst selected again = deselected
+		cat.remove(index)
+	else:
+		cat.append(catalyst)
+
+	if (cat.empty()):
+		get_node("CatalShop/Buy").hide()
+		get_node("CatalShop/CatalystBox/AmountChooser").hide()
+	else:
+		get_node("CatalShop/Buy").show()
+		get_node("CatalShop/CatalystBox/AmountChooser").show()
+		get_node("CatalShop/CatalystBox/AmountChooser").update_display(catal_shop.shop_depo, cat)
 #	get_node("MonsterShop/Price").set_text(str("Price: " + str(calculate_price(monster))))
 	
 	

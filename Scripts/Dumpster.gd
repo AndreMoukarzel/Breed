@@ -24,7 +24,7 @@ func select_monster( monster, select_box ):
 
 func select_catalyst( catalyst ):
 	var index = cat.find(catalyst)
-	if (index != -1):
+	if (index != -1): # same catalyst selected again = deselected
 		cat.remove(index)
 	else:
 		cat.append(catalyst)
@@ -35,7 +35,7 @@ func select_catalyst( catalyst ):
 	else:
 		get_node("Boxes/Sell").show()
 		get_node("Boxes/Catals/AmountChooser").show()
-		get_node("Boxes/Catals/AmountChooser").update_display()
+		get_node("Boxes/Catals/AmountChooser").update_display(global.catal_depo, cat)
 
 
 ####### BUTTON FUNCIONALITY #######
@@ -53,7 +53,7 @@ func _on_SellCatal_pressed():
 	get_node("Boxes/Catals").generate_members()
 	get_node("Boxes/Catals").show()
 	screen = "catalyst"
-	get_node("Boxes/Catals/AmountChooser").update_display()
+	get_node("Boxes/Catals/AmountChooser").update_display(global.catal_depo, cat)
 
 
 func _on_Back_pressed():
@@ -94,7 +94,7 @@ func _on_Sell_pressed():
 			get_node("Boxes/Catals/AmountChooser").hide()
 	mon = null
 	cat.clear()
-	get_node("Boxes/Catals/AmountChooser").update_display()
+	get_node("Boxes/Catals/AmountChooser").update_display(global.catal_depo, cat)
 
 
 ######## SELL FUNCIONALITY ########
