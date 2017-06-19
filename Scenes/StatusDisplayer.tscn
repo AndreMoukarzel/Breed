@@ -1,9 +1,42 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://Scripts/StatusDisplayer.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/GUI/display.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Fonts/asman16.fnt" type="BitmapFont" id=3]
 [ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=4]
+[ext_resource path="res://Resources/Sprites/Creatures/male.tex" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/Creatures/female.tex" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/Creatures/hema.tex" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ { "frames":[ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ], "loop":true, "name":"default", "speed":5.0 } ]
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0.325092, 0.796875, 0.174316, 1 )
+light_color = Color( 0.316589, 0.8125, 0.177734, 1 )
+dark_color = Color( 0.222514, 0.816406, 0.188156, 1 )
+border_size = 0
+border_blend = true
+draw_bg = true
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0.109436, 0.171875, 0.110412, 1 )
+light_color = Color( 0.8, 0.8, 0.8, 1 )
+dark_color = Color( 0.8, 0.8, 0.8, 1 )
+border_size = 0
+border_blend = true
+draw_bg = true
 
 [node name="StatusDisplayer" type="Control"]
 
@@ -365,7 +398,114 @@ margin/bottom = 127.0
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode/enabled = false
-bbcode/bbcode = "Adoro leite\nE é isso mesmo"
+bbcode/bbcode = "Poder de\ndefecar leite"
 visible_characters = -1
+
+[node name="Info" type="Control" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 10.0
+margin/top = 140.0
+margin/right = 50.0
+margin/bottom = 180.0
+
+[node name="Gender" type="Label" parent="Info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 59.0
+margin/bottom = 23.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Gender:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="GenderSprite" type="AnimatedSprite" parent="Info"]
+
+transform/pos = Vector2( 85, 10 )
+frames = SubResource( 1 )
+animation = "default"
+
+[node name="Actions" type="Label" parent="Info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 120.0
+margin/top = 5.0
+margin/right = 183.0
+margin/bottom = 23.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Actions:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Catal" type="Label" parent="Info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 40.0
+margin/right = 81.0
+margin/bottom = 58.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Catalysts:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Level" type="Label" parent="Info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 80.0
+margin/right = 81.0
+margin/bottom = 98.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Level 50"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Exp" type="ProgressBar" parent="Info"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 80.0
+margin/top = 78.0
+margin/right = 220.0
+margin/bottom = 98.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+custom_fonts/font = ExtResource( 4 )
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 80.0
+range/exp_edit = false
+range/rounded = true
+percent/visible = true
 
 

@@ -21,6 +21,7 @@ func gradate( grad ):
 
 func display(monster):
 	display_personas(monster)
+	set_info(monster)
 
 	get_node("Stats/STR").get_node("Gradation").set_text(str("STR ", gradate(monster.gradations[0])))
 	get_node("Stats/STR").get_node("Value").set_text(str(monster.stats[0]))
@@ -41,6 +42,7 @@ func display(monster):
 	get_node("Stats/FER").get_node("Value").set_text(str(monster.stats[5]))
 
 
+
 func display_personas(mon):
 	var personas = ""
 	var effects = ""
@@ -56,6 +58,14 @@ func display_personas(mon):
 	get_node("Effects").clear()
 	get_node("Effects").add_text(effects)
 
+
+func set_info(mon):
+	get_node("Info/GenderSprite").set_frame(mon.gender)
+	get_node("Info/Actions").set_text(str("Actions: ", mon.acts))
+	get_node("Info/Catal").set_text(str("Catalyst: ", mon.catal[0], " of ", mon.catal[1]))
+	get_node("Info/Level").set_text(str("Level: ", mon.level))
+	get_node("Info/Exp").set_max(mon.xp[1])
+	get_node("Info/Exp").set_value(mon.xp[0])
 
 func kill():
 	get_node("Stats/STR").get_node("Gradation").set_text("")
