@@ -8,12 +8,13 @@ var battle_num
 var mon1_battle_state
 var mon2_battle_state
 
+var anim_scn
+
 
 func generate_enemies(rank, number):
 	# Placeholder, deve depender do rank para gerar os monstros.
 	for num in range (0, number):
 		g_monster.monster_generate(comp_depo, "nhi", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], 9, 8)
-
 
 func process_battle(enemy_num):
 	# The battle will have a couple of commands that can be
@@ -25,8 +26,8 @@ func process_battle(enemy_num):
 	var mon1 = mon
 	
 	# The monster's battle state: monster, HP, status conditions ([[effect, quantity, turns_left], [status, quantity, turns_left]...]
-	mon1_battle_state = [mon1, mon1.stats[2] * 3, []]
-	mon2_battle_state = [comp_depo[0], comp_depo[0].stats[2] * 3, []]
+	mon1_battle_state = [mon1, mon1.stats[2] * 3, [], "Player"]
+	mon2_battle_state = [comp_depo[0], comp_depo[0].stats[2] * 3, [], "Enemy"]
 
 	comp_depo.pop_front()
 	
@@ -37,7 +38,21 @@ func process_battle(enemy_num):
 	var mon1_turn = 0
 	var mon2_turn = 0
 	
+	# Create animation instance
 	
+	var animations_scene = preload("res://Scenes/BattleAnimation.tscn")
+	anim_scn = animations_scene.instance()
+	add_child(anim_scn)
+	
+	g_monster.monster_sprite(anim_scn.get_node("Player/Monster"), mon1_battle_state[0], Vector2(0, 0), Vector2(0.25, 0.25), false)
+	g_monster.monster_sprite(anim_scn.get_node("Enemy/Monster"), mon2_battle_state[0], Vector2(0, 0), Vector2(0.25, 0.25), false)
+	
+	# Será mudado depois, o display da luta será
+	# feito depois do cálculo da luta
+	anim_scn.handle_animation("Player", "Idle")
+	anim_scn.handle_animation("Enemy", "Idle")
+	
+	# Battle Loop
 	while (true):
 		# Adding the speed to the turn counter
 		mon1_turn += mon1_battle_state[0].stats[1]
@@ -97,7 +112,7 @@ func check_win_lose(wl, enemy_num):
 			if (battle_num < enemy_num):
 #				print("Entrei")
 				battle_num += 1
-				mon2_battle_state = [comp_depo[0], comp_depo[0].stats[2] * 3, []]
+				mon2_battle_state = [comp_depo[0], comp_depo[0].stats[2] * 3, [], "Enemy"]
 				comp_depo.pop_front()
 			else:
 				return true
@@ -118,7 +133,12 @@ func process_action(attacker_bs, reciever_bs):
 		regular_attack(attacker_bs, reciever_bs)
 	
 func regular_attack(attacker_bs, reciever_bs):
+	
+	# Damage Calculation
 	reciever_bs[1] -= abs(ceil(attacker_bs[0].stats[0] * 0.85))
+	
+	# Animation
+	# Aqui guardaremos o vetor de animações para reproduzir depois
 
 func use_skill(attacker_bs, reciever_bs):
 	# Primeiro sorteamos aleatóriamente entre as skills das

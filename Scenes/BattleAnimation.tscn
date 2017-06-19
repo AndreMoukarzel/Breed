@@ -1,7 +1,26 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=6 format=1]
 
-[ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=1]
-[ext_resource path="res://Resources/Sprites/Battle/Scenery/PHFloor1.jpg" type="Texture" id=2]
+[ext_resource path="res://Scripts/BattleAnimation.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Battle/Scenery/PHFloor1.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Anims/Battle/Idle.tres" type="Animation" id=4]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "BasicAttack"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Monster:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.5, 1, 1.5, 1.9 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 0, 0 ), Vector2( 125, 0 ), Vector2( 205, 0 ), Vector2( 205, 0 ), Vector2( 0, 0 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Monster:transform/rot")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 0.5, 0.7, 1, 1.2 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, -30.0, -30.0, 0.0 ] }
 
 [node name="Control" type="Control"]
 
@@ -13,10 +32,12 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
+script/script = ExtResource( 1 )
 
 [node name="Background" type="Sprite" parent="."]
 
-texture = ExtResource( 1 )
+visibility/opacity = 0.6
+texture = ExtResource( 2 )
 centered = false
 
 [node name="Ground" type="TextureFrame" parent="."]
@@ -29,18 +50,41 @@ margin/left = 222.0
 margin/top = 199.0
 margin/right = 795.0
 margin/bottom = 424.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 stretch_mode = 0
 
 [node name="Player" type="Node2D" parent="."]
 
-[node name="Enemy" type="Node2D" parent="."]
+transform/pos = Vector2( 375, 275 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Monster" type="Node2D" parent="Player"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
+anims/BasicAttack = SubResource( 1 )
+anims/Idle = ExtResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="Enemy" type="Node2D" parent="."]
+
+transform/pos = Vector2( 620, 275 )
+transform/scale = Vector2( -1, 1 )
+
+[node name="Monster" type="Node2D" parent="Enemy"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/BasicAttack = SubResource( 1 )
+anims/Idle = ExtResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
