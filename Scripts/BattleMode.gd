@@ -9,6 +9,10 @@ var mon1_battle_state
 var mon2_battle_state
 
 var anim_scn
+var anim_list = []
+# Used for animation purposes, contains the player monster,
+# followed by the rest of the arena monsters.
+var mon_list = []
 
 
 func generate_enemies(rank, number):
@@ -21,6 +25,19 @@ func process_battle(enemy_num):
 	# chosen by the monsters. When a command is issued, the
 	# respective animation should be played, hence why all
 	# commands are separated on their on functions.
+	
+	# Preparing the ground for
+	# displaying the battle animation.
+	anim_list.clear()
+	mon_list.clear()
+	
+	mon_list.append(mon)
+	for monster in comp_depo:
+		mon_list.append(monster)
+		
+	# Poderia usar também o mon#_battle_state[3]
+	anim_list.append(["Idle", "Player"])
+	anim_list.append(["Idle", "Enemy"])
 
 	# Getting player monster
 	var mon1 = mon
@@ -37,20 +54,6 @@ func process_battle(enemy_num):
 	# A monster's turn happens when the counter reaches 100
 	var mon1_turn = 0
 	var mon2_turn = 0
-	
-	# Create animation instance
-	
-	var animations_scene = preload("res://Scenes/BattleAnimation.tscn")
-	anim_scn = animations_scene.instance()
-	add_child(anim_scn)
-	
-	g_monster.monster_sprite(anim_scn.get_node("Player/Monster"), mon1_battle_state[0], Vector2(0, 0), Vector2(0.25, 0.25), false)
-	g_monster.monster_sprite(anim_scn.get_node("Enemy/Monster"), mon2_battle_state[0], Vector2(0, 0), Vector2(0.25, 0.25), false)
-	
-	# Será mudado depois, o display da luta será
-	# feito depois do cálculo da luta
-	anim_scn.handle_animation("Player", "Idle")
-	anim_scn.handle_animation("Enemy", "Idle")
 	
 	# Battle Loop
 	while (true):
@@ -109,6 +112,9 @@ func check_win_lose(wl, enemy_num):
 		if (mon2_battle_state[1] <= 0):
 			#test
 			print("Player Victory")
+			# Enqueue animation
+			anim_list.append(["Death", "Enemy"])
+			
 			if (battle_num < enemy_num):
 #				print("Entrei")
 				battle_num += 1
@@ -120,6 +126,8 @@ func check_win_lose(wl, enemy_num):
 		if (mon1_battle_state[1] <= 0):
 			#test
 			print("Enemy Victory")
+			#Enqueue animation
+			anim_list.append(["Death", "Player"])
 			return true
 	
 	return false
@@ -138,8 +146,11 @@ func regular_attack(attacker_bs, reciever_bs):
 	reciever_bs[1] -= abs(ceil(attacker_bs[0].stats[0] * 0.85))
 	
 	# Animation
-	# Aqui guardaremos o vetor de animações para reproduzir depois
-
+	# test
+	print(str(attacker_bs[3], "'s Attack!"))
+	anim_list.append(["BasicAttack", attacker_bs[3]])
+	anim_list.append(["Idle", attacker_bs[3]])
+	
 func use_skill(attacker_bs, reciever_bs):
 	# Primeiro sorteamos aleatóriamente entre as skills das
 	# personalidades. Depois, a buscamos pela database (podemos
@@ -336,11 +347,23 @@ func _on_Rank1_pressed():
 	# Vai ter que gerar os monstros para uma batalha de Rank 1,
 	# e começar a representação visual.
 	generate_enemies(1, 2)
+	
+	# Initialize animation
+	var animation_scene = preload("res://Scenes/BattleAnimation.tscn")
+	var anim_scn = animation_scene.instance()
+	
 	if (process_battle(2)):
+		# Animate here
+		anim_scn.action_list = anim_list
+		anim_scn.monster_list = mon_list
+		add_child(anim_scn)
+		anim_scn.animate_battle()
+		
 		print ("Total victory!")
 		get_node("RankSelect/Rank2").show()
 		global.handle_quesha(500)
 	else:
+		# Animate here too
 		print ("Ya lost boi")
 	comp_depo.clear()
 

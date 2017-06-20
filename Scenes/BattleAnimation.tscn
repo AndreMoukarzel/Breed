@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Scripts/BattleAnimation.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/Battle/Scenery/PHFloor1.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Anims/Battle/Idle.tres" type="Animation" id=4]
+[ext_resource path="res://Resources/Anims/Battle/Death.tres" type="Animation" id=4]
+[ext_resource path="res://Resources/Anims/Battle/Idle.tres" type="Animation" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -21,6 +22,18 @@ tracks/1/path = NodePath("Monster:transform/rot")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = { "times":FloatArray( 0, 0.5, 0.7, 1, 1.2 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, -30.0, -30.0, 0.0 ] }
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "Emerge"
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Monster:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 1.5 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
 
 [node name="Control" type="Control"]
 
@@ -65,7 +78,8 @@ playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/BasicAttack = SubResource( 1 )
-anims/Idle = ExtResource( 4 )
+anims/Death = ExtResource( 4 )
+anims/Idle = ExtResource( 5 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -84,7 +98,9 @@ playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/BasicAttack = SubResource( 1 )
-anims/Idle = ExtResource( 4 )
+anims/Death = ExtResource( 4 )
+anims/Emerge = SubResource( 2 )
+anims/Idle = ExtResource( 5 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
