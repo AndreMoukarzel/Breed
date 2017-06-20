@@ -18,7 +18,7 @@ var mon_list = []
 func generate_enemies(rank, number):
 	# Placeholder, deve depender do rank para gerar os monstros.
 	for num in range (0, number):
-		g_monster.monster_generate(comp_depo, "nhi", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], 9, 8)
+		g_monster.monster_generate(comp_depo, "nhi", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], 9, 1)
 
 func process_battle(enemy_num):
 	# The battle will have a couple of commands that can be
@@ -359,12 +359,26 @@ func _on_Rank1_pressed():
 		add_child(anim_scn)
 		anim_scn.animate_battle()
 		
+		yield(anim_scn, "battle_animation_finished")
+		
+		anim_scn.queue_free()
+		
 		print ("Total victory!")
 		get_node("RankSelect/Rank2").show()
 		global.handle_quesha(500)
 	else:
 		# Animate here too
+		anim_scn.action_list = anim_list
+		anim_scn.monster_list = mon_list
+		add_child(anim_scn)
+		anim_scn.animate_battle()
+		
+		yield(anim_scn, "battle_animation_finished")
+		
+		anim_scn.queue_free()
+		
 		print ("Ya lost boi")
+	
 	comp_depo.clear()
 
 

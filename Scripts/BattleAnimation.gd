@@ -13,6 +13,8 @@ extends Control
 var action_list = []
 var monster_list = []
 
+signal battle_animation_finished
+
 func animate_battle():
 	g_monster.monster_sprite(self.get_node("Player/Monster"), monster_list[0], Vector2(0, 0), Vector2(0.25, 0.25), false)
 	monster_list.pop_front()
@@ -48,3 +50,5 @@ func animate_battle():
 				get_node("Enemy/AnimationPlayer").stop()
 				get_node("Enemy/AnimationPlayer").play(action[0])
 				yield(get_node("Enemy/AnimationPlayer"), "finished")
+	
+	emit_signal("battle_animation_finished")
