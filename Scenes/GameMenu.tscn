@@ -40,6 +40,7 @@ stretch_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
