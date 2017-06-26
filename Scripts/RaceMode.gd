@@ -67,7 +67,7 @@ func _on_Rank1_pressed():
 	generate_racers(1, 5)
 	if (process_race(1000)):
 		print ("Total victory!")
-		get_node("RankSelect/Rank2").show()
+		get_node("MonsterSelect/Rank2").show()
 	else:
 		print ("Ya lost boi")
 	comp_depo.clear()
@@ -81,13 +81,7 @@ func _on_Rank3_pressed():
 	print("I can literally do nothing")
 
 
-func _on_BackRank_pressed():
-	get_node("MonsterSelect").show()
-	get_node("RankSelect").hide()
-
-
 func select_monster(monster, select_box):
 		mon = monster
 		get_node("MonsterSelect/RaceDisplay").show()
 		get_node("MonsterSelect/RaceDisplay").display(mon)
-		get_node("MonsterSelect/Proceed2").set_disabled(false)
