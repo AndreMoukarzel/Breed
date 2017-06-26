@@ -24,7 +24,7 @@ func animate_battle():
 	for action in action_list:
 		if (action[1] == "Player"):
 			if (action[0] == "Idle"):
-				get_node("Player/AnimationPlayer").play(action[0], 1, max(0.4, randf()))
+				get_node("Player/AnimationPlayer").play(action[0], 1, rand_range(0.8, 1.2))
 			else:
 				get_node("Player/AnimationPlayer").stop()
 				get_node("Player/AnimationPlayer").play(action[0])
@@ -32,7 +32,7 @@ func animate_battle():
 		
 		else:
 			if (action[0] == "Idle"):
-				get_node("Enemy/AnimationPlayer").play(action[0], 1, max(0.4, randf()))
+				get_node("Enemy/AnimationPlayer").play(action[0], 1, rand_range(0.8, 1.2))
 			elif (action[0] == "Death" and monster_list.size() > 0):
 				get_node("Enemy/AnimationPlayer").stop()
 				get_node("Enemy/AnimationPlayer").play(action[0])

@@ -30,24 +30,12 @@ func _on_Race_pressed():
 	get_node("RaceMode").show()
 
 
-func _on_Back2_pressed():
+func _on_BackBattle_pressed():
 	get_node("VBox").show()
 	get_node("BattleMode").hide()
 	get_node("BattleMode/MonsterSelect/BattleDisplay").hide()
-	get_node("BattleMode/MonsterSelect/Proceed").set_disabled(true)
 
 
-func _on_Back4_pressed():
+func _on_BackRace_pressed():
 	get_node("VBox").show()
 	get_node("RaceMode").hide()
-	get_node("RaceMode/MonsterSelect/Proceed2").set_disabled(true)
-
-
-func _on_Proceed_pressed():
-	get_node("BattleMode/MonsterSelect").hide()
-	get_node("BattleMode/RankSelect").show()
-
-
-func _on_Proceed2_pressed():
-	get_node("RaceMode/MonsterSelect").hide()
-	get_node("RaceMode/RankSelect").show()

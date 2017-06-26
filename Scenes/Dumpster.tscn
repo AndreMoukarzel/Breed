@@ -132,6 +132,7 @@ flat = false
 
 [node name="Catals" parent="Boxes" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 visibility/visible = false
 
 [node name="BackCatal" type="Button" parent="Boxes/Catals"]

@@ -67,6 +67,7 @@ func set_info(mon):
 	get_node("Info/Exp").set_max(mon.xp[1])
 	get_node("Info/Exp").set_value(mon.xp[0])
 
+
 func kill():
 	get_node("Stats/STR").get_node("Gradation").set_text("")
 	get_node("Stats/STR").get_node("Value").set_text("")

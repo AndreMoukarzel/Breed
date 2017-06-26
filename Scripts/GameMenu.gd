@@ -21,6 +21,7 @@ func _on_ToBreed_pressed():
 	get_node("Barn").show()
 
 	get_node("Barn").update_boxes()
+	get_node("Barn")._on_StorageBackground1_pressed()
 
 
 func _on_ToSell_pressed():

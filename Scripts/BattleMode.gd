@@ -20,12 +20,13 @@ func generate_enemies(rank, number):
 	for num in range (0, number):
 		g_monster.monster_generate(comp_depo, "nhi", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], 9, 1)
 
+
 func process_battle(enemy_num):
 	# The battle will have a couple of commands that can be
 	# chosen by the monsters. When a command is issued, the
 	# respective animation should be played, hence why all
 	# commands are separated on their on functions.
-	
+
 	# Preparing the ground for
 	# displaying the battle animation.
 	anim_list.clear()
@@ -34,33 +35,33 @@ func process_battle(enemy_num):
 	mon_list.append(mon)
 	for monster in comp_depo:
 		mon_list.append(monster)
-		
+
 	# Poderia usar também o mon#_battle_state[3]
 	anim_list.append(["Idle", "Player"])
 	anim_list.append(["Idle", "Enemy"])
 
 	# Getting player monster
 	var mon1 = mon
-	
+
 	# The monster's battle state: monster, HP, status conditions ([[effect, quantity, turns_left], [status, quantity, turns_left]...]
 	mon1_battle_state = [mon1, mon1.stats[2] * 3, [], "Player"]
 	mon2_battle_state = [comp_depo[0], comp_depo[0].stats[2] * 3, [], "Enemy"]
 
 	comp_depo.pop_front()
-	
+
 	# The battle number
 	battle_num = 1
-	
+
 	# A monster's turn happens when the counter reaches 100
 	var mon1_turn = 0
 	var mon2_turn = 0
-	
+
 	# Battle Loop
 	while (true):
 		# Adding the speed to the turn counter
 		mon1_turn += mon1_battle_state[0].stats[1]
 		mon2_turn += mon2_battle_state[0].stats[1]
-		
+
 		if (mon1_turn >= 100 and mon2_turn >= 100):
 			# SPEED TIE
 			if (randf() < 0.5):
@@ -77,7 +78,7 @@ func process_battle(enemy_num):
 					if(check_win_lose("lose", enemy_num)):
 						return false
 				mon2_turn = 0
-				
+
 			else:
 				# Turno do monster 2 primeiro
 				if (deal_effect(mon2_battle_state) == 0):
@@ -91,7 +92,7 @@ func process_battle(enemy_num):
 					if(check_win_lose("win", enemy_num)):
 						return true
 				mon1_turn = 0
-		
+
 		elif (mon1_turn >= 100):
 			# Turno do monstro 1
 			if (deal_effect(mon1_battle_state) == 0):
@@ -106,6 +107,7 @@ func process_battle(enemy_num):
 				if(check_win_lose("lose", enemy_num)):
 					return false
 			mon2_turn = 0
+
 
 func check_win_lose(wl, enemy_num):
 	if (wl == "win"):
@@ -131,7 +133,8 @@ func check_win_lose(wl, enemy_num):
 			return true
 	
 	return false
-			
+
+
 func process_action(attacker_bs, reciever_bs):
 	#decide o uso de skills ou não baseado em sua WIS
 	randomize()
@@ -139,7 +142,8 @@ func process_action(attacker_bs, reciever_bs):
 		use_skill(attacker_bs, reciever_bs)
 	else:
 		regular_attack(attacker_bs, reciever_bs)
-	
+
+
 func regular_attack(attacker_bs, reciever_bs):
 	
 	# Damage Calculation
@@ -150,7 +154,8 @@ func regular_attack(attacker_bs, reciever_bs):
 	print(str(attacker_bs[3], "'s Attack!"))
 	anim_list.append(["BasicAttack", attacker_bs[3]])
 	anim_list.append(["Idle", attacker_bs[3]])
-	
+
+
 func use_skill(attacker_bs, reciever_bs):
 	# Primeiro sorteamos aleatóriamente entre as skills das
 	# personalidades. Depois, a buscamos pela database (podemos
@@ -211,6 +216,7 @@ func use_skill(attacker_bs, reciever_bs):
 		
 		persona_counter += 1
 
+
 func check_repeat_skill(target_bs, type):
 	if (type == "HealPerTurn"):
 		for effect in target_bs[2]:
@@ -224,6 +230,7 @@ func check_repeat_skill(target_bs, type):
 	for effect in target_bs[2]:
 		if (effect[0] == type):
 			return true
+
 
 func interpret_formula(formula, attacker_bs):
 	# Formulas serão compostos apenas de operadores,
@@ -281,7 +288,8 @@ func interpret_formula(formula, attacker_bs):
 			print("Erro de formato!")
 	
 	return expr_list[0]
-	
+
+
 func string_to_stat_number(stat):
 	if (stat == "STR"):
 		return 0
@@ -295,6 +303,7 @@ func string_to_stat_number(stat):
 		return 4
 	if (stat == "FER"):
 		return 5
+
 
 func deal_effect(reciever_bs):
 	# Utilizando-se do parametro "quantity" de como o effect é
@@ -364,7 +373,7 @@ func _on_Rank1_pressed():
 		anim_scn.queue_free()
 		
 		print ("Total victory!")
-		get_node("RankSelect/Rank2").show()
+		get_node("MonsterSelect/Rank2").show()
 		global.handle_quesha(500)
 	else:
 		# Animate here too
@@ -390,13 +399,7 @@ func _on_Rank3_pressed():
 	print("I can literally do nothing")
 
 
-func _on_BackRank_pressed():
-	get_node("MonsterSelect").show()
-	get_node("RankSelect").hide()
-
-
 func select_monster(monster, select_box):
 		mon = monster
 		get_node("MonsterSelect/BattleDisplay").show()
 		get_node("MonsterSelect/BattleDisplay").display(mon)
-		get_node("MonsterSelect/Proceed").set_disabled(false)
