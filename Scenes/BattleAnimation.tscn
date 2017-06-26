@@ -95,7 +95,6 @@ stretch_mode = 0
 
 [node name="Player" type="Node2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 375, 275 )
 
 [node name="Monster" type="Node2D" parent="Player"]
@@ -115,7 +114,6 @@ autoplay = ""
 
 [node name="Enemy" type="Node2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 620, 275 )
 transform/scale = Vector2( -1, 1 )
 

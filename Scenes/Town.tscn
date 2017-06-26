@@ -167,7 +167,7 @@ params/modulate = Color( 0.949219, 0.588569, 0.0259552, 1 )
 [node name="BuyLabel" type="Label" parent="MonsterShop"]
 
 rect/scale = Vector2( 1.5, 1.5 )
-focus/ignore_mouse = false
+focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
@@ -206,7 +206,7 @@ params/modulate = Color( 0.738281, 0, 0, 1 )
 [node name="BackLabel" type="Label" parent="MonsterShop"]
 
 rect/scale = Vector2( 1.5, 1.5 )
-focus/ignore_mouse = false
+focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2

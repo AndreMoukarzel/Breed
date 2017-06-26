@@ -6,6 +6,15 @@ const DIALOG = 1
 
 var dialog_database = [
 	{ # ID = 0
+		CHARACTER : "System",
+		DIALOG: [
+		# Dialogs related to alpha build
+		["Hello! Welcome to Breed Project's Alpha. Click the text to continue!", "Your objective is have enough money to pay your debt at the end of each month.",
+		 "You will some money to begin with. Try to figure out how to earn some nice cash! Good luck!"],
+		["BOOP."]
+		]
+	},
+	{ # ID = 1
 		CHARACTER : "Mayor",
 		DIALOG: [
 		# Dialogs related to debt payment
@@ -13,7 +22,7 @@ var dialog_database = [
 		["It's your boy, Gyro!"]
 		]
 	},
-	{ # ID = 1
+	{ # ID = 2
 		CHARACTER : "Pippi",
 		DIALOG: [
 		["Have you seen my Pippi?", "Plz help me I cant see my pippi oh no."],
