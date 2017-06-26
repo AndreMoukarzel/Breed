@@ -40,7 +40,6 @@ stretch_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="."]
 
-editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -158,6 +157,7 @@ editor/display_folded = false
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -312,29 +312,21 @@ max_lines_visible = -1
 
 [connection signal="pressed" from="Arena/VBox/Back" to="Arena" method="_on_Back_pressed"]
 
-[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Proceed" to="Arena" method="_on_Proceed_pressed"]
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/BackBattle" to="Arena" method="_on_BackBattle_pressed"]
 
-[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Back2" to="Arena" method="_on_Back2_pressed"]
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Rank1" to="Arena/BattleMode" method="_on_Rank1_pressed"]
 
-[connection signal="pressed" from="Arena/BattleMode/RankSelect/Rank3" to="Arena/BattleMode" method="_on_Rank3_pressed"]
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Rank2" to="Arena/BattleMode" method="_on_Rank2_pressed"]
 
-[connection signal="pressed" from="Arena/BattleMode/RankSelect/Rank2" to="Arena/BattleMode" method="_on_Rank2_pressed"]
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Rank3" to="Arena/BattleMode" method="_on_Rank3_pressed"]
 
-[connection signal="pressed" from="Arena/BattleMode/RankSelect/Rank1" to="Arena/BattleMode" method="_on_Rank1_pressed"]
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/BackRace" to="Arena" method="_on_BackRace_pressed"]
 
-[connection signal="pressed" from="Arena/BattleMode/RankSelect/BackRank" to="Arena/BattleMode" method="_on_BackRank_pressed"]
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Rank1" to="Arena/RaceMode" method="_on_Rank1_pressed"]
 
-[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Proceed2" to="Arena" method="_on_Proceed2_pressed"]
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Rank2" to="Arena/RaceMode" method="_on_Rank2_pressed"]
 
-[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Back4" to="Arena" method="_on_Back4_pressed"]
-
-[connection signal="pressed" from="Arena/RaceMode/RankSelect/Rank3" to="Arena/RaceMode" method="_on_Rank3_pressed"]
-
-[connection signal="pressed" from="Arena/RaceMode/RankSelect/Rank2" to="Arena/RaceMode" method="_on_Rank2_pressed"]
-
-[connection signal="pressed" from="Arena/RaceMode/RankSelect/Rank1" to="Arena/RaceMode" method="_on_Rank1_pressed"]
-
-[connection signal="pressed" from="Arena/RaceMode/RankSelect/BackRank" to="Arena/RaceMode" method="_on_BackRank_pressed"]
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Rank3" to="Arena/RaceMode" method="_on_Rank3_pressed"]
 
 [connection signal="pressed" from="Barn/Display1/Collect1" to="Barn" method="_on_Collect1_pressed"]
 

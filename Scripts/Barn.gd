@@ -42,7 +42,6 @@ func update_boxes_and_hide_display():
 	update_boxes()
 
 
-
 func mon_select_update():
 	if (id1 == null or id2 == null):
 		print("wtf man")
@@ -278,7 +277,6 @@ func _on_Feed2_pressed():
 		var display = feeding_display_scn.instance(v_id)
 		add_child(display)
 		display.create(global.catal_depo, v_id)
-
 
 
 func set_breed_info(mon1, mon2):
