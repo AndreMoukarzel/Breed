@@ -10,7 +10,7 @@ var dialog_database = [
 		DIALOG: [
 		# Dialogs related to alpha build
 		["Hello! Welcome to Breed Project's Alpha. Click the text to continue!", "Your objective is have enough money to pay your debt at the end of each month.",
-		 "You will some money to begin with. Try to figure out how to earn some nice cash! Good luck!"],
+		 "You will be given some money to begin with. Try to figure out how to earn some nice cash! Good luck!"],
 		["BOOP."]
 		]
 	},
