@@ -52,3 +52,6 @@ func animate_battle():
 				yield(get_node("Enemy/AnimationPlayer"), "finished")
 	
 	emit_signal("battle_animation_finished")
+
+func _on_SkipButton_pressed():
+	emit_signal("battle_animation_finished")

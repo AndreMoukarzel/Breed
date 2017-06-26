@@ -12,7 +12,7 @@ func _ready():
 	# LEMBRAR QUE QUANDO FOR GERAR UM SHOP NOVO,
 	# TEM QUE LIBERAR TODOS OS IDS NÃO UTILIZADOS
 	var w_size = OS.get_window_size()
-	get_node("Display").set_pos(Vector2(w_size.x - 300, 20))
+	get_node("Display").set_pos(Vector2(w_size.x - 425, 20))
 	generate_shop()
 
 func generate_shop():

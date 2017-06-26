@@ -356,9 +356,9 @@ func _on_Rank1_pressed():
 		# Animate here
 		anim_scn.action_list = anim_list
 		anim_scn.monster_list = mon_list
+		
 		add_child(anim_scn)
 		anim_scn.animate_battle()
-		
 		yield(anim_scn, "battle_animation_finished")
 		
 		anim_scn.queue_free()
@@ -370,9 +370,9 @@ func _on_Rank1_pressed():
 		# Animate here too
 		anim_scn.action_list = anim_list
 		anim_scn.monster_list = mon_list
+		
 		add_child(anim_scn)
 		anim_scn.animate_battle()
-		
 		yield(anim_scn, "battle_animation_finished")
 		
 		anim_scn.queue_free()

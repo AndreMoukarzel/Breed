@@ -1,16 +1,18 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://Scripts/Town.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/town.jpg" type="Texture" id=2]
 [ext_resource path="res://Scripts/MonsterShop.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Display.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Resources/Sprites/GUI/SelectUnitHover.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/GUI/SelectUnitNormal.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=8]
-[ext_resource path="res://Scripts/CatalystShop.gd" type="Script" id=9]
-[ext_resource path="res://Scenes/CatalystBox.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/AmountChooser.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Resources/Sprites/GUI/blank1.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/GUI/blank2.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/GUI/blank0.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=9]
+[ext_resource path="res://Resources/Sprites/GUI/SelectUnitHover.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/CatalystShop.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/CatalystBox.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/AmountChooser.tscn" type="PackedScene" id=13]
 
 [node name="Town" type="Control"]
 
@@ -145,39 +147,36 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 744.0
-margin/top = 250.0
-margin/right = 969.0
-margin/bottom = 400.0
+margin/left = 752.0
+margin/top = 543.0
+margin/right = 852.0
+margin/bottom = 596.0
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 6 )
+textures/pressed = ExtResource( 7 )
+textures/hover = ExtResource( 8 )
 textures/disabled = ExtResource( 7 )
-params/modulate = Color( 0.949219, 0.0259552, 0.0259552, 1 )
+params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.75 )
+params/stretch_mode = 0
+params/modulate = Color( 0.949219, 0.588569, 0.0259552, 1 )
 
-[node name="PriceBackground" type="Sprite" parent="MonsterShop"]
+[node name="BuyLabel" type="Label" parent="MonsterShop"]
 
-transform/pos = Vector2( 664.75, 344.607 )
-transform/scale = Vector2( 0.46458, 0.389757 )
-texture = ExtResource( 6 )
-modulate = Color( 0.6875, 1, 0, 1 )
-
-[node name="KeshaIcon" type="Sprite" parent="MonsterShop"]
-
-[node name="Price" type="Label" parent="MonsterShop"]
-
+rect/scale = Vector2( 1.5, 1.5 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 620.0
-margin/top = 321.0
-margin/right = 782.0
-margin/bottom = 339.0
-custom_fonts/font = ExtResource( 8 )
-text = "Price: "
+margin/left = 778.0
+margin/top = 555.0
+margin/right = 808.0
+margin/bottom = 573.0
+custom_fonts/font = ExtResource( 9 )
+text = "Buy"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -188,14 +187,68 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 744.0
-margin/top = 425.0
-margin/right = 969.0
-margin/bottom = 575.0
+margin/left = 875.0
+margin/top = 543.0
+margin/right = 975.0
+margin/bottom = 596.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 6 )
+textures/pressed = ExtResource( 7 )
+textures/hover = ExtResource( 8 )
+textures/disabled = ExtResource( 7 )
+params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.75 )
+params/stretch_mode = 0
+params/modulate = Color( 0.738281, 0, 0, 1 )
+
+[node name="BackLabel" type="Label" parent="MonsterShop"]
+
+rect/scale = Vector2( 1.5, 1.5 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 898.0
+margin/top = 555.0
+margin/right = 938.0
+margin/bottom = 573.0
+custom_fonts/font = ExtResource( 9 )
+text = "Back"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="PriceBackground" type="Sprite" parent="MonsterShop"]
+
+visibility/visible = false
+transform/pos = Vector2( 922.202, 272.564 )
+transform/scale = Vector2( 0.46458, 0.209702 )
+texture = ExtResource( 10 )
+modulate = Color( 0.6875, 1, 0, 1 )
+
+[node name="KeshaIcon" type="Sprite" parent="MonsterShop"]
+
+visibility/visible = false
+transform/pos = Vector2( 259.053, -57.7037 )
+
+[node name="Price" type="Label" parent="MonsterShop"]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 879.0
+margin/top = 263.0
+margin/right = 1035.0
+margin/bottom = 281.0
+custom_fonts/font = ExtResource( 9 )
+text = "Price: "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="CatalShop" type="Control" parent="."]
 
@@ -208,9 +261,9 @@ margin/left = 0.0
 margin/top = -1.0
 margin/right = 40.0
 margin/bottom = 39.0
-script/script = ExtResource( 9 )
+script/script = ExtResource( 11 )
 
-[node name="CatalystBox" parent="CatalShop" instance=ExtResource( 10 )]
+[node name="CatalystBox" parent="CatalShop" instance=ExtResource( 12 )]
 
 editor/display_folded = true
 margin/left = 100.0
@@ -218,7 +271,32 @@ margin/top = 50.0
 margin/right = 140.0
 margin/bottom = 90.0
 
-[node name="AmountChooser" parent="CatalShop/CatalystBox" instance=ExtResource( 11 )]
+[node name="BackPage" parent="CatalShop/CatalystBox"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="FowardPage" parent="CatalShop/CatalystBox"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Return" parent="CatalShop/CatalystBox"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Yes" parent="CatalShop/CatalystBox"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="No" parent="CatalShop/CatalystBox"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="AmountChooser" parent="CatalShop/CatalystBox" instance=ExtResource( 13 )]
 
 [node name="Buy" type="Button" parent="CatalShop"]
 
@@ -262,12 +340,6 @@ flat = false
 [connection signal="pressed" from="MonsterShop/Buy" to="MonsterShop" method="_on_Buy_pressed"]
 
 [connection signal="pressed" from="MonsterShop/Back" to="MonsterShop" method="_on_Back_pressed"]
-
-[connection signal="pressed" from="CatalShop/CatalystBox/Return" to="CatalShop/CatalystBox" method="_on_Return_pressed"]
-
-[connection signal="pressed" from="CatalShop/CatalystBox/Yes" to="CatalShop/CatalystBox" method="_on_Yes_pressed"]
-
-[connection signal="pressed" from="CatalShop/CatalystBox/No" to="CatalShop/CatalystBox" method="_on_No_pressed"]
 
 [connection signal="pressed" from="CatalShop/Buy" to="CatalShop" method="_on_Buy_pressed"]
 

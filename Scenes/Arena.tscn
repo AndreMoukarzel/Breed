@@ -40,6 +40,7 @@ stretch_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -508,6 +509,7 @@ flat = false
 
 [node name="RaceMode" type="Control" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
