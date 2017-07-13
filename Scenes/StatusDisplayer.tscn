@@ -83,7 +83,6 @@ max_lines_visible = -1
 
 [node name="Stats" type="VBoxContainer" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -96,7 +95,6 @@ alignment = 0
 
 [node name="STR" type="Control" parent="Stats"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -142,7 +140,6 @@ max_lines_visible = -1
 
 [node name="AGI" type="Control" parent="Stats"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2

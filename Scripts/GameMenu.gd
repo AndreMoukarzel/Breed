@@ -3,7 +3,7 @@ extends Control
 
 func _ready():
 	print("Game Menu")
-	global.instace_dialog(self, "System", 0)
+	#global.instace_dialog(self, "System", 0)
 	
 	get_node("HUD/Energy").set_max(global.energy)
 	get_node("HUD/Energy").set_value(global.energy)
@@ -12,7 +12,7 @@ func _ready():
 
 	#test
 	g_monster.monster_generate(global.mon_depo, "Mafagafo", Color(-1, -1, -1), [6, 6, 6, 6, 6, 6], [0, 1], 30)
-	g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], [0, 13], 30)
+	g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], [0, 13], 1)
 
 
 ####### BUTTON FUNCIONALITY #######

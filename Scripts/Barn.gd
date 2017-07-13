@@ -103,6 +103,11 @@ func select_monster( monster, select_box ):
 ####### BUTTON FUNCIONALITY #######
 
 func _on_Breed_pressed():
+	if blue:
+		_on_StorageBackground1_pressed()
+	elif red:
+		_on_StorageBackground2_pressed()
+	
 	# Positions in array mon_depo
 	id1 = null
 	id2 = null
@@ -135,7 +140,11 @@ func _on_Breed_pressed():
 	Sbox2.clear_box()
 
 	var script = load("res://Scripts/Breeding.gd").new()
+	script.set_name("TempBreeding")
+	add_child(script)
 	script.breed(m1, m2, self)
+	
+	get_node("TempBreeding").queue_free()
 
 	set_breed_info(mon1, mon2)
 	mon_select_update()

@@ -196,8 +196,25 @@ func xp_gain(mon1, mon2):
 	mon1.xp[0] += ceil((mon1.stats[4] * mon2.level + m2xp) * m1bee)
 	mon2.xp[0] += ceil((mon2.stats[4] * mon1.level + m1xp) * m2bee)
 
-	while (mon1.xp[0] >= mon1.xp[1]):
-		g_monster.level_up(mon1)
-
+	if (mon1.xp[0] >= mon1.xp[1]):
+		var l_u_vec = [0, 0, 0, 0, 0, 0]
+		var counter = 0
+		
+		while (mon1.xp[0] >= mon1.xp[1]):
+			var temp_vec = g_monster.level_up(mon1)
+			for num in range (0, 6):
+				l_u_vec[num] += temp_vec[num]
+			
+		print(l_u_vec)
+		for stat in l_u_vec:
+			
+			# Initialize animation
+			var animation_scene = load("res://Scenes/LevelUpAnimation.tscn")
+			var anim_scn = animation_scene.instance()
+			get_tree().get_root().get_node("GameMenu/Barn/Display1/StatusDisplayer").add_child(anim_scn)
+			anim_scn.animate(stat, counter)
+			counter += 1
+				
+			
 	while (mon2.xp[0] >= mon2.xp[1]):
 		g_monster.level_up(mon2)

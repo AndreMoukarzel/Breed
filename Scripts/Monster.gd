@@ -118,6 +118,8 @@ func get_growth_rate(gradation, g_base, g_multi):
 
 # We add 3 to count to access the right sections on the database
 func level_up (monster):
+	var stat_up_vec = []
+	
 	if (monster.level < 50):
 		var growth = 0
 		var p_d = pos_database[get_id(monster.species)]
@@ -135,9 +137,15 @@ func level_up (monster):
 				growth -= 1
 				if (randf() <= growth):
 					monster.stats[count] += 1
+					stat_up_vec.append(2)
+				else:
+					stat_up_vec.append(1)
 			else:
 				if (randf() <= growth):
 					monster.stats[count] += 1
+					stat_up_vec.append(1)
+				else:
+					stat_up_vec.append(0)
 			
 			count += 1
 	
@@ -156,7 +164,8 @@ func level_up (monster):
 		monster.xp[1] = floor((5 * pow(monster.level, 2))/3)
 	else:
 		monster.xp[0] = 0
-
+	
+	return stat_up_vec
 
 # Generates monster's sprite.
 func monster_sprite(parent, monster, pos, scale, behind):
