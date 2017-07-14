@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://Scripts/Dumpster.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/dumpster.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/CatalystBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=5]
-[ext_resource path="res://Scripts/AmountChooser.gd" type="Script" id=6]
-[ext_resource path="res://Resources/Sprites/GUI/arrow.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/GUI/ArrowPressed.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Sprites/GUI/ArrowHover.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/BackButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/CatalystBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://Scripts/AmountChooser.gd" type="Script" id=7]
+[ext_resource path="res://Resources/Sprites/GUI/arrow.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/GUI/ArrowPressed.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Sprites/GUI/ArrowHover.png" type="Texture" id=10]
 
 [node name="Dumpster" type="Control"]
 
@@ -38,7 +39,6 @@ stretch_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 1
@@ -81,21 +81,11 @@ shortcut = null
 text = "Leite"
 flat = false
 
-[node name="Back" type="Button" parent="VBox"]
+[node name="Back" parent="VBox" instance=ExtResource( 3 )]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 481.0
-margin/top = 491.0
-margin/right = 543.0
-margin/bottom = 511.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-text = "KILL ME"
-flat = false
+margin/top = 480.0
+margin/bottom = 522.0
 
 [node name="Boxes" type="Control" parent="."]
 
@@ -109,7 +99,7 @@ margin/top = 20.0
 margin/right = 110.0
 margin/bottom = 60.0
 
-[node name="Mons" parent="Boxes" instance=ExtResource( 3 )]
+[node name="Mons" parent="Boxes" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 visibility/visible = false
@@ -130,7 +120,7 @@ shortcut = null
 text = "Back"
 flat = false
 
-[node name="Catals" parent="Boxes" instance=ExtResource( 4 )]
+[node name="Catals" parent="Boxes" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 visibility/visible = false
@@ -162,14 +152,14 @@ margin/left = 600.0
 margin/top = 500.0
 margin/right = 640.0
 margin/bottom = 518.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.964844, 0.0791473, 0.951005, 1 )
 text = "0"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = ExtResource( 6 )
+script/script = ExtResource( 7 )
 
 [node name="Less" type="TextureButton" parent="Boxes/Catals/AmountChooser"]
 
@@ -184,10 +174,10 @@ margin/bottom = 25.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 7 )
-textures/pressed = ExtResource( 8 )
-textures/hover = ExtResource( 9 )
-textures/disabled = ExtResource( 8 )
+textures/normal = ExtResource( 8 )
+textures/pressed = ExtResource( 9 )
+textures/hover = ExtResource( 10 )
+textures/disabled = ExtResource( 9 )
 params/scale = Vector2( -1, 1 )
 
 [node name="Less10" type="TextureButton" parent="Boxes/Catals/AmountChooser"]
@@ -203,10 +193,10 @@ margin/bottom = 55.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 7 )
-textures/pressed = ExtResource( 8 )
-textures/hover = ExtResource( 9 )
-textures/disabled = ExtResource( 8 )
+textures/normal = ExtResource( 8 )
+textures/pressed = ExtResource( 9 )
+textures/hover = ExtResource( 10 )
+textures/disabled = ExtResource( 9 )
 params/scale = Vector2( -1, 1 )
 
 [node name="More" type="TextureButton" parent="Boxes/Catals/AmountChooser"]
@@ -222,10 +212,10 @@ margin/bottom = 25.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 7 )
-textures/pressed = ExtResource( 8 )
-textures/hover = ExtResource( 9 )
-textures/disabled = ExtResource( 8 )
+textures/normal = ExtResource( 8 )
+textures/pressed = ExtResource( 9 )
+textures/hover = ExtResource( 10 )
+textures/disabled = ExtResource( 9 )
 
 [node name="More10" type="TextureButton" parent="Boxes/Catals/AmountChooser"]
 
@@ -240,10 +230,10 @@ margin/bottom = 55.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 7 )
-textures/pressed = ExtResource( 8 )
-textures/hover = ExtResource( 9 )
-textures/disabled = ExtResource( 8 )
+textures/normal = ExtResource( 8 )
+textures/pressed = ExtResource( 9 )
+textures/hover = ExtResource( 10 )
+textures/disabled = ExtResource( 9 )
 
 [node name="Sell" type="Button" parent="Boxes"]
 
