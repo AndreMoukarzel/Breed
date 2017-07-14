@@ -143,26 +143,6 @@ visibility/visible = false
 editor/display_folded = true
 visibility/visible = false
 
-[node name="Less" parent="Dumpster/Boxes/Catals/AmountChooser"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Less10" parent="Dumpster/Boxes/Catals/AmountChooser"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="More" parent="Dumpster/Boxes/Catals/AmountChooser"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="More10" parent="Dumpster/Boxes/Catals/AmountChooser"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
 [node name="Arena" parent="." instance=ExtResource( 5 )]
 
 editor/display_folded = true
@@ -172,47 +152,13 @@ visibility/visible = false
 
 editor/display_folded = true
 
-[node name="Collect1" parent="Barn/Display1"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Feed1" parent="Barn/Display1"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Collect2" parent="Barn/Display2"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Feed2" parent="Barn/Display2"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="StorageBackground1" parent="Barn/Storage1"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
 [node name="Storage2" parent="Barn"]
 
 editor/display_folded = false
 
-[node name="StorageBackground2" parent="Barn/Storage2"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Breed" parent="Barn"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
 [node name="HUD" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -326,6 +272,86 @@ max_lines_visible = -1
 [connection signal="pressed" from="VBox/ToArena" to="." method="_on_ToArena_pressed"]
 
 [connection signal="pressed" from="VBox/ToSleep" to="." method="_on_ToSleep_pressed"]
+
+[connection signal="pressed" from="Town/VBox/ShopMonster" to="Town" method="_on_ShopMonster_pressed"]
+
+[connection signal="pressed" from="Town/VBox/ShopCatalist" to="Town" method="_on_ShopCatalist_pressed"]
+
+[connection signal="pressed" from="Town/VBox/Back" to="Town" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Town/MonsterShop/Buy" to="Town/MonsterShop" method="_on_Buy_pressed"]
+
+[connection signal="pressed" from="Town/MonsterShop/Back" to="Town/MonsterShop" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Town/CatalShop/Buy" to="Town/CatalShop" method="_on_Buy_pressed"]
+
+[connection signal="pressed" from="Town/CatalShop/Back" to="Town/CatalShop" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Dumpster/VBox/SellMonster" to="Dumpster" method="_on_SellMonster_pressed"]
+
+[connection signal="pressed" from="Dumpster/VBox/SellCatal" to="Dumpster" method="_on_SellCatal_pressed"]
+
+[connection signal="pressed" from="Dumpster/VBox/Back" to="Dumpster" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Mons/BackMon" to="Dumpster" method="_on_BackMon_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/BackCatal" to="Dumpster" method="_on_BackCatal_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/Less" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_Less_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/Less10" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_Less10_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/More" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_More_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/More10" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_More10_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Sell" to="Dumpster" method="_on_Sell_pressed"]
+
+[connection signal="pressed" from="Arena/VBox/BattleGround" to="Arena" method="_on_BattleGround_pressed"]
+
+[connection signal="pressed" from="Arena/VBox/Race" to="Arena" method="_on_Race_pressed"]
+
+[connection signal="pressed" from="Arena/VBox/Back" to="Arena" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/BackBattle" to="Arena" method="_on_BackBattle_pressed"]
+
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Rank1" to="Arena/BattleMode" method="_on_Rank1_pressed"]
+
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Rank2" to="Arena/BattleMode" method="_on_Rank2_pressed"]
+
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Rank3" to="Arena/BattleMode" method="_on_Rank3_pressed"]
+
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/BackRace" to="Arena" method="_on_BackRace_pressed"]
+
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Rank1" to="Arena/RaceMode" method="_on_Rank1_pressed"]
+
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Rank2" to="Arena/RaceMode" method="_on_Rank2_pressed"]
+
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Rank3" to="Arena/RaceMode" method="_on_Rank3_pressed"]
+
+[connection signal="pressed" from="Barn/Display1/Collect1" to="Barn" method="_on_Collect1_pressed"]
+
+[connection signal="pressed" from="Barn/Display1/Feed1" to="Barn" method="_on_Feed1_pressed"]
+
+[connection signal="pressed" from="Barn/Display2/Collect2" to="Barn" method="_on_Collect2_pressed"]
+
+[connection signal="pressed" from="Barn/Display2/Feed2" to="Barn" method="_on_Feed2_pressed"]
+
+[connection signal="pressed" from="Barn/Storage1/StorageBackground1" to="Barn" method="_on_StorageBackground1_pressed"]
+
+[connection signal="tween_complete" from="Barn/Storage1/Tween" to="Barn" method="_on_Tween_tween_complete"]
+
+[connection signal="pressed" from="Barn/Storage2/StorageBackground2" to="Barn" method="_on_StorageBackground2_pressed"]
+
+[connection signal="tween_complete" from="Barn/Storage2/Tween" to="Barn" method="_on_Tween_tween_complete"]
+
+[connection signal="pressed" from="Barn/Breed" to="Barn" method="_on_Breed_pressed"]
+
+[connection signal="pressed" from="Barn/SortSpecies" to="Barn/SortSpecies" method="_on_SortSpecies_pressed"]
+
+[connection signal="pressed" from="Barn/SortLevel" to="Barn/SortLevel" method="_on_SortLevel_pressed"]
+
+[connection signal="pressed" from="Barn/Back" to="Barn" method="_on_Back_pressed"]
 
 
 [editable path="Town"]

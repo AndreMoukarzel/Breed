@@ -1,8 +1,8 @@
-extends Button
+extends VBoxContainer
 	
-var type
-var pressed_once = false
-	
+var type = ""
+
+
 func multi_sort(arg1, arg2):
 	if (self.type == "Species"):
 		if (arg1.species < arg2.species):
@@ -24,13 +24,12 @@ func multi_sort(arg1, arg2):
 			return true
 		else:
 			return false
-	
+
+
 func _on_SortSpecies_pressed():
-	if (pressed_once):
-		pressed_once = false
+	if (type == "Species"):
 		type = "RSpecies"
 	else:
-		pressed_once = true
 		type = "Species"
 	global.mon_depo.sort_custom(self, "multi_sort")
 	
@@ -38,14 +37,20 @@ func _on_SortSpecies_pressed():
 
 
 func _on_SortLevel_pressed():
-	if (pressed_once):
-		pressed_once = false
+	if (type == "Level"):
 		type = "RLevel"
 	else:
-		pressed_once = true
 		type = "Level"
 	global.mon_depo.sort_custom(self, "multi_sort")
 
 	get_parent().update_boxes_and_hide_display()
-	
-# Fazer por gender tambem
+
+
+func _on_SortGender_pressed():
+	if (type == "Gender"):
+		type = "RGender"
+	else:
+		type = "Gender"
+	global.mon_depo.sort_custom(self, "multi_sort")
+
+	get_parent().update_boxes_and_hide_display()

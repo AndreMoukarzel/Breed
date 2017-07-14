@@ -9,7 +9,7 @@ var dialog_database = [
 		CHARACTER : "System",
 		DIALOG: [
 		# Dialogs related to alpha build
-		["Hello! Welcome to Breed Project's Alpha. Click the text to continue!", "Your objective is have enough money to pay your debt at the end of each month.",
+		["Hello! Welcome to Breed Project's Alpha. Click the text to continue!", "Your objective is to have enough money to pay your debt at the end of each month.",
 		 "You will be given some money to begin with. Try to figure out how to earn some nice cash! Good luck!"],
 		["BOOP."]
 		]
@@ -25,7 +25,7 @@ var dialog_database = [
 	{ # ID = 2
 		CHARACTER : "Pippi",
 		DIALOG: [
-		["Have you seen my Pippi?", "Plz help me I cant see my pippi oh no."],
+		["Have you seen my Pippi?", "Plz help me I can't see my pippi oh no."],
 		["It's your pip, Pippi!"]
 		]
 	}

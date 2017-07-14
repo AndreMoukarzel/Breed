@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/background.jpg" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/GUI/button0000.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/GUI/button0002.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/GUI/button0001.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Fonts/gooddog30.fnt" type="BitmapFont" id=6]
 
 [node name="MainMenu" type="Control"]
 
@@ -47,37 +51,79 @@ margin/right = 0.0
 margin/bottom = 0.0
 alignment = 0
 
-[node name="New Game" type="Button" parent="VBox"]
+[node name="New Game" type="TextureButton" parent="VBox"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 471.0
-margin/top = 139.0
-margin/right = 553.0
-margin/bottom = 159.0
+margin/left = 422.0
+margin/top = 114.0
+margin/right = 602.0
+margin/bottom = 184.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+textures/disabled = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="VBox/New Game"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 180.0
+margin/bottom = 70.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "New Game"
-flat = false
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
-[node name="Load Game" type="Button" parent="VBox"]
+[node name="Load Game" type="TextureButton" parent="VBox"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 470.0
-margin/top = 441.0
-margin/right = 554.0
-margin/bottom = 461.0
+margin/left = 422.0
+margin/top = 416.0
+margin/right = 602.0
+margin/bottom = 486.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+textures/disabled = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="VBox/Load Game"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 180.0
+margin/bottom = 70.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Load Game"
-flat = false
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="pressed" from="VBox/New Game" to="." method="_on_New_Game_pressed"]
 
