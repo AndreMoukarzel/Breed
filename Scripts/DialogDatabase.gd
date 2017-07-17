@@ -15,7 +15,7 @@ var dialog_database = [
 		]
 	},
 	{ # ID = 1
-		CHARACTER : "Mayor",
+		CHARACTER : "Mayor Catto",
 		DIALOG: [
 		# Dialogs related to debt payment
 		["Hello kid. Time for your monthly payment.", "This time, i'll be taking 100. Thanks!"],
@@ -23,10 +23,10 @@ var dialog_database = [
 		]
 	},
 	{ # ID = 2
-		CHARACTER : "Pippi",
+		CHARACTER : "System",
 		DIALOG: [
-		["Have you seen my Pippi?", "Plz help me I can't see my pippi oh no."],
-		["It's your pip, Pippi!"]
+		["Seems like we could not find a character referenced by name somewhere...", "Plz help me I can't see my pippi oh no."],
+		["Seems like we could not find a character referenced by name somewhere..."]
 		]
 	}
 ]

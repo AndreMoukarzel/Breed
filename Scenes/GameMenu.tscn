@@ -137,23 +137,138 @@ flat = false
 
 editor/display_folded = true
 
+[node name="Back" parent="Town/VBox"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Buy" parent="Town/MonsterShop"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Back" parent="Town/MonsterShop"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Back" parent="Town/CatalShop"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
 [node name="Dumpster" parent="." instance=ExtResource( 4 )]
 
 editor/display_folded = true
 visibility/visible = false
+
+[node name="Back" parent="Dumpster/VBox"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Less" parent="Dumpster/Boxes/Catals/AmountChooser"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Less10" parent="Dumpster/Boxes/Catals/AmountChooser"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="More" parent="Dumpster/Boxes/Catals/AmountChooser"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="More10" parent="Dumpster/Boxes/Catals/AmountChooser"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
 
 [node name="Arena" parent="." instance=ExtResource( 5 )]
 
 editor/display_folded = true
 visibility/visible = false
 
+[node name="Back" parent="Arena/VBox"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="BackBattle" parent="Arena/BattleMode/MonsterSelect"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="BackRace" parent="Arena/RaceMode/MonsterSelect"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
 [node name="Barn" parent="." instance=ExtResource( 6 )]
 
 editor/display_folded = true
 
+[node name="Collect1" parent="Barn/Display1"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Feed1" parent="Barn/Display1"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Collect2" parent="Barn/Display2"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Feed2" parent="Barn/Display2"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="StorageBackground1" parent="Barn/Storage1"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
 [node name="Storage2" parent="Barn"]
 
 editor/display_folded = false
+
+[node name="StorageBackground2" parent="Barn/Storage2"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Breed" parent="Barn"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="SortSpecies" parent="Barn/SortsAndBack"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="SortLevel" parent="Barn/SortsAndBack"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="SortGender" parent="Barn/SortsAndBack"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Back" parent="Barn/SortsAndBack"]
+
+params/resize_mode = 0
+params/stretch_mode = 0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -271,28 +386,6 @@ max_lines_visible = -1
 [connection signal="pressed" from="VBox/ToArena" to="." method="_on_ToArena_pressed"]
 
 [connection signal="pressed" from="VBox/ToSleep" to="." method="_on_ToSleep_pressed"]
-
-[connection signal="pressed" from="Arena/VBox/BattleGround" to="Arena" method="_on_BattleGround_pressed"]
-
-[connection signal="pressed" from="Arena/VBox/Race" to="Arena" method="_on_Race_pressed"]
-
-[connection signal="pressed" from="Arena/VBox/Back" to="Arena" method="_on_Back_pressed"]
-
-[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/BackBattle" to="Arena" method="_on_BackBattle_pressed"]
-
-[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Rank1" to="Arena/BattleMode" method="_on_Rank1_pressed"]
-
-[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Rank2" to="Arena/BattleMode" method="_on_Rank2_pressed"]
-
-[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Rank3" to="Arena/BattleMode" method="_on_Rank3_pressed"]
-
-[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/BackRace" to="Arena" method="_on_BackRace_pressed"]
-
-[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Rank1" to="Arena/RaceMode" method="_on_Rank1_pressed"]
-
-[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Rank2" to="Arena/RaceMode" method="_on_Rank2_pressed"]
-
-[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Rank3" to="Arena/RaceMode" method="_on_Rank3_pressed"]
 
 
 [editable path="Town"]

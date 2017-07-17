@@ -1,6 +1,7 @@
 extends Node
 
 var dialog_scn = preload("res://Scenes/DisplayText.tscn")
+var dialog_speed = 0.025
 
 const MAX_ENERGY = 3000
 
@@ -139,7 +140,7 @@ func handle_days(val):
 				#test
 				print("You lose the game my dude")
 			else:
-				instace_dialog(get_tree().get_root().get_node("GameMenu"), "Mayor", month - 1)
+				instace_dialog(get_tree().get_root().get_node("GameMenu"), "Mayor Catto", month - 1)
 				handle_quesha(-debt_values[11][year - 1])
 		else:
 			
@@ -147,7 +148,7 @@ func handle_days(val):
 				#test
 				print("You lose the game my dude")
 			else:
-				instace_dialog(get_tree().get_root().get_node("GameMenu"), "Mayor", month - 1)
+				instace_dialog(get_tree().get_root().get_node("GameMenu"), "Mayor Catto", month - 1)
 				handle_quesha(-debt_values[month - 1][year])
 	
 	handle_energy(MAX_ENERGY)
@@ -179,6 +180,7 @@ func instace_dialog(scene, character, dialog_number):
 	var d_s = dialog_scn.instance()
 	scene.add_child(d_s)
 	
+	d_s.set_npc_settings(character)
 	d_s.print_text_sequence(dialog_db.get_dialog_sequence(character_id, dialog_number))
 
 
