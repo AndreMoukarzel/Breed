@@ -55,6 +55,9 @@ func process_race(distance):
 ####### BUTTON FUNCIONALITY #######
 
 func _on_Rank1_pressed():
+	if (mon == null):
+		print("Select a monster!")
+		return
 	if (mon.acts == 0):
 		print("Monster has no action points")
 		return

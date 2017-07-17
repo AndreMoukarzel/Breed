@@ -31,11 +31,13 @@ func _on_Race_pressed():
 
 
 func _on_BackBattle_pressed():
+	get_node("BattleMode").mon = null
 	get_node("VBox").show()
 	get_node("BattleMode").hide()
 	get_node("BattleMode/MonsterSelect/BattleDisplay").hide()
 
 
 func _on_BackRace_pressed():
+	get_node("RaceMode").mon = null
 	get_node("VBox").show()
 	get_node("RaceMode").hide()
