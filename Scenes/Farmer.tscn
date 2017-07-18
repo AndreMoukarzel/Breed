@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=1]
+
+[ext_resource path="res://Scripts/Farmer.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Sprites/Farmer/Right0.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Farmer/Right1.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/Farmer/Right2.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/Farmer/Front0.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/Farmer/Front1.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/Farmer/Left0.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/Farmer/Left1.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/Farmer/Left2.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "WalkRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "Greet",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "WalkLeft",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[node name="Farmer" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+script/script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 1 )
+animation = "Idle"
+
+[node name="Tween" type="Tween" parent="AnimatedSprite"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+

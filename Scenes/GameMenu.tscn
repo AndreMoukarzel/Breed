@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://Scripts/GameMenu.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/bluebackground.jpg" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/Places/Main.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Town.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Dumpster.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Arena.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Barn.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=7]
+[ext_resource path="res://Scenes/Farmer.tscn" type="PackedScene" id=8]
 
 [node name="GameMenu" type="Control"]
 
@@ -38,7 +39,7 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 0
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="VBox" type="HBoxContainer" parent="."]
 
 editor/display_folded = true
 anchor/right = 1
@@ -48,9 +49,9 @@ focus/stop_mouse = false
 size_flags/horizontal = 1
 size_flags/vertical = 1
 margin/left = 2.0
-margin/top = 2.0
+margin/top = -250.0
 margin/right = -2.0
-margin/bottom = -2.0
+margin/bottom = 250.0
 alignment = 0
 
 [node name="ToBreed" type="Button" parent="VBox"]
@@ -59,10 +60,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 486.0
-margin/top = 48.0
-margin/right = 538.0
-margin/bottom = 68.0
+margin/left = 74.0
+margin/top = 290.0
+margin/right = 126.0
+margin/bottom = 310.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -75,10 +76,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 478.0
-margin/top = 168.0
-margin/right = 545.0
-margin/bottom = 188.0
+margin/left = 272.0
+margin/top = 290.0
+margin/right = 339.0
+margin/bottom = 310.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -91,10 +92,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 489.0
-margin/top = 288.0
-margin/right = 534.0
-margin/bottom = 308.0
+margin/left = 488.0
+margin/top = 290.0
+margin/right = 533.0
+margin/bottom = 310.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -107,10 +108,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 487.0
-margin/top = 408.0
-margin/right = 536.0
-margin/bottom = 428.0
+margin/left = 691.0
+margin/top = 290.0
+margin/right = 740.0
+margin/bottom = 310.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -123,10 +124,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 488.0
-margin/top = 530.0
-margin/right = 535.0
-margin/bottom = 550.0
+margin/left = 898.0
+margin/top = 290.0
+margin/right = 945.0
+margin/bottom = 310.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -211,64 +212,9 @@ params/stretch_mode = 0
 
 editor/display_folded = true
 
-[node name="Collect1" parent="Barn/Display1"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Feed1" parent="Barn/Display1"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Collect2" parent="Barn/Display2"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Feed2" parent="Barn/Display2"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="StorageBackground1" parent="Barn/Storage1"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
 [node name="Storage2" parent="Barn"]
 
 editor/display_folded = false
-
-[node name="StorageBackground2" parent="Barn/Storage2"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Breed" parent="Barn"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="SortSpecies" parent="Barn/SortsAndBack"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="SortLevel" parent="Barn/SortsAndBack"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="SortGender" parent="Barn/SortsAndBack"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Back" parent="Barn/SortsAndBack"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -377,6 +323,15 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="Farmer" parent="." instance=ExtResource( 8 )]
+
+editor/display_folded = true
+rect/scale = Vector2( 6, 6 )
+margin/left = 430.0
+margin/top = 466.0
+margin/right = 470.0
+margin/bottom = 506.0
+
 [connection signal="pressed" from="VBox/ToBreed" to="." method="_on_ToBreed_pressed"]
 
 [connection signal="pressed" from="VBox/ToSell" to="." method="_on_ToSell_pressed"]
@@ -392,3 +347,4 @@ max_lines_visible = -1
 [editable path="Dumpster"]
 [editable path="Arena"]
 [editable path="Barn"]
+[editable path="Farmer"]
