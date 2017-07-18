@@ -19,6 +19,7 @@ func _ready():
 
 func _on_ToBreed_pressed():
 	get_node("VBox").hide()
+	get_node("Farmer").hide()
 	get_node("FarmBackground").hide()
 	get_node("Barn").show()
 
@@ -28,6 +29,7 @@ func _on_ToBreed_pressed():
 
 func _on_ToSell_pressed():
 	get_node("VBox").hide()
+	get_node("Farmer").hide()
 	get_node("FarmBackground").hide()
 
 	get_node("Dumpster").show()
@@ -35,12 +37,14 @@ func _on_ToSell_pressed():
 
 func _on_ToTown_pressed():
 	get_node("VBox").hide()
+	get_node("Farmer").hide()
 	get_node("FarmBackground").hide()
 	get_node("Town").show()
 
 
 func _on_ToArena_pressed():
 	get_node("VBox").hide()
+	get_node("Farmer").hide()
 	get_node("FarmBackground").hide()
 	get_node("Arena").show()
 
