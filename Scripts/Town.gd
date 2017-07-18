@@ -35,6 +35,7 @@ func _on_ShopCatalist_pressed():
 func _on_Back_pressed():
 	self.hide()
 	get_parent().get_node("VBox").show()
+	get_parent().get_node("Farmer").show()
 	get_parent().get_node("FarmBackground").show()
 
 	count = 0

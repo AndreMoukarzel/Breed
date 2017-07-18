@@ -11,6 +11,7 @@ func _ready():
 func _on_Back_pressed():
 	self.hide()
 	get_parent().get_node("VBox").show()
+	get_parent().get_node("Farmer").show()
 	get_parent().get_node("FarmBackground").show()
 
 
@@ -41,3 +42,4 @@ func _on_BackRace_pressed():
 	get_node("RaceMode").mon = null
 	get_node("VBox").show()
 	get_node("RaceMode").hide()
+	get_node("RaceMode/MonsterSelect/RaceDisplay").hide()
