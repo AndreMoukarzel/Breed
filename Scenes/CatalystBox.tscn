@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://Scripts/CatalystBox.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/GUI/arrow.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Sprites/GUI/ArrowPressed.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Sprites/GUI/ArrowHover.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/GUI/feed0.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/GUI/feed2.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/GUI/feed1.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Sprites/GUI/harvest1.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Sprites/GUI/harvest2.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Sprites/GUI/back0.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/GUI/back2.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/GUI/back1.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Fonts/gooddog30.fnt" type="BitmapFont" id=9]
+[ext_resource path="res://Resources/Sprites/GUI/harvest1.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Sprites/GUI/harvest2.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 
@@ -44,8 +45,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
+margin/right = 1920.0
+margin/bottom = 1080.0
 texture = ExtResource( 2 )
 stretch_mode = 0
 
@@ -108,14 +109,35 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
+margin/right = 200.0
+margin/bottom = 70.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 6 )
 textures/pressed = ExtResource( 7 )
 textures/hover = ExtResource( 8 )
+textures/disabled = ExtResource( 7 )
+params/scale = Vector2( 0.6, 0.6 )
+
+[node name="Label" type="Label" parent="Return"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 110.0
+margin/bottom = 45.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Back"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="Yes" type="TextureButton" parent="."]
 
@@ -131,7 +153,7 @@ margin/bottom = 40.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 9 )
+textures/normal = ExtResource( 10 )
 
 [node name="No" type="TextureButton" parent="."]
 
@@ -147,7 +169,7 @@ margin/bottom = 40.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 10 )
+textures/normal = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

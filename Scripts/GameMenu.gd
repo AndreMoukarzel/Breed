@@ -13,12 +13,19 @@ func _ready():
 	#test
 	g_monster.monster_generate(global.mon_depo, "Mafagafo", Color(-1, -1, -1), [6, 6, 6, 6, 6, 6], [0, 1], 30)
 	g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], [0, 13], 1)
+	
+	buttons_anim()
 
+
+func buttons_anim():
+	var tween = get_node("Buttons/Tween")
+	tween.interpolate_property(get_node("Buttons"), "rect/pos", Vector2(450, -500), Vector2(450, 8), 0.8, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
+	tween.start()
 
 ####### BUTTON FUNCIONALITY #######
 
 func _on_ToBreed_pressed():
-	get_node("VBox").hide()
+	get_node("Buttons").hide()
 	get_node("Farmer").hide()
 	get_node("FarmBackground").hide()
 	get_node("Barn").show()
@@ -28,7 +35,7 @@ func _on_ToBreed_pressed():
 
 
 func _on_ToSell_pressed():
-	get_node("VBox").hide()
+	get_node("Buttons").hide()
 	get_node("Farmer").hide()
 	get_node("FarmBackground").hide()
 
@@ -36,14 +43,14 @@ func _on_ToSell_pressed():
 
 
 func _on_ToTown_pressed():
-	get_node("VBox").hide()
+	get_node("Buttons").hide()
 	get_node("Farmer").hide()
 	get_node("FarmBackground").hide()
 	get_node("Town").show()
 
 
 func _on_ToArena_pressed():
-	get_node("VBox").hide()
+	get_node("Buttons").hide()
 	get_node("Farmer").hide()
 	get_node("FarmBackground").hide()
 	get_node("Arena").show()

@@ -10,7 +10,7 @@ func _ready():
 
 func _on_Back_pressed():
 	self.hide()
-	get_parent().get_node("VBox").show()
+	get_parent().get_node("Buttons").show()
 	get_parent().get_node("Farmer").show()
 	get_parent().get_node("FarmBackground").show()
 

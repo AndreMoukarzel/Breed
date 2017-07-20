@@ -173,7 +173,7 @@ func _on_Back_pressed():
 	info.get_node("PregChance").set_text("0%")
 	info.get_node("Cost").set_text("Cost:\n-1")
 
-	get_parent().get_node("VBox").show()
+	get_parent().get_node("Buttons").show()
 	get_parent().get_node("Farmer").show()
 	get_parent().get_node("FarmBackground").show()
 

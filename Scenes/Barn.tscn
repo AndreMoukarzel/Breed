@@ -82,8 +82,6 @@ shortcut = null
 textures/normal = ExtResource( 4 )
 textures/pressed = ExtResource( 5 )
 textures/hover = ExtResource( 6 )
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="Feed1" type="TextureButton" parent="Display1"]
 
@@ -102,8 +100,6 @@ shortcut = null
 textures/normal = ExtResource( 7 )
 textures/pressed = ExtResource( 8 )
 textures/hover = ExtResource( 9 )
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="Display2" parent="." instance=ExtResource( 3 )]
 
@@ -130,8 +126,6 @@ shortcut = null
 textures/normal = ExtResource( 4 )
 textures/pressed = ExtResource( 5 )
 textures/hover = ExtResource( 6 )
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="Feed2" type="TextureButton" parent="Display2"]
 
@@ -150,11 +144,10 @@ shortcut = null
 textures/normal = ExtResource( 7 )
 textures/pressed = ExtResource( 8 )
 textures/hover = ExtResource( 9 )
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="Storage1" type="Control" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -163,9 +156,7 @@ margin/left = -360.0
 margin/top = 45.0
 margin/right = -320.0
 margin/bottom = 85.0
-__meta__ = {
-"_edit_group_": true
-}
+__meta__ = { "_edit_group_":true }
 
 [node name="StorageBackground1" type="TextureButton" parent="Storage1"]
 
@@ -181,8 +172,6 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 10 )
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="SelectBox" parent="Storage1" instance=ExtResource( 11 )]
 
@@ -209,9 +198,7 @@ margin/left = 1004.0
 margin/top = 45.0
 margin/right = 1044.0
 margin/bottom = 85.0
-__meta__ = {
-"_edit_group_": true
-}
+__meta__ = { "_edit_group_":true }
 
 [node name="StorageBackground2" type="TextureButton" parent="Storage2"]
 
@@ -227,8 +214,6 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 12 )
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="SelectBox" parent="Storage2" instance=ExtResource( 11 )]
 
@@ -260,8 +245,6 @@ enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 13 )
 textures/hover = ExtResource( 14 )
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="Info" type="TextureFrame" parent="Breed"]
 
@@ -308,8 +291,7 @@ margin/right = 55.0
 margin/bottom = 104.0
 custom_fonts/font = ExtResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Cost:
--1"
+text = "Cost:\r\n-1"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
@@ -346,9 +328,7 @@ textures/normal = ExtResource( 18 )
 textures/pressed = ExtResource( 19 )
 textures/hover = ExtResource( 20 )
 textures/disabled = ExtResource( 19 )
-params/resize_mode = 0
 params/scale = Vector2( 0.7, 0.5 )
-params/stretch_mode = 0
 
 [node name="Label" type="Label" parent="SortsAndBack/SortSpecies"]
 
@@ -387,9 +367,7 @@ textures/normal = ExtResource( 18 )
 textures/pressed = ExtResource( 19 )
 textures/hover = ExtResource( 20 )
 textures/disabled = ExtResource( 19 )
-params/resize_mode = 0
 params/scale = Vector2( 0.7, 0.5 )
-params/stretch_mode = 0
 
 [node name="Label" type="Label" parent="SortsAndBack/SortLevel"]
 
@@ -428,9 +406,7 @@ textures/normal = ExtResource( 18 )
 textures/pressed = ExtResource( 19 )
 textures/hover = ExtResource( 20 )
 textures/disabled = ExtResource( 19 )
-params/resize_mode = 0
 params/scale = Vector2( 0.7, 0.5 )
-params/stretch_mode = 0
 
 [node name="Label" type="Label" parent="SortsAndBack/SortGender"]
 
@@ -453,7 +429,6 @@ max_lines_visible = -1
 
 [node name="Back" type="TextureButton" parent="SortsAndBack"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
@@ -469,9 +444,7 @@ textures/normal = ExtResource( 22 )
 textures/pressed = ExtResource( 23 )
 textures/hover = ExtResource( 24 )
 textures/disabled = ExtResource( 23 )
-params/resize_mode = 0
 params/scale = Vector2( 0.6, 0.6 )
-params/stretch_mode = 0
 
 [node name="Label" type="Label" parent="SortsAndBack/Back"]
 
