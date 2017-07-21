@@ -2,13 +2,13 @@
 
 [ext_resource path="res://Scripts/BattleAnimation.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=2]
-[ext_resource path="res://Resources/Sprites/Battle/Scenery/PHFloor1.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/Battle/Scenery/FirstCup.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Anims/Battle/Death.tres" type="Animation" id=4]
 [ext_resource path="res://Resources/Anims/Battle/Idle.tres" type="Animation" id=5]
-[ext_resource path="res://Resources/Sprites/GUI/blank1.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/GUI/blank2.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/GUI/blank0.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=9]
+[ext_resource path="res://Resources/Sprites/GUI/button0000.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/GUI/button0002.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/GUI/button0001.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Fonts/gooddog30.fnt" type="BitmapFont" id=9]
 
 [sub_resource type="Animation" id=1]
 
@@ -82,19 +82,21 @@ stretch_mode = 0
 
 [node name="Ground" type="TextureFrame" parent="."]
 
+rect/scale = Vector2( 1.25, 1.5 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 222.0
-margin/top = 199.0
-margin/right = 795.0
-margin/bottom = 424.0
+margin/left = 181.0
+margin/top = 183.0
+margin/right = 754.0
+margin/bottom = 408.0
 texture = ExtResource( 3 )
 stretch_mode = 0
 
 [node name="Player" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 375, 275 )
 
 [node name="Monster" type="Node2D" parent="Player"]
@@ -114,6 +116,7 @@ autoplay = ""
 
 [node name="Enemy" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 620, 275 )
 transform/scale = Vector2( -1, 1 )
 
@@ -139,9 +142,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 390.0
+margin/left = 400.0
 margin/top = 458.0
-margin/right = 590.0
+margin/right = 600.0
 margin/bottom = 528.0
 toggle_mode = false
 enabled_focus_mode = 2
@@ -160,11 +163,12 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 456.0
-margin/top = 475.0
+margin/left = 452.0
+margin/top = 466.0
 margin/right = 492.0
 margin/bottom = 493.0
 custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Skip"
 percent_visible = 1.0
 lines_skipped = 0
