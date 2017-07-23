@@ -1,7 +1,7 @@
 
 extends Control
 
-# Actions are in the format [name, actor, additional]
+# Actions are in the format [name, actor, damage, additional]
 # Tem que passar os monstros para saber quando colocar na dela.
 # Quando tiver qualquer animação de Death (ainda tem que identificar
 # quem morre), tem que substituir a sprite se for pertinente (ou seja,
@@ -25,31 +25,51 @@ func animate_battle():
 		if (action[1] == "Player"):
 			if (action[0] == "Idle"):
 				get_node("Player/AnimationPlayer").play(action[0], 1, rand_range(0.8, 1.2))
-			else:
+			elif(action[0] == "Death"):
 				get_node("Player/AnimationPlayer").stop()
 				get_node("Player/AnimationPlayer").play(action[0])
 				yield(get_node("Player/AnimationPlayer"), "finished")
+			else:
+				get_node("Enemy/PopUpNumber").set("custom_colors/font_color", Color(255, 0, 0))
+				get_node("Enemy/PopUpNumber").set_text(str(action[2]))
+				
+				get_node("Player/AnimationPlayer").stop()
+				get_node("Player/AnimationPlayer").play(action[0])
+				yield(get_node("Player/AnimationPlayer"), "finished")
+				get_node("Enemy/AnimationPlayer").play("DamagePopUp")
+				yield(get_node("Enemy/AnimationPlayer"), "finished")
 		
 		else:
 			if (action[0] == "Idle"):
 				get_node("Enemy/AnimationPlayer").play(action[0], 1, rand_range(0.8, 1.2))
-			elif (action[0] == "Death" and monster_list.size() > 0):
+			elif (action[0] == "Death"):
 				get_node("Enemy/AnimationPlayer").stop()
 				get_node("Enemy/AnimationPlayer").play(action[0])
 				yield(get_node("Enemy/AnimationPlayer"), "finished")
 				
-				for node in get_node("Enemy/Monster").get_children():
-					node.queue_free()
-				g_monster.monster_sprite(self.get_node("Enemy/Monster"), monster_list[0], Vector2(0, 0), Vector2(0.25, 0.25), false)
-				monster_list.pop_front()
-				
-				get_node("Enemy/AnimationPlayer").stop()
-				get_node("Enemy/AnimationPlayer").play("Emerge")
-				yield(get_node("Enemy/AnimationPlayer"), "finished")
+				# Continua a batalha.
+				if (monster_list.size() > 0):
+					for node in get_node("Enemy/Monster").get_children():
+						node.queue_free()
+					g_monster.monster_sprite(self.get_node("Enemy/Monster"), monster_list[0], Vector2(0, 0), Vector2(0.25, 0.25), false)
+					monster_list.pop_front()
+					
+					get_node("Enemy/AnimationPlayer").stop()
+					get_node("Enemy/AnimationPlayer").play("Emerge")
+					yield(get_node("Enemy/AnimationPlayer"), "finished")
 			else:
+				# Setting damage text for target. Gonna be different when
+				# animation is in regards to healing.
+				# ! Da para checar se uma skill é healing ou damaging pelo numero
+				# ! que vem no damage (se for negativo, é healing, eu imagino)
+				get_node("Player/PopUpNumber").set("custom_colors/font_color", Color(255, 0, 0))
+				get_node("Player/PopUpNumber").set_text(str(action[2]))
+				
 				get_node("Enemy/AnimationPlayer").stop()
 				get_node("Enemy/AnimationPlayer").play(action[0])
 				yield(get_node("Enemy/AnimationPlayer"), "finished")
+				get_node("Player/AnimationPlayer").play("DamagePopUp")
+				yield(get_node("Player/AnimationPlayer"), "finished")
 	
 	emit_signal("battle_animation_finished")
 

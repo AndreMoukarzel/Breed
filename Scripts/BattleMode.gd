@@ -153,7 +153,7 @@ func regular_attack(attacker_bs, reciever_bs):
 	# Animation
 	# test
 	print(str(attacker_bs[3], "'s Attack!"))
-	anim_list.append(["BasicAttack", attacker_bs[3]], damage)
+	anim_list.append(["BasicAttack", attacker_bs[3], damage])
 	anim_list.append(["Idle", attacker_bs[3]])
 
 
