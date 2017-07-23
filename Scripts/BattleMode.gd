@@ -147,12 +147,13 @@ func process_action(attacker_bs, reciever_bs):
 func regular_attack(attacker_bs, reciever_bs):
 	
 	# Damage Calculation
-	reciever_bs[1] -= abs(ceil(attacker_bs[0].stats[0] * 0.85))
+	var damage = abs(ceil(attacker_bs[0].stats[0] * 0.85))
+	reciever_bs[1] -= damage
 	
 	# Animation
 	# test
 	print(str(attacker_bs[3], "'s Attack!"))
-	anim_list.append(["BasicAttack", attacker_bs[3]])
+	anim_list.append(["BasicAttack", attacker_bs[3]], damage)
 	anim_list.append(["Idle", attacker_bs[3]])
 
 

@@ -4,14 +4,14 @@
 [ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/Battle/Scenery/FirstCup.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Sprites/Battle/Effects/BasicHit/BasicHit.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Anims/Battle/Death.tres" type="Animation" id=5]
-[ext_resource path="res://Resources/Anims/Battle/Idle.tres" type="Animation" id=6]
-[ext_resource path="res://Resources/Sprites/GUI/button0000.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/GUI/button0002.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Sprites/GUI/button0001.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Fonts/gooddog30.fnt" type="BitmapFont" id=10]
+[ext_resource path="res://Resources/Fonts/gooddog30.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://Resources/Anims/Battle/Death.tres" type="Animation" id=6]
+[ext_resource path="res://Resources/Anims/Battle/Idle.tres" type="Animation" id=7]
+[ext_resource path="res://Resources/Sprites/GUI/button0000.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/GUI/button0002.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Sprites/GUI/button0001.png" type="Texture" id=10]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
@@ -20,9 +20,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource/name = "BasicAttack"
 length = 2.0
 loop = false
 step = 0.1
@@ -87,9 +86,8 @@ tracks/5/keys = {
 "values": [ 1, 0 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
-resource/name = "Emerge"
 length = 1.5
 loop = false
 step = 0.1
@@ -152,15 +150,32 @@ transform/pos = Vector2( 375, 275 )
 
 visibility/visible = false
 transform/pos = Vector2( 245, 0 )
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "BasicHit"
 
 [node name="Monster" type="Node2D" parent="Player"]
 
+[node name="PopUpNumber" type="Label" parent="Player/Monster"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 14.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "TEST"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="Effect" type="AnimatedSprite" parent="Player/Monster"]
 
 visibility/visible = false
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "BasicHit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
@@ -168,9 +183,9 @@ animation = "BasicHit"
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/BasicAttack = SubResource( 1 )
-anims/Death = ExtResource( 5 )
-anims/Idle = ExtResource( 6 )
+anims/BasicAttack = SubResource( 2 )
+anims/Death = ExtResource( 6 )
+anims/Idle = ExtResource( 7 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -185,15 +200,33 @@ transform/scale = Vector2( -1, 1 )
 
 visibility/visible = false
 transform/pos = Vector2( 245, 0 )
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "BasicHit"
 
 [node name="Monster" type="Node2D" parent="Enemy"]
 
+[node name="PopUpNumber" type="Label" parent="Enemy/Monster"]
+
+rect/scale = Vector2( -1, 1 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 50.0
+margin/bottom = 27.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "TEST"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="Effect" type="AnimatedSprite" parent="Enemy/Monster"]
 
 visibility/visible = false
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "BasicHit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
@@ -201,10 +234,10 @@ animation = "BasicHit"
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/BasicAttack = SubResource( 1 )
-anims/Death = ExtResource( 5 )
-anims/Emerge = SubResource( 2 )
-anims/Idle = ExtResource( 6 )
+anims/BasicAttack = SubResource( 2 )
+anims/Death = ExtResource( 6 )
+anims/Emerge = SubResource( 3 )
+anims/Idle = ExtResource( 7 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -223,10 +256,10 @@ margin/bottom = 528.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 7 )
-textures/pressed = ExtResource( 8 )
-textures/hover = ExtResource( 9 )
-textures/disabled = ExtResource( 8 )
+textures/normal = ExtResource( 8 )
+textures/pressed = ExtResource( 9 )
+textures/hover = ExtResource( 10 )
+textures/disabled = ExtResource( 9 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
@@ -241,7 +274,7 @@ margin/left = 452.0
 margin/top = 466.0
 margin/right = 492.0
 margin/bottom = 493.0
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Skip"
 percent_visible = 1.0
