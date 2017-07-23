@@ -1,7 +1,7 @@
 
 extends Control
 
-# Actions are in the format [name, actor]
+# Actions are in the format [name, actor, additional]
 # Tem que passar os monstros para saber quando colocar na dela.
 # Quando tiver qualquer animação de Death (ainda tem que identificar
 # quem morre), tem que substituir a sprite se for pertinente (ou seja,
