@@ -150,9 +150,10 @@ func regular_attack(attacker_bs, reciever_bs):
 	var damage = abs(ceil(attacker_bs[0].stats[0] * 0.85))
 	reciever_bs[1] -= damage
 	
-	# Animation
 	# test
 	print(str(attacker_bs[3], "'s Attack!"))
+	
+	# Animation
 	anim_list.append(["BasicAttack", attacker_bs[3], damage])
 	anim_list.append(["Idle", attacker_bs[3]])
 
@@ -170,6 +171,10 @@ func use_skill(attacker_bs, reciever_bs):
 	var persona_formulas = personality_db.get_formulas(persona_id)
 	var persona_counter = 0
 	
+	# For animation purposes
+	var numeric = null
+	var skill_name = personality_db.get_skill(persona_id)
+	
 	#test
 	print (str("O monstro ", attacker_bs[0].name, " usou skill. Skill utilizada: ", personality_db.get_skill(persona_id)))
 	
@@ -182,17 +187,20 @@ func use_skill(attacker_bs, reciever_bs):
 		
 		# Damage types
 		if (type == "Damage"):
-			reciever_bs[1] -= abs(ceil(formula_result))
+			numeric = abs(ceil(formula_result))
+			reciever_bs[1] -= numeric
 		elif (type == "Heal"):
-			attacker_bs[1] += abs(ceil(formula_result))
+			numeric = -abs(ceil(formula_result))
+			attacker_bs[1] += numeric
 		elif (type ==  "Self-Damage"):
-			attacker_bs[1] -= abs(ceil(formula_result))
+			numeric = abs(ceil(formula_result))
+			attacker_bs[1] -= numeric
 		
 		# Effects
 		elif (type == "HealPerTurn"):
 			check_repeat_skill(attacker_bs, type)
 			attacker_bs[2].append(["HealPerTurn", formula_result, 5])
-		elif (type == "Critial"):
+		elif (type == "Critical"):
 			# Tirar o efeito "Damage" dos que são critical, e fazer
 			# com que a formula seja a chance de ativar o crit, se
 			# não ativar o crit da dano normal, se ativar da 1.3x Atk
@@ -201,9 +209,12 @@ func use_skill(attacker_bs, reciever_bs):
 				#test
 				print (str("Critical hit! Chance to get was ", formula_result/100))
 				#sucess
+				numeric = abs(ceil(attacker_bs[0].stats[0] * 1.3))
 				reciever_bs[1] -= abs(ceil(attacker_bs[0].stats[0] * 1.3))
 			else:
-				regular_attack(attacker_bs, reciever_bs)
+				#failure
+				numeric = abs(ceil(attacker_bs[0].stats[0] * 0.85))
+				reciever_bs[1] -= abs(ceil(attacker_bs[0].stats[0] * 0.85))
 		elif (type == "Paralysis"):
 			if (check_repeat_skill(reciever_bs, type)):
 				#test
@@ -216,6 +227,12 @@ func use_skill(attacker_bs, reciever_bs):
 				reciever_bs[2].append(["Paralysis", 0.25, 5])
 		
 		persona_counter += 1
+	
+	# Animation
+	if (numeric != null):
+		anim_list.append([str(skill_name), attacker_bs[3], numeric])
+	else:
+		anim_list.append([str(skill_name), attacker_bs[3]])
 
 
 func check_repeat_skill(target_bs, type):
@@ -327,6 +344,9 @@ func deal_effect(reciever_bs):
 			#test
 			print (str("Healed ", abs(ceil(effect[1])), " this turn!"))
 			reciever_bs[1] += abs(ceil(effect[1]))
+			
+			# Animate
+			anim_list.append(["Regen", reciever_bs[3], -abs(ceil(effect[1]))])
 		if (effect[0] == "Paralysis"):
 			#test
 			print ("Check paralysis!")
@@ -335,6 +355,9 @@ func deal_effect(reciever_bs):
 				#test
 				print ("It's fully paralysed!")
 				return_value = 1
+				
+				# Animate
+				anim_list.append(["Paralysis", reciever_bs[3]])
 	
 		effect[2] -= 1
 		if (effect[2] <= 0):

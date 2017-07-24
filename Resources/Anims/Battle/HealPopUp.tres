@@ -2,7 +2,7 @@
 
 [resource]
 
-resource/name = "DamagePopUp"
+resource/name = "HealPopUp"
 length = 1.0
 loop = false
 step = 0.1
@@ -27,20 +27,10 @@ tracks/1/keys = {
 "values": [ 1.0, 0.5, 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Monster:visibility/opacity")
+tracks/2/path = NodePath("PopUpNumber:visibility/visible")
 tracks/2/interp = 1
 tracks/2/imported = false
 tracks/2/keys = {
-"times": FloatArray( 0, 0.3, 0.5, 0.8, 1 ),
-"transitions": FloatArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1.0, 0.0, 1.0, 0.0, 1.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("PopUpNumber:visibility/visible")
-tracks/3/interp = 1
-tracks/3/imported = false
-tracks/3/keys = {
 "times": FloatArray( 0, 1 ),
 "transitions": FloatArray( 1, 1 ),
 "update": 1,
