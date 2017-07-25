@@ -61,6 +61,7 @@ func select_monster( monster, select_box ):
 	var origin = select_box.get_parent().get_name()
 
 	if( origin == "Storage1" ):
+		get_node("Display1").kill_animation()
 		get_node("Display1").display(monster)
 		get_node("Display1/Collect1").show()
 		get_node("Display1/Feed1").show()
@@ -76,6 +77,7 @@ func select_monster( monster, select_box ):
 			get_node("Display2/Feed2").hide()
 			mon2 = -1
 	else:
+		get_node("Display2").kill_animation()
 		get_node("Display2").display(monster)
 		get_node("Display2/Collect2").show()
 		get_node("Display2/Feed2").show()
@@ -148,6 +150,12 @@ func _on_Breed_pressed():
 
 	set_breed_info(mon1, mon2)
 	mon_select_update()
+	
+	# For level up animation's sake
+	if (get_node("Display1/StatusDisplayer").has_node("LevelUpAnimTemporary")):
+		get_node("Display1/StatusDisplayer/LevelUpAnimTemporary").set_name("LevelUpAnim")
+	if (get_node("Display2/StatusDisplayer").has_node("LevelUpAnimTemporary")):
+		get_node("Display2/StatusDisplayer/LevelUpAnimTemporary").set_name("LevelUpAnim")
 
 
 func _on_Back_pressed():

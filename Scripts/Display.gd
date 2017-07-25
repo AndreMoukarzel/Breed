@@ -25,3 +25,8 @@ func kill():
 	mon = null
 	get_node("StatusDisplayer").hide()
 	get_node("StatusDisplayer").kill()
+
+func kill_animation():
+	if (has_node("StatusDisplayer/LevelUpAnim")):
+		get_node("StatusDisplayer/LevelUpAnim").set_name("oldLUP")
+		get_node("StatusDisplayer/oldLUP").queue_free()

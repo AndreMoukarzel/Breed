@@ -198,7 +198,6 @@ func xp_gain(mon1, mon2):
 
 	if (mon1.xp[0] >= mon1.xp[1]):
 		var l_u_vec = [0, 0, 0, 0, 0, 0]
-		var counter = 0
 		
 		while (mon1.xp[0] >= mon1.xp[1]):
 			var temp_vec = g_monster.level_up(mon1)
@@ -206,19 +205,17 @@ func xp_gain(mon1, mon2):
 				l_u_vec[num] += temp_vec[num]
 			
 		print(l_u_vec)
-		for stat in l_u_vec:
 			
-			# Initialize animation
-			var animation_scene = load("res://Scenes/LevelUpAnimation.tscn")
-			var anim_scn = animation_scene.instance()
-			get_tree().get_root().get_node("GameMenu/Barn/Display1/StatusDisplayer").add_child(anim_scn)
-			anim_scn.animate(stat, counter)
-			counter += 1
+		# Initialize animation
+		var animation_scene = load("res://Scenes/LevelUpAnimation.tscn")
+		var anim_scn = animation_scene.instance()
+		anim_scn.set_name("LevelUpAnimTemporary")
+		get_tree().get_root().get_node("GameMenu/Barn/Display1/StatusDisplayer").add_child(anim_scn)
+		anim_scn.animate(l_u_vec)
 	
 	
 	if (mon2.xp[0] >= mon2.xp[1]):
 		var l_u_vec = [0, 0, 0, 0, 0, 0]
-		var counter = 0
 		
 		while (mon2.xp[0] >= mon2.xp[1]):
 			var temp_vec = g_monster.level_up(mon2)
@@ -226,11 +223,10 @@ func xp_gain(mon1, mon2):
 				l_u_vec[num] += temp_vec[num]
 			
 		print(l_u_vec)
-		for stat in l_u_vec:
 			
-			# Initialize animation
-			var animation_scene = load("res://Scenes/LevelUpAnimation.tscn")
-			var anim_scn = animation_scene.instance()
-			get_tree().get_root().get_node("GameMenu/Barn/Display2/StatusDisplayer").add_child(anim_scn)
-			anim_scn.animate(stat, counter)
-			counter += 1
+		# Initialize animation
+		var animation_scene = load("res://Scenes/LevelUpAnimation.tscn")
+		var anim_scn = animation_scene.instance()
+		anim_scn.set_name("LevelUpAnimTemporary")
+		get_tree().get_root().get_node("GameMenu/Barn/Display2/StatusDisplayer").add_child(anim_scn)
+		anim_scn.animate(l_u_vec)
