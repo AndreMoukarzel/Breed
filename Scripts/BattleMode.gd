@@ -37,8 +37,9 @@ func process_battle(enemy_num):
 		mon_list.append(monster)
 
 	# Poderia usar também o mon#_battle_state[3]
-	anim_list.append(["Idle", "Player"])
-	anim_list.append(["Idle", "Enemy"])
+	# Resquicios de um modelo antigo
+	#anim_list.append(["Idle", "Player"])
+	#anim_list.append(["Idle", "Enemy"])
 
 	# Getting player monster
 	var mon1 = mon
@@ -123,13 +124,17 @@ func check_win_lose(wl, enemy_num):
 				mon2_battle_state = [comp_depo[0], comp_depo[0].stats[2] * 3, [], "Enemy"]
 				comp_depo.pop_front()
 			else:
+				# Player Victory
+				anim_list.append(["Victory", "Player"])
 				return true
 	if (wl == "lose"):
 		if (mon1_battle_state[1] <= 0):
 			#test
 			print("Enemy Victory")
 			#Enqueue animation
+			# Enemy Victory
 			anim_list.append(["Death", "Player"])
+			anim_list.append(["Defeat", "Player"])
 			return true
 	
 	return false
@@ -155,7 +160,6 @@ func regular_attack(attacker_bs, reciever_bs):
 	
 	# Animation
 	anim_list.append(["BasicAttack", attacker_bs[3], damage])
-	anim_list.append(["Idle", attacker_bs[3]])
 
 
 func use_skill(attacker_bs, reciever_bs):
@@ -184,6 +188,9 @@ func use_skill(attacker_bs, reciever_bs):
 		var formula_result
 		if (type != "None"):
 			formula_result = interpret_formula(persona_formulas[persona_counter], attacker_bs)
+		else:
+			# Does a basic attack if type is "None"
+			regular_attack(attacker_bs, reciever_bs)
 		
 		# Damage types
 		if (type == "Damage"):

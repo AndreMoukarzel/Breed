@@ -19,7 +19,12 @@ var monster_list = []
 
 signal battle_animation_finished
 
+var fast_foward = 1
+
 func animate_battle():
+	
+	print (action_list)
+	
 	g_monster.monster_sprite(self.get_node("Player/Monster"), monster_list[0], Vector2(0, 0), Vector2(0.25, 0.25), false)
 	monster_list.pop_front()
 	g_monster.monster_sprite(self.get_node("Enemy/Monster"), monster_list[0], Vector2(0, 0), Vector2(0.25, 0.25), false)
@@ -27,11 +32,25 @@ func animate_battle():
 	
 	for action in action_list:
 		
+		#get_node("Player/AnimationPlayer").stop()
+		#get_node("Enemy/AnimationPlayer").stop()
+		
+		# We need a "stop" atop every "play", so we can make the idle animation
+		# stop when we need actual other animations.
+		
+		# The "idle" section has been turned obsolete since we changed the "idle"
+		# format, to accomodate how the AnimationPlayer works.
+		
+		# Ignore "None" skills
+		if (action[0] == "None"):
+			continue
+		
 		# Check if action is not a skill
-		if (action[0] != "BasicAttack" and action[0] != "Death" and action[0] != "Idle"):
+		if (action[0] != "BasicAttack" and action[0] != "Death" and action[0] != "Idle" and action[0] != "Victory" and action[0] != "Defeat"):
 			# Play Skillbox animation
+			get_node("SkillBox/AnimationPlayer").stop()
 			get_node("SkillBox/SkillName").set_text(action[0])
-			get_node("SkillBox/AnimationPlayer").play("ShowName")
+			get_node("SkillBox/AnimationPlayer").play("ShowName", 1, fast_foward)
 			yield(get_node("SkillBox/AnimationPlayer"), "finished")
 		
 		# Player is the actor
@@ -43,11 +62,11 @@ func animate_battle():
 					get_node("Player/AnimationPlayer").play(action[0], 1, rand_range(0.8, 1.2))
 				elif(action[0] == "Death"):
 					get_node("Player/AnimationPlayer").stop()
-					get_node("Player/AnimationPlayer").play(action[0])
+					get_node("Player/AnimationPlayer").play(action[0], 1, fast_foward)
 					yield(get_node("Player/AnimationPlayer"), "finished")
 				else:
 					get_node("Player/AnimationPlayer").stop()
-					get_node("Player/AnimationPlayer").play(action[0])
+					get_node("Player/AnimationPlayer").play(action[0], 1, fast_foward)
 					yield(get_node("Player/AnimationPlayer"), "finished")
 			
 			# Action has numeric values attached
@@ -58,9 +77,10 @@ func animate_battle():
 					get_node("Enemy/PopUpNumber").set_text(str(action[2]))
 					
 					get_node("Player/AnimationPlayer").stop()
-					get_node("Player/AnimationPlayer").play(action[0])
+					get_node("Player/AnimationPlayer").play(action[0], 1, fast_foward)
 					yield(get_node("Player/AnimationPlayer"), "finished")
-					get_node("Enemy/AnimationPlayer").play("DamagePopUp")
+					get_node("Enemy/AnimationPlayer").stop()
+					get_node("Enemy/AnimationPlayer").play("DamagePopUp", 1, fast_foward)
 					yield(get_node("Enemy/AnimationPlayer"), "finished")
 				# Action is healing
 				else:
@@ -68,9 +88,10 @@ func animate_battle():
 					get_node("Player/PopUpNumber").set_text(str(-action[2]))
 					
 					get_node("Player/AnimationPlayer").stop()
-					get_node("Player/AnimationPlayer").play(action[0])
+					get_node("Player/AnimationPlayer").play(action[0], 1, fast_foward)
 					yield(get_node("Player/AnimationPlayer"), "finished")
-					get_node("Player/AnimationPlayer").play("HealPopUp")
+					get_node("Player/AnimationPlayer").stop()
+					get_node("Player/AnimationPlayer").play("HealPopUp", 1, fast_foward)
 					yield(get_node("Player/AnimationPlayer"), "finished")
 					
 		
@@ -83,7 +104,7 @@ func animate_battle():
 					get_node("Enemy/AnimationPlayer").play(action[0], 1, rand_range(0.8, 1.2))
 				elif (action[0] == "Death"):
 					get_node("Enemy/AnimationPlayer").stop()
-					get_node("Enemy/AnimationPlayer").play(action[0])
+					get_node("Enemy/AnimationPlayer").play(action[0], 1, fast_foward)
 					yield(get_node("Enemy/AnimationPlayer"), "finished")
 					
 					# Continua a batalha.
@@ -94,11 +115,11 @@ func animate_battle():
 						monster_list.pop_front()
 						
 						get_node("Enemy/AnimationPlayer").stop()
-						get_node("Enemy/AnimationPlayer").play("Emerge")
+						get_node("Enemy/AnimationPlayer").play("Emerge", 1, fast_foward)
 						yield(get_node("Enemy/AnimationPlayer"), "finished")
 				else:
 					get_node("Enemy/AnimationPlayer").stop()
-					get_node("Enemy/AnimationPlayer").play(action[0])
+					get_node("Enemy/AnimationPlayer").play(action[0], 1, fast_foward)
 					yield(get_node("Enemy/AnimationPlayer"), "finished")
 			
 			# Action has numeric values attached
@@ -109,9 +130,10 @@ func animate_battle():
 					get_node("Player/PopUpNumber").set_text(str(action[2]))
 					
 					get_node("Enemy/AnimationPlayer").stop()
-					get_node("Enemy/AnimationPlayer").play(action[0])
+					get_node("Enemy/AnimationPlayer").play(action[0], 1 , fast_foward)
 					yield(get_node("Enemy/AnimationPlayer"), "finished")
-					get_node("Player/AnimationPlayer").play("DamagePopUp")
+					get_node("Player/AnimationPlayer").stop()
+					get_node("Player/AnimationPlayer").play("DamagePopUp", 1, fast_foward)
 					yield(get_node("Player/AnimationPlayer"), "finished")
 				# Action is healing
 				else:
@@ -119,13 +141,25 @@ func animate_battle():
 					get_node("Player/PopUpNumber").set_text(str(-action[2]))
 					
 					get_node("Enemy/AnimationPlayer").stop()
-					get_node("Enemy/AnimationPlayer").play(action[0])
+					get_node("Enemy/AnimationPlayer").play(action[0], 1, fast_foward)
 					yield(get_node("Enemy/AnimationPlayer"), "finished")
-					get_node("Enemy/AnimationPlayer").play("HealPopUp")
+					get_node("Enemy/AnimationPlayer").stop()
+					get_node("Enemy/AnimationPlayer").play("HealPopUp", 1, fast_foward)
 					yield(get_node("Enemy/AnimationPlayer"), "finished")
 					
+		get_node("Player/AnimationPlayer").play("Idle", 1, rand_range(0.8, 1.2))
+		get_node("Enemy/AnimationPlayer").play("Idle", 1, rand_range(0.8, 1.2))
+	
 	
 	emit_signal("battle_animation_finished")
 
 func _on_SkipButton_pressed():
 	emit_signal("battle_animation_finished")
+
+func _on_FFButton_pressed():
+	if (fast_foward == 1):
+		fast_foward = 2
+		get_node("FFButton/FFLabel").set_text("Stop Rush")
+	else:
+		fast_foward = 1
+		get_node("FFButton/FFLabel").set_text("Rush")
