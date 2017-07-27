@@ -22,9 +22,7 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+__meta__ = { "_edit_lock_":true }
 
 [node name="ArenaBackground" type="TextureFrame" parent="."]
 
@@ -41,9 +39,7 @@ margin/bottom = 0.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 0
-__meta__ = {
-"_edit_lock_": true
-}
+__meta__ = { "_edit_lock_":true }
 
 [node name="VBox" type="VBoxContainer" parent="."]
 
@@ -59,9 +55,7 @@ margin/top = -1.0
 margin/right = -1.0
 margin/bottom = 1.0
 alignment = 0
-__meta__ = {
-"_edit_lock_": true
-}
+__meta__ = { "_edit_lock_":true }
 
 [node name="BattleGround" type="Button" parent="VBox"]
 
@@ -100,8 +94,6 @@ flat = false
 size_flags/vertical = 1
 margin/top = 480.0
 margin/bottom = 522.0
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="BattleMode" type="Control" parent="."]
 
@@ -442,8 +434,6 @@ margin/left = 460.0
 margin/top = 480.0
 margin/right = 568.0
 margin/bottom = 522.0
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="RaceMode" type="Control" parent="."]
 
@@ -663,8 +653,6 @@ max_lines_visible = -1
 
 margin/top = 480.0
 margin/bottom = 522.0
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [connection signal="pressed" from="VBox/BattleGround" to="." method="_on_BattleGround_pressed"]
 

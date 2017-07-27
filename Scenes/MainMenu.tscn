@@ -214,7 +214,6 @@ alignment = 0
 
 [node name="Slow" type="TextureButton" parent="OptionsContainer/TextSpeedContainer"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1

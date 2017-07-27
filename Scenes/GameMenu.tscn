@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://Scripts/GameMenu.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Sprites/Places/Main.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/BackGrounds/Main.png" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/GUI/pole.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Sprites/GUI/plank.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Fonts/cap20.fnt" type="BitmapFont" id=5]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scenes/Arena.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=10]
 [ext_resource path="res://Scenes/Farmer.tscn" type="PackedScene" id=11]
+
 
 [node name="GameMenu" type="Control"]
 
@@ -25,9 +26,7 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+__meta__ = { "_edit_lock_":true }
 
 [node name="FarmBackground" type="TextureFrame" parent="."]
 
@@ -44,9 +43,7 @@ margin/bottom = 0.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 0
-__meta__ = {
-"_edit_lock_": true
-}
+__meta__ = { "_edit_lock_":true }
 
 [node name="Buttons" type="Control" parent="."]
 
@@ -86,12 +83,8 @@ textures/normal = ExtResource( 4 )
 textures/pressed = ExtResource( 4 )
 textures/hover = ExtResource( 4 )
 textures/disabled = ExtResource( 4 )
-params/resize_mode = 0
 params/scale = Vector2( 0.8, 0.8 )
-params/stretch_mode = 0
-__meta__ = {
-"_edit_group_": true
-}
+__meta__ = { "_edit_group_":true }
 
 [node name="Label" type="Label" parent="Buttons/ToBreed"]
 
@@ -131,12 +124,8 @@ textures/normal = ExtResource( 4 )
 textures/pressed = ExtResource( 4 )
 textures/hover = ExtResource( 4 )
 textures/disabled = ExtResource( 4 )
-params/resize_mode = 0
 params/scale = Vector2( 0.8, 0.8 )
-params/stretch_mode = 0
-__meta__ = {
-"_edit_group_": true
-}
+__meta__ = { "_edit_group_":true }
 
 [node name="Label" type="Label" parent="Buttons/ToSell"]
 
@@ -175,12 +164,8 @@ textures/normal = ExtResource( 4 )
 textures/pressed = ExtResource( 4 )
 textures/hover = ExtResource( 4 )
 textures/disabled = ExtResource( 4 )
-params/resize_mode = 0
 params/scale = Vector2( 0.8, 0.8 )
-params/stretch_mode = 0
-__meta__ = {
-"_edit_group_": true
-}
+__meta__ = { "_edit_group_":true }
 
 [node name="Label" type="Label" parent="Buttons/ToTown"]
 
@@ -219,9 +204,7 @@ textures/normal = ExtResource( 4 )
 textures/pressed = ExtResource( 4 )
 textures/hover = ExtResource( 4 )
 textures/disabled = ExtResource( 4 )
-params/resize_mode = 0
 params/scale = Vector2( 0.8, 0.8 )
-params/stretch_mode = 0
 
 [node name="Label" type="Label" parent="Buttons/ToArena"]
 
@@ -240,9 +223,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-__meta__ = {
-"_edit_lock_": true
-}
+__meta__ = { "_edit_lock_":true }
 
 [node name="ToSleep" type="TextureButton" parent="Buttons"]
 
@@ -263,12 +244,8 @@ textures/normal = ExtResource( 4 )
 textures/pressed = ExtResource( 4 )
 textures/hover = ExtResource( 4 )
 textures/disabled = ExtResource( 4 )
-params/resize_mode = 0
 params/scale = Vector2( 0.8, 0.8 )
-params/stretch_mode = 0
-__meta__ = {
-"_edit_group_": true
-}
+__meta__ = { "_edit_group_":true }
 
 [node name="Label" type="Label" parent="Buttons/ToSleep"]
 
@@ -288,9 +265,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-__meta__ = {
-"_edit_group_": true
-}
+__meta__ = { "_edit_group_":true }
 
 [node name="Tween" type="Tween" parent="Buttons"]
 
@@ -303,118 +278,18 @@ playback/speed = 1.0
 
 editor/display_folded = true
 
-[node name="Collect1" parent="Barn/Display1"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Feed1" parent="Barn/Display1"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Collect2" parent="Barn/Display2"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Feed2" parent="Barn/Display2"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="StorageBackground1" parent="Barn/Storage1"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
 [node name="Storage2" parent="Barn"]
 
 editor/display_folded = false
-
-[node name="StorageBackground2" parent="Barn/Storage2"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Breed" parent="Barn"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="SortSpecies" parent="Barn/SortsAndBack"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="SortLevel" parent="Barn/SortsAndBack"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="SortGender" parent="Barn/SortsAndBack"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Back" parent="Barn/SortsAndBack"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="Dumpster" parent="." instance=ExtResource( 7 )]
 
 editor/display_folded = true
 visibility/visible = false
 
-[node name="Back" parent="Dumpster/VBox"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Less" parent="Dumpster/Boxes/Catals/AmountChooser"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Less10" parent="Dumpster/Boxes/Catals/AmountChooser"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="More" parent="Dumpster/Boxes/Catals/AmountChooser"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="More10" parent="Dumpster/Boxes/Catals/AmountChooser"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
 [node name="Town" parent="." instance=ExtResource( 8 )]
 
 editor/display_folded = true
-
-[node name="Back" parent="Town/VBox"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Buy" parent="Town/MonsterShop"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Back" parent="Town/MonsterShop"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Back" parent="Town/CatalShop"]
-
-params/resize_mode = 0
-params/stretch_mode = 0
 
 [node name="Arena" parent="." instance=ExtResource( 9 )]
 
@@ -448,9 +323,7 @@ range/value = 100.0
 range/exp_edit = false
 range/rounded = false
 percent/visible = false
-__meta__ = {
-"_edit_lock_": true
-}
+__meta__ = { "_edit_lock_":true }
 
 [node name="EnergyLabel" type="Label" parent="HUD/Energy"]
 
@@ -481,9 +354,7 @@ margin/left = 10.0
 margin/top = 570.0
 margin/right = 50.0
 margin/bottom = 584.0
-__meta__ = {
-"_edit_lock_": true
-}
+__meta__ = { "_edit_lock_":true }
 
 [node name="Date" type="Label" parent="HUD/DateAndTime"]
 
@@ -533,9 +404,7 @@ text = "Quesha"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-__meta__ = {
-"_edit_lock_": true
-}
+__meta__ = { "_edit_lock_":true }
 
 [node name="Farmer" parent="." instance=ExtResource( 11 )]
 
@@ -555,6 +424,88 @@ margin/bottom = 506.0
 [connection signal="pressed" from="Buttons/ToArena" to="." method="_on_ToArena_pressed"]
 
 [connection signal="pressed" from="Buttons/ToSleep" to="." method="_on_ToSleep_pressed"]
+
+[connection signal="pressed" from="Barn/Display1/Collect1" to="Barn" method="_on_Collect1_pressed"]
+
+[connection signal="pressed" from="Barn/Display1/Feed1" to="Barn" method="_on_Feed1_pressed"]
+
+[connection signal="pressed" from="Barn/Display2/Collect2" to="Barn" method="_on_Collect2_pressed"]
+
+[connection signal="pressed" from="Barn/Display2/Feed2" to="Barn" method="_on_Feed2_pressed"]
+
+[connection signal="pressed" from="Barn/Storage1/StorageBackground1" to="Barn" method="_on_StorageBackground1_pressed"]
+
+[connection signal="tween_complete" from="Barn/Storage1/Tween" to="Barn" method="_on_Tween_tween_complete"]
+
+[connection signal="pressed" from="Barn/Storage2/StorageBackground2" to="Barn" method="_on_StorageBackground2_pressed"]
+
+[connection signal="tween_complete" from="Barn/Storage2/Tween" to="Barn" method="_on_Tween_tween_complete"]
+
+[connection signal="pressed" from="Barn/Breed" to="Barn" method="_on_Breed_pressed"]
+
+[connection signal="pressed" from="Barn/SortsAndBack/SortSpecies" to="Barn/SortsAndBack" method="_on_SortSpecies_pressed"]
+
+[connection signal="pressed" from="Barn/SortsAndBack/SortLevel" to="Barn/SortsAndBack" method="_on_SortLevel_pressed"]
+
+[connection signal="pressed" from="Barn/SortsAndBack/SortGender" to="Barn/SortsAndBack" method="_on_SortGender_pressed"]
+
+[connection signal="pressed" from="Barn/SortsAndBack/Back" to="Barn" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Dumpster/VBox/SellMonster" to="Dumpster" method="_on_SellMonster_pressed"]
+
+[connection signal="pressed" from="Dumpster/VBox/SellCatal" to="Dumpster" method="_on_SellCatal_pressed"]
+
+[connection signal="pressed" from="Dumpster/VBox/Back" to="Dumpster" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Mons/BackMon" to="Dumpster" method="_on_BackMon_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/BackCatal" to="Dumpster" method="_on_BackCatal_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/Less" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_Less_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/Less10" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_Less10_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/More" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_More_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/More10" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_More10_pressed"]
+
+[connection signal="pressed" from="Dumpster/Boxes/Sell" to="Dumpster" method="_on_Sell_pressed"]
+
+[connection signal="pressed" from="Town/VBox/ShopMonster" to="Town" method="_on_ShopMonster_pressed"]
+
+[connection signal="pressed" from="Town/VBox/ShopCatalist" to="Town" method="_on_ShopCatalist_pressed"]
+
+[connection signal="pressed" from="Town/VBox/Back" to="Town" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Town/MonsterShop/Buy" to="Town/MonsterShop" method="_on_Buy_pressed"]
+
+[connection signal="pressed" from="Town/MonsterShop/Back" to="Town/MonsterShop" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Town/CatalShop/Buy" to="Town/CatalShop" method="_on_Buy_pressed"]
+
+[connection signal="pressed" from="Town/CatalShop/Back" to="Town/CatalShop" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Arena/VBox/BattleGround" to="Arena" method="_on_BattleGround_pressed"]
+
+[connection signal="pressed" from="Arena/VBox/Race" to="Arena" method="_on_Race_pressed"]
+
+[connection signal="pressed" from="Arena/VBox/Back" to="Arena" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Rank1" to="Arena/BattleMode" method="_on_Rank1_pressed"]
+
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Rank2" to="Arena/BattleMode" method="_on_Rank2_pressed"]
+
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/Rank3" to="Arena/BattleMode" method="_on_Rank3_pressed"]
+
+[connection signal="pressed" from="Arena/BattleMode/MonsterSelect/BackBattle" to="Arena" method="_on_BackBattle_pressed"]
+
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Rank1" to="Arena/RaceMode" method="_on_Rank1_pressed"]
+
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Rank2" to="Arena/RaceMode" method="_on_Rank2_pressed"]
+
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/Rank3" to="Arena/RaceMode" method="_on_Rank3_pressed"]
+
+[connection signal="pressed" from="Arena/RaceMode/MonsterSelect/BackRace" to="Arena" method="_on_BackRace_pressed"]
 
 
 [editable path="Barn"]
