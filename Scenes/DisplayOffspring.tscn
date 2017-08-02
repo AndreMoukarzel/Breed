@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://Scripts/DisplayOffspring.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/Display.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=4]
-[ext_resource path="res://Resources/Sprites/GUI/blank0.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/GUI/blank2.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/GUI/blank1.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/GUI/button0000.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/GUI/button0002.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/GUI/button0001.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Fonts/fall25.fnt" type="BitmapFont" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -73,11 +74,12 @@ caret/caret_blink_speed = 0.65
 
 [node name="Accept" type="TextureButton" parent="Display"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = -20.0
+margin/left = 0.0
 margin/top = 520.0
 margin/right = 180.0
 margin/bottom = 590.0
@@ -87,14 +89,37 @@ shortcut = null
 textures/normal = ExtResource( 5 )
 textures/pressed = ExtResource( 6 )
 textures/hover = ExtResource( 7 )
+textures/disabled = ExtResource( 6 )
+__meta__ = { "_edit_group_":true }
+
+[node name="Label" type="Label" parent="Display/Accept"]
+
+rect/scale = Vector2( 1.5, 1.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 120.0
+margin/bottom = 48.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Foster"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="Refuse" type="TextureButton" parent="Display"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 180.0
+margin/left = 200.0
 margin/top = 520.0
 margin/right = 380.0
 margin/bottom = 590.0
@@ -104,6 +129,28 @@ shortcut = null
 textures/normal = ExtResource( 5 )
 textures/pressed = ExtResource( 6 )
 textures/hover = ExtResource( 7 )
+textures/disabled = ExtResource( 6 )
+__meta__ = { "_edit_group_":true }
+
+[node name="Label" type="Label" parent="Display/Refuse"]
+
+rect/scale = Vector2( 1.5, 1.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 120.0
+margin/bottom = 48.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Donate"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

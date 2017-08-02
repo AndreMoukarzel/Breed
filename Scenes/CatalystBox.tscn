@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://Scripts/CatalystBox.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Resources/Sprites/GUI/back2.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Sprites/GUI/back1.png" type="Texture" id=8]
 [ext_resource path="res://Resources/Fonts/gooddog30.fnt" type="BitmapFont" id=9]
+[ext_resource path="res://Resources/Sprites/GUI/button0000.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Sprites/GUI/button0002.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Sprites/GUI/button0001.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 
@@ -153,10 +156,10 @@ margin/bottom = 42.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 6 )
-textures/pressed = ExtResource( 7 )
-textures/hover = ExtResource( 8 )
-textures/disabled = ExtResource( 7 )
+textures/normal = ExtResource( 10 )
+textures/pressed = ExtResource( 11 )
+textures/hover = ExtResource( 12 )
+textures/disabled = ExtResource( 11 )
 params/scale = Vector2( 0.6, 0.6 )
 
 [node name="Label" type="Label" parent="Yes"]
@@ -193,10 +196,10 @@ margin/bottom = 42.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 6 )
-textures/pressed = ExtResource( 7 )
-textures/hover = ExtResource( 8 )
-textures/disabled = ExtResource( 7 )
+textures/normal = ExtResource( 10 )
+textures/pressed = ExtResource( 11 )
+textures/hover = ExtResource( 12 )
+textures/disabled = ExtResource( 11 )
 params/scale = Vector2( 0.6, 0.6 )
 
 [node name="Label" type="Label" parent="No"]

@@ -1,15 +1,19 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://Scripts/Dumpster.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/dumpster.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/BackButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/CatalystBox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=6]
-[ext_resource path="res://Scripts/AmountChooser.gd" type="Script" id=7]
-[ext_resource path="res://Resources/Sprites/GUI/arrow.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Sprites/GUI/ArrowPressed.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Sprites/GUI/ArrowHover.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Sprites/GUI/button0000.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/GUI/button0002.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/GUI/button0001.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Fonts/gooddog30.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://Scenes/BackButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/CatalystBox.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=10]
+[ext_resource path="res://Scripts/AmountChooser.gd" type="Script" id=11]
+[ext_resource path="res://Resources/Sprites/GUI/arrow.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Sprites/GUI/ArrowPressed.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Sprites/GUI/ArrowHover.png" type="Texture" id=14]
 
 [node name="Dumpster" type="Control"]
 
@@ -49,39 +53,81 @@ margin/right = 1024.0
 margin/bottom = 600.0
 alignment = 0
 
-[node name="SellMonster" type="Button" parent="VBox"]
+[node name="SellMonster" type="TextureButton" parent="VBox"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 492.0
-margin/top = 88.0
-margin/right = 532.0
-margin/bottom = 108.0
+margin/left = 422.0
+margin/top = 63.0
+margin/right = 602.0
+margin/bottom = 133.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Bixo"
-flat = false
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+textures/disabled = ExtResource( 4 )
 
-[node name="SellCatal" type="Button" parent="VBox"]
+[node name="Label" type="Label" parent="VBox/SellMonster"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 180.0
+margin/bottom = 70.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Sell Monsters"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="SellCatal" type="TextureButton" parent="VBox"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 490.0
-margin/top = 289.0
-margin/right = 534.0
-margin/bottom = 309.0
+margin/left = 422.0
+margin/top = 264.0
+margin/right = 602.0
+margin/bottom = 334.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Leite"
-flat = false
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+textures/disabled = ExtResource( 4 )
 
-[node name="Back" parent="VBox" instance=ExtResource( 3 )]
+[node name="Label" type="Label" parent="VBox/SellCatal"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 180.0
+margin/bottom = 70.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Sell Catalysts"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Back" parent="VBox" instance=ExtResource( 7 )]
 
 size_flags/vertical = 1
 margin/top = 480.0
@@ -89,7 +135,6 @@ margin/bottom = 522.0
 
 [node name="Boxes" type="Control" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -99,7 +144,7 @@ margin/top = 20.0
 margin/right = 110.0
 margin/bottom = 60.0
 
-[node name="Mons" parent="Boxes" instance=ExtResource( 4 )]
+[node name="Mons" parent="Boxes" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 visibility/visible = false
@@ -120,7 +165,7 @@ shortcut = null
 text = "Back"
 flat = false
 
-[node name="Catals" parent="Boxes" instance=ExtResource( 5 )]
+[node name="Catals" parent="Boxes" instance=ExtResource( 9 )]
 
 editor/display_folded = true
 visibility/visible = false
@@ -152,14 +197,14 @@ margin/left = 600.0
 margin/top = 500.0
 margin/right = 640.0
 margin/bottom = 518.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 0.964844, 0.0791473, 0.951005, 1 )
 text = "0"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = ExtResource( 7 )
+script/script = ExtResource( 11 )
 
 [node name="Less" type="TextureButton" parent="Boxes/Catals/AmountChooser"]
 
@@ -174,10 +219,10 @@ margin/bottom = 25.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 8 )
-textures/pressed = ExtResource( 9 )
-textures/hover = ExtResource( 10 )
-textures/disabled = ExtResource( 9 )
+textures/normal = ExtResource( 12 )
+textures/pressed = ExtResource( 13 )
+textures/hover = ExtResource( 14 )
+textures/disabled = ExtResource( 13 )
 params/scale = Vector2( -1, 1 )
 
 [node name="Less10" type="TextureButton" parent="Boxes/Catals/AmountChooser"]
@@ -193,10 +238,10 @@ margin/bottom = 55.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 8 )
-textures/pressed = ExtResource( 9 )
-textures/hover = ExtResource( 10 )
-textures/disabled = ExtResource( 9 )
+textures/normal = ExtResource( 12 )
+textures/pressed = ExtResource( 13 )
+textures/hover = ExtResource( 14 )
+textures/disabled = ExtResource( 13 )
 params/scale = Vector2( -1, 1 )
 
 [node name="More" type="TextureButton" parent="Boxes/Catals/AmountChooser"]
@@ -212,10 +257,10 @@ margin/bottom = 25.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 8 )
-textures/pressed = ExtResource( 9 )
-textures/hover = ExtResource( 10 )
-textures/disabled = ExtResource( 9 )
+textures/normal = ExtResource( 12 )
+textures/pressed = ExtResource( 13 )
+textures/hover = ExtResource( 14 )
+textures/disabled = ExtResource( 13 )
 
 [node name="More10" type="TextureButton" parent="Boxes/Catals/AmountChooser"]
 
@@ -230,10 +275,10 @@ margin/bottom = 55.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 8 )
-textures/pressed = ExtResource( 9 )
-textures/hover = ExtResource( 10 )
-textures/disabled = ExtResource( 9 )
+textures/normal = ExtResource( 12 )
+textures/pressed = ExtResource( 13 )
+textures/hover = ExtResource( 14 )
+textures/disabled = ExtResource( 13 )
 
 [node name="Sell" type="Button" parent="Boxes"]
 
@@ -259,12 +304,6 @@ flat = false
 [connection signal="pressed" from="VBox/Back" to="." method="_on_Back_pressed"]
 
 [connection signal="pressed" from="Boxes/Mons/BackMon" to="." method="_on_BackMon_pressed"]
-
-[connection signal="pressed" from="Boxes/Catals/Return" to="Boxes/Catals" method="_on_Return_pressed"]
-
-[connection signal="pressed" from="Boxes/Catals/Yes" to="Boxes/Catals" method="_on_Yes_pressed"]
-
-[connection signal="pressed" from="Boxes/Catals/No" to="Boxes/Catals" method="_on_No_pressed"]
 
 [connection signal="pressed" from="Boxes/Catals/BackCatal" to="." method="_on_BackCatal_pressed"]
 

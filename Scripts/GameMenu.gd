@@ -2,7 +2,6 @@
 extends Control
 
 func _ready():
-	print("Game Menu")
 	#global.instace_dialog(self, "System", 0)
 	
 	get_node("HUD/Energy").set_max(global.energy)
@@ -10,14 +9,15 @@ func _ready():
 	get_node("HUD/Energy/EnergyLabel").set_text(str(global.energy))
 	get_node("HUD/Quesha").set_text(str(global.quesha))
 
-	#test
+	############ TEST ############
 	g_monster.monster_generate(global.mon_depo, "Mafagafo", Color(-1, -1, -1), [6, 6, 6, 6, 6, 6], [7], 30)
 	global.mon_depo[0].stats[4] = 50
 	global.mon_depo[0].stats[0] = 15
 	global.mon_depo[0].stats[1] = 100
 	global.mon_depo[0].stats[5] = 100
 	g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], [0, 13], 1)
-	
+	##############################
+
 	buttons_anim()
 
 
