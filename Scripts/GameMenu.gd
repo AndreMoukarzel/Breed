@@ -19,6 +19,8 @@ func _ready():
 	##############################
 
 	buttons_anim()
+	
+	global.instance_warning(self, "Wow, what an asshole")
 
 
 func buttons_anim():

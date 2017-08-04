@@ -184,6 +184,14 @@ func instace_dialog(scene, character, dialog_number):
 	d_s.print_text_sequence(dialog_db.get_dialog_sequence(character_id, dialog_number))
 
 
+func instance_warning(scene, warning_text):
+	var warning = preload("res://Scenes/Warning.tscn").instance()
+	
+	warning.hide()
+	scene.add_child(warning)
+	warning.warn(warning_text)
+
+
 func append_catal(deposit, catal, quant):
 	for cq in deposit:
 		if catal.species == cq[0].species and catal.level == cq[0].level:
