@@ -1,13 +1,20 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://Scripts/Arena.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/arena.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/BackButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/BattleMode.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/BattleDisplay.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/RaceMode.gd" type="Script" id=7]
-[ext_resource path="res://Scripts/RaceDisplay.gd" type="Script" id=8]
+[ext_resource path="res://Resources/Sprites/GUI/button0000.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/GUI/button0002.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/GUI/button0001.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Fonts/fall25.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://Scenes/BackButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/BattleMode.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/SelectBox.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Resources/Sprites/GUI/Arena/trophy1_0.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Sprites/GUI/Arena/trophy1_2.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Sprites/GUI/Arena/trophy1_1.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/BattleDisplay.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/RaceMode.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/RaceDisplay.gd" type="Script" id=15]
 
 [node name="Arena" type="Control"]
 
@@ -43,7 +50,6 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="VBox" type="VBoxContainer" parent="."]
 
-editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -57,39 +63,85 @@ margin/bottom = 1.0
 alignment = 0
 __meta__ = { "_edit_lock_":true }
 
-[node name="BattleGround" type="Button" parent="VBox"]
+[node name="BattleGround" type="TextureButton" parent="VBox"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 461.0
-margin/top = 88.0
-margin/right = 562.0
-margin/bottom = 108.0
+margin/left = 422.0
+margin/top = 63.0
+margin/right = 602.0
+margin/bottom = 133.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Battle Ground"
-flat = false
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+textures/disabled = ExtResource( 4 )
+__meta__ = { "_edit_group_":true }
 
-[node name="Race" type="Button" parent="VBox"]
+[node name="Label" type="Label" parent="VBox/BattleGround"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 180.0
+margin/bottom = 70.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "BattleGrounds"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Race" type="TextureButton" parent="VBox"]
+
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 491.0
-margin/top = 289.0
-margin/right = 533.0
-margin/bottom = 309.0
+margin/left = 422.0
+margin/top = 264.0
+margin/right = 602.0
+margin/bottom = 334.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Race"
-flat = false
+textures/normal = ExtResource( 3 )
+textures/pressed = ExtResource( 4 )
+textures/hover = ExtResource( 5 )
+textures/disabled = ExtResource( 4 )
+__meta__ = { "_edit_group_":true }
 
-[node name="Back" parent="VBox" instance=ExtResource( 3 )]
+[node name="Label" type="Label" parent="VBox/Race"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 180.0
+margin/bottom = 70.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Racing"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Back" parent="VBox" instance=ExtResource( 7 )]
 
 size_flags/vertical = 1
 margin/top = 480.0
@@ -106,7 +158,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 1024.0
 margin/bottom = 600.0
-script/script = ExtResource( 4 )
+script/script = ExtResource( 8 )
 
 [node name="MonsterSelect" type="Control" parent="BattleMode"]
 
@@ -119,12 +171,12 @@ margin/top = 0.0
 margin/right = 1024.0
 margin/bottom = 600.0
 
-[node name="SelectBox" parent="BattleMode/MonsterSelect" instance=ExtResource( 5 )]
+[node name="SelectBox" parent="BattleMode/MonsterSelect" instance=ExtResource( 9 )]
 
 margin/top = 100.0
 margin/bottom = 140.0
 
-[node name="Rank1" type="Button" parent="BattleMode/MonsterSelect"]
+[node name="Rank1" type="TextureButton" parent="BattleMode/MonsterSelect"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -132,13 +184,14 @@ size_flags/horizontal = 1
 size_flags/vertical = 1
 margin/left = 490.0
 margin/top = 365.0
-margin/right = 540.0
-margin/bottom = 385.0
+margin/right = 682.0
+margin/bottom = 642.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Rank1"
-flat = false
+textures/normal = ExtResource( 10 )
+textures/pressed = ExtResource( 11 )
+textures/hover = ExtResource( 12 )
 
 [node name="Rank2" type="Button" parent="BattleMode/MonsterSelect"]
 
@@ -186,7 +239,7 @@ margin/left = 700.0
 margin/top = 0.0
 margin/right = 740.0
 margin/bottom = 40.0
-script/script = ExtResource( 6 )
+script/script = ExtResource( 13 )
 
 [node name="Hp" type="Control" parent="BattleMode/MonsterSelect/BattleDisplay"]
 
@@ -428,7 +481,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="BackBattle" parent="BattleMode/MonsterSelect" instance=ExtResource( 3 )]
+[node name="BackBattle" parent="BattleMode/MonsterSelect" instance=ExtResource( 7 )]
 
 margin/left = 460.0
 margin/top = 480.0
@@ -446,7 +499,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
-script/script = ExtResource( 7 )
+script/script = ExtResource( 14 )
 
 [node name="MonsterSelect" type="Control" parent="RaceMode"]
 
@@ -459,7 +512,7 @@ margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
 
-[node name="SelectBox" parent="RaceMode/MonsterSelect" instance=ExtResource( 5 )]
+[node name="SelectBox" parent="RaceMode/MonsterSelect" instance=ExtResource( 9 )]
 
 margin/top = 100.0
 margin/bottom = 140.0
@@ -527,7 +580,7 @@ margin/left = 700.0
 margin/top = 0.0
 margin/right = 740.0
 margin/bottom = 40.0
-script/script = ExtResource( 8 )
+script/script = ExtResource( 15 )
 
 [node name="Vel" type="Control" parent="RaceMode/MonsterSelect/RaceDisplay"]
 
@@ -649,7 +702,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="BackRace" parent="RaceMode/MonsterSelect" instance=ExtResource( 3 )]
+[node name="BackRace" parent="RaceMode/MonsterSelect" instance=ExtResource( 7 )]
 
 margin/top = 480.0
 margin/bottom = 522.0

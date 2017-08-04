@@ -19,7 +19,7 @@ var monster_list = []
 
 signal battle_animation_finished
 
-var fast_foward = 1
+var anim_speed = 1
 
 func animate_battle():
 	
@@ -50,7 +50,7 @@ func animate_battle():
 			# Play Skillbox animation
 			get_node("SkillBox/AnimationPlayer").stop()
 			get_node("SkillBox/SkillName").set_text(action[0])
-			get_node("SkillBox/AnimationPlayer").play("ShowName", 1, fast_foward)
+			get_node("SkillBox/AnimationPlayer").play("ShowName", 1, anim_speed)
 			yield(get_node("SkillBox/AnimationPlayer"), "finished")
 		
 		# Player is the actor
@@ -62,11 +62,11 @@ func animate_battle():
 					get_node("Player/AnimationPlayer").play(action[0], 1, rand_range(0.8, 1.2))
 				elif(action[0] == "Death"):
 					get_node("Player/AnimationPlayer").stop()
-					get_node("Player/AnimationPlayer").play(action[0], 1, fast_foward)
+					get_node("Player/AnimationPlayer").play(action[0], 1, anim_speed)
 					yield(get_node("Player/AnimationPlayer"), "finished")
 				else:
 					get_node("Player/AnimationPlayer").stop()
-					get_node("Player/AnimationPlayer").play(action[0], 1, fast_foward)
+					get_node("Player/AnimationPlayer").play(action[0], 1, anim_speed)
 					yield(get_node("Player/AnimationPlayer"), "finished")
 			
 			# Action has numeric values attached
@@ -77,10 +77,10 @@ func animate_battle():
 					get_node("Enemy/PopUpNumber").set_text(str(action[2]))
 					
 					get_node("Player/AnimationPlayer").stop()
-					get_node("Player/AnimationPlayer").play(action[0], 1, fast_foward)
+					get_node("Player/AnimationPlayer").play(action[0], 1, anim_speed)
 					yield(get_node("Player/AnimationPlayer"), "finished")
 					get_node("Enemy/AnimationPlayer").stop()
-					get_node("Enemy/AnimationPlayer").play("DamagePopUp", 1, fast_foward)
+					get_node("Enemy/AnimationPlayer").play("DamagePopUp", 1, anim_speed)
 					yield(get_node("Enemy/AnimationPlayer"), "finished")
 				# Action is healing
 				else:
@@ -88,10 +88,10 @@ func animate_battle():
 					get_node("Player/PopUpNumber").set_text(str(-action[2]))
 					
 					get_node("Player/AnimationPlayer").stop()
-					get_node("Player/AnimationPlayer").play(action[0], 1, fast_foward)
+					get_node("Player/AnimationPlayer").play(action[0], 1, anim_speed)
 					yield(get_node("Player/AnimationPlayer"), "finished")
 					get_node("Player/AnimationPlayer").stop()
-					get_node("Player/AnimationPlayer").play("HealPopUp", 1, fast_foward)
+					get_node("Player/AnimationPlayer").play("HealPopUp", 1, anim_speed)
 					yield(get_node("Player/AnimationPlayer"), "finished")
 					
 		
@@ -104,7 +104,7 @@ func animate_battle():
 					get_node("Enemy/AnimationPlayer").play(action[0], 1, rand_range(0.8, 1.2))
 				elif (action[0] == "Death"):
 					get_node("Enemy/AnimationPlayer").stop()
-					get_node("Enemy/AnimationPlayer").play(action[0], 1, fast_foward)
+					get_node("Enemy/AnimationPlayer").play(action[0], 1, anim_speed)
 					yield(get_node("Enemy/AnimationPlayer"), "finished")
 					
 					# Continua a batalha.
@@ -115,11 +115,11 @@ func animate_battle():
 						monster_list.pop_front()
 						
 						get_node("Enemy/AnimationPlayer").stop()
-						get_node("Enemy/AnimationPlayer").play("Emerge", 1, fast_foward)
+						get_node("Enemy/AnimationPlayer").play("Emerge", 1, anim_speed)
 						yield(get_node("Enemy/AnimationPlayer"), "finished")
 				else:
 					get_node("Enemy/AnimationPlayer").stop()
-					get_node("Enemy/AnimationPlayer").play(action[0], 1, fast_foward)
+					get_node("Enemy/AnimationPlayer").play(action[0], 1, anim_speed)
 					yield(get_node("Enemy/AnimationPlayer"), "finished")
 			
 			# Action has numeric values attached
@@ -130,10 +130,10 @@ func animate_battle():
 					get_node("Player/PopUpNumber").set_text(str(action[2]))
 					
 					get_node("Enemy/AnimationPlayer").stop()
-					get_node("Enemy/AnimationPlayer").play(action[0], 1 , fast_foward)
+					get_node("Enemy/AnimationPlayer").play(action[0], 1 , anim_speed)
 					yield(get_node("Enemy/AnimationPlayer"), "finished")
 					get_node("Player/AnimationPlayer").stop()
-					get_node("Player/AnimationPlayer").play("DamagePopUp", 1, fast_foward)
+					get_node("Player/AnimationPlayer").play("DamagePopUp", 1, anim_speed)
 					yield(get_node("Player/AnimationPlayer"), "finished")
 				# Action is healing
 				else:
@@ -141,10 +141,10 @@ func animate_battle():
 					get_node("Player/PopUpNumber").set_text(str(-action[2]))
 					
 					get_node("Enemy/AnimationPlayer").stop()
-					get_node("Enemy/AnimationPlayer").play(action[0], 1, fast_foward)
+					get_node("Enemy/AnimationPlayer").play(action[0], 1, anim_speed)
 					yield(get_node("Enemy/AnimationPlayer"), "finished")
 					get_node("Enemy/AnimationPlayer").stop()
-					get_node("Enemy/AnimationPlayer").play("HealPopUp", 1, fast_foward)
+					get_node("Enemy/AnimationPlayer").play("HealPopUp", 1, anim_speed)
 					yield(get_node("Enemy/AnimationPlayer"), "finished")
 					
 		get_node("Player/AnimationPlayer").play("Idle", 1, rand_range(0.8, 1.2))
@@ -157,9 +157,9 @@ func _on_SkipButton_pressed():
 	emit_signal("battle_animation_finished")
 
 func _on_FFButton_pressed():
-	if (fast_foward == 1):
-		fast_foward = 2
-		get_node("FFButton/FFLabel").set_text("Stop Rush")
+	if (anim_speed == 1):
+		anim_speed = 2.5
+		get_node("FFButton/FFLabel").set_text("Normal Speed")
 	else:
-		fast_foward = 1
-		get_node("FFButton/FFLabel").set_text("Rush")
+		anim_speed = 1
+		get_node("FFButton/FFLabel").set_text("Fast Foward")

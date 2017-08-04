@@ -279,6 +279,7 @@ playback/speed = 1.0
 [node name="Barn" parent="." instance=ExtResource( 8 )]
 
 editor/display_folded = true
+visibility/visible = false
 
 [node name="Storage2" parent="Barn"]
 
@@ -482,6 +483,20 @@ margin/bottom = 506.0
 [connection signal="pressed" from="Dumpster/Boxes/Catals/AmountChooser/More10" to="Dumpster/Boxes/Catals/AmountChooser" method="_on_More10_pressed"]
 
 [connection signal="pressed" from="Dumpster/Boxes/Sell" to="Dumpster" method="_on_Sell_pressed"]
+
+[connection signal="pressed" from="Town/VBox/ShopMonster" to="Town" method="_on_ShopMonster_pressed"]
+
+[connection signal="pressed" from="Town/VBox/ShopCatalist" to="Town" method="_on_ShopCatalist_pressed"]
+
+[connection signal="pressed" from="Town/VBox/Back" to="Town" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Town/MonsterShop/Buy" to="Town/MonsterShop" method="_on_Buy_pressed"]
+
+[connection signal="pressed" from="Town/MonsterShop/Back" to="Town/MonsterShop" method="_on_Back_pressed"]
+
+[connection signal="pressed" from="Town/CatalShop/Buy" to="Town/CatalShop" method="_on_Buy_pressed"]
+
+[connection signal="pressed" from="Town/CatalShop/Back" to="Town/CatalShop" method="_on_Back_pressed"]
 
 [connection signal="pressed" from="Arena/VBox/BattleGround" to="Arena" method="_on_BattleGround_pressed"]
 

@@ -202,6 +202,7 @@ max_lines_visible = -1
 
 [node name="TextSpeedContainer" type="HBoxContainer" parent="OptionsContainer"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -214,6 +215,7 @@ alignment = 0
 
 [node name="Slow" type="TextureButton" parent="OptionsContainer/TextSpeedContainer"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
