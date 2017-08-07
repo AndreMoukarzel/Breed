@@ -2,7 +2,7 @@
 extends Control
 
 func _ready():
-	#global.instace_dialog(self, "System", 0)
+	global.instace_dialog(self, "System", 0)
 	
 	get_node("HUD/Energy").set_max(global.energy)
 	get_node("HUD/Energy").set_value(global.energy)
@@ -19,9 +19,6 @@ func _ready():
 	##############################
 
 	buttons_anim()
-	
-	global.instance_warning(self, "Wow, what an asshole")
-
 
 func buttons_anim():
 	var tween = get_node("Buttons/Tween")
@@ -64,7 +61,7 @@ func _on_ToArena_pressed():
 
 func _on_ToSleep_pressed():
 	global.handle_days(1)
-	
+
 	# Check on monster bonuses
 	for monster in global.mon_depo:
 		if (monster.catal_boosts.size() != 0):
@@ -72,3 +69,5 @@ func _on_ToSleep_pressed():
 				var stat_id = monster.catal_boosts[num][1]
 				monster.stats[stat_id] -= monster.catal_boosts[num][0]
 			monster.catal_boosts.clear()
+
+	get_node("HUD/Black/AnimationPlayer").play("Sleep")

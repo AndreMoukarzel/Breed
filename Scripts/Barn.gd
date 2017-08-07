@@ -118,7 +118,7 @@ func _on_Breed_pressed():
 	var m2 = null
 
 	if (mon1 == -1 or mon2 == -1):
-		print ("No 2 monsters selected")
+		global.instance_warning(self, "Select two monsters")
 		return
 
 	for i in range(global.mon_depo.size()):
@@ -132,9 +132,11 @@ func _on_Breed_pressed():
 			break
 
 	if (m1.acts == 0):
+		global.instance_warning(self, str(m1.name, " has no action points"))
 		print (str(m1.name, " has no action points"))
 		return
 	if (m2.acts == 0):
+		global.instance_warning(self, str(m2.name, " has no action points"))
 		print (str(m2.name, " has no action points"))
 		return
 
@@ -231,6 +233,7 @@ func _on_Collect1_pressed():
 			break
 
 	if (monster.acts <= 0):
+		global.instance_warning(self, str(monster.name, " needs to rest"))
 		print(str(monster.name, " has no strength left in its pipi"))
 		return 
 
@@ -253,6 +256,7 @@ func _on_Collect2_pressed():
 			break
 
 	if (monster.acts <= 0):
+		global.instance_warning(self, str(monster.name, " needs to rest"))
 		print(str(monster.name, " has no strength left in its pipi"))
 		return 
 

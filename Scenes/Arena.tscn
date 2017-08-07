@@ -50,6 +50,7 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="VBox" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -149,6 +150,7 @@ margin/bottom = 522.0
 
 [node name="BattleMode" type="Control" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -490,6 +492,7 @@ margin/bottom = 522.0
 
 [node name="RaceMode" type="Control" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true

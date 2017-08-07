@@ -38,8 +38,7 @@ func _on_Buy_pressed():
 	for monster in shop_depo:
 		if monster.idn == selected_id:
 			if (global.quesha < get_parent().calculate_price(monster)):
-				#test
-				#give visual representation
+				global.instance_warning(self, "You can't pay for that")
 				print("Not enough cash, stranger")
 			else:
 				global.handle_quesha(-get_parent().calculate_price(monster))
