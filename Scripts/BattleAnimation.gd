@@ -137,8 +137,8 @@ func animate_battle():
 					yield(get_node("Player/AnimationPlayer"), "finished")
 				# Action is healing
 				else:
-					get_node("Player/PopUpNumber").set("custom_colors/font_color", Color(0, 255, 0))
-					get_node("Player/PopUpNumber").set_text(str(-action[2]))
+					get_node("Enemy/PopUpNumber").set("custom_colors/font_color", Color(0, 255, 0))
+					get_node("Enemy/PopUpNumber").set_text(str(-action[2]))
 					
 					get_node("Enemy/AnimationPlayer").stop()
 					get_node("Enemy/AnimationPlayer").play(action[0], 1, anim_speed)

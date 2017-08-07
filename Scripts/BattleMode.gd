@@ -249,10 +249,11 @@ func use_skill(attacker_bs, reciever_bs):
 		persona_counter += 1
 	
 	# Animation
-	if (numeric != null):
-		anim_list.append([str(skill_name), attacker_bs[3], numeric])
-	else:
-		anim_list.append([str(skill_name), attacker_bs[3]])
+	if (personality_db.has_animation(persona_id)):
+		if (numeric != null):
+			anim_list.append([str(skill_name), attacker_bs[3], numeric])
+		else:
+			anim_list.append([str(skill_name), attacker_bs[3]])
 
 
 func check_repeat_skill(target_bs, type):
@@ -441,11 +442,106 @@ func _on_Rank1_pressed():
 
 
 func _on_Rank2_pressed():
-	print("Im fucking useless")
+	if (mon == null):
+		global.instance_warning(get_parent(), "Select a monster to fight!")
+		print("Select a monster!")
+		return
+	if (mon.acts == 0):
+		global.instance_warning(get_parent(), str(mon.name, " is too tired"))
+		print("Monster has no action points")
+		return
+	mon.acts = 0
+
+	get_node("MonsterSelect/SelectBox").kill()
+	get_node("MonsterSelect/SelectBox").generate_members()
+	
+	# Vai ter que gerar os monstros para uma batalha de Rank 2,
+	# e começar a representação visual.
+	generate_enemies(2, 3)
+	
+	# Initialize animation
+	var animation_scene = preload("res://Scenes/BattleAnimation.tscn")
+	var anim_scn = animation_scene.instance()
+	
+	if (process_battle(2)):
+		# Animate here
+		anim_scn.action_list = anim_list
+		anim_scn.monster_list = mon_list
+		
+		add_child(anim_scn)
+		anim_scn.animate_battle()
+		yield(anim_scn, "battle_animation_finished")
+		
+		anim_scn.queue_free()
+		
+		print ("Total victory!")
+		get_node("MonsterSelect/Rank2").show()
+		global.handle_quesha(500)
+	else:
+		# Animate here too
+		anim_scn.action_list = anim_list
+		anim_scn.monster_list = mon_list
+		
+		add_child(anim_scn)
+		anim_scn.animate_battle()
+		yield(anim_scn, "battle_animation_finished")
+		
+		anim_scn.queue_free()
+		
+		print ("Ya lost boi")
+	
+	comp_depo.clear()
 
 
 func _on_Rank3_pressed():
-	print("I can literally do nothing")
+	if (mon == null):
+		global.instance_warning(get_parent(), "Select a monster to fight!")
+		print("Select a monster!")
+		return
+	if (mon.acts == 0):
+		global.instance_warning(get_parent(), str(mon.name, " is too tired"))
+		print("Monster has no action points")
+		return
+	mon.acts = 0
+
+	get_node("MonsterSelect/SelectBox").kill()
+	get_node("MonsterSelect/SelectBox").generate_members()
+	# Vai ter que gerar os monstros para uma batalha de Rank 3,
+	# e começar a representação visual.
+	generate_enemies(3, 3)
+	
+	# Initialize animation
+	var animation_scene = preload("res://Scenes/BattleAnimation.tscn")
+	var anim_scn = animation_scene.instance()
+	
+	if (process_battle(2)):
+		# Animate here
+		anim_scn.action_list = anim_list
+		anim_scn.monster_list = mon_list
+		
+		add_child(anim_scn)
+		anim_scn.animate_battle()
+		yield(anim_scn, "battle_animation_finished")
+		
+		anim_scn.queue_free()
+		
+		print ("Total victory!")
+		get_node("MonsterSelect/Rank2").show()
+		global.handle_quesha(500)
+	else:
+		# Animate here too
+		anim_scn.action_list = anim_list
+		anim_scn.monster_list = mon_list
+		
+		add_child(anim_scn)
+		anim_scn.animate_battle()
+		yield(anim_scn, "battle_animation_finished")
+		
+		anim_scn.queue_free()
+		
+		print ("Ya lost boi")
+	
+	comp_depo.clear()
 
 
 func select_monster(monster, select_box):

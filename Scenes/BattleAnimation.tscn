@@ -5,25 +5,25 @@
 [ext_resource path="res://Resources/Sprites/Battle/Scenery/FirstCup.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Sprites/Battle/Effects/FatalBlow/FatalBlow.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Sprites/Battle/Effects/BasicHit/BasicHit.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis10.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis1.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis2.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis3.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis4.png" type="Texture" id=10]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis5.png" type="Texture" id=11]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis6.png" type="Texture" id=12]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis7.png" type="Texture" id=13]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis8.png" type="Texture" id=14]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis9.png" type="Texture" id=15]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Bash/Bash.png" type="Texture" id=16]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen8.png" type="Texture" id=17]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen1.png" type="Texture" id=18]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen2.png" type="Texture" id=19]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen3.png" type="Texture" id=20]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen4.png" type="Texture" id=21]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen5.png" type="Texture" id=22]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen6.png" type="Texture" id=23]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen7.png" type="Texture" id=24]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen8.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen1.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen2.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen3.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen4.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen5.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen6.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen7.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis10.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis1.png" type="Texture" id=15]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis2.png" type="Texture" id=16]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis3.png" type="Texture" id=17]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis4.png" type="Texture" id=18]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis5.png" type="Texture" id=19]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis6.png" type="Texture" id=20]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis7.png" type="Texture" id=21]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis8.png" type="Texture" id=22]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis9.png" type="Texture" id=23]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Bash/Bash.png" type="Texture" id=24]
 [ext_resource path="res://Resources/Fonts/gooddog30.fnt" type="BitmapFont" id=25]
 [ext_resource path="res://Resources/Anims/Battle/Bash.tres" type="Animation" id=26]
 [ext_resource path="res://Resources/Anims/Battle/BasicAttack.tres" type="Animation" id=27]
@@ -47,7 +47,7 @@
 
 [sub_resource type="SpriteFrames" id=1]
 
-animations = [ { "frames":[ ExtResource( 4 ) ], "loop":true, "name":"FatalBlow", "speed":5.0 }, { "frames":[ ExtResource( 5 ) ], "loop":true, "name":"BasicHit", "speed":5.0 }, { "frames":[ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 6 ) ], "loop":false, "name":"Paralysis", "speed":15.0 }, { "frames":[ ExtResource( 16 ) ], "loop":true, "name":"Bash", "speed":5.0 }, { "frames":[ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 17 ) ], "loop":false, "name":"Regen", "speed":10.0 } ]
+animations = [ { "frames":[ ExtResource( 4 ) ], "loop":true, "name":"FatalBlow", "speed":5.0 }, { "frames":[ ExtResource( 5 ) ], "loop":true, "name":"BasicHit", "speed":5.0 }, { "frames":[ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 6 ) ], "loop":false, "name":"Regen", "speed":10.0 }, { "frames":[ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 14 ) ], "loop":false, "name":"Paralysis", "speed":15.0 }, { "frames":[ ExtResource( 24 ) ], "loop":true, "name":"Bash", "speed":5.0 } ]
 
 [sub_resource type="Animation" id=2]
 
@@ -380,7 +380,7 @@ anims/BasicAttack = ExtResource( 27 )
 anims/DamagePopUp = ExtResource( 28 )
 anims/Death = ExtResource( 29 )
 anims/Emerge = SubResource( 6 )
-"anims/Fatal Blow" = ExtResource( 38 )
+anims/FatalBlow = ExtResource( 38 )
 anims/HealPopUp = ExtResource( 32 )
 anims/Idle = ExtResource( 33 )
 anims/Paralysis = ExtResource( 39 )

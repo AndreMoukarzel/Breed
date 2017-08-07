@@ -21,6 +21,9 @@ func _on_BattleGround_pressed():
 	
 	get_node("VBox").hide()
 	get_node("BattleMode").show()
+	
+	for num in range (1, global.battle_progress + 1):
+		get_node(str("BattleMode/MonsterSelect/Rank", num)).show()
 
 
 func _on_Race_pressed():
@@ -29,6 +32,9 @@ func _on_Race_pressed():
 	
 	get_node("VBox").hide()
 	get_node("RaceMode").show()
+	
+	for num in range (1, global.battle_progress + 1):
+		get_node(str("RaceMode/MonsterSelect/Rank", num)).show()
 
 
 func _on_BackBattle_pressed():

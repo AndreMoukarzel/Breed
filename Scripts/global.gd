@@ -1,7 +1,7 @@
 extends Node
 
 var dialog_scn = preload("res://Scenes/DisplayText.tscn")
-var dialog_speed = 0.025
+var dialog_speed = 0.0125
 
 const MAX_ENERGY = 3000
 
@@ -9,6 +9,9 @@ var ID = 0
 var free_ids = []
 
 var quesha = 1000
+
+var battle_progress = 1
+var race_progress = 1
 
 var year = 0
 var month = 0

@@ -150,7 +150,6 @@ margin/bottom = 522.0
 
 [node name="BattleMode" type="Control" parent="."]
 
-editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = false
