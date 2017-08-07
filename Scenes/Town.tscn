@@ -346,6 +346,12 @@ margin/bottom = 587.0
 
 [connection signal="pressed" from="MonsterShop/Back" to="MonsterShop" method="_on_Back_pressed"]
 
+[connection signal="pressed" from="CatalShop/CatalystBox/Return" to="CatalShop/CatalystBox" method="_on_Return_pressed"]
+
+[connection signal="pressed" from="CatalShop/CatalystBox/Yes" to="CatalShop/CatalystBox" method="_on_Yes_pressed"]
+
+[connection signal="pressed" from="CatalShop/CatalystBox/No" to="CatalShop/CatalystBox" method="_on_No_pressed"]
+
 [connection signal="pressed" from="CatalShop/Buy" to="CatalShop" method="_on_Buy_pressed"]
 
 [connection signal="pressed" from="CatalShop/Back" to="CatalShop" method="_on_Back_pressed"]

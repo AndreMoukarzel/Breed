@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://Scripts/GameMenu.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/BackGrounds/Main.png" type="Texture" id=2]
@@ -13,7 +13,20 @@
 [ext_resource path="res://Scenes/Arena.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Resources/Fonts/fall18.fnt" type="BitmapFont" id=12]
 [ext_resource path="res://Resources/Sprites/GUI/quesha.png" type="Texture" id=13]
-[ext_resource path="res://Scenes/Farmer.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=14]
+[ext_resource path="res://Scenes/Farmer.tscn" type="PackedScene" id=15]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "Sleep"
+length = 1.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.4, 0.6, 1.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 1.0, 1.0, 0.0 ] }
 
 [node name="GameMenu" type="Control"]
 
@@ -419,7 +432,25 @@ transform/pos = Vector2( 30, 20 )
 transform/scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 13 )
 
-[node name="Farmer" parent="." instance=ExtResource( 14 )]
+[node name="Black" type="Sprite" parent="HUD"]
+
+editor/display_folded = true
+visibility/opacity = 0.0
+texture = ExtResource( 14 )
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Black"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Sleep = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="Farmer" parent="." instance=ExtResource( 15 )]
 
 editor/display_folded = true
 rect/scale = Vector2( 6, 6 )

@@ -36,8 +36,7 @@ func _on_Buy_pressed():
 		price += shop_depo[c][0].level * 100 * min(amount, shop_depo[c][1])
 	
 	if (global.quesha < price):
-		#test
-		#give visual representation
+		global.instance_warning(self, "You can't pay for that")
 		print("Not enough cash, stranger")
 	else:
 		global.handle_quesha(-price)
