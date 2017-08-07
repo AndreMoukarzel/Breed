@@ -56,10 +56,11 @@ func process_race(distance):
 
 func _on_Rank1_pressed():
 	if (mon == null):
+		global.instance_warning(get_parent(), "Select a monster to fight!")
 		print("Select a monster!")
 		return
 	if (mon.acts == 0):
-		print("Monster has no action points")
+		global.instance_warning(get_parent(), str(mon.name, " is too tired"))
 		return
 	mon.acts = 0
 

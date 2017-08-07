@@ -119,7 +119,6 @@ func check_win_lose(wl, enemy_num):
 			anim_list.append(["Death", "Enemy"])
 			
 			if (battle_num < enemy_num):
-#				print("Entrei")
 				battle_num += 1
 				mon2_battle_state = [comp_depo[0], comp_depo[0].stats[2] * 3, [], "Enemy"]
 				comp_depo.pop_front()
@@ -378,9 +377,11 @@ func deal_effect(reciever_bs):
 
 func _on_Rank1_pressed():
 	if (mon == null):
+		global.instance_warning(get_parent(), "Select a monster to fight!")
 		print("Select a monster!")
 		return
 	if (mon.acts == 0):
+		global.instance_warning(get_parent(), str(mon.name, " is too tired"))
 		print("Monster has no action points")
 		return
 	mon.acts = 0
