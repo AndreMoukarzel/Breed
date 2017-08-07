@@ -40,7 +40,7 @@ func update_config(monster_vec, number_per_page, max_columns):
 		Pd.set_text(str(page + 1, "/", max_pages))
 
 	# Special case
-	if (max_pages == 1):
+	if (max_pages <= 1):
 		Fp.set_disabled(true)
 		Bp.set_disabled(true)
 	else:

@@ -1,7 +1,7 @@
 extends Node
 
 var dialog_scn = preload("res://Scenes/DisplayText.tscn")
-var dialog_speed = 0.0125
+var dialog_speed = 0.025
 
 const MAX_ENERGY = 3000
 

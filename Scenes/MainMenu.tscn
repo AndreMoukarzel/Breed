@@ -168,7 +168,6 @@ max_lines_visible = -1
 
 [node name="OptionsContainer" type="VBoxContainer" parent="."]
 
-editor/display_folded = true
 visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
@@ -203,7 +202,6 @@ max_lines_visible = -1
 
 [node name="TextSpeedContainer" type="HBoxContainer" parent="OptionsContainer"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -254,6 +252,7 @@ max_lines_visible = -1
 
 [node name="Medium" type="TextureButton" parent="OptionsContainer/TextSpeedContainer"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
