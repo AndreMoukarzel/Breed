@@ -15,7 +15,8 @@ func _ready():
 	global.mon_depo[0].stats[0] = 15
 	global.mon_depo[0].stats[1] = 100
 	global.mon_depo[0].stats[5] = 100
-	g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], [0, 13], 1)
+	for num in range (0, 10):
+		g_monster.monster_generate(global.mon_depo, "nhi", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], [0, 13], 1)
 	##############################
 
 	buttons_anim()
