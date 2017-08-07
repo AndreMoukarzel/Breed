@@ -17,8 +17,18 @@ var mon_list = []
 
 func generate_enemies(rank, number):
 	# Placeholder, deve depender do rank para gerar os monstros.
-	for num in range (0, number):
-		g_monster.monster_generate(comp_depo, "nhi", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], 9, 1)
+	
+	if (rank == 1):
+		for num in range (0, number):
+			g_monster.monster_generate(comp_depo, "Random", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], 9, 3)
+			
+	if (rank == 2):
+		for num in range (0, number):
+			g_monster.monster_generate(comp_depo, "Random", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], [4 + (randi() % 3)], 5 + (randi() % 3))
+			
+	if (rank == 3):
+		for num in range (0, number):
+			g_monster.monster_generate(comp_depo, "Random", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], [4 + (randi() % 3)], 10 + (randi() % 6))
 
 
 func process_battle(enemy_num):
@@ -143,7 +153,11 @@ func check_win_lose(wl, enemy_num):
 func process_action(attacker_bs, reciever_bs):
 	#decide o uso de skills ou não baseado em sua WIS
 	randomize()
-	if (attacker_bs[0].stats[4] / 300 >= randf()):
+	# Previous formula was attacker_bs[0].stats[4] / 300
+	var activation_chance = pow(attacker_bs[0].stats[4], 2) / 300 * reciever_bs[0].stats[4]
+	if (activation_chance >= 0.8):
+		activation_chance = 0.8
+	if (activation_chance >= randf()):
 		use_skill(attacker_bs, reciever_bs)
 	else:
 		regular_attack(attacker_bs, reciever_bs)
