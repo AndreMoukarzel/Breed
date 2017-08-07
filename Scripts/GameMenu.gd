@@ -10,7 +10,7 @@ func _ready():
 	get_node("HUD/Quesha").set_text(str(global.quesha))
 
 	############ TEST ############
-	g_monster.monster_generate(global.mon_depo, "Mafagafo", Color(-1, -1, -1), [6, 6, 6, 6, 6, 6], [7], 30)
+	g_monster.monster_generate(global.mon_depo, "Mafagafo", Color(-1, -1, -1), [6, 6, 6, 6, 6, 6], [8], 30)
 	global.mon_depo[0].stats[4] = 50
 	global.mon_depo[0].stats[0] = 15
 	global.mon_depo[0].stats[1] = 100
