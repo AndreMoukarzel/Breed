@@ -333,6 +333,29 @@ func set_breed_info(mon1, mon2):
 
 	# Action cost
 	var cost = 2000 - floor((m1.stats[2] + m2.stats[2])/2 * 130)
+	
+	# Check incest
+	var incest = 0
+	if (m1.parent1_idn != null and m2.parent1_idn != null):
+		if (m1.parent1_idn == m2.parent1_idn or m1.parent1_idn == m2.parent2_idn):
+			incest = 1
+		elif (m1.parent2_idn == m2.parent1_idn or m1.parent2_idn == m2.parent2_idn):
+			incest = 1
+	if (m1.idn == m2.parent1_idn or m1.idn == m2.parent2_idn):
+		incest = 2
+	elif (m2.idn == m1.parent1_idn or m2.idn == m1.parent2_idn):
+		incest = 2
+	print(str("Incest: ", incest))
 
 	info.get_node("PregChance").set_text(str(chance, "%"))
 	info.get_node("Cost").set_text(str("Cost:\n", cost))
+	var breed_btn = get_node("Breed")
+	if incest == 0:
+		breed_btn.set_normal_texture(load("res://Resources/Sprites/GUI/Barn/breed1.png"))
+		breed_btn.set_hover_texture(load("res://Resources/Sprites/GUI/Barn/breed2.png"))
+	elif incest == 1:
+		breed_btn.set_normal_texture(load("res://Resources/Sprites/GUI/Barn/breed1incest1.png"))
+		breed_btn.set_hover_texture(load("res://Resources/Sprites/GUI/Barn/breed2incest1.png"))
+	elif incest == 2:
+		breed_btn.set_normal_texture(load("res://Resources/Sprites/GUI/Barn/breed1incest2.png"))
+		breed_btn.set_hover_texture(load("res://Resources/Sprites/GUI/Barn/breed2incest2.png"))
