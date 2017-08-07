@@ -77,6 +77,11 @@ func breed( m1, m2, barn ):
 		var inc = floor(max(m1.incest_count, m2.incest_count)) + check_incest(m1, m2)
 		var new_mon = global.mon_depo[global.mon_depo.size() - 1]
 
+		# Sets parent_id
+		new_mon.parent1_idn = m1.idn
+		new_mon.parent2_idn = m2.idn
+		
+
 		new_mon.incest_count = inc
 		if (inc >= 4): # 2much incest PUNISHMENT
 			new_mon.personas.clear()
