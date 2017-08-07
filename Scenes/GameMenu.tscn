@@ -27,6 +27,16 @@ tracks/0/path = NodePath(".:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.4, 0.6, 1.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 1.0, 1.0, 0.0 ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visibility/visible")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 1.2 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ true, false ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:focus/stop_mouse")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0, 1.2 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ true, false ] }
 
 [node name="GameMenu" type="Control"]
 
@@ -315,7 +325,6 @@ visibility/visible = false
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -433,12 +442,20 @@ transform/pos = Vector2( 30, 20 )
 transform/scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 13 )
 
-[node name="Black" type="Sprite" parent="HUD"]
+[node name="Black" type="TextureFrame" parent="HUD"]
 
-editor/display_folded = true
+visibility/visible = false
 visibility/opacity = 0.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 texture = ExtResource( 14 )
-centered = false
+stretch_mode = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Black"]
 
