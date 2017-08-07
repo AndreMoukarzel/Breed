@@ -3,7 +3,14 @@ extends Control
 
 
 func _ready():
-	pass
+	position(OS.get_window_size())
+
+
+func position(size):
+	get_node("VBox").set_size(size)
+	get_node("OptionsContainer").set_size(size - Vector2(0, 20))
+	get_node("OptionsContainer").set_pos(Vector2(0, 20))
+	get_node("OptionsContainer/TextSpeedContainer").set_size(Vector2(size.x, 100))
 
 
 func _on_New_Game_pressed():

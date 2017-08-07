@@ -58,6 +58,7 @@ stretch_mode = 0
 
 [node name="Display1" parent="." instance=ExtResource( 3 )]
 
+editor/display_folded = true
 margin/left = 599.12
 margin/top = 49.6
 margin/right = 639.12
@@ -229,6 +230,7 @@ playback/speed = 1.0
 
 [node name="Breed" type="TextureButton" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
@@ -296,7 +298,6 @@ max_lines_visible = -1
 
 [node name="SortsAndBack" type="VBoxContainer" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
