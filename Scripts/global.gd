@@ -16,9 +16,6 @@ var race_progress = 1
 var year = 0
 var month = 0
 var days = 0
-# Given in minutes. A day has 1440 minutes
-#var time = 0
-
 
 # Value of the debts you have to pay. To access the value
 # for month/year, use debt_values[month][year]
