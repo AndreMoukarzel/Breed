@@ -353,9 +353,12 @@ func set_breed_info(mon1, mon2):
 	if incest == 0:
 		breed_btn.set_normal_texture(load("res://Resources/Sprites/GUI/Barn/breed1.png"))
 		breed_btn.set_hover_texture(load("res://Resources/Sprites/GUI/Barn/breed2.png"))
+		breed_btn.set_pressed_texture(load("res://Resources/Sprites/GUI/Barn/breed3.png"))
 	elif incest == 1:
 		breed_btn.set_normal_texture(load("res://Resources/Sprites/GUI/Barn/breed1incest1.png"))
 		breed_btn.set_hover_texture(load("res://Resources/Sprites/GUI/Barn/breed2incest1.png"))
+		breed_btn.set_pressed_texture(load("res://Resources/Sprites/GUI/Barn/breed3incest1.png"))
 	elif incest == 2:
 		breed_btn.set_normal_texture(load("res://Resources/Sprites/GUI/Barn/breed1incest2.png"))
 		breed_btn.set_hover_texture(load("res://Resources/Sprites/GUI/Barn/breed2incest2.png"))
+		breed_btn.set_pressed_texture(load("res://Resources/Sprites/GUI/Barn/breed3incest2.png"))
