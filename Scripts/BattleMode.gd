@@ -424,6 +424,8 @@ func _on_Rank1_pressed():
 		
 		print ("Total victory!")
 		get_node("MonsterSelect/Rank2").show()
+		if (global.battle_progress < 2):
+			global.battle_progress = 2
 		global.handle_quesha(500)
 	else:
 		# Animate here too
@@ -475,7 +477,9 @@ func _on_Rank2_pressed():
 		anim_scn.queue_free()
 		
 		print ("Total victory!")
-		get_node("MonsterSelect/Rank2").show()
+		get_node("MonsterSelect/Rank3").show()
+		if (global.battle_progress < 3):
+			global.battle_progress = 3
 		global.handle_quesha(500)
 	else:
 		# Animate here too
@@ -526,7 +530,9 @@ func _on_Rank3_pressed():
 		anim_scn.queue_free()
 		
 		print ("Total victory!")
-		get_node("MonsterSelect/Rank2").show()
+		#get_node("MonsterSelect/Rank4").show()
+		if (global.battle_progress < 4):
+			global.battle_progress = 4
 		global.handle_quesha(500)
 	else:
 		# Animate here too

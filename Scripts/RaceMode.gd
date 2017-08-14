@@ -72,6 +72,8 @@ func _on_Rank1_pressed():
 	if (process_race(1000)):
 		print ("Total victory!")
 		get_node("MonsterSelect/Rank2").show()
+		if (global.race_progress < 2):
+			global.race_progress = 2
 	else:
 		print ("Ya lost boi")
 	comp_depo.clear()

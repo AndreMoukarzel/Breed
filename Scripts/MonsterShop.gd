@@ -13,7 +13,6 @@ func _ready():
 	# TEM QUE LIBERAR TODOS OS IDS NÃO UTILIZADOS
 	var w_size = OS.get_window_size()
 	get_node("Display").set_pos(Vector2(w_size.x - 425, 20))
-	generate_shop()
 
 func generate_shop():
 	# Devera receber alguns argumentos que definam seu progresso no jogo.
@@ -22,9 +21,20 @@ func generate_shop():
 	# O shop gerará uma nova seleção a cada dia (ou semana?), ainda baseada
 	# em seu progresso. O número gerado também dependerá do progresso no
 	# jogo.
+	
+	shop_depo.clear()
 
-	for num in range (0, 12):
-		g_monster.monster_generate(shop_depo, "nhi", Color(-1, -1, -1), [2, 2, 1, 0, 0, 0], [0], 3)
+	for num in range (0, 3 + randi() % ((global.battle_progress + global.race_progress)) + global.month * global.year):
+		
+		var rand_grads = []
+		for iter in range (0, 6):
+			# Não pode dar nenhum monstro com gradação melhor que 4 antes do segundo ano
+			var random_gradation = (randi() % ((global.battle_progress + global.race_progress) % (4 + global.year)))
+			if (random_gradation > 6):
+				random_gradation = 6
+			rand_grads.append(random_gradation)
+			
+		g_monster.monster_generate(shop_depo, "nhi", Color(-1, -1, -1), rand_grads, [0], 3)
 
 	for mon in shop_depo:
 		var act = log(mon.stats[2])

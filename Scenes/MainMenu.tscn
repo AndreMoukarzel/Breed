@@ -168,6 +168,7 @@ max_lines_visible = -1
 
 [node name="OptionsContainer" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1

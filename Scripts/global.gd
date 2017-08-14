@@ -13,6 +13,8 @@ var quesha = 1000
 var battle_progress = 1
 var race_progress = 1
 
+var generate_shop = true
+
 var year = 0
 var month = 0
 var days = 0
@@ -169,6 +171,10 @@ func handle_days(val):
 				apbonus += 0.3
 				
 		mon.acts = floor(rand_range(act - act/5, act + act/5) * apbonus)
+		
+	# Decides if shop is to be updated
+	if (days % 7 == 0):
+		generate_shop = true
 
 ########################################
 
