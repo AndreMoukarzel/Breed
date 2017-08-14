@@ -190,16 +190,17 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 490.0
-margin/top = 365.0
-margin/right = 682.0
-margin/bottom = 642.0
+margin/left = 475.0
+margin/top = 420.0
+margin/right = 551.8
+margin/bottom = 530.8
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 10 )
 textures/pressed = ExtResource( 11 )
 textures/hover = ExtResource( 12 )
+params/scale = Vector2( 0.4, 0.4 )
 
 [node name="Rank2" type="TextureButton" parent="BattleMode/MonsterSelect"]
 
@@ -208,16 +209,17 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 490.0
-margin/top = 215.0
-margin/right = 540.0
-margin/bottom = 235.0
+margin/left = 460.0
+margin/top = 230.0
+margin/right = 571.6
+margin/bottom = 410.4
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 13 )
 textures/pressed = ExtResource( 14 )
 textures/hover = ExtResource( 15 )
+params/scale = Vector2( 0.4, 0.4 )
 
 [node name="Rank3" type="TextureButton" parent="BattleMode/MonsterSelect"]
 
@@ -226,16 +228,17 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 490.0
-margin/top = 60.0
-margin/right = 540.0
-margin/bottom = 80.0
+margin/left = 450.0
+margin/top = -30.0
+margin/right = 588.8
+margin/bottom = 252.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 16 )
 textures/pressed = ExtResource( 17 )
 textures/hover = ExtResource( 18 )
+params/scale = Vector2( 0.4, 0.4 )
 
 [node name="BattleDisplay" type="Control" parent="BattleMode/MonsterSelect"]
 
@@ -494,9 +497,9 @@ max_lines_visible = -1
 [node name="BackBattle" parent="BattleMode/MonsterSelect" instance=ExtResource( 7 )]
 
 margin/left = 460.0
-margin/top = 480.0
+margin/top = 550.0
 margin/right = 568.0
-margin/bottom = 522.0
+margin/bottom = 592.0
 
 [node name="RaceMode" type="Control" parent="."]
 
@@ -533,29 +536,31 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 490.0
-margin/top = 365.0
-margin/right = 540.0
-margin/bottom = 385.0
+margin/left = 475.0
+margin/top = 420.0
+margin/right = 551.8
+margin/bottom = 530.8
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 10 )
 textures/pressed = ExtResource( 11 )
 textures/hover = ExtResource( 12 )
+params/scale = Vector2( 0.4, 0.4 )
 
 [node name="Rank2" type="TextureButton" parent="RaceMode/MonsterSelect"]
 
 editor/display_folded = true
 visibility/visible = false
+rect/scale = Vector2( 0.4, 0.4 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 490.0
-margin/top = 215.0
-margin/right = 540.0
-margin/bottom = 235.0
+margin/left = 460.0
+margin/top = 230.0
+margin/right = 739.0
+margin/bottom = 681.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -566,14 +571,15 @@ textures/hover = ExtResource( 15 )
 [node name="Rank3" type="TextureButton" parent="RaceMode/MonsterSelect"]
 
 visibility/visible = false
+rect/scale = Vector2( 0.4, 0.4 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
-margin/left = 490.0
-margin/top = 60.0
-margin/right = 540.0
-margin/bottom = 80.0
+margin/left = 450.0
+margin/top = -30.0
+margin/right = 797.0
+margin/bottom = 675.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -717,8 +723,10 @@ max_lines_visible = -1
 
 [node name="BackRace" parent="RaceMode/MonsterSelect" instance=ExtResource( 7 )]
 
-margin/top = 480.0
-margin/bottom = 522.0
+margin/left = 460.0
+margin/top = 550.0
+margin/right = 568.0
+margin/bottom = 592.0
 
 [connection signal="pressed" from="VBox/BattleGround" to="." method="_on_BattleGround_pressed"]
 

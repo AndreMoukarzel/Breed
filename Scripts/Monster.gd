@@ -32,8 +32,8 @@ class Monster:
 	var cost_decrease = 0
 	var incest_count = 0
 
-	var eye_tex = "dot"
-	var mouth_tex = "simple"
+	var eye_tex
+	var mouth_tex
 
 	func _init(name, gender, species, color, stats, gradations, personas):
 		self.name = name
@@ -44,6 +44,10 @@ class Monster:
 		self.gradations = gradations
 		self.personas = personas
 		self.idn = global.get_id()
+		
+		randomize()
+		eye_tex = str((randi() % 2) + 1) # "0" is for gorked 
+		mouth_tex = str((randi() % 1) + 1) # "0" is for gorked
 		
 		var bccbonus = 1
 		for persona in self.personas:
