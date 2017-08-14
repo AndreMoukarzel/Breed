@@ -14,9 +14,8 @@ func breed( m1, m2, barn ):
 	var cost = 2000 - floor((m1.stats[2] + m2.stats[2])/2 * 130 * arbonus)
 
 	if (global.energy - cost < 0):
-		# Give notice to player
-		#test
 		print("Can't let you do that, Star Fox")
+		global.instance_warning(get_parent(), "You don't have enougth energy")
 		return
 	else:
 		global.handle_energy(-cost)
@@ -80,12 +79,25 @@ func breed( m1, m2, barn ):
 		# Sets parent_id
 		new_mon.parent1_idn = m1.idn
 		new_mon.parent2_idn = m2.idn
-		
+
+		# Sets hereditary faces
+		randomize()
+		if (randi() % 2 == 1): # eyes
+			new_mon.eye_tex = m1.eye_tex
+		else:
+			new_mon.eye_tex = m2.eye_tex
+
+		if (randi() % 2 == 1): # mouth
+			new_mon.mouth_tex = m1.mouth_tex
+		else:
+			new_mon.mouth_tex = m2.mouth_tex
 
 		new_mon.incest_count = inc
 		if (inc >= 4): # 2much incest PUNISHMENT
 			new_mon.personas.clear()
 			new_mon.personas.append(4)
+			new_mon.eye_tex = "0"
+			new_mon.mouth_tex = "0"
 
 		var offspring_display_scn = load("res://Scenes/DisplayOffspring.tscn")
 		var display = offspring_display_scn.instance()
