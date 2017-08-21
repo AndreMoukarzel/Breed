@@ -503,6 +503,7 @@ margin/bottom = 592.0
 
 [node name="RaceMode" type="Control" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true

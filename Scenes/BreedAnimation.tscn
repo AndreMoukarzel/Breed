@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=1]
-[ext_resource path="res://Resources/Sprites/barn.jpg" type="Texture" id=2]
+[ext_resource path="res://Scripts/BreedAnimation.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/barn.jpg" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -93,13 +94,14 @@ tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "updat
 
 [node name="BreedAnimation" type="Node2D"]
 
+script/script = ExtResource( 1 )
 __meta__ = { "_edit_lock_":true }
 
 [node name="BlackFilter" type="Sprite" parent="."]
 
 visibility/opacity = 0.8
 transform/pos = Vector2( -100, -100 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 centered = false
 __meta__ = { "_edit_lock_":true }
 
@@ -115,7 +117,7 @@ margin/left = 128.0
 margin/top = 75.0
 margin/right = 1152.0
 margin/bottom = 675.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 expand = true
 stretch_mode = 0
 __meta__ = { "_edit_group_":true, "_edit_lock_":true }
@@ -132,12 +134,10 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="Monster1" type="Node2D" parent="BreedingCenter"]
 
-editor/display_folded = true
 __meta__ = { "_edit_lock_":true }
 
 [node name="Monster" type="Node2D" parent="BreedingCenter/Monster1"]
 
-editor/display_folded = true
 transform/pos = Vector2( -100, 100 )
 __meta__ = { "_edit_group_":true }
 
@@ -180,5 +180,14 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.2
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 

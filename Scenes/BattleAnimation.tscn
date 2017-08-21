@@ -3,16 +3,16 @@
 [ext_resource path="res://Scripts/BattleAnimation.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/Black.jpg" type="Texture" id=2]
 [ext_resource path="res://Resources/Sprites/Battle/Scenery/FirstCup.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/FatalBlow/FatalBlow.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/BasicHit/BasicHit.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen8.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen1.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen2.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen3.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen4.png" type="Texture" id=10]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen5.png" type="Texture" id=11]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen6.png" type="Texture" id=12]
-[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen7.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen8.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen1.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen2.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen3.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen4.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen5.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen6.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/Regen/Regen7.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/FatalBlow/FatalBlow.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Sprites/Battle/Effects/BasicHit/BasicHit.png" type="Texture" id=13]
 [ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis10.png" type="Texture" id=14]
 [ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis1.png" type="Texture" id=15]
 [ext_resource path="res://Resources/Sprites/Battle/Effects/Paralysis/Paralysis2.png" type="Texture" id=16]
@@ -47,7 +47,7 @@
 
 [sub_resource type="SpriteFrames" id=1]
 
-animations = [ { "frames":[ ExtResource( 4 ) ], "loop":true, "name":"FatalBlow", "speed":5.0 }, { "frames":[ ExtResource( 5 ) ], "loop":true, "name":"BasicHit", "speed":5.0 }, { "frames":[ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 6 ) ], "loop":false, "name":"Regen", "speed":10.0 }, { "frames":[ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 14 ) ], "loop":false, "name":"Paralysis", "speed":15.0 }, { "frames":[ ExtResource( 24 ) ], "loop":true, "name":"Bash", "speed":5.0 } ]
+animations = [ { "frames":[ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 4 ) ], "loop":false, "name":"Regen", "speed":10.0 }, { "frames":[ ExtResource( 12 ) ], "loop":true, "name":"FatalBlow", "speed":5.0 }, { "frames":[ ExtResource( 13 ) ], "loop":true, "name":"BasicHit", "speed":5.0 }, { "frames":[ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 14 ) ], "loop":false, "name":"Paralysis", "speed":15.0 }, { "frames":[ ExtResource( 24 ) ], "loop":true, "name":"Bash", "speed":5.0 } ]
 
 [sub_resource type="Animation" id=2]
 
@@ -262,6 +262,7 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="Player" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 375, 275 )
 __meta__ = { "_edit_lock_":true }
 
@@ -330,6 +331,7 @@ autoplay = ""
 
 [node name="Enemy" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 620, 275 )
 transform/scale = Vector2( -1, 1 )
 __meta__ = { "_edit_lock_":true }

@@ -2,25 +2,6 @@
 extends Node
 
 func breed( m1, m2, barn ):
-	# Game State Handling
-	var arbonus = 1
-	for persona in m1.personas:
-		if (personality_db.get_types(persona)[0] == "RAC"):
-			arbonus -= 0.1
-	for persona in m2.personas:
-		if (personality_db.get_types(persona)[0] == "RAC"):
-			arbonus -= 0.1
-			
-	var cost = 2000 - floor((m1.stats[2] + m2.stats[2])/2 * 130 * arbonus)
-
-	if (global.energy - cost < 0):
-		print("Can't let you do that, Star Fox")
-		global.instance_warning(get_parent(), "You don't have enougth energy")
-		return
-	else:
-		global.handle_energy(-cost)
-
-	# Actual Breeding Function
 	var species
 	var color
 	var rand
